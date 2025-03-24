@@ -2,9 +2,9 @@
 name: CI
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
-    branches: ["main"]
+    branches: ['main']
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - NodeVersion: 20.9.x
+          - NodeVersion: 20.14.x
             NodeVersionDisplayName: 20
             OS: ubuntu-latest
     name: Node.js v${{ matrix.NodeVersionDisplayName }} (${{ matrix.OS }})
