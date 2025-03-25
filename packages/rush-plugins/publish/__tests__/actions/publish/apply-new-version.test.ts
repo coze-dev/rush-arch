@@ -1,14 +1,14 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
-import { logger } from '@coze-infra/rush-logger';
-import { readJsonFile, writeJsonFile } from '@coze-infra/fs-enhance';
+import { logger } from '@coze-arch/rush-logger';
+import { readJsonFile, writeJsonFile } from '@coze-arch/fs-enhance';
 
 import { type PublishManifest } from '../types';
 import { applyPublishManifest } from '../apply-new-version';
 
 // Mock dependencies
-vi.mock('@coze-infra/rush-logger');
-vi.mock('@coze-infra/fs-enhance');
+vi.mock('@coze-arch/rush-logger');
+vi.mock('@coze-arch/fs-enhance');
 vi.mock('path', () => ({
   default: { resolve: (...args: string[]) => args.join('/') },
 }));

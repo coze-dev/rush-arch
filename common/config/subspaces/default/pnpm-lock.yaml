@@ -66,7 +66,7 @@ importers:
       '@babel/preset-react':
         specifier: ~7.13.13
         version: 7.13.13(@babel/core@7.26.10)
-      '@coze-infra/ts-config':
+      '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../ts-config
       '@eslint/compat':
@@ -185,10 +185,10 @@ importers:
         specifier: ^4.2.1
         version: 4.3.2(typescript@5.8.2)(vite@5.4.15(@types/node@22.13.13))
     devDependencies:
-      '@coze-infra/eslint-config':
+      '@coze-arch/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@coze-infra/ts-config':
+      '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../ts-config
       '@types/node':
@@ -243,13 +243,13 @@ importers:
         specifier: ^3.24.2
         version: 3.24.2
     devDependencies:
-      '@coze-infra/eslint-config':
+      '@coze-arch/eslint-config':
         specifier: workspace:*
         version: link:../../config/eslint-config
-      '@coze-infra/ts-config':
+      '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../config/ts-config
-      '@coze-infra/vitest-config':
+      '@coze-arch/vitest-config':
         specifier: workspace:*
         version: link:../../config/vitest-config
       '@rollup/plugin-commonjs':
@@ -319,13 +319,13 @@ importers:
       '@commitlint/types':
         specifier: ^19.8.0
         version: 19.8.0
-      '@coze-infra/eslint-config':
+      '@coze-arch/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
-      '@coze-infra/ts-config':
+      '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
-      '@coze-infra/vitest-config':
+      '@coze-arch/vitest-config':
         specifier: workspace:*
         version: link:../../../config/vitest-config
       '@types/node':
@@ -355,7 +355,7 @@ importers:
 
   ../../../packages/rush-plugins/run-tsc-plugin:
     devDependencies:
-      '@coze-infra/ts-config':
+      '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
 

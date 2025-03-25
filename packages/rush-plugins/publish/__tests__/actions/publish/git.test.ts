@@ -1,12 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { logger } from '@coze-infra/rush-logger';
+import { logger } from '@coze-arch/rush-logger';
 
 import { type PublishManifest } from '../types';
 import { createAndPushBranch, commitChanges, push } from '../git';
 import { exec } from '../../../utils/exec';
 
 // Mock dependencies
-vi.mock('@coze-infra/rush-logger');
+vi.mock('@coze-arch/rush-logger');
 vi.mock('../../../utils/exec');
 
 describe('git operations', () => {

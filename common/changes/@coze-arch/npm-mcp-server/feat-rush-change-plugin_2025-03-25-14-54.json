@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@coze-arch/npm-mcp-server",
-      "comment": "rush plugin for generate change logs",
+      "comment": "change scope",
       "type": "patch"
     }
   ],
