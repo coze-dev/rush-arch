@@ -451,7 +451,7 @@
     },
     {
       "packageName": "@coze-infra/npm-mcp-server",
-      "projectFolder": "mcp/npm",
+      "projectFolder": "packages/mcp/npm",
       "tags": ["mcp"]
     },
     {
