@@ -15,9 +15,12 @@
   "files": [
     "bin",
     "dist",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "!**/*.map",
+    "!**/*.tsbuildinfo"
   ],
   "scripts": {
+    "build": "rollup -c rollup.config.mjs",
     "lint": "eslint ./ --cache",
     "serve": "tsx src/cli.ts serve --port 3000",
     "start": "tsx src/cli.ts start",
@@ -41,9 +44,14 @@
     "@coze-infra/eslint-config": "workspace:*",
     "@coze-infra/ts-config": "workspace:*",
     "@coze-infra/vitest-config": "workspace:*",
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-json": "~6.0.0",
+    "@rollup/plugin-node-resolve": "~15.0.1",
+    "@rollup/plugin-sucrase": "^5.0.2",
     "@types/lodash": "^4.17.16",
     "@types/node": "^22.13.13",
     "@vitest/coverage-v8": "^3.0.9",
+    "rollup": "^4.9.0",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.19.3",
     "vitest": "^3.0.9"
