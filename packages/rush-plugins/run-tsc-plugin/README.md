@@ -1,1 +1,1 @@
-# @coze/run-tsc-plugin
+# @coze-infra/run-tsc-plugin

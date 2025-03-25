@@ -1,4 +1,4 @@
-import { defineConfig } from '@coze/vitest-config';
+import { defineConfig } from '@coze-infra/vitest-config';
 
 export default defineConfig({
   dirname: __dirname,

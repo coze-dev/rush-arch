@@ -26,7 +26,7 @@ NPM MCP Server is a Model Context Protocol server implementation for NPM. It pro
 You can directly use the NPM MCP Server without installing it locally via `npx`:
 
 ```sh
-npx @coze/npm-mcp-server@latest serve
+npx @coze-infra/npm-mcp-server@latest serve
 ```
 
 This will start the MCP server on port 3000 by default. You can access it at `http://localhost:3000/sse`.
@@ -66,13 +66,13 @@ The NPM MCP Server can be run in two different modes:
 Start the server to listen on HTTP requests using npx:
 
 ```sh
-npx @coze/npm-mcp-server@latest serve
+npx @coze-infra/npm-mcp-server@latest serve
 ```
 
 You can specify a different port:
 
 ```sh
-npx @coze/npm-mcp-server@latest serve --port 4000
+npx @coze-infra/npm-mcp-server@latest serve --port 4000
 ```
 
 Access the server at: `http://localhost:<port>/sse`
@@ -82,7 +82,7 @@ Access the server at: `http://localhost:<port>/sse`
 Run the server directly in the terminal:
 
 ```sh
-npx @coze/npm-mcp-server@latest start
+npx @coze-infra/npm-mcp-server@latest start
 ```
 
 ### Development

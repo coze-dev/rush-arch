@@ -31,13 +31,13 @@
       "autoinstallerName": "plugins"
     },
     {
-      "packageName": "@coze/rush-run-tsc-plugin",
-      "pluginName": "@coze/rush-run-tsc-plugin",
+      "packageName": "@coze-infra/rush-run-tsc-plugin",
+      "pluginName": "@coze-infra/rush-run-tsc-plugin",
       "autoinstallerName": "plugins"
     },
     {
-      "packageName": "@coze/rush-publish-plugin",
-      "pluginName": "@coze/rush-publish-plugin",
+      "packageName": "@coze-infra/rush-publish-plugin",
+      "pluginName": "@coze-infra/rush-publish-plugin",
       "autoinstallerName": "plugins"
     }
   ]

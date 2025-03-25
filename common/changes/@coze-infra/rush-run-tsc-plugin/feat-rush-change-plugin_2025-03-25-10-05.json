@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "packageName": "@coze/rush-run-tsc-plugin",
+      "packageName": "@coze-infra/rush-run-tsc-plugin",
       "comment": "publish & release command",
       "type": "patch"
     }
   ],
-  "packageName": "@coze/rush-run-tsc-plugin",
+  "packageName": "@coze-infra/rush-run-tsc-plugin",
   "email": "tecvan.fe@gmail.com"
 }

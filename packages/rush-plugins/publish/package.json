@@ -1,5 +1,5 @@
 {
-  "name": "@coze/rush-publish-plugin",
+  "name": "@coze-infra/rush-publish-plugin",
   "version": "0.0.1",
   "description": "rush plugin to generate change log and publish packages",
   "license": "ISC",
@@ -28,9 +28,9 @@
   },
   "devDependencies": {
     "@commitlint/types": "^19.8.0",
-    "@coze/eslint-config": "workspace:*",
-    "@coze/ts-config": "workspace:*",
-    "@coze/vitest-config": "workspace:*",
+    "@coze-infra/eslint-config": "workspace:*",
+    "@coze-infra/ts-config": "workspace:*",
+    "@coze-infra/vitest-config": "workspace:*",
     "@types/node": "^22.13.13",
     "@types/semver": "^7.5.8",
     "@types/shelljs": "^0.8.15",

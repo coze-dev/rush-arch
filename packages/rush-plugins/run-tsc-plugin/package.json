@@ -1,5 +1,5 @@
 {
-  "name": "@coze/rush-run-tsc-plugin",
+  "name": "@coze-infra/rush-run-tsc-plugin",
   "version": "0.0.1",
   "description": "rush plugin to run tsc ",
   "license": "ISC",
@@ -11,6 +11,6 @@
     "./rush-plugin-manifest.json"
   ],
   "devDependencies": {
-    "@coze/ts-config": "workspace:*"
+    "@coze-infra/ts-config": "workspace:*"
   }
 }

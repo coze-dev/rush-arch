@@ -1,5 +1,5 @@
 {
-  "name": "@coze/vitest-config",
+  "name": "@coze-infra/vitest-config",
   "version": "0.0.1",
   "author": "fanwenjie.fe@bytedance.com",
   "maintainers": [],
@@ -13,8 +13,8 @@
     "vite-tsconfig-paths": "^4.2.1"
   },
   "devDependencies": {
-    "@coze/eslint-config": "workspace:*",
-    "@coze/ts-config": "workspace:*",
+    "@coze-infra/eslint-config": "workspace:*",
+    "@coze-infra/ts-config": "workspace:*",
     "@types/node": "^22.13.13",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/coverage-v8": "^3.0.9",

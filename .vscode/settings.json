@@ -53,8 +53,7 @@
     "CODEOWNERS": "ini",
     "**/coverage/**/*.*": "plaintext",
     "**/pnpm-lock.yaml": "plaintext",
-    "**/*.yml": "yaml",
-    "**/.npmrc-publish": "ini"
+    "**/*.yml": "yaml"
   },
   "search.useIgnoreFiles": true,
   "files.eol": "\n",

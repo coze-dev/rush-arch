@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs/promises';
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { logger } from '@coze/rush-logger';
+import { logger } from '@coze-infra/rush-logger';
 
 import * as helper from '../helper';
 import * as amendCommit from '../amend-commit';
@@ -12,7 +12,7 @@ import * as projectAnalyzer from '../../../utils/project-analyzer';
 // Mock all dependencies
 vi.mock('fs/promises');
 vi.mock('path');
-vi.mock('@coze/rush-logger');
+vi.mock('@coze-infra/rush-logger');
 vi.mock('../helper');
 vi.mock('../amend-commit');
 vi.mock('../../../utils/project-analyzer');
