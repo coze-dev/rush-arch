@@ -1,7 +1,8 @@
 import { z } from 'zod';
 import axios from 'axios';
 
-import { type McpTool } from '../types';
+import { logger } from '../utils/logger';
+import { type McpTool, type NpmSearchResponse } from '../types';
 
 const schema = z.object({
   keyword: z.string().min(1),
@@ -29,9 +30,19 @@ export const searchNpmPackages: McpTool = {
     maintenance,
     registry,
   }) => {
+    logger.info(
+      `Start searching NPM packages, keyword: "${keyword}", size: ${size}, from: ${from}`,
+    );
+    logger.debug(
+      `Search parameters - quality: ${quality}, popularity: ${popularity}, maintenance: ${maintenance}, registry: ${registry}`,
+    );
+
     try {
       const searchEndpoint = `${registry.replace(/\/$/, '')}/-/v1/search`;
-      const response = await axios.get(searchEndpoint, {
+      logger.debug(`Search endpoint URL: ${searchEndpoint}`);
+
+      logger.debug('Sending API request');
+      const response = await axios.get<NpmSearchResponse>(searchEndpoint, {
         params: {
           text: keyword,
           size,
@@ -41,6 +52,10 @@ export const searchNpmPackages: McpTool = {
           maintenance,
         },
       });
+
+      logger.debug(
+        `Successfully received response, found ${response.data.objects.length} packages`,
+      );
 
       const results = response.data.objects.map(obj => ({
         package: {
@@ -56,9 +71,14 @@ export const searchNpmPackages: McpTool = {
         searchScore: obj.searchScore,
       }));
 
+      logger.debug('Formatting search results');
       const content = formatResults(results);
+      logger.success(`Successfully completed NPM package search: "${keyword}"`);
       return { content: [{ type: 'text', text: content }] };
     } catch (error) {
+      logger.error(
+        `Failed to search NPM packages: ${error instanceof Error ? error.message : 'Unknown error'}`,
+      );
       const errorMessage = `# Error Searching NPM Packages\n\n${error instanceof Error ? error.message : 'Unknown error'}`;
       return { content: [{ type: 'text', text: errorMessage }] };
     }

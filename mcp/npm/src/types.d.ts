@@ -89,3 +89,56 @@ export interface NpmInfo {
   description: string;
   contributors: Person[];
 }
+
+// npm search result
+export interface NpmSearchResponse {
+  objects: NpmPackageSearchResult[];
+  total: number;
+  time: string;
+}
+
+interface NpmPackageSearchResult {
+  downloads: {
+    monthly: number;
+    weekly: number;
+  };
+  dependents: number;
+  updated: string;
+  searchScore: number;
+  package: NpmPackage;
+  score: {
+    final: number;
+    detail: {
+      popularity: number;
+      quality: number;
+      maintenance: number;
+    };
+  };
+  flags: {
+    insecure: number;
+  };
+}
+
+interface NpmPackage {
+  name: string;
+  keywords: string[];
+  version: string;
+  author?: string;
+  description: string;
+  sanitized_name: string;
+  publisher: NpmUser;
+  maintainers: NpmUser[];
+  license: string;
+  date: string;
+  links: {
+    homepage: string;
+    repository: string;
+    bugs: string;
+    npm: string;
+  };
+}
+
+interface NpmUser {
+  email: string;
+  username: string;
+}
