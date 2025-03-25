@@ -69,6 +69,6 @@ jobs:
 
       - name: Run Release
         if: steps.check_tag.outputs.has_valid_tag == 'true'
-        run: node infra/rush-x/bin/run release --commit ${{ github.event.head_commit.id }}
+        run: node common/scripts/install-run-rush.js release --commit ${{ github.event.head_commit.id }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

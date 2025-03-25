@@ -14,6 +14,13 @@
       "summary": "⭐️️ generate change log",
       "shellCommand": "rush-publish change",
       "safeForSimultaneousRushProcesses": true
+    },
+    {
+      "name": "release",
+      "commandKind": "global",
+      "summary": "⭐️️ release packages",
+      "shellCommand": "rush-publish release",
+      "safeForSimultaneousRushProcesses": true
     }
   ],
   "parameters": [
@@ -120,6 +127,14 @@
       "shortName": "-c",
       "description": "本次提交信息,默认读取 .git/COMMIT_EDITMSG",
       "associatedCommands": ["change-x"]
+    },
+    {
+      "parameterKind": "string",
+      "argumentName": "COMMIT",
+      "longName": "--commit",
+      "shortName": "-c",
+      "description": "Git commit hash",
+      "associatedCommands": ["release"]
     }
   ]
 }
