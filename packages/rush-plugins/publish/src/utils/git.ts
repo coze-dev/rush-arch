@@ -53,3 +53,22 @@ export const ensureNotUncommittedChanges = async () => {
   }
   return true;
 };
+
+/**
+ * 获取当前 Git 仓库设置的 origin 远程源地址
+ * @param cwd 当前工作目录
+ * @returns origin 远程源地址
+ */
+export const getCurrentOrigin = async (
+  cwd: string = process.cwd(),
+): Promise<string | undefined> => {
+  try {
+    const { stdout } = await exec('git remote get-url origin', { cwd });
+    return stdout.trim();
+  } catch (error) {
+    return undefined;
+  }
+};
+
+export const convertGitSchemaToHttp = (gitUrl: string) =>
+  gitUrl.replace('git@', 'https://').replace(':', '/').replace('.git', '');

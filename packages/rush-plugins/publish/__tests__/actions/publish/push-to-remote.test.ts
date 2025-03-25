@@ -82,7 +82,11 @@ describe('push-to-remote', () => {
         publishManifests: mockPublishManifests,
         branchName: mockBranchName,
       });
-      expect(push).toHaveBeenCalledWith(['tag1', 'branch1'], mockCwd);
+      expect(push).toHaveBeenCalledWith({
+        refs: ['tag1', 'branch1'],
+        cwd: mockCwd,
+        repoUrl: undefined,
+      });
     });
 
     it('should create new branch for non-beta releases', async () => {
@@ -110,7 +114,11 @@ describe('push-to-remote', () => {
         publishManifests: mockPublishManifests,
         branchName: expectedBranchName,
       });
-      expect(push).toHaveBeenCalledWith(['tag1', 'branch1'], mockCwd);
+      expect(push).toHaveBeenCalledWith({
+        refs: ['tag1', 'branch1'],
+        cwd: mockCwd,
+        repoUrl: undefined,
+      });
     });
 
     it('should skip push when skipPush is true', async () => {
@@ -137,17 +145,18 @@ describe('push-to-remote', () => {
         bumpPolicy: BumpType.ALPHA,
         skipCommit: false,
         skipPush: false,
+        repoUrl: 'git@github.com:test-owner/test-repo.git',
       });
 
       expect(logger.success).toHaveBeenCalledWith(
-        'Please refer to https://github.com/coze-dev/coze-js/actions/workflows/release.yml for the release progress.',
+        'Please refer to https://github.com/test-owner/test-repo/actions/workflows/release.yml for the release progress.',
       );
     });
 
     it('should show PR link and open browser for production releases', async () => {
       const open = await import('open');
       const expectedBranchName = `release/${mockDate}-${mockSessionId}`;
-      const expectedPrUrl = `https://github.com/coze-dev/coze-js/compare/${expectedBranchName}?expand=1`;
+      const expectedPrUrl = `https://github.com/test-owner/test-repo/compare/${expectedBranchName}?expand=1`;
 
       await pushToRemote({
         sessionId: mockSessionId,
@@ -157,6 +166,7 @@ describe('push-to-remote', () => {
         bumpPolicy: BumpType.PATCH,
         skipCommit: false,
         skipPush: false,
+        repoUrl: 'git@github.com:test-owner/test-repo.git',
       });
 
       expect(logger.success).toHaveBeenCalledWith(

@@ -2,8 +2,6 @@ import { logger } from '../../utils/logger';
 import { exec } from '../../utils/exec';
 import { type PublishManifest } from './types';
 
-const MAIN_REPO_URL = 'git@github.com:coze-dev/coze-js.git';
-
 export async function createAndPushBranch(
   branchName: string,
   cwd: string,
@@ -48,8 +46,14 @@ export async function commitChanges({
   return { effects: [...tags, branchName], branchName };
 }
 
-export async function push(refs: string[], cwd: string): Promise<void> {
-  await exec(`git push ${MAIN_REPO_URL} ${refs.join(' ')} --no-verify`, {
+export interface PushOptions {
+  refs: string[];
+  cwd: string;
+  repoUrl: string;
+}
+
+export async function push({ refs, cwd, repoUrl }: PushOptions): Promise<void> {
+  await exec(`git push ${repoUrl} ${refs.join(' ')} --no-verify`, {
     cwd,
   });
 }

@@ -17,6 +17,7 @@ export interface PublishOptions {
   bumpType?: BumpType; // 版本升级类型
   skipCommit?: boolean; // 是否跳过提交
   skipPush?: boolean; // 是否跳过推送
+  repoUrl: string; // Git 仓库 URL，例如：git@github.com:coze-dev/coze-js.git
 }
 
 export interface PublishManifest {

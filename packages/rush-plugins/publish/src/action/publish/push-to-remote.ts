@@ -5,6 +5,7 @@ import { getCurrentBranchName } from '../../utils/git';
 import { exec } from '../../utils/exec';
 import { type PublishManifest, BumpType } from './types';
 import { commitChanges, push } from './git';
+import { GIT_REPO_URL_REGEX } from './const';
 
 interface PushToRemoteOptions {
   sessionId: string;
@@ -14,6 +15,7 @@ interface PushToRemoteOptions {
   bumpPolicy: BumpType | string;
   skipCommit: boolean;
   skipPush: boolean;
+  repoUrl: string;
 }
 
 export const pushToRemote = async (options: PushToRemoteOptions) => {
@@ -25,10 +27,14 @@ export const pushToRemote = async (options: PushToRemoteOptions) => {
     bumpPolicy,
     skipCommit,
     skipPush,
+    repoUrl,
   } = options;
   if (skipCommit) {
     return;
   }
+
+  // 获取仓库 URL
+  const actualRepoUrl = repoUrl;
 
   let branchName: string;
   if (bumpPolicy === BumpType.BETA) {
@@ -50,17 +56,30 @@ export const pushToRemote = async (options: PushToRemoteOptions) => {
   if (skipPush) {
     return;
   }
-  await push(effects, cwd);
+  await push({
+    refs: effects,
+    cwd,
+    repoUrl: actualRepoUrl,
+  });
 
   const isTestPublish = [BumpType.ALPHA, BumpType.BETA].includes(
     bumpPolicy as BumpType,
   );
+
+  // 从 git URL 提取组织和仓库名称，用于构建 GitHub 链接
+  const repoInfoMatch = actualRepoUrl.match(GIT_REPO_URL_REGEX);
+  if (!repoInfoMatch) {
+    throw new Error('Invalid git repository URL');
+  }
+  const repoOwner = repoInfoMatch[1];
+  const repoName = repoInfoMatch[2];
+
   if (isTestPublish) {
     logger.success(
-      'Please refer to https://github.com/coze-dev/coze-js/actions/workflows/release.yml for the release progress.',
+      `Please refer to https://github.com/${repoOwner}/${repoName}/actions/workflows/release.yml for the release progress.`,
     );
   } else {
-    const prUrl = `https://github.com/coze-dev/coze-js/compare/${branchName}?expand=1`;
+    const prUrl = `https://github.com/${repoOwner}/${repoName}/compare/${branchName}?expand=1`;
     const log = [
       '************************************************',
       '*',

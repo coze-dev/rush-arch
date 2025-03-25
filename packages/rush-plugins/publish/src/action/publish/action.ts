@@ -80,6 +80,7 @@ export const publish = async (options: PublishOptions) => {
     cwd: rushFolder,
     skipCommit: !!options.skipCommit,
     skipPush: !!options.skipPush,
+    repoUrl: options.repoUrl,
   });
   logger.success('Publish success.');
 };

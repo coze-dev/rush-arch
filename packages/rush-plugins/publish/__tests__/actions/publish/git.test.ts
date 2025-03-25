@@ -107,7 +107,11 @@ describe('git operations', () => {
   describe('push', () => {
     it('should push refs to remote', async () => {
       const refs = ['main', 'v1.0.0', 'feature/test'];
-      await push(refs, mockCwd);
+      await push({
+        refs,
+        cwd: mockCwd,
+        repoUrl: 'git@github.com:coze-dev/coze-js.git',
+      });
 
       expect(exec).toHaveBeenCalledWith(
         'git push git@github.com:coze-dev/coze-js.git main v1.0.0 feature/test --no-verify',
