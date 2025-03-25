@@ -53,7 +53,6 @@ async function checkSensitiveInformation({
 
   function walkSync(dir: string) {
     // 检查是否应该忽略该文件
-    console.log('debugger dir', dir)
     if (ignoredPaths.some(p => dir.includes(p))) {
       return;
     }

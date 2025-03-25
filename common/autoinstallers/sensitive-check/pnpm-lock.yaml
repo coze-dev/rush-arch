@@ -7,7 +7,10 @@ settings:
 importers:
 
   .:
-    dependencies:
+    devDependencies:
+      '@types/node':
+        specifier: ^22.13.13
+        version: 22.13.13
       commander:
         specifier: ^11.0.0
         version: 11.1.0
@@ -17,10 +20,6 @@ importers:
       typescript:
         specifier: ^5.8.2
         version: 5.8.2
-    devDependencies:
-      '@types/node':
-        specifier: ^22.13.13
-        version: 22.13.13
 
 packages:
 
