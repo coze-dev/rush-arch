@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
-import { logger } from '@coze-infra/rush-logger';
+import { logger } from '@coze-arch/rush-logger';
 
 import { type ReleaseOptions, type ReleaseManifest } from '../types';
 import { releasePackages } from '../release';
@@ -8,7 +8,7 @@ import { applyPublishConfig } from '../package';
 import { exec } from '../../../utils/exec';
 
 // Mock dependencies
-vi.mock('@coze-infra/rush-logger');
+vi.mock('@coze-arch/rush-logger');
 vi.mock('../../../utils/exec');
 vi.mock('../package');
 

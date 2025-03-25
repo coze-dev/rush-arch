@@ -1,6 +1,6 @@
 {
-  "name": "@coze-infra/rush-run-tsc-plugin",
-  "version": "0.0.1",
+  "name": "@coze-arch/rush-run-tsc-plugin",
+  "version": "0.0.1-beta.1",
   "description": "rush plugin to run tsc ",
   "license": "ISC",
   "author": "tecvan.fe@gmail.com",
@@ -11,6 +11,9 @@
     "./rush-plugin-manifest.json"
   ],
   "devDependencies": {
-    "@coze-infra/ts-config": "workspace:*"
+    "@coze-arch/ts-config": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

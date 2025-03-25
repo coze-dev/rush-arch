@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import dayjs from 'dayjs';
-import { logger } from '@coze-infra/rush-logger';
+import { logger } from '@coze-arch/rush-logger';
 
 import { BumpType } from '../types';
 import { pushToRemote } from '../push-to-remote';
@@ -10,7 +10,7 @@ import { exec } from '../../../utils/exec';
 
 // Mock dependencies
 vi.mock('dayjs');
-vi.mock('@coze-infra/rush-logger');
+vi.mock('@coze-arch/rush-logger');
 vi.mock('../../../utils/git-command');
 vi.mock('../../../utils/exec');
 vi.mock('../git');

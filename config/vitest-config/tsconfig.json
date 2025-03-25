@@ -1,5 +1,5 @@
 {
-  "extends": "@coze-infra/ts-config/tsconfig.node.json",
+  "extends": "@coze-arch/ts-config/tsconfig.node.json",
   "compilerOptions": {
     "module": "NodeNext",
     "moduleResolution": "NodeNext",

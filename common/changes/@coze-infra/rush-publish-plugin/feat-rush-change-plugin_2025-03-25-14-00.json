@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "packageName": "@coze-infra/rush-publish-plugin",
+      "packageName": "@coze-arch/rush-publish-plugin",
       "comment": "publish & release pipeline",
       "type": "patch"
     }
   ],
-  "packageName": "@coze-infra/rush-publish-plugin",
+  "packageName": "@coze-arch/rush-publish-plugin",
   "email": "tecvan.fe@gmail.com"
 }

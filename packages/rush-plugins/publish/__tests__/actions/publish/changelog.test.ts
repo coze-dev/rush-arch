@@ -6,7 +6,7 @@ import {
   writeJsonFile,
   isFileExists,
   isDirExists,
-} from '@coze-infra/fs-enhance';
+} from '@coze-arch/fs-enhance';
 
 import { type PublishManifest } from '../types';
 import { generateChangelog } from '../changelog';
@@ -19,7 +19,7 @@ import {
 
 // Mock dependencies
 vi.mock('fs/promises');
-vi.mock('@coze-infra/fs-enhance');
+vi.mock('@coze-arch/fs-enhance');
 vi.mock('../../../utils/project-analyzer');
 vi.mock('../../../generate-changelog/generate-changelog');
 vi.mock('path', () => ({

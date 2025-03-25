@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@coze-arch/rush-run-tsc-plugin",
-      "comment": "publish & release command",
+      "comment": "change scope",
       "type": "patch"
     }
   ],

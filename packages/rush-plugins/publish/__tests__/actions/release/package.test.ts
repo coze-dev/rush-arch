@@ -2,14 +2,14 @@ import path from 'path';
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
-import { readJsonFile, writeJsonFile } from '@coze-infra/fs-enhance';
+import { readJsonFile, writeJsonFile } from '@coze-arch/fs-enhance';
 
 import { applyPublishConfig } from '../package';
 import { getRushConfiguration } from '../../../utils/project-analyzer';
 
 // Mock dependencies
 vi.mock('path');
-vi.mock('@coze-infra/fs-enhance');
+vi.mock('@coze-arch/fs-enhance');
 vi.mock('../../../utils/project-analyzer');
 
 describe('package', () => {
