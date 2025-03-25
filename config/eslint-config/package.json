@@ -1,5 +1,5 @@
 {
-  "name": "@coze-infra/eslint-config",
+  "name": "@coze/eslint-config",
   "version": "0.0.1",
   "author": "fanwenjie.fe@bytedance.com",
   "maintainers": [],
@@ -35,7 +35,7 @@
     "@babel/plugin-syntax-jsx": "~7.23.3",
     "@babel/preset-env": "~7.20.2",
     "@babel/preset-react": "~7.13.13",
-    "@coze-infra/ts-config": "workspace:*",
+    "@coze/ts-config": "workspace:*",
     "@eslint/compat": "~1.2.0",
     "@eslint/eslintrc": "~3.1.0",
     "@rushstack/eslint-config": "~3.1.1",
@@ -68,7 +68,7 @@
     "sucrase": "^3.32.0"
   },
   "devDependencies": {
-    "@coze-infra/ts-config": "workspace:*",
+    "@coze/ts-config": "workspace:*",
     "@types/eslint": "~9.6.1",
     "@types/node": "^22.13.13",
     "typescript": "^5.8.2"

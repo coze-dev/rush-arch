@@ -435,34 +435,34 @@
     //   "tags": [ "tools" ]
     // }
     {
-      "packageName": "@coze-infra/eslint-config",
+      "packageName": "@coze/eslint-config",
       "projectFolder": "config/eslint-config",
       "tags": ["config"]
     },
     {
-      "packageName": "@coze-infra/ts-config",
+      "packageName": "@coze/ts-config",
       "projectFolder": "config/ts-config",
       "tags": ["config"]
     },
     {
-      "packageName": "@coze-infra/vitest-config",
+      "packageName": "@coze/vitest-config",
       "projectFolder": "config/vitest-config",
       "tags": ["config"]
     },
     {
-      "packageName": "@coze-infra/npm-mcp-server",
+      "packageName": "@coze/npm-mcp-server",
       "projectFolder": "mcp/npm",
       "shouldPublish": true,
       "tags": ["mcp"]
     },
     {
-      "packageName": "@coze-infra/rush-run-tsc-plugin",
+      "packageName": "@coze/rush-run-tsc-plugin",
       "projectFolder": "packages/rush-plugins/run-tsc-plugin",
       "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
-      "packageName": "@coze-infra/rush-publish-plugin",
+      "packageName": "@coze/rush-publish-plugin",
       "projectFolder": "packages/rush-plugins/publish",
       "shouldPublish": true,
       "tags": ["level-3"]

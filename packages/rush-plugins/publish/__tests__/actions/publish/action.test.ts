@@ -3,7 +3,7 @@ import {
   type RushConfigurationProject,
   type VersionPolicy,
 } from '@rushstack/rush-sdk';
-import { logger } from '@coze-infra/rush-logger';
+import { logger } from '@coze/rush-logger';
 
 import { generatePublishManifest } from '../version';
 import { BumpType, type PublishOptions } from '../types';
@@ -21,7 +21,7 @@ import {
 } from '../../../utils/git-command';
 
 // Mock dependencies
-vi.mock('@coze-infra/rush-logger');
+vi.mock('@coze/rush-logger');
 vi.mock('../../../utils/random');
 vi.mock('../../../utils/project-analyzer');
 vi.mock('../../../utils/git-command');

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@coze/rush-publish-plugin",
-      "comment": "publish & release pipeline",
+      "comment": "set coze-infra to coze",
       "type": "patch"
     }
   ],

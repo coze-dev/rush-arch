@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@coze-infra/ts-config/tsconfig.node.json",
+  "extends": "@coze/ts-config/tsconfig.node.json",
   "compilerOptions": {
     "rootDir": "./",
     "outDir": "./dist",

@@ -9,7 +9,7 @@ import * as gitCommand from '../../../utils/git-command';
 // Mock all dependencies
 vi.mock('path', () => ({ default: { relative: vi.fn(), dirname: vi.fn() } }));
 vi.mock('@rushstack/rush-sdk/lib/api/ChangeFile');
-vi.mock('@coze-infra/rush-logger');
+vi.mock('@coze/rush-logger');
 vi.mock('../../../utils/project-analyzer');
 vi.mock('../../../utils/git-command');
 vi.mock('../../../utils/exec');

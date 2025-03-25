@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@coze/npm-mcp-server",
-      "comment": "rush plugin for generate change logs",
+      "comment": "set coze-infra to coze",
       "type": "patch"
     }
   ],

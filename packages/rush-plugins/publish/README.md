@@ -1,1 +1,1 @@
-# @coze-infra/rush-change-plugin
+# @coze/rush-change-plugin

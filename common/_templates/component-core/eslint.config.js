@@ -1,4 +1,4 @@
-const { defineConfig } = require('@coze-infra/eslint-config');
+const { defineConfig } = require('@coze/eslint-config');
 
 module.exports = defineConfig({
   packageRoot: __dirname,

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@coze/rush-run-tsc-plugin",
-      "comment": "publish & release command",
+      "comment": "set coze-infra to coze",
       "type": "patch"
     }
   ],

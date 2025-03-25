@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
-import { logger } from '@coze-infra/rush-logger';
+import { logger } from '@coze/rush-logger';
 
 import { type ReleaseOptions, type PackageToPublish } from '../types';
 import { releasePackages } from '../release';
@@ -12,7 +12,7 @@ import { getCurrentBranchName } from '../../../utils/git-command';
 import { exec } from '../../../utils/exec';
 
 // Mock dependencies
-vi.mock('@coze-infra/rush-logger');
+vi.mock('@coze/rush-logger');
 vi.mock('../../../utils/git-command');
 vi.mock('../../../utils/exec');
 vi.mock('../release');
