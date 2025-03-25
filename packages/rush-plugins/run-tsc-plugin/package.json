@@ -1,6 +1,6 @@
 {
   "name": "@coze-arch/rush-run-tsc-plugin",
-  "version": "0.0.1-alpha.0c17f8",
+  "version": "0.0.1-beta.1",
   "description": "rush plugin to run tsc ",
   "license": "ISC",
   "author": "tecvan.fe@gmail.com",
