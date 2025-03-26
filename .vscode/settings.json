@@ -33,12 +33,15 @@
     "**/.git": true,
     "**/.DS_Store": true,
     "**/.swc": true,
+    "**/rush-logs": true,
     "**/.rush": true
   },
   "files.watcherExclude": {
+    "**/rush-logs": true,
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
-    "**/node_modules/*/**": true
+    "**/node_modules/*/**": true,
+    "common/temp": true
   },
   "files.defaultLanguage": "plaintext",
   "files.associations": {
