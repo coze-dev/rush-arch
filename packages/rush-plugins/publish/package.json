@@ -12,7 +12,9 @@
   "files": [
     "dist",
     "!**/*.tsbuildinfo",
-    "!**/*.map"
+    "!**/*.map",
+    "command-line.json",
+    "rush-plugin-manifest.json"
   ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",

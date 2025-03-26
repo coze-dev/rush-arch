@@ -6,6 +6,13 @@
   "author": "{{ authorName }}",
   "maintainers": [],
   "main": "src/index.ts",
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo",
+    "!**/*.map",
+    "command-line.json",
+    "rush-plugin-manifest.json"
+  ],
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
