@@ -9,6 +9,11 @@
   "bin": {
     "rush-publish": "./src/run.js"
   },
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo",
+    "!**/*.map"
+  ],
   "scripts": {
     "build": "tsc -b tsconfig.build.json",
     "lint": "eslint ./ --cache",
@@ -42,5 +47,14 @@
   },
   "peerDependencies": {
     "commander": "^13.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "cozePublishConfig": {
+    "bin": {
+      "rush-publish": "./dist/run.js"
+    },
+    "main": "./dist/index.js"
   }
 }
