@@ -132,7 +132,7 @@ export async function analysisCommitMsg(
   const parsedCommit = await parseCommit(msg);
   const bumpInfo = whatBump([parsedCommit]);
 
-  return { type: bumpInfo.releaseType, content: parsedCommit.subject };
+  return { type: bumpInfo.releaseType, content: parsedCommit.subject || '' };
 }
 
 /**

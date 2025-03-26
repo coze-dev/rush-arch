@@ -99,7 +99,7 @@ const generateVersionChangelog = ({
     version,
     tag,
     date: dayjs().toISOString(),
-    comments: groupedChanges,
+    comments: groupedChanges as ChangeLogEntry['comments'],
   };
 };
 
