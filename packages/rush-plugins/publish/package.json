@@ -2,6 +2,13 @@
   "name": "@coze-arch/rush-publish-plugin",
   "version": "0.0.1",
   "description": "rush plugin to generate change log and publish packages",
+  "keywords": [
+    "rush",
+    "plugin",
+    "command",
+    "release",
+    "publish"
+  ],
   "license": "ISC",
   "author": "tecvan.fe@gmail.com",
   "maintainers": [],
@@ -10,7 +17,7 @@
     "rush-publish": "./src/run.js"
   },
   "files": [
-    "dist",
+    "lib",
     "!**/*.tsbuildinfo",
     "!**/*.map",
     "command-line.json",
@@ -55,8 +62,8 @@
   },
   "cozePublishConfig": {
     "bin": {
-      "rush-publish": "./dist/run.js"
+      "rush-publish": "./lib/index.js"
     },
-    "main": "./dist/index.js"
+    "main": "./lib/index.js"
   }
 }

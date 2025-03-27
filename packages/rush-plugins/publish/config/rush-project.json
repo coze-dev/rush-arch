@@ -6,7 +6,7 @@
     },
     {
       "operationName": "ts-check",
-      "outputFolderNames": ["dist"]
+      "outputFolderNames": ["lib"]
     }
   ]
 }
