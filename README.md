@@ -26,7 +26,7 @@ Rush Architecture is a monorepo template for building and managing Model Context
 You can directly use the NPM MCP Server without cloning this repository:
 
 ```sh
-npx @coze-infra/npm-mcp-server@latest serve
+npx @coze-arch/npm-mcp-server@latest serve
 ```
 
 This will start the MCP server on port 3000 by default. You can access it at `http://localhost:3000/sse`.
@@ -74,7 +74,7 @@ The repository includes an MCP server for npm. You can run it in two modes:
 #### HTTP Server Mode
 Using npx:
 ```sh
-npx @coze-infra/npm-mcp-server@latest serve
+npx @coze-arch/npm-mcp-server@latest serve
 # Access the server at http://localhost:3000/sse
 ```
 
@@ -87,7 +87,7 @@ npm run serve
 #### Terminal Mode
 Using npx:
 ```sh
-npx @coze-infra/npm-mcp-server@latest start
+npx @coze-arch/npm-mcp-server@latest start
 ```
 
 Or if developing locally:

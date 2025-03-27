@@ -15,9 +15,9 @@
   "dependencies": {
   },
   "devDependencies": {
-    "@coze-infra/eslint-config": "workspace:*",
-    "@coze-infra/ts-config": "workspace:*",
-    "@coze-infra/vitest-config": "workspace:*",
+    "@coze-arch/eslint-config": "workspace:*",
+    "@coze-arch/ts-config": "workspace:*",
+    "@coze-arch/vitest-config": "workspace:*",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/react-hooks": "^8.0.1",
