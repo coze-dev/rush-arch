@@ -18,8 +18,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # 使用PAT进行检出，确保有足够权限进行后续操作
-          token: ${{ secrets.GITHUB_TOKEN }}
+          # 使用带有权限的PAT
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Install jq
         run: sudo apt-get install jq
@@ -48,6 +48,9 @@ jobs:
               git config --local user.name "tecvan"
               git config --local user.email "tecvan.fe@gmail.com"
               git tag -a "$TAG_NAME" -m "Release $PKG_NAME@$CURRENT_VERSION"
+
+              # 使用PAT_TOKEN推送，以便触发其他工作流
+              git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}
               git push origin "$TAG_NAME"
             fi
           done
