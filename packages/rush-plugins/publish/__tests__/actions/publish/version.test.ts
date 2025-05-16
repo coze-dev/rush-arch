@@ -2,15 +2,17 @@ import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest';
 import semver from 'semver';
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
 
-import { generatePublishManifest } from '../version';
-import { BumpType } from '../types';
-import * as requestBumpTypeModule from '../request-bump-type';
-import * as randomModule from '../../../utils/random';
+import * as randomModule from '@/utils/random';
+import { generatePublishManifest } from '@/action/publish/version';
+import { BumpType } from '@/action/publish/types';
+import { requestBumpType } from '@/action/publish/request-bump-type';
 
 // Mock 所有依赖
 vi.mock('semver');
-vi.mock('../../../utils/random');
-vi.mock('../request-bump-type');
+vi.mock('@/utils/random');
+vi.mock('@/action/publish/request-bump-type', () => ({
+  requestBumpType: vi.fn(),
+}));
 
 describe('version management', () => {
   beforeEach(() => {
@@ -35,9 +37,7 @@ describe('version management', () => {
     vi.mocked(randomModule.randomHash).mockReturnValue('abc123');
 
     // Mock request bump type
-    vi.mocked(requestBumpTypeModule.requstBumpType).mockResolvedValue(
-      BumpType.PATCH,
-    );
+    (requestBumpType as Mock).mockResolvedValue(BumpType.PATCH);
   });
 
   describe('generatePublishManifest', () => {
@@ -91,7 +91,7 @@ describe('version management', () => {
 
       const result = await generatePublishManifest(packages, options);
 
-      expect(requestBumpTypeModule.requstBumpType).toHaveBeenCalled();
+      expect(requestBumpType).toHaveBeenCalled();
       expect(result).toEqual({
         manifests: [
           {
@@ -117,9 +117,7 @@ describe('version management', () => {
     it('should throw error when version selection is cancelled', async () => {
       const packages = new Set([mockProject]);
       const options = {};
-      vi.mocked(requestBumpTypeModule.requstBumpType).mockResolvedValueOnce(
-        null,
-      );
+      (requestBumpType as Mock).mockResolvedValueOnce(null);
 
       await expect(generatePublishManifest(packages, options)).rejects.toThrow(
         'Version selection was cancelled',

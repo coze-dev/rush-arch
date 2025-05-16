@@ -1,4 +1,5 @@
-import { logger } from '../../utils/logger';
+import { logger } from '@coze-arch/logger';
+
 import { getCurrentBranchName } from '../../utils/git';
 import { exec } from '../../utils/exec';
 import { type ReleaseOptions } from './types';

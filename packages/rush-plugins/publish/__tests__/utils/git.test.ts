@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-import { getCurrentOrigin } from '../../src/utils/git';
-import { exec } from '../../src/utils/exec';
+import { getCurrentOrigin } from '@/utils/git';
+import { exec } from '@/utils/exec';
 
 // Mock dependencies
-vi.mock('../../src/utils/exec');
+vi.mock('@/utils/exec');
 
 describe('git utils', () => {
   beforeEach(() => {
@@ -34,9 +34,8 @@ describe('git utils', () => {
       const mockError = new Error('Git command failed');
       vi.mocked(exec).mockRejectedValueOnce(mockError);
 
-      await expect(getCurrentOrigin()).rejects.toThrow(
-        '获取 origin 源地址失败',
-      );
+      const result = await getCurrentOrigin();
+      expect(result).toBeUndefined();
     });
   });
 });

@@ -2,16 +2,16 @@ import path from 'path';
 
 import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest';
 
-import { amendCommit } from '../amend-commit';
-import * as projectAnalyzer from '../../../utils/project-analyzer';
-import * as gitCommand from '../../../utils/git-command';
-import { exec } from '../../../utils/exec';
+import * as gitCommand from '@/utils/git';
+import * as projectAnalyzer from '@/utils/get-rush-config';
+import { exec } from '@/utils/exec';
+import { amendCommit } from '@/action/change/amend-commit';
 
 // Mock all dependencies
 vi.mock('path', () => ({ default: { relative: vi.fn() } }));
-vi.mock('../../../utils/git-command');
-vi.mock('../../../utils/project-analyzer');
-vi.mock('../../../utils/exec', () => ({
+vi.mock('@/utils/git');
+vi.mock('@/utils/get-rush-config');
+vi.mock('@/utils/exec', () => ({
   exec: vi.fn(),
 }));
 

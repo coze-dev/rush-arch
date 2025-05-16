@@ -466,6 +466,16 @@
       "projectFolder": "packages/rush-plugins/publish",
       "shouldPublish": true,
       "tags": ["level-3"]
+    },
+    {
+      "packageName": "@coze-arch/logger",
+      "projectFolder": "packages/utils/logger",
+      "tags": ["level-3"]
+    },
+    {
+      "packageName": "@coze-arch/fs-enhance",
+      "projectFolder": "packages/utils/fs-enhance",
+      "tags": ["level-3"]
     }
   ]
 }

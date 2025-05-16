@@ -1,8 +1,12 @@
 import { describe, it, expect } from 'vitest';
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
 
-import { type ReleaseManifest } from '../types';
-import { checkReleasePlan, calReleaseType, ReleaseType } from '../plan';
+import { type ReleaseManifest } from '@/action/release/types';
+import {
+  checkReleasePlan,
+  calReleaseType,
+  ReleaseType,
+} from '@/action/release/plan';
 
 describe('plan', () => {
   const createMockProject = (name: string): RushConfigurationProject => {

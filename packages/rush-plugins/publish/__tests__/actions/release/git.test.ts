@@ -1,10 +1,10 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-import { getPackagesToPublish } from '../git';
-import { exec } from '../../../utils/exec';
+import { exec } from '@/utils/exec';
+import { getPackagesToPublish } from '@/action/release/git';
 
 // Mock dependencies
-vi.mock('../../../utils/exec');
+vi.mock('@/utils/exec');
 
 describe('git', () => {
   beforeEach(() => {

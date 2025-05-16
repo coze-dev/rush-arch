@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { select } from '@inquirer/prompts';
 
-import { BumpType } from '../types';
-import { requstBumpType } from '../request-bump-type';
+import { BumpType } from '@/action/publish/types';
+import { requestBumpType } from '@/action/publish/request-bump-type';
 
 // Mock dependencies
 vi.mock('@inquirer/prompts');
@@ -21,7 +21,7 @@ describe('request-bump-type', () => {
 
   describe('requstBumpType', () => {
     it('should present correct choices with descriptions', async () => {
-      await requstBumpType();
+      await requestBumpType();
 
       // 验证选择列表的格式和内容
       expect(select).toHaveBeenCalledWith({
@@ -53,13 +53,13 @@ describe('request-bump-type', () => {
 
     it('should return selected bump type', async () => {
       vi.mocked(select).mockResolvedValueOnce(BumpType.MINOR);
-      const result = await requstBumpType();
+      const result = await requestBumpType();
       expect(result).toBe(BumpType.MINOR);
     });
 
     it('should return null when selection is cancelled', async () => {
       vi.mocked(select).mockRejectedValueOnce(new Error('Selection cancelled'));
-      const result = await requstBumpType();
+      const result = await requestBumpType();
       expect(result).toBeNull();
     });
   });

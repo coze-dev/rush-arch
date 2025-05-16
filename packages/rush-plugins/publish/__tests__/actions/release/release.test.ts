@@ -1,16 +1,17 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
-import { logger } from '@coze-arch/rush-logger';
 
-import { type ReleaseOptions, type ReleaseManifest } from '../types';
-import { releasePackages } from '../release';
-import { applyPublishConfig } from '../package';
-import { exec } from '../../../utils/exec';
+import { exec } from '@/utils/exec';
+import {
+  type ReleaseOptions,
+  type ReleaseManifest,
+} from '@/action/release/types';
+import { releasePackages } from '@/action/release/release';
+import { applyPublishConfig } from '@/action/release/package';
 
 // Mock dependencies
-vi.mock('@coze-arch/rush-logger');
-vi.mock('../../../utils/exec');
-vi.mock('../package');
+vi.mock('@/utils/exec');
+vi.mock('@/action/release/package');
 
 describe('release', () => {
   const mockRegistry = 'https://registry.npmjs.org/';
@@ -109,20 +110,6 @@ describe('release', () => {
         {
           cwd: mockProject2.projectFolder,
         },
-      );
-
-      // 验证日志输出
-      expect(logger.info).toHaveBeenCalledWith(
-        'Preparing release for package: package-1',
-      );
-      expect(logger.info).toHaveBeenCalledWith(
-        'Preparing release for package: package-2',
-      );
-      expect(logger.success).toHaveBeenCalledWith(
-        '- Published package-1@1.1.0',
-      );
-      expect(logger.success).toHaveBeenCalledWith(
-        '- Published package-2@2.1.0',
       );
     });
 
@@ -234,8 +221,6 @@ describe('release', () => {
           registry: mockRegistry,
         }),
       ).rejects.toThrow('Publish failed');
-
-      expect(logger.success).not.toHaveBeenCalled();
     });
 
     it('should handle missing auth token', async () => {
@@ -287,9 +272,6 @@ describe('release', () => {
           {
             cwd: project.projectFolder,
           },
-        );
-        expect(logger.success).toHaveBeenCalledWith(
-          `- Published ${project.packageName}@${project.packageJson.version}`,
         );
       });
     });

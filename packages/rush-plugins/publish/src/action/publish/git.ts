@@ -1,4 +1,5 @@
-import { logger } from '../../utils/logger';
+import { logger } from '@coze-arch/logger';
+
 import { exec } from '../../utils/exec';
 import { type PublishManifest } from './types';
 

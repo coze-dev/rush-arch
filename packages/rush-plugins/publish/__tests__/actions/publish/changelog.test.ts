@@ -8,20 +8,20 @@ import {
   isDirExists,
 } from '@coze-arch/fs-enhance';
 
-import { type PublishManifest } from '../types';
-import { generateChangelog } from '../changelog';
-import { getRushConfiguration } from '../../../utils/project-analyzer';
+import { getRushConfiguration } from '@/utils/get-rush-config';
 import {
   generateChangelog as core,
   type ChangeFile,
   type ChangeLog,
-} from '../../../generate-changelog/generate-changelog';
+} from '@/generate-changelog/generate-changelog';
+import { type PublishManifest } from '@/action/publish/types';
+import { generateChangelog } from '@/action/publish/changelog';
 
 // Mock dependencies
 vi.mock('fs/promises');
 vi.mock('@coze-arch/fs-enhance');
-vi.mock('../../../utils/project-analyzer');
-vi.mock('../../../generate-changelog/generate-changelog');
+vi.mock('@/utils/get-rush-config');
+vi.mock('@/generate-changelog/generate-changelog');
 vi.mock('path', () => ({
   default: {
     resolve: (...args: string[]) => args.join('/'),

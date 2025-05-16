@@ -1,12 +1,12 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
 
-import { type PublishOptions } from '../types';
-import { validateAndGetPackages } from '../packages';
-import { getRushConfiguration } from '../../../utils/project-analyzer';
+import { getRushConfiguration } from '@/utils/get-rush-config';
+import { type PublishOptions } from '@/action/publish/types';
+import { validateAndGetPackages } from '@/action/publish/packages';
 
 // Mock dependencies
-vi.mock('../../../utils/project-analyzer');
+vi.mock('@/utils/get-rush-config');
 
 describe('packages', () => {
   // 创建模拟项目

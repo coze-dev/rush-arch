@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
+import { logger } from '@coze-arch/logger';
 
-import { logger } from '../../utils/logger';
 import { getCurrentBranchName } from '../../utils/git';
 import { exec } from '../../utils/exec';
 import { type PublishManifest, BumpType } from './types';

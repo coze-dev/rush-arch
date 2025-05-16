@@ -2,18 +2,18 @@ import path from 'path';
 
 import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest';
 
-import * as helper from '../helper';
-import * as projectAnalyzer from '../../../utils/project-analyzer';
-import * as gitCommand from '../../../utils/git-command';
+import * as gitCommand from '@/utils/git';
+import * as projectAnalyzer from '@/utils/get-rush-config';
+import * as helper from '@/action/change/helper';
 
 // Mock all dependencies
 vi.mock('path', () => ({ default: { relative: vi.fn(), dirname: vi.fn() } }));
 vi.mock('@rushstack/rush-sdk/lib/api/ChangeFile');
-vi.mock('@coze-arch/rush-logger');
-vi.mock('../../../utils/project-analyzer');
-vi.mock('../../../utils/git-command');
-vi.mock('../../../utils/exec');
-vi.mock('../../../utils/env');
+vi.mock('@coze-arch/logger');
+vi.mock('@/utils/get-rush-config');
+vi.mock('@/utils/git');
+vi.mock('@/utils/exec');
+vi.mock('@/utils/env');
 
 describe('helper functions', () => {
   beforeEach(() => {

@@ -3,34 +3,31 @@ import {
   type RushConfigurationProject,
   type VersionPolicy,
 } from '@rushstack/rush-sdk';
-import { logger } from '@coze-arch/rush-logger';
+import { logger } from '@coze-arch/logger';
 
-import { generatePublishManifest } from '../version';
-import { BumpType, type PublishOptions } from '../types';
-import { pushToRemote } from '../push-to-remote';
-import { validateAndGetPackages } from '../packages';
-import { confirmForPublish } from '../confirm';
-import { generateChangelog } from '../changelog';
-import { applyPublishManifest } from '../apply-new-version';
-import { publish } from '../action';
-import { randomHash } from '../../../utils/random';
-import { getRushConfiguration } from '../../../utils/project-analyzer';
-import {
-  ensureNotUncommittedChanges,
-  isMainBranch,
-} from '../../../utils/git-command';
+import { randomHash } from '@/utils/random';
+import { ensureNotUncommittedChanges, isMainBranch } from '@/utils/git';
+import { getRushConfiguration } from '@/utils/get-rush-config';
+import { generatePublishManifest } from '@/action/publish/version';
+import { BumpType, type PublishOptions } from '@/action/publish/types';
+import { pushToRemote } from '@/action/publish/push-to-remote';
+import { validateAndGetPackages } from '@/action/publish/packages';
+import { confirmForPublish } from '@/action/publish/confirm';
+import { generateChangelog } from '@/action/publish/changelog';
+import { applyPublishManifest } from '@/action/publish/apply-new-version';
+import { publish } from '@/action/publish/action';
 
 // Mock dependencies
-vi.mock('@coze-arch/rush-logger');
-vi.mock('../../../utils/random');
-vi.mock('../../../utils/project-analyzer');
-vi.mock('../../../utils/git-command');
-vi.mock('../version');
-vi.mock('../packages');
-vi.mock('../confirm');
-vi.mock('../changelog');
-vi.mock('../apply-new-version');
-vi.mock('../push-to-remote');
+vi.mock('@coze-arch/logger');
+vi.mock('@/utils/random');
+vi.mock('@/utils/get-rush-config');
+vi.mock('@/utils/git');
+vi.mock('@/action/publish/version');
+vi.mock('@/action/publish/packages');
+vi.mock('@/action/publish/confirm');
+vi.mock('@/action/publish/changelog');
+vi.mock('@/action/publish/apply-new-version');
+vi.mock('@/action/publish/push-to-remote');
 
 describe('publish action', () => {
   const mockRushFolder = '/mock/rush';
@@ -119,10 +116,7 @@ describe('publish action', () => {
       ...options,
       sessionId: mockSessionId,
     });
-    expect(confirmForPublish).toHaveBeenCalledWith(
-      mockPublishManifests,
-      undefined,
-    );
+    expect(confirmForPublish).toHaveBeenCalledWith(mockPublishManifests, false);
     expect(applyPublishManifest).toHaveBeenCalledWith(mockPublishManifests);
     expect(generateChangelog).toHaveBeenCalledWith(mockPublishManifests);
     expect(pushToRemote).toHaveBeenCalledWith({
@@ -131,8 +125,8 @@ describe('publish action', () => {
       sessionId: mockSessionId,
       changedFiles: mockChangedFiles,
       cwd: mockRushFolder,
-      skipCommit: undefined,
-      skipPush: undefined,
+      skipCommit: false,
+      skipPush: false,
     });
     expect(logger.success).toHaveBeenCalledWith('Publish success.');
   });

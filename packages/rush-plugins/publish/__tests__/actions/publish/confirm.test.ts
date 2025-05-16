@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { confirm } from '@inquirer/prompts';
 
-import { type PublishManifest } from '../types';
-import { confirmForPublish } from '../confirm';
+import { type PublishManifest } from '@/action/publish/types';
+import { confirmForPublish } from '@/action/publish/confirm';
 
 // Mock dependencies
 vi.mock('@inquirer/prompts');

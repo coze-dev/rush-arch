@@ -1,9 +1,9 @@
 import path from 'path';
 
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
+import { logger } from '@coze-arch/logger';
+import { readJsonFile, writeJsonFile } from '@coze-arch/fs-enhance';
 
-import { logger } from '../../utils/logger';
-import { readJsonFile, writeJsonFile } from '../../utils/fs';
 import { type PublishManifest, type ApplyPublishManifest } from './types';
 
 const updatePackageVersion = async (

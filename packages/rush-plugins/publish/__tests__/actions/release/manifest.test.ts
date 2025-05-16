@@ -1,11 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-import { type PackageToPublish } from '../types';
-import { buildReleaseManifest } from '../manifest';
-import { getRushConfiguration } from '../../../utils/project-analyzer';
+import { getRushConfiguration } from '@/utils/get-rush-config';
+import { type PackageToPublish } from '@/action/release/types';
+import { buildReleaseManifest } from '@/action/release/manifest';
 
 // Mock dependencies
-vi.mock('../../../utils/project-analyzer');
+vi.mock('@/utils/get-rush-config');
 
 describe('manifest', () => {
   beforeEach(() => {

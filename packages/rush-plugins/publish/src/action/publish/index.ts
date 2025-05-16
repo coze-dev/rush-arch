@@ -1,6 +1,6 @@
 import { type Command } from 'commander';
+import { logger } from '@coze-arch/logger';
 
-import { logger } from '../../utils/logger';
 import { getCurrentOrigin } from '../../utils/git';
 import { type InstallAction } from '../../types';
 import { type PublishOptions } from './types';

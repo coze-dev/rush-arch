@@ -1,13 +1,14 @@
 import path from 'path';
 import fs from 'fs/promises';
 
-import { getRushConfiguration } from '../../utils/get-rush-config';
 import {
   readJsonFile,
   writeJsonFile,
   isFileExists,
   isDirExists,
-} from '../../utils/fs';
+} from '@coze-arch/fs-enhance';
+
+import { getRushConfiguration } from '../../utils/get-rush-config';
 import {
   generateChangelog as core,
   type ChangeFile,

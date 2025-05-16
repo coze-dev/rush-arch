@@ -1,13 +1,13 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { logger } from '@coze-arch/rush-logger';
+import { logger } from '@coze-arch/logger';
 
-import { type PublishManifest } from '../types';
-import { createAndPushBranch, commitChanges, push } from '../git';
-import { exec } from '../../../utils/exec';
+import { exec } from '@/utils/exec';
+import { type PublishManifest } from '@/action/publish/types';
+import { createAndPushBranch, commitChanges, push } from '@/action/publish/git';
 
 // Mock dependencies
-vi.mock('@coze-arch/rush-logger');
-vi.mock('../../../utils/exec');
+vi.mock('@coze-arch/logger');
+vi.mock('@/utils/exec');
 
 describe('git operations', () => {
   const mockCwd = '/mock/cwd';

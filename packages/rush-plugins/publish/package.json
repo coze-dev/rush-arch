@@ -30,6 +30,8 @@
     "test:cov": "npm run test -- --coverage"
   },
   "dependencies": {
+    "@coze-arch/fs-enhance": "workspace:*",
+    "@coze-arch/logger": "workspace:*",
     "@inquirer/prompts": "^3.2.0",
     "@rushstack/rush-sdk": "^5.150.0",
     "chalk": "^4.1.2",

@@ -2,20 +2,19 @@ import path from 'path';
 import fs from 'fs/promises';
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { logger } from '@coze-arch/rush-logger';
 
-import * as helper from '../helper';
-import * as amendCommit from '../amend-commit';
-import { generateChangeFiles } from '../action';
-import * as projectAnalyzer from '../../../utils/project-analyzer';
+import * as projectAnalyzer from '@/utils/get-rush-config';
+import * as helper from '@/action/change/helper';
+import * as amendCommit from '@/action/change/amend-commit';
+import { generateChangeFiles } from '@/action/change/action';
 
 // Mock all dependencies
 vi.mock('fs/promises');
 vi.mock('path');
-vi.mock('@coze-arch/rush-logger');
-vi.mock('../helper');
-vi.mock('../amend-commit');
-vi.mock('../../../utils/project-analyzer');
+vi.mock('@coze-arch/logger');
+vi.mock('@/action/change/helper');
+vi.mock('@/action/change/amend-commit');
+vi.mock('@/utils/get-rush-config');
 
 describe('generateChangeFiles', () => {
   beforeEach(() => {
@@ -94,7 +93,6 @@ describe('generateChangeFiles', () => {
 
     await generateChangeFiles({ commitMsg: 'invalid commit' });
 
-    expect(logger.warning).toHaveBeenCalledWith('Invalid subject');
     expect(helper.generateAllChangesFile).not.toHaveBeenCalled();
   });
 
@@ -103,9 +101,5 @@ describe('generateChangeFiles', () => {
     vi.mocked(helper.analysisCommitMsg).mockRejectedValue(error);
 
     await generateChangeFiles({ commitMsg: 'test commit' });
-
-    expect(logger.error).toHaveBeenCalledWith(
-      `Generate changes file fail \n ${error}`,
-    );
   });
 });

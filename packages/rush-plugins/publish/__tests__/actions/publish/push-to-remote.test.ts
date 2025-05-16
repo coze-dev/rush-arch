@@ -1,22 +1,24 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import dayjs from 'dayjs';
-import { logger } from '@coze-arch/rush-logger';
+import { logger } from '@coze-arch/logger';
 
-import { BumpType } from '../types';
-import { pushToRemote } from '../push-to-remote';
-import { commitChanges, push } from '../git';
-import { getCurrentBranchName } from '../../../utils/git-command';
-import { exec } from '../../../utils/exec';
+import { getCurrentBranchName } from '@/utils/git';
+import { exec } from '@/utils/exec';
+import { BumpType } from '@/action/publish/types';
+import { pushToRemote } from '@/action/publish/push-to-remote';
+import { commitChanges, push } from '@/action/publish/git';
 
 // Mock dependencies
 vi.mock('dayjs');
-vi.mock('@coze-arch/rush-logger');
-vi.mock('../../../utils/git-command');
-vi.mock('../../../utils/exec');
-vi.mock('../git');
+vi.mock('@coze-arch/logger');
+vi.mock('@/utils/git');
+vi.mock('@/utils/exec');
+vi.mock('@/action/publish/git');
 vi.mock('open', () => ({
   default: vi.fn(),
 }));
+
+const REPO_URL = 'git@github.com:test-owner/test-repo.git';
 
 describe('push-to-remote', () => {
   const mockCwd = '/mock/cwd';
@@ -70,6 +72,7 @@ describe('push-to-remote', () => {
         publishManifests: mockPublishManifests,
         bumpPolicy: BumpType.BETA,
         skipCommit: false,
+        repoUrl: REPO_URL,
         skipPush: false,
       });
 
@@ -85,7 +88,7 @@ describe('push-to-remote', () => {
       expect(push).toHaveBeenCalledWith({
         refs: ['tag1', 'branch1'],
         cwd: mockCwd,
-        repoUrl: undefined,
+        repoUrl: REPO_URL,
       });
     });
 
@@ -97,6 +100,7 @@ describe('push-to-remote', () => {
         publishManifests: mockPublishManifests,
         bumpPolicy: BumpType.PATCH,
         skipCommit: false,
+        repoUrl: REPO_URL,
         skipPush: false,
       });
 
@@ -117,7 +121,7 @@ describe('push-to-remote', () => {
       expect(push).toHaveBeenCalledWith({
         refs: ['tag1', 'branch1'],
         cwd: mockCwd,
-        repoUrl: undefined,
+        repoUrl: REPO_URL,
       });
     });
 
@@ -145,7 +149,7 @@ describe('push-to-remote', () => {
         bumpPolicy: BumpType.ALPHA,
         skipCommit: false,
         skipPush: false,
-        repoUrl: 'git@github.com:test-owner/test-repo.git',
+        repoUrl: REPO_URL,
       });
 
       expect(logger.success).toHaveBeenCalledWith(
@@ -166,7 +170,7 @@ describe('push-to-remote', () => {
         bumpPolicy: BumpType.PATCH,
         skipCommit: false,
         skipPush: false,
-        repoUrl: 'git@github.com:test-owner/test-repo.git',
+        repoUrl: REPO_URL,
       });
 
       expect(logger.success).toHaveBeenCalledWith(

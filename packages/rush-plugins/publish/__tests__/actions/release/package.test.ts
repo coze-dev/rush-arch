@@ -4,13 +4,13 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
 import { readJsonFile, writeJsonFile } from '@coze-arch/fs-enhance';
 
-import { applyPublishConfig } from '../package';
-import { getRushConfiguration } from '../../../utils/project-analyzer';
+import { getRushConfiguration } from '@/utils/get-rush-config';
+import { applyPublishConfig } from '@/action/release/package';
 
 // Mock dependencies
 vi.mock('path');
 vi.mock('@coze-arch/fs-enhance');
-vi.mock('../../../utils/project-analyzer');
+vi.mock('@/utils/get-rush-config');
 
 describe('package', () => {
   const mockProjectFolder = '/mock/project';

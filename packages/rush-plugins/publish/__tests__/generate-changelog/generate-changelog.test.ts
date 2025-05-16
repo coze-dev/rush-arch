@@ -2,7 +2,10 @@ import { describe, it, expect, vi } from 'vitest';
 import semver from 'semver';
 import dayjs from 'dayjs';
 
-import { generateChangelog, type ChangeLog } from '../generate-changelog';
+import {
+  generateChangelog,
+  type ChangeLog,
+} from '@/generate-changelog/generate-changelog';
 
 // Mock dependencies
 vi.mock('semver');

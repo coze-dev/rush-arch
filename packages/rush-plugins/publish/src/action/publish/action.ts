@@ -1,5 +1,6 @@
+import { logger } from '@coze-arch/logger';
+
 import { randomHash } from '../../utils/random';
-import { logger } from '../../utils/logger';
 import { ensureNotUncommittedChanges, isMainBranch } from '../../utils/git';
 import { getRushConfiguration } from '../../utils/get-rush-config';
 import { generatePublishManifest } from './version';

@@ -6,10 +6,10 @@ import {
   type RushConfigurationProject,
   type RushConfiguration,
 } from '@rushstack/rush-sdk';
+import { logger } from '@coze-arch/logger';
 import type { Commit, Parser, ParserOptions } from '@commitlint/types';
 
 import { whoAmI } from '../../utils/whoami';
-import { logger } from '../../utils/logger';
 import { getChangedFilesFromCached } from '../../utils/git';
 import { getRushConfiguration } from '../../utils/get-rush-config';
 import { exec } from '../../utils/exec';

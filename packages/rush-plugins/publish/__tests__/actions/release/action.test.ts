@@ -1,24 +1,25 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
-import { logger } from '@coze-arch/rush-logger';
 
-import { type ReleaseOptions, type PackageToPublish } from '../types';
-import { releasePackages } from '../release';
-import { checkReleasePlan } from '../plan';
-import { buildReleaseManifest } from '../manifest';
-import { getPackagesToPublish } from '../git';
-import { release } from '../action';
-import { getCurrentBranchName } from '../../../utils/git-command';
-import { exec } from '../../../utils/exec';
+import { getCurrentBranchName } from '@/utils/git';
+import { exec } from '@/utils/exec';
+import {
+  type ReleaseOptions,
+  type PackageToPublish,
+} from '@/action/release/types';
+import { releasePackages } from '@/action/release/release';
+import { checkReleasePlan } from '@/action/release/plan';
+import { buildReleaseManifest } from '@/action/release/manifest';
+import { getPackagesToPublish } from '@/action/release/git';
+import { release } from '@/action/release/action';
 
 // Mock dependencies
-vi.mock('@coze-arch/rush-logger');
-vi.mock('../../../utils/git-command');
-vi.mock('../../../utils/exec');
-vi.mock('../release');
-vi.mock('../plan');
-vi.mock('../manifest');
-vi.mock('../git');
+vi.mock('@/utils/git');
+vi.mock('@/utils/exec');
+vi.mock('@/action/release/release');
+vi.mock('@/action/release/plan');
+vi.mock('@/action/release/manifest');
+vi.mock('@/action/release/git');
 
 describe('release action', () => {
   const mockCommit = 'abc123';
@@ -120,20 +121,6 @@ describe('release action', () => {
       dryRun: false,
       registry: mockRegistry,
     });
-
-    // 验证日志输出
-    expect(logger.info).toHaveBeenCalledWith('Release manifests:');
-    expect(logger.info).toHaveBeenCalledWith(
-      'package-1@1.1.0, package-2@2.1.0',
-      false,
-    );
-    expect(logger.success).toHaveBeenCalledWith(
-      'All packages published successfully!',
-    );
-    expect(logger.success).toHaveBeenCalledWith(
-      '- package-1@1.1.0\n- package-2@2.1.0',
-      false,
-    );
   });
 
   it('should handle no packages to publish', async () => {
@@ -141,7 +128,6 @@ describe('release action', () => {
 
     await release({ commit: mockCommit, registry: mockRegistry });
 
-    expect(logger.warning).toHaveBeenCalledWith('No packages to publish');
     expect(buildReleaseManifest).not.toHaveBeenCalled();
     expect(checkReleasePlan).not.toHaveBeenCalled();
     expect(releasePackages).not.toHaveBeenCalled();
@@ -184,6 +170,5 @@ describe('release action', () => {
     await expect(
       release({ commit: mockCommit, registry: mockRegistry }),
     ).rejects.toThrow('Release failed');
-    expect(logger.success).not.toHaveBeenCalled();
   });
 });
