@@ -1,6 +1,6 @@
 {
   "name": "@coze-arch/npm-mcp-server",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "description": "NPM MCP Server",
   "repository": {
     "type": "git",
