@@ -1,5 +1,5 @@
 {
-  "name": "@coze-infra/npm-mcp-server",
+  "name": "@coze-arch/npm-mcp-server",
   "version": "0.0.1-alpha.1",
   "description": "NPM MCP Server",
   "repository": {
@@ -40,10 +40,9 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "@commitlint/types": "^17.4.0",
-    "@coze-infra/eslint-config": "workspace:*",
-    "@coze-infra/ts-config": "workspace:*",
-    "@coze-infra/vitest-config": "workspace:*",
+    "@coze-arch/eslint-config": "workspace:*",
+    "@coze-arch/ts-config": "workspace:*",
+    "@coze-arch/vitest-config": "workspace:*",
     "@rollup/plugin-commonjs": "^24.0.0",
     "@rollup/plugin-json": "~6.0.0",
     "@rollup/plugin-node-resolve": "~15.0.1",

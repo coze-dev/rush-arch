@@ -1,0 +1,32 @@
+{
+  "name": "{{ packageName }}",
+  "version": "0.0.1",
+  "description": "{{ description }}",
+  "license": "ISC",
+  "author": "{{ authorName }}",
+  "maintainers": [],
+  "main": "src/index.ts",
+  "files": [
+    "dist",
+    "!**/*.tsbuildinfo",
+    "!**/*.map",
+    "command-line.json",
+    "rush-plugin-manifest.json"
+  ],
+  "scripts": {
+    "build": "exit 0",
+    "lint": "eslint ./ --cache",
+    "test": "vitest --run --passWithNoTests",
+    "test:cov": "npm run test -- --coverage"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@coze-arch/eslint-config": "workspace:*",
+    "@coze-arch/ts-config": "workspace:*",
+    "@coze-arch/vitest-config": "workspace:*",
+    "@types/node": "^22.13.13",
+    "@vitest/coverage-v8": "^3.0.9",
+    "tsx": "^4.19.3",
+    "vitest": "^3.0.9"
+  }
+}

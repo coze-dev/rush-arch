@@ -435,28 +435,46 @@
     //   "tags": [ "tools" ]
     // }
     {
-      "packageName": "@coze-infra/eslint-config",
+      "packageName": "@coze-arch/eslint-config",
       "projectFolder": "config/eslint-config",
       "tags": ["config"]
     },
     {
-      "packageName": "@coze-infra/ts-config",
+      "packageName": "@coze-arch/ts-config",
       "projectFolder": "config/ts-config",
       "tags": ["config"]
     },
     {
-      "packageName": "@coze-infra/vitest-config",
+      "packageName": "@coze-arch/vitest-config",
       "projectFolder": "config/vitest-config",
       "tags": ["config"]
     },
     {
-      "packageName": "@coze-infra/npm-mcp-server",
       "projectFolder": "packages/mcp/npm",
+      "packageName": "@coze-arch/npm-mcp-server",
+      "shouldPublish": true,
       "tags": ["mcp"]
     },
     {
-      "packageName": "@coze-infra/rush-run-tsc-plugin",
+      "packageName": "@coze-arch/rush-run-tsc-plugin",
       "projectFolder": "packages/rush-plugins/run-tsc-plugin",
+      "shouldPublish": true,
+      "tags": ["level-3"]
+    },
+    {
+      "packageName": "@coze-arch/rush-publish-plugin",
+      "projectFolder": "packages/rush-plugins/publish",
+      "shouldPublish": true,
+      "tags": ["level-3"]
+    },
+    {
+      "packageName": "@coze-arch/logger",
+      "projectFolder": "packages/utils/logger",
+      "tags": ["level-3"]
+    },
+    {
+      "packageName": "@coze-arch/fs-enhance",
+      "projectFolder": "packages/utils/fs-enhance",
       "tags": ["level-3"]
     }
   ]
