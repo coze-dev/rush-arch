@@ -31,7 +31,10 @@ export const checkReleasePlan = (
   branchName: string,
 ) => {
   const releasePlan = calReleasePlan(releaseManifests);
-  if (releasePlan === ReleaseType.LATEST && branchName !== 'main') {
+  if (
+    releasePlan === ReleaseType.LATEST &&
+    !['main', 'feat/auto-publish'].includes(branchName)
+  ) {
     throw new Error('For LATEST release, should be on main branch only.');
   }
   return true;
