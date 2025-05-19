@@ -59,7 +59,7 @@ jobs:
             # 如果版本发生变化，则创建标签
             if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
               PKG_NAME=$(cat $PKG_FILE | jq -r '.name')
-              TAG_NAME="v/${PKG_NAME}/${CURRENT_VERSION}"
+              TAG_NAME="v/${PKG_NAME}@${CURRENT_VERSION}"
 
               echo "Version changed for $PKG_NAME: $PREVIOUS_VERSION -> $CURRENT_VERSION"
               echo "Creating tag: $TAG_NAME"
