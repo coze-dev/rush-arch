@@ -13,19 +13,33 @@ permissions:
 
 jobs:
   create-tag:
+    strategy:
+      matrix:
+        include:
+          - NodeVersion: 20.14.x
+            NodeVersionDisplayName: 20
+            OS: ubuntu-latest
+    name: Node.js v${{ matrix.NodeVersionDisplayName }} (${{ matrix.OS }})
     runs-on: ubuntu-latest
+    if: github.repository == 'coze-dev/rush-arch'
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          # 使用带有权限的PAT
-          token: ${{ secrets.PAT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install jq
         run: sudo apt-get install jq
 
       - name: Check Version Change and Create Tag
+        id: check_version
         run: |
+          # 创建一个JSON数组来保存标签信息
+          echo "tags_json=[]" >> $GITHUB_OUTPUT
+
+          # 标记是否找到变更
+          HAS_CHANGES=false
+
           # 找出所有修改过的package.json文件
           CHANGED_PACKAGES=$(git diff --name-only HEAD^ HEAD | grep package.json)
 
@@ -49,8 +63,53 @@ jobs:
               git config --local user.email "tecvan.fe@gmail.com"
               git tag -a "$TAG_NAME" -m "Release $PKG_NAME@$CURRENT_VERSION"
 
-              # 使用PAT_TOKEN推送，以便触发其他工作流
-              git remote set-url origin https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}
-              git push origin "$TAG_NAME"
+              # 将此标签添加到输出数组
+              tags_json=$(echo $tags_json | jq -c --arg tag "$TAG_NAME" '. += [$tag]')
+              HAS_CHANGES=true
             fi
+          done
+
+          # 输出标签JSON和变更状态
+          echo "tags_json=$tags_json" >> $GITHUB_OUTPUT
+          echo "has_changes=$HAS_CHANGES" >> $GITHUB_OUTPUT
+
+      - name: Cache
+        if: steps.check_version.outputs.has_changes == 'true'
+        uses: actions/cache@v4
+        with:
+          path: |
+            common/temp/pnpm-local
+            common/temp/pnpm-store
+            common/temp/install-run
+          key: ${{ runner.os }}-rush-store-${{ hashFiles('common/config/subspaces/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-rush-store-main
+            ${{ runner.os }}-rush-store
+
+      - name: Install Dependencies
+        if: steps.check_version.outputs.has_changes == 'true'
+        run: |
+          npm i -g @microsoft/rush@5.150.0
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev
+          node common/scripts/install-run-rush.js install
+
+      - name: Run Release
+        if: steps.check_version.outputs.has_changes == 'true'
+        run: node common/scripts/install-run-rush.js release --commit ${{ github.event.head_commit.id }}
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+
+      - name: Push Tags
+        if: steps.check_version.outputs.has_changes == 'true'
+        run: |
+          # 解析标签JSON
+          TAGS_JSON='${{ steps.check_version.outputs.tags_json }}'
+
+          echo "准备推送的标签: $TAGS_JSON"
+
+          # 循环推送每个标签
+          echo $TAGS_JSON | jq -r '.[]' | while read TAG; do
+            echo "正在推送标签: $TAG"
+            git push origin $TAG
           done
