@@ -71,6 +71,7 @@ describe('git operations', () => {
         cwd: mockCwd,
         publishManifests: mockPublishManifests,
         branchName: 'release/test',
+        createTags: true,
       };
 
       const result = await commitChanges(options);
@@ -99,6 +100,40 @@ describe('git operations', () => {
 
       expect(result).toEqual({
         effects: ['v/test-package@1.1.0', 'release/test'],
+        branchName: 'release/test',
+      });
+    });
+
+    it('should commit changes but do not create tags', async () => {
+      const options = {
+        sessionId: 'test-session',
+        files: ['package.json', 'CHANGELOG.md'],
+        cwd: mockCwd,
+        publishManifests: mockPublishManifests,
+        branchName: 'release/test',
+        createTags: false,
+      };
+
+      const result = await commitChanges(options);
+
+      expect(exec).toHaveBeenCalledTimes(2);
+      // 验证 git add
+      expect(exec).toHaveBeenNthCalledWith(
+        1,
+        'git add package.json CHANGELOG.md',
+        {
+          cwd: mockCwd,
+        },
+      );
+      // 验证 git commit
+      expect(exec).toHaveBeenNthCalledWith(
+        2,
+        'git commit -m "chore: Publish release/test" -n',
+        { cwd: mockCwd },
+      );
+
+      expect(result).toEqual({
+        effects: ['release/test'],
         branchName: 'release/test',
       });
     });
