@@ -28,6 +28,11 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Config Git User
+        run: |
+          git config --local user.name "tecvan"
+          git config --local user.email "tecvan.fe@gmail.com"
+
       - name: Install jq
         run: sudo apt-get install jq
 
@@ -59,8 +64,6 @@ jobs:
               echo "Version changed for $PKG_NAME: $PREVIOUS_VERSION -> $CURRENT_VERSION"
               echo "Creating tag: $TAG_NAME"
 
-              git config --local user.name "tecvan"
-              git config --local user.email "tecvan.fe@gmail.com"
               git tag -a "$TAG_NAME" -m "Release $PKG_NAME@$CURRENT_VERSION"
 
               # 将此标签添加到输出数组
@@ -72,6 +75,12 @@ jobs:
           # 输出标签JSON和变更状态
           echo "tags_json=$tags_json" >> $GITHUB_OUTPUT
           echo "has_changes=$HAS_CHANGES" >> $GITHUB_OUTPUT
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.NodeVersion }}
+          registry-url: 'https://registry.npmjs.org'
+          node-version-file: '.nvmrc'
 
       - name: Cache
         if: steps.check_version.outputs.has_changes == 'true'
