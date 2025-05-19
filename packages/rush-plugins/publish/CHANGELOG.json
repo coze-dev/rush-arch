@@ -2,6 +2,18 @@
   "name": "@coze-arch/rush-publish-plugin",
   "entries": [
     {
+      "version": "0.0.3",
+      "tag": "HEAD",
+      "date": "2025-05-19T03:50:00.376Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "better logic"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.2",
       "tag": "HEAD",
       "date": "2025-05-19T03:39:51.335Z",

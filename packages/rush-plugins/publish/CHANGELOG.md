@@ -1,5 +1,12 @@
 # @coze-arch/rush-publish-plugin
 
+## 0.0.3 - 2025-05-19
+
+### Bug Fixes
+
+- better logic
+
+
 ## 0.0.2 - 2025-05-19
 
 ### New Features
