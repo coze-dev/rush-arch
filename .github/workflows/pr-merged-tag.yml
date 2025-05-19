@@ -105,7 +105,9 @@ jobs:
 
       - name: Run Release
         if: steps.check_version.outputs.has_changes == 'true'
-        run: node common/scripts/install-run-rush.js release --commit ${{ github.event.head_commit.id }}
+        run: |
+          git tag --points-at ${{ github.event.head_commit.id }}
+          node common/scripts/install-run-rush.js release --commit ${{ github.event.head_commit.id }}
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
