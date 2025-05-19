@@ -19,19 +19,19 @@ importers:
         version: 2.2.3
       rush-init-project-plugin:
         specifier: ^0.11.0
-        version: 0.11.1(@types/node@20.17.27)(typescript@5.7.3)
+        version: 0.11.1(@types/node@20.17.48)(typescript@5.7.3)
       typescript:
         specifier: ~5.7.2
         version: 5.7.3
     devDependencies:
       '@types/node':
         specifier: ^20
-        version: 20.17.27
+        version: 20.17.48
 
 packages:
 
-  '@babel/runtime-corejs3@7.27.0':
-    resolution: {integrity: sha512-UWjX6t+v+0ckwZ50Y5ShZLnlk95pP5MyW/pon9tiYzl3+18pkTHTFNTKr7rQbfRXPkowt2QAn30o1b6oswszew==}
+  '@babel/runtime-corejs3@7.27.1':
+    resolution: {integrity: sha512-909rVuj3phpjW6y0MCXAZ5iNeORePa6ldJvp2baWGcTjwqbBDDz6xoS5JHJ7lS88NlwLYj07ImL/8IUMtDZzTA==}
     engines: {node: '>=6.9.0'}
 
   '@colors/colors@1.5.0':
@@ -99,8 +99,8 @@ packages:
   '@types/inquirer@6.5.0':
     resolution: {integrity: sha512-rjaYQ9b9y/VFGOpqBEXRavc3jh0a+e6evAbI31tMda8VlPaSy0AZJfXsvmIe3wklc7W6C3zCSfleuMXR7NOyXw==}
 
-  '@types/inquirer@9.0.7':
-    resolution: {integrity: sha512-Q0zyBupO6NxGRZut/JdmqYKOnN95Eg5V8Csg3PGKkP+FnvsUZx1jAyK7fztIszxxMuoBA6E3KXWvdZVXIpx60g==}
+  '@types/inquirer@9.0.8':
+    resolution: {integrity: sha512-CgPD5kFGWsb8HJ5K7rfWlifao87m4ph8uioU7OTncJevmE/VLIqAAjfQtko578JZg7/f69K4FgqYym3gNr7DeA==}
 
   '@types/minimatch@5.1.2':
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
@@ -111,8 +111,8 @@ packages:
   '@types/node@12.20.24':
     resolution: {integrity: sha512-yxDeaQIAJlMav7fH5AQqPH1u8YIuhYJXYBzxaQ4PifsU0GDO38MSdmEDeRlIxrKbC6NbEaaEHDanWb+y30U8SQ==}
 
-  '@types/node@20.17.27':
-    resolution: {integrity: sha512-U58sbKhDrthHlxHRJw7ZLiLDZGmAUOZUbpw0S6nL27sYUdhvgBLCRu/keSd6qcTsfArd1sRFCCBxzWATGr/0UA==}
+  '@types/node@20.17.48':
+    resolution: {integrity: sha512-KpSfKOHPsiSC4IkZeu2LsusFwExAIVGkhG1KkbaBMLwau0uMhj0fCrvyg9ddM2sAvd+gtiBJLir4LAw1MNMIaw==}
 
   '@types/through@0.0.33':
     resolution: {integrity: sha512-HsJ+z3QuETzP3cswwtzt2vEIiHBk/dCcHGhbmG5X3ecnwFD/lPrMpliGXxSCg03L9AhrdwA4Oz/qfspkDW+xGQ==}
@@ -465,8 +465,8 @@ packages:
     resolution: {integrity: sha512-XgZ0pFcakEUlbwQEVNg3+QAis1FyTL3Qel9FYy8pSkQqoG3PNoT0bOCQtOXcOkur21r2Eq2kI+IE+gsmAEVlYw==}
     engines: {node: '>=0.10.0'}
 
-  core-js-pure@3.41.0:
-    resolution: {integrity: sha512-71Gzp96T9YPk63aUvE5Q5qP+DryB4ZloUZPSOebGM88VNw8VNfvdA7z6kGA8iGOTEzAomsRidp4jXSmUIJsL+Q==}
+  core-js-pure@3.42.0:
+    resolution: {integrity: sha512-007bM04u91fF4kMgwom2I5cQxAFIy8jVulgr9eozILl/SZE53QOqnW/+vviC+wQWLv+AunBG+8Q0TLoeSsSxRQ==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -1234,9 +1234,6 @@ packages:
   redeyed@2.1.1:
     resolution: {integrity: sha512-FNpGGo1DycYAdnrKFxCMmKYgo/mILAqtRYbkdQD8Ep/Hk2PQ5+aEAEx+IU713RTDmuBaH0c8P5ZozurNu5ObRQ==}
 
-  regenerator-runtime@0.14.1:
-    resolution: {integrity: sha512-dYnhHh0nJoMfnkZs6GmmhFknAGRrLznOu5nc9ML+EJxGvrx6H7teuevqVqCuPcPK//3eDrrjQhehXVx9cnkGdw==}
-
   regex-not@1.0.2:
     resolution: {integrity: sha512-J6SDjUgDxQj5NusnOtdFxDwN/+HWykR8GELwctJ7mdqhcyy1xEc4SRFHUXvxTp661YaVKAjfRLZ9cCqS6tn32A==}
     engines: {node: '>=0.10.0'}
@@ -1635,10 +1632,9 @@ packages:
 
 snapshots:
 
-  '@babel/runtime-corejs3@7.27.0':
+  '@babel/runtime-corejs3@7.27.1':
     dependencies:
-      core-js-pure: 3.41.0
-      regenerator-runtime: 0.14.1
+      core-js-pure: 3.42.0
 
   '@colors/colors@1.5.0':
     optional: true
@@ -1680,7 +1676,7 @@ snapshots:
       timsort: 0.3.0
       z-schema: 5.0.5
 
-  '@rushstack/node-core-library@3.62.0(@types/node@20.17.27)':
+  '@rushstack/node-core-library@3.62.0(@types/node@20.17.48)':
     dependencies:
       colors: 1.2.5
       fs-extra: 7.0.1
@@ -1690,7 +1686,7 @@ snapshots:
       semver: 7.5.4
       z-schema: 5.0.5
     optionalDependencies:
-      '@types/node': 20.17.27
+      '@types/node': 20.17.48
 
   '@rushstack/rush-sdk@5.62.4':
     dependencies:
@@ -1709,18 +1705,18 @@ snapshots:
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.17.27
+      '@types/node': 20.17.48
 
   '@types/inquirer-autocomplete-prompt@3.0.3':
     dependencies:
-      '@types/inquirer': 9.0.7
+      '@types/inquirer': 9.0.8
 
   '@types/inquirer@6.5.0':
     dependencies:
       '@types/through': 0.0.33
       rxjs: 6.6.7
 
-  '@types/inquirer@9.0.7':
+  '@types/inquirer@9.0.8':
     dependencies:
       '@types/through': 0.0.33
       rxjs: 7.8.2
@@ -1729,17 +1725,17 @@ snapshots:
 
   '@types/node-fetch@1.6.9':
     dependencies:
-      '@types/node': 20.17.27
+      '@types/node': 20.17.48
 
   '@types/node@12.20.24': {}
 
-  '@types/node@20.17.27':
+  '@types/node@20.17.48':
     dependencies:
       undici-types: 6.19.8
 
   '@types/through@0.0.33':
     dependencies:
-      '@types/node': 20.17.27
+      '@types/node': 20.17.48
 
   abbrev@1.1.1: {}
 
@@ -2143,7 +2139,7 @@ snapshots:
 
   copy-descriptor@0.1.1: {}
 
-  core-js-pure@3.41.0: {}
+  core-js-pure@3.42.0: {}
 
   core-util-is@1.0.3: {}
 
@@ -2906,7 +2902,7 @@ snapshots:
 
   node-plop@0.26.3:
     dependencies:
-      '@babel/runtime-corejs3': 7.27.0
+      '@babel/runtime-corejs3': 7.27.1
       '@types/inquirer': 6.5.0
       change-case: 3.1.0
       del: 5.1.0
@@ -3039,8 +3035,6 @@ snapshots:
     dependencies:
       esprima: 4.0.1
 
-  regenerator-runtime@0.14.1: {}
-
   regex-not@1.0.2:
     dependencies:
       extend-shallow: 3.0.2
@@ -3090,9 +3084,9 @@ snapshots:
     dependencies:
       queue-microtask: 1.2.3
 
-  rush-init-project-plugin@0.11.1(@types/node@20.17.27)(typescript@5.7.3):
+  rush-init-project-plugin@0.11.1(@types/node@20.17.48)(typescript@5.7.3):
     dependencies:
-      '@rushstack/node-core-library': 3.62.0(@types/node@20.17.27)
+      '@rushstack/node-core-library': 3.62.0(@types/node@20.17.48)
       '@rushstack/rush-sdk': 5.62.4
       '@types/inquirer-autocomplete-prompt': 3.0.3
       blessed: 0.1.81
@@ -3108,7 +3102,7 @@ snapshots:
       ora: 5.4.1
       sort-package-json: 1.54.0
       tapable: 2.2.1
-      ts-node: 11.0.0-beta.1(@types/node@20.17.27)(typescript@5.7.3)
+      ts-node: 11.0.0-beta.1(@types/node@20.17.48)(typescript@5.7.3)
       validate-npm-package-name: 3.0.0
     transitivePeerDependencies:
       - '@swc/core'
@@ -3333,14 +3327,14 @@ snapshots:
       regex-not: 1.0.2
       safe-regex: 1.1.0
 
-  ts-node@11.0.0-beta.1(@types/node@20.17.27)(typescript@5.7.3):
+  ts-node@11.0.0-beta.1(@types/node@20.17.48)(typescript@5.7.3):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
       '@tsconfig/node14': 14.1.3
       '@tsconfig/node16': 16.1.3
       '@tsconfig/node18': 18.2.4
       '@tsconfig/node20': 20.1.5
-      '@types/node': 20.17.27
+      '@types/node': 20.17.48
       acorn: 8.14.1
       acorn-walk: 8.3.4
       arg: 4.1.3

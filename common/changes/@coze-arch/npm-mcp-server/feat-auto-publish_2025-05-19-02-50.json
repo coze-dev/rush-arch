@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/npm-mcp-server",
+      "comment": "setup auto publish pipeline",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-arch/npm-mcp-server",
+  "email": "tecvan.fe@gmail.com"
+}

@@ -82,6 +82,7 @@ describe('push-to-remote', () => {
         sessionId: mockSessionId,
         files: mockChangedFiles,
         cwd: mockCwd,
+        createTags: true,
         publishManifests: mockPublishManifests,
         branchName: mockBranchName,
       });
@@ -115,6 +116,7 @@ describe('push-to-remote', () => {
         sessionId: mockSessionId,
         files: mockChangedFiles,
         cwd: mockCwd,
+        createTags: false,
         publishManifests: mockPublishManifests,
         branchName: expectedBranchName,
       });

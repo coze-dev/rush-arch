@@ -1,0 +1,58 @@
+{
+  "name": "@coze-arch/rush-publish-plugin",
+  "entries": [
+    {
+      "version": "0.0.4",
+      "tag": "HEAD",
+      "date": "2025-05-19T04:33:30.047Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "setup publish"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.0.3",
+      "tag": "HEAD",
+      "date": "2025-05-19T03:50:00.376Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "better logic"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.0.2",
+      "tag": "HEAD",
+      "date": "2025-05-19T03:39:51.335Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "for test only, should be revert"
+          },
+          {
+            "comment": "change scope"
+          },
+          {
+            "comment": "update lock"
+          },
+          {
+            "comment": "use outside infra"
+          },
+          {
+            "comment": "fix test error"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "setup auto publish pipeline"
+          }
+        ]
+      }
+    }
+  ]
+}

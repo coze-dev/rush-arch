@@ -173,3 +173,5 @@ packages/chat-sdk/.env.development
 
 opensource_git_commit.log
 sensitive_info_result.txt
+
+.rollup.cache
