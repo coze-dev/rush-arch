@@ -114,13 +114,4 @@ jobs:
       - name: Push Tags
         if: steps.check_version.outputs.has_changes == 'true'
         run: |
-          # 解析标签JSON
-          TAGS_JSON='${{ steps.check_version.outputs.tags_json }}'
-
-          echo "准备推送的标签: $TAGS_JSON"
-
-          # 循环推送每个标签
-          echo $TAGS_JSON | jq -r '.[]' | while read TAG; do
-            echo "正在推送标签: $TAG"
-            git push origin $TAG
-          done
+          git push
