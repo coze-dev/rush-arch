@@ -26,6 +26,7 @@ interface CommitChangesOptions {
   cwd: string;
   publishManifests: PublishManifest[];
   branchName: string;
+  createTags: boolean;
 }
 export async function commitChanges({
   sessionId,
@@ -33,17 +34,21 @@ export async function commitChanges({
   cwd,
   publishManifests,
   branchName,
+  createTags,
 }: CommitChangesOptions): Promise<{ effects: string[]; branchName: string }> {
   await exec(`git add ${files.join(' ')}`, { cwd });
   await exec(`git commit -m "chore: Publish ${branchName}" -n`, { cwd });
 
-  const tags = publishManifests.map(
-    m => `v/${m.project.packageName}@${m.newVersion}`,
-  );
-  await exec(
-    tags.map(tag => `git tag -a ${tag} -m "Bump type ${tag}"`).join(' && '),
-    { cwd },
-  );
+  let tags: string[] = [];
+  if (createTags) {
+    tags = publishManifests.map(
+      m => `v/${m.project.packageName}@${m.newVersion}`,
+    );
+    await exec(
+      tags.map(tag => `git tag -a ${tag} -m "Bump type ${tag}"`).join(' && '),
+      { cwd },
+    );
+  }
   return { effects: [...tags, branchName], branchName };
 }
 

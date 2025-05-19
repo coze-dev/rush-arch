@@ -44,6 +44,9 @@ export const pushToRemote = async (options: PushToRemoteOptions) => {
     branchName = `release/${date}-${sessionId}`;
     await exec(`git checkout -b ${branchName}`, { cwd });
   }
+  const isTestPublish = [BumpType.ALPHA, BumpType.BETA].includes(
+    bumpPolicy as BumpType,
+  );
 
   // 4. 创建并推送发布分支
   const { effects } = await commitChanges({
@@ -52,6 +55,8 @@ export const pushToRemote = async (options: PushToRemoteOptions) => {
     cwd,
     publishManifests,
     branchName,
+    // 只有 alpha、beta 需要创建 tag，正式发布会在 .github/workflows/common-pr-checks.yml 创建并发布tag
+    createTags: isTestPublish,
   });
   if (skipPush) {
     return;
@@ -61,10 +66,6 @@ export const pushToRemote = async (options: PushToRemoteOptions) => {
     cwd,
     repoUrl: actualRepoUrl,
   });
-
-  const isTestPublish = [BumpType.ALPHA, BumpType.BETA].includes(
-    bumpPolicy as BumpType,
-  );
 
   // 从 git URL 提取组织和仓库名称，用于构建 GitHub 链接
   const repoInfoMatch = actualRepoUrl.match(GIT_REPO_URL_REGEX);
