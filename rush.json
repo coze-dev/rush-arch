@@ -515,6 +515,22 @@
       "packageName": "@coze-arch/fs-enhance",
       "projectFolder": "packages/utils/fs-enhance",
       "tags": ["level-3"]
+    },
+    {
+      "packageName": "@coze-arch/rush-fix-ts-refers-plugin",
+      "projectFolder": "packages/rush-plugins/fix-ts-refers",
+      "shouldPublish": true,
+      "tags": ["level-3"]
+    },
+    {
+      "packageName": "@coze-arch/monorepo-kits",
+      "projectFolder": "packages/utils/monorepo-kits",
+      "tags": ["level-1"]
+    },
+    {
+      "packageName": "@coze-arch/build-lib-preset",
+      "projectFolder": "config/build-lib-preset",
+      "tags": ["level-3"]
     }
   ]
 }

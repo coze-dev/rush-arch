@@ -2,7 +2,8 @@
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "target": "ES2019"
+    "target": "ES2019",
+    "lib": ["ES2021"]
   },
   "ts-node": {
     "files": true

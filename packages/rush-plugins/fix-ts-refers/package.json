@@ -1,0 +1,55 @@
+{
+  "name": "@coze-arch/rush-fix-ts-refers-plugin",
+  "version": "0.0.1",
+  "description": "rush plugin for auto fix ts references in ts projects",
+  "license": "ISC",
+  "author": "tecvan.fe@gmail.com",
+  "maintainers": [],
+  "bin": {
+    "rush-fix-ts-refers": "src/debug.js"
+  },
+  "files": [
+    "lib",
+    "!**/*.tsbuildinfo",
+    "!**/*.map",
+    "command-line.json",
+    "rush-plugin-manifest.json"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "lint": "eslint ./ --cache",
+    "test": "vitest --run --passWithNoTests",
+    "test:cov": "npm run test -- --coverage"
+  },
+  "dependencies": {
+    "prettier": "^3.5.3",
+    "shelljs": "^0.9.2"
+  },
+  "devDependencies": {
+    "@coze-arch/build-lib-preset": "workspace:*",
+    "@coze-arch/eslint-config": "workspace:*",
+    "@coze-arch/fs-enhance": "workspace:*",
+    "@coze-arch/logger": "workspace:*",
+    "@coze-arch/monorepo-kits": "workspace:*",
+    "@coze-arch/ts-config": "workspace:*",
+    "@coze-arch/vitest-config": "workspace:*",
+    "@types/node": "^22",
+    "@types/shelljs": "^0.8.15",
+    "@vitest/coverage-v8": "^3.0.9",
+    "commander": "^13.1.0",
+    "rollup": "^4.41.1",
+    "sucrase": "^3.32.0",
+    "vitest": "^3.0.9"
+  },
+  "peerDependencies": {
+    "commander": "^13.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "cozePublishConfig": {
+    "bin": {
+      "rush-fix-ts-refers": "./lib/index.js"
+    }
+  }
+}

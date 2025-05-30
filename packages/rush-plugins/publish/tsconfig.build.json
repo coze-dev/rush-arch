@@ -13,5 +13,25 @@
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "lib"]
+  "exclude": ["node_modules", "lib"],
+  "references": [
+    {
+      "path": "../../../config/build-lib-preset/tsconfig.build.json"
+    },
+    {
+      "path": "../../../config/eslint-config/tsconfig.build.json"
+    },
+    {
+      "path": "../../../config/ts-config/tsconfig.build.json"
+    },
+    {
+      "path": "../../../config/vitest-config/tsconfig.build.json"
+    },
+    {
+      "path": "../../utils/fs-enhance/tsconfig.build.json"
+    },
+    {
+      "path": "../../utils/logger/tsconfig.build.json"
+    }
+  ]
 }

@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "rootDir": "./scripts",
+    "composite": true,
     "outDir": "./dist",
     "tsBuildInfoFile": "dist/build.tsbuildinfo"
   }

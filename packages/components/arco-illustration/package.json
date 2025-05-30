@@ -19,7 +19,7 @@
     "@coze-arch/ts-config": "workspace:*",
     "@rsbuild/plugin-react": "^1.1.1",
     "@rslib/core": "^0.5.5",
-    "@types/node": "^22.13.13",
+    "@types/node": "^22",
     "@types/react": "18.2.37",
     "typescript": "^5.8.2"
   },
