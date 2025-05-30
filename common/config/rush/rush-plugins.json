@@ -39,6 +39,11 @@
       "packageName": "@coze-arch/rush-publish-plugin",
       "pluginName": "@coze-arch/rush-publish-plugin",
       "autoinstallerName": "plugins"
+    },
+    {
+      "packageName": "@coze-arch/rush-fix-ts-refers-plugin",
+      "pluginName": "@coze-arch/rush-fix-ts-refers-plugin",
+      "autoinstallerName": "plugins"
     }
   ]
 }

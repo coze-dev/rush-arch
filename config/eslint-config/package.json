@@ -63,14 +63,14 @@
     "eslint-plugin-unicorn": "48.0.1",
     "globals": "~15.11.0",
     "json5": "^2.2.1",
-    "prettier": "~3.3.3",
+    "prettier": "^3.5.3",
     "prettier-plugin-packagejson": "^2.3.0",
     "sucrase": "^3.32.0"
   },
   "devDependencies": {
     "@coze-arch/ts-config": "workspace:*",
     "@types/eslint": "~9.6.1",
-    "@types/node": "^22.13.13",
+    "@types/node": "^22",
     "typescript": "^5.8.2"
   }
 }

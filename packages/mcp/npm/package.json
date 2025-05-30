@@ -48,7 +48,7 @@
     "@rollup/plugin-node-resolve": "~15.0.1",
     "@rollup/plugin-sucrase": "^5.0.2",
     "@types/lodash": "^4.17.16",
-    "@types/node": "^22.13.13",
+    "@types/node": "^22",
     "@vitest/coverage-v8": "^3.0.9",
     "rollup": "^4.9.0",
     "tsconfig-paths": "^4.2.0",

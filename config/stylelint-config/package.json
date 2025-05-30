@@ -15,7 +15,7 @@
   "devDependencies": {
     "@coze-arch/eslint-config": "workspace:*",
     "@coze-arch/ts-config": "workspace:*",
-    "@types/node": "^22.13.13",
+    "@types/node": "^22",
     "stylelint": "^15.11.0",
     "stylelint-config-clean-order": "^5.2.0",
     "stylelint-config-rational-order": "^0.1.2",

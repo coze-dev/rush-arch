@@ -10,5 +10,10 @@
     "outDir": "dist",
     "tsBuildInfoFile": "dist/tsconfig.build.tsbuildinfo"
   },
-  "include": ["./src", "./src/**/*.json"]
+  "include": ["./src", "./src/**/*.json"],
+  "references": [
+    {
+      "path": "../ts-config/tsconfig.build.json"
+    }
+  ]
 }
