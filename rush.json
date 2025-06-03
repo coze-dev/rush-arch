@@ -521,6 +521,11 @@
       "packageName": "@coze-arch/monorepo-kits",
       "projectFolder": "packages/utils/monorepo-kits",
       "tags": ["level-1"]
+    },
+    {
+      "packageName": "@coze-arch/build-lib-preset",
+      "projectFolder": "config/build-lib-preset",
+      "tags": ["level-3"]
     }
   ]
 }

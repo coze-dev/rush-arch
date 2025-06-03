@@ -13,6 +13,9 @@
   "exclude": ["node_modules", "dist"],
   "references": [
     {
+      "path": "../../../config/build-lib-preset/tsconfig.build.json"
+    },
+    {
       "path": "../../../config/eslint-config/tsconfig.build.json"
     },
     {

@@ -9,14 +9,14 @@
     "rush-fix-ts-refers": "src/debug.js"
   },
   "files": [
-    "dist",
+    "lib",
     "!**/*.tsbuildinfo",
     "!**/*.map",
     "command-line.json",
     "rush-plugin-manifest.json"
   ],
   "scripts": {
-    "build": "exit 0",
+    "build": "rollup -c",
     "lint": "eslint ./ --cache",
     "test": "vitest --run --passWithNoTests",
     "test:cov": "npm run test -- --coverage"
@@ -26,6 +26,7 @@
     "shelljs": "^0.9.2"
   },
   "devDependencies": {
+    "@coze-arch/build-lib-preset": "workspace:*",
     "@coze-arch/eslint-config": "workspace:*",
     "@coze-arch/fs-enhance": "workspace:*",
     "@coze-arch/logger": "workspace:*",
@@ -36,6 +37,7 @@
     "@types/shelljs": "^0.8.15",
     "@vitest/coverage-v8": "^3.0.9",
     "commander": "^13.1.0",
+    "rollup": "^4.41.1",
     "sucrase": "^3.32.0",
     "vitest": "^3.0.9"
   },
