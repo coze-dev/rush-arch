@@ -515,6 +515,7 @@
     {
       "packageName": "@coze-arch/rush-fix-ts-refers-plugin",
       "projectFolder": "packages/rush-plugins/fix-ts-refers",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
