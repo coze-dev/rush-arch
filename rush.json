@@ -490,21 +490,25 @@
     {
       "packageName": "@coze-arch/arco-icon",
       "projectFolder": "packages/components/arco-icon",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-arch/arco-illustration",
       "projectFolder": "packages/components/arco-illustration",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-arch/semi-theme-hand01",
       "projectFolder": "packages/components/semi-theme-hand01",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze/coze-design",
       "projectFolder": "packages/components/coze-design",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
