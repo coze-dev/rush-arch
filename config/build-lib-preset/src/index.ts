@@ -95,6 +95,6 @@ export const defineConfig = (
     ],
   };
 
-  const res = { ...rest, ...options };
+  const res = { ...options, ...rest };
   return res;
 };

@@ -49,7 +49,7 @@
   },
   "cozePublishConfig": {
     "bin": {
-      "rush-fix-ts-refers": "./lib/cjs/index.js"
+      "rush-fix-ts-refers": "./lib/index.js"
     }
   }
 }

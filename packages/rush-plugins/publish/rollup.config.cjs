@@ -5,4 +5,11 @@ const { defineConfig } = require('@coze-arch/build-lib-preset');
 
 module.exports = defineConfig({
   rootDir: process.cwd(),
+  output: [
+    {
+      file: 'lib/index.js',
+      format: 'cjs',
+      sourcemap: false,
+    },
+  ],
 });
