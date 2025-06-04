@@ -1,0 +1,62 @@
+{
+  "name": "@text-editor/preset-code",
+  "version": "1.0.0-alpha.45",
+  "description": "preset-code",
+  "author": "fengzilong",
+  "maintainers": [],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less",
+    "**/*.sass",
+    "**/*.scss"
+  ],
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint && tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "@codemirror/autocomplete": "^6.18.0",
+    "@codemirror/language": "^6.10.1",
+    "@lezer/highlight": "~1.2.0",
+    "@text-editor/core": "workspace:*",
+    "@text-editor/core-plugins": "workspace:*",
+    "@text-editor/extension-completion-icons": "workspace:*",
+    "@text-editor/extension-links": "workspace:*",
+    "@text-editor/extension-lint": "workspace:*",
+    "@text-editor/extension-scrollbar": "workspace:*",
+    "@text-editor/extensions": "workspace:*",
+    "@text-editor/preset-universal": "workspace:*",
+    "@text-editor/utils": "workspace:*",
+    "@text-editor/vscode": "workspace:*",
+    "codemirror-shiki": "^0.2.2",
+    "marked": "^15.0.7",
+    "marked-shiki": "^1.2.0",
+    "shiki": "^3.2.2",
+    "text-mapping": "^1.0.1",
+    "vscode-languageserver-textdocument": "^1.0.12",
+    "vscode-languageserver-types": "^3.17.5"
+  },
+  "devDependencies": {
+    "@coze-arch/ts-config": "workspace:*",
+    "@text-editor/code-language-shared": "workspace:*",
+    "@types/node": "^22",
+    "eslint": "9.14.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "@codemirror/commands": "^6.3.3",
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.1",
+    "@text-editor/code-language-shared": "workspace:*"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "test:main": "./src/index.ts"
+}

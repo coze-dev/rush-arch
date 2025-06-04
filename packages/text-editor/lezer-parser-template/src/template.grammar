@@ -1,0 +1,16 @@
+@top Template { (Interpolation | Text)* }
+
+@skip {space} {
+  Interpolation { InterpolationOpen InterpolationContent* InterpolationEnd }
+}
+
+@tokens {
+  Text { ![{] Text? | "{" (@eof | ![{] Text?) }
+  space { @whitespace+ }
+  InterpolationContent { ![}] InterpolationContent? | $[}] (@eof | ![}] InterpolationContent?) }
+  InterpolationOpen[@name="{{",closedBy=InterpolationEnd] { "{{" }
+  InterpolationEnd[@name="}}",openedBy=InterpolationOpen] { "}}" }
+  @precedence { space InterpolationContent }
+}
+
+@external propSource highlight from "./highlight.js"

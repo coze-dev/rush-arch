@@ -1,0 +1,43 @@
+/* Dark theme */
+.os-theme-codemirror-dark {
+  --os-handle-interactive-area-offset: 0px;
+  --os-handle-bg: #FFFFFF38;
+  --os-handle-bg-hover: #FFFFFF63;
+  --os-handle-bg-active: #FFFFFFC9;
+  --os-size: 6px;
+  --os-handle-border-radius: 10px;
+  --os-handle-perpendicular-size: 4px;
+  --os-handle-perpendicular-size-hover: 6px;
+  --os-handle-perpendicular-size-active: 6px;
+
+  --os-padding-perpendicular: 2px;
+  --os-padding-axis: 2px;
+  --os-track-border-radius: 10px;
+
+  z-index: 300;
+}
+.os-theme-codemirror-dark .os-scrollbar-track{
+  background-color: rgba(0, 0, 0, 0) !important; 
+}
+
+/* Light theme */
+.os-theme-codemirror {
+  --os-handle-interactive-area-offset: 0px;
+  --os-handle-bg: #000D3833;
+  --os-handle-bg-hover: #000D384D;
+  --os-handle-bg-active: #000D3866;
+  --os-size: 6px;
+  --os-handle-border-radius: 10px;
+  --os-handle-perpendicular-size: 4px;
+  --os-handle-perpendicular-size-hover: 6px;
+  --os-handle-perpendicular-size-active: 6px;
+
+  --os-padding-perpendicular: 2px;
+  --os-padding-axis: 2px;
+  --os-track-border-radius: 10px;
+
+  z-index: 300;
+}
+.os-theme-codemirror .os-scrollbar-track{
+  background-color: rgba(0, 0, 0, 0) !important; 
+}

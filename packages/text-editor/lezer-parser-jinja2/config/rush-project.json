@@ -1,0 +1,12 @@
+{
+  "operationSettings": [
+    {
+      "operationName": "build",
+      "outputFolderNames": []
+    },
+    {
+      "operationName": "ts-check",
+      "outputFolderNames": []
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@text-editor/parser-jinja2",
+  "version": "1.0.0-alpha.45",
+  "private": true,
+  "description": "parser-jinja2",
+  "author": "fengzilong",
+  "maintainers": [],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less",
+    "**/*.sass",
+    "**/*.scss"
+  ],
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "",
+    "lint": "",
+    "prepublishOnly": "pnpm run build"
+  },
+  "devDependencies": {
+    "@coze-arch/ts-config": "workspace:*",
+    "@types/node": "^22",
+    "eslint": "9.14.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.8.2"
+  },
+  "test:main": "./src/index.ts"
+}

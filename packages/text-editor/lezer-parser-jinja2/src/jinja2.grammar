@@ -1,0 +1,175 @@
+@top JinjaProgram { entity* }
+
+entity {
+  JinjaText |
+  JinjaComment |
+  JinjaExpression |
+  JinjaRawBlock |
+  JinjaStatement
+}
+
+JinjaComment {
+  JinjaCommentStart JinjaCommentContent* JinjaCommentEnd
+}
+
+@skip { spaces | newline } {
+  JinjaExpression {
+    JinjaExpressionStart (JinjaKeyword | JinjaIdentifier | JinjaStringLiteral | JinjaNumberLiteral | jinjaFilter | jinjaSign | JinjaExpressionUnknownContent)* JinjaExpressionEnd
+  }
+
+  jinjaFilter {
+    "|"
+    JinjaFilterName
+  }
+
+  JinjaStatement {
+    JinjaStatementStart (JinjaKeyword | JinjaIdentifier | JinjaStringLiteral | JinjaNumberLiteral | jinjaSign | jinjaStatementUnknownContent)* JinjaStatementEnd
+  }
+
+  JinjaRawOpenStatement {
+    JinjaStatementStart namedKw<"raw", JinjaKeyword> JinjaStatementEnd
+  }
+
+  JinjaRawCloseStatement {
+    JinjaStatementStart namedKw<"endraw", JinjaKeyword> JinjaStatementEnd
+  }
+}
+
+JinjaKeyword {
+  kw<"if"> | kw<"elif"> | kw<"else"> | kw<"endif"> |
+  kw<"is"> | kw<"not"> |
+  kw<"set"> |
+  kw<"for"> | kw<"in"> | kw<"endfor"> |
+  kw<"extends"> |
+  kw<"macro"> | kw<"endmacro"> |
+  kw<"block"> | kw<"endblock"> |
+  kw<"call"> | kw<"endcall"> |
+  kw<"include"> |
+  kw<"from"> | kw<"import"> | kw<"as">
+}
+
+JinjaStringLiteral {
+  "'" stringContentSingleQuote? stringEndSingleQuote |
+  '"' stringContentDoubleQuote? stringEndDoubleQuote
+}
+
+@external tokens tokenizeSingleQuoteString from "./tokens" {
+  stringContentSingleQuote,
+  stringEndSingleQuote
+}
+
+@external tokens tokenizeDoubleQuoteString from "./tokens" {
+  stringContentDoubleQuote,
+  stringEndDoubleQuote
+}
+
+@external tokens tokenizeExpression from "./tokens" {
+  JinjaExpressionEnd
+}
+
+@external tokens tokenizeStatement from "./tokens" {
+  JinjaStatementEnd
+}
+
+@external tokens tokenizeComment from "./tokens" {
+  JinjaCommentEnd
+}
+
+JinjaRawBlock {
+  JinjaRawOpenStatement RawText? JinjaRawCloseStatement
+}
+
+@external tokens tokenizeRawText from "./tokens" {
+  RawText
+}
+
+@external tokens tokenizeText from "./tokens" {
+  JinjaText
+}
+
+@tokens {
+  newline {
+    "\r" | "\n" | "\r\n"
+  }
+
+  JinjaStatementStart { "{%" $[-+]? }
+
+  jinjaStatementUnknownContent {
+    ![-+'"%] jinjaStatementUnknownContent? |
+    "%" (@eof | ![}]) jinjaStatementUnknownContent?
+  }
+
+  JinjaExpressionStart { "{{" $[-+]? }
+  JinjaExpressionUnknownContent {
+    ![{'"}|] JinjaExpressionUnknownContent? |
+    "}" (@eof | ![}]) JinjaExpressionUnknownContent?
+  }
+
+  JinjaCommentStart { "{#" }
+  JinjaCommentContent {
+    ![#{] JinjaCommentContent? |
+    "#" (@eof | ![}]) JinjaCommentContent? |
+    "{" (@eof | ![#]) JinjaCommentContent?
+  }
+
+  identifierChar { @asciiLetter | $[_$\u{a1}-\u{10ffff}] }
+  word { identifierChar (identifierChar | @digit)* }
+  JinjaIdentifier { word }
+
+  spaces { $[\u0009 \u000b\u00a0\u1680\u2000-\u200a\u202f\u205f\u3000\ufeff]+ }
+
+  jinjaSign {
+    "-" |
+    "+" |
+    "*" |
+    "/" |
+    "=" |
+    "%" |
+    ">" |
+    "<" |
+    "(" |
+    ")" |
+    "[" |
+    "]" |
+    "," |
+    "!" |
+    "~" |
+    "?" |
+    ":" |
+    "," |
+    "^"
+  }
+
+  JinjaNumberLiteral {
+    @digit ("_" | @digit)* ("." ("_" | @digit)*)? | "." @digit ("_" | @digit)*
+  }
+
+  JinjaFilterName { word }
+
+  @precedence {
+    spaces,
+    JinjaFilterName
+  }
+
+  @precedence {
+    JinjaText,
+    JinjaStatementStart
+  }
+
+  @precedence {
+    spaces,
+    newline,
+    JinjaIdentifier,
+    JinjaStringLiteral,
+    JinjaNumberLiteral,
+    jinjaSign,
+    jinjaStatementUnknownContent,
+    JinjaExpressionUnknownContent,
+    expressionUnknownContent
+  }
+}
+
+kw<term> { @specialize<JinjaIdentifier, term> }
+namedKw<term, name> { @specialize[@name={name}]<JinjaIdentifier, term> }
+
+@external propSource jinjaHighlighting from "./highlight"

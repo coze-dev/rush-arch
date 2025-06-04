@@ -1,0 +1,15 @@
+import { useLayoutEffect } from 'react';
+
+import { type Injector, useInjector } from '@text-editor/react';
+
+type InjectorHandler = (
+  injector: Injector,
+) => ReturnType<typeof injector.inject> | undefined;
+
+function useInjectorEffect(handler: InjectorHandler, deps: any[] = []) {
+  const injector = useInjector();
+
+  useLayoutEffect(() => handler(injector), [injector, ...deps]);
+}
+
+export { useInjectorEffect };
