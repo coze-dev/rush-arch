@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@coze-arch/ts-config/tsconfig.web.json",
+  "compilerOptions": {
+    "types": [],
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "tsBuildInfoFile": "./dist/tsconfig.build.tsbuildinfo"
+  },
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../code-language-shared/tsconfig.build.json"
+    },
+    {
+      "path": "../../../config/ts-config/tsconfig.build.json"
+    },
+    {
+      "path": "../extension-lint/tsconfig.build.json"
+    },
+    {
+      "path": "../lezer-parser-json/tsconfig.build.json"
+    },
+    {
+      "path": "../parser-json/tsconfig.build.json"
+    }
+  ]
+}

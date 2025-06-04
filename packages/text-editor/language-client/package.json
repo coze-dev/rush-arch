@@ -1,0 +1,37 @@
+{
+  "name": "@text-editor/language-client",
+  "version": "1.0.0-alpha.45",
+  "description": "language-client",
+  "author": "fengzilong",
+  "maintainers": [],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less",
+    "**/*.sass",
+    "**/*.scss"
+  ],
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint && tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "vscode-languageserver-protocol": "^3.17.5",
+    "vscode-uri": "^3.0.8",
+    "vscode-ws-jsonrpc": "^3.3.2"
+  },
+  "devDependencies": {
+    "@coze-arch/ts-config": "workspace:*",
+    "@types/node": "^22",
+    "eslint": "9.14.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.8.2"
+  },
+  "test:main": "./src/index.ts"
+}

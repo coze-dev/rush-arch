@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@coze-arch/ts-config/tsconfig.web.json",
+  "compilerOptions": {
+    "types": [],
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "tsBuildInfoFile": "./dist/tsconfig.build.tsbuildinfo"
+  },
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../code-language-json/tsconfig.build.json"
+    },
+    {
+      "path": "../code-language-python/tsconfig.build.json"
+    },
+    {
+      "path": "../code-language-shared/tsconfig.build.json"
+    },
+    {
+      "path": "../code-language-shell/tsconfig.build.json"
+    },
+    {
+      "path": "../code-language-typescript/tsconfig.build.json"
+    },
+    {
+      "path": "../../../config/ts-config/tsconfig.build.json"
+    },
+    {
+      "path": "../core/tsconfig.build.json"
+    },
+    {
+      "path": "../extensions/tsconfig.build.json"
+    },
+    {
+      "path": "../preset-code/tsconfig.build.json"
+    },
+    {
+      "path": "../preset-expression/tsconfig.build.json"
+    },
+    {
+      "path": "../preset-none/tsconfig.build.json"
+    },
+    {
+      "path": "../preset-prompt/tsconfig.build.json"
+    },
+    {
+      "path": "../preset-universal/tsconfig.build.json"
+    },
+    {
+      "path": "../preset-variable/tsconfig.build.json"
+    },
+    {
+      "path": "../react-components/tsconfig.build.json"
+    },
+    {
+      "path": "../react-hooks/tsconfig.build.json"
+    },
+    {
+      "path": "../react-merge/tsconfig.build.json"
+    },
+    {
+      "path": "../react/tsconfig.build.json"
+    },
+    {
+      "path": "../utils/tsconfig.build.json"
+    },
+    {
+      "path": "../vscode/tsconfig.build.json"
+    }
+  ]
+}

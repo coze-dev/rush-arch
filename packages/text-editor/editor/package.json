@@ -1,0 +1,137 @@
+{
+  "name": "@text-editor/editor",
+  "version": "1.0.0-alpha.45",
+  "description": "flow-lang-sdk",
+  "author": "fengzilong",
+  "maintainers": [],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less",
+    "**/*.sass",
+    "**/*.scss"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/esm/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./react": {
+      "require": "./dist/react.js",
+      "import": "./dist/esm/react.js",
+      "types": "./dist/react.d.ts"
+    },
+    "./vscode": {
+      "require": "./dist/vscode.js",
+      "import": "./dist/esm/vscode.js",
+      "types": "./dist/vscode.d.ts"
+    },
+    "./language-typescript": {
+      "require": "./dist/language-typescript.js",
+      "import": "./dist/esm/language-typescript.js",
+      "types": "./dist/language-typescript.d.ts"
+    },
+    "./language-typescript/worker": {
+      "require": "./dist/language-typescript-worker.js",
+      "import": "./dist/esm/language-typescript-worker.js",
+      "types": "./dist/language-typescript-worker.d.ts"
+    },
+    "./language-json": {
+      "require": "./dist/language-json.js",
+      "import": "./dist/esm/language-json.js",
+      "types": "./dist/language-json.d.ts"
+    },
+    "./language-shell": {
+      "require": "./dist/language-shell.js",
+      "import": "./dist/esm/language-shell.js",
+      "types": "./dist/language-shell.d.ts"
+    },
+    "./language-python": {
+      "require": "./dist/language-python.js",
+      "import": "./dist/esm/language-python.js",
+      "types": "./dist/language-python.d.ts"
+    },
+    "./preset-universal": {
+      "require": "./dist/preset-universal.js",
+      "import": "./dist/esm/preset-universal.js",
+      "types": "./dist/preset-universal.d.ts"
+    },
+    "./preset-none": {
+      "require": "./dist/preset-none.js",
+      "import": "./dist/esm/preset-none.js",
+      "types": "./dist/preset-none.d.ts"
+    },
+    "./preset-expression": {
+      "require": "./dist/preset-expression.js",
+      "import": "./dist/esm/preset-expression.js",
+      "types": "./dist/preset-expression.d.ts"
+    },
+    "./preset-prompt": {
+      "require": "./dist/preset-prompt.js",
+      "import": "./dist/esm/preset-prompt.js",
+      "types": "./dist/preset-prompt.d.ts"
+    },
+    "./preset-variable": {
+      "require": "./dist/preset-variable.js",
+      "import": "./dist/esm/preset-variable.js",
+      "types": "./dist/preset-variable.d.ts"
+    },
+    "./preset-code": {
+      "require": "./dist/preset-code.js",
+      "import": "./dist/esm/preset-code.js",
+      "types": "./dist/preset-code.d.ts"
+    }
+  },
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint && tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@codemirror/commands": "^6.3.3",
+    "@text-editor/code-language-json": "workspace:*",
+    "@text-editor/code-language-python": "workspace:*",
+    "@text-editor/code-language-shared": "workspace:*",
+    "@text-editor/code-language-shell": "workspace:*",
+    "@text-editor/code-language-typescript": "workspace:*",
+    "@text-editor/core": "workspace:*",
+    "@text-editor/extensions": "workspace:*",
+    "@text-editor/preset-code": "workspace:*",
+    "@text-editor/preset-expression": "workspace:*",
+    "@text-editor/preset-none": "workspace:*",
+    "@text-editor/preset-prompt": "workspace:*",
+    "@text-editor/preset-universal": "workspace:*",
+    "@text-editor/preset-variable": "workspace:*",
+    "@text-editor/react": "workspace:*",
+    "@text-editor/react-components": "workspace:*",
+    "@text-editor/react-hooks": "workspace:*",
+    "@text-editor/react-merge": "workspace:*",
+    "@text-editor/utils": "workspace:*",
+    "@text-editor/vscode": "workspace:*"
+  },
+  "devDependencies": {
+    "@coze-arch/ts-config": "workspace:*",
+    "@types/node": "^22",
+    "@types/react": "18.2.37",
+    "@types/react-dom": "18.2.15",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "9.14.0",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.1",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0"
+  },
+  "test:main": "./src/index.ts"
+}

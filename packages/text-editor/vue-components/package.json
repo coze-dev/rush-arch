@@ -1,0 +1,45 @@
+{
+  "name": "@text-editor/vue-components",
+  "version": "1.0.0-alpha.45",
+  "description": "vue-components",
+  "author": "fengzilong",
+  "maintainers": [],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less",
+    "**/*.sass",
+    "**/*.scss"
+  ],
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint && tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.6.3",
+    "@text-editor/extension-placeholder": "workspace:*",
+    "@text-editor/extensions": "workspace:*",
+    "@text-editor/utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@coze-arch/ts-config": "workspace:*",
+    "@text-editor/vue": "workspace:*",
+    "@types/node": "^22",
+    "eslint": "9.14.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.1",
+    "@text-editor/vue": "workspace:*",
+    "vue": "^3"
+  },
+  "test:main": "./src/index.ts"
+}

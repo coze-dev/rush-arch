@@ -1,0 +1,38 @@
+import { createPortal } from 'react-dom';
+import { type ReactNode } from 'react';
+
+import { useHTMLElement, useInjectorEffect } from '@text-editor/react-hooks';
+import {
+  placeholder,
+  activeLinePlaceholder,
+} from '@text-editor/extension-placeholder';
+
+function Placeholder({ children }: { children?: ReactNode }): ReactNode {
+  const element = useHTMLElement('span');
+
+  useInjectorEffect(
+    injector => injector.inject([placeholder(() => element)]),
+    [],
+  );
+
+  return createPortal(children, element);
+}
+
+interface ActiveLinePlaceholderProps {
+  children?: ReactNode;
+}
+
+function ActiveLinePlaceholder({
+  children,
+}: ActiveLinePlaceholderProps): ReactNode {
+  const element = useHTMLElement('span');
+
+  useInjectorEffect(
+    injector => injector.inject([activeLinePlaceholder(() => element)]),
+    [],
+  );
+
+  return createPortal(children, element);
+}
+
+export { Placeholder, ActiveLinePlaceholder };

@@ -1,0 +1,57 @@
+{
+  "name": "@text-editor/react-components",
+  "version": "1.0.0-alpha.45",
+  "description": "react-components",
+  "author": "fengzilong",
+  "maintainers": [],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less",
+    "**/*.sass",
+    "**/*.scss"
+  ],
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint && tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "@codemirror/language": "^6.10.1",
+    "@codemirror/merge": "^6.10.0",
+    "@floating-ui/dom": "^1.6.3",
+    "@lezer/highlight": "~1.2.0",
+    "@lukeed/uuid": "^2.0.1",
+    "@text-editor/extension-placeholder": "workspace:*",
+    "@text-editor/extensions": "workspace:*",
+    "@text-editor/react-hooks": "workspace:*",
+    "@text-editor/utils": "workspace:*",
+    "@text-editor/vscode": "workspace:*",
+    "@types/hash-sum": "^1.0.2",
+    "hash-sum": "^2.0.0",
+    "jotai": "^2.10.0"
+  },
+  "devDependencies": {
+    "@coze-arch/ts-config": "workspace:*",
+    "@text-editor/react": "workspace:*",
+    "@types/node": "^22",
+    "@types/react": "18.2.37",
+    "@types/react-dom": "18.2.15",
+    "eslint": "9.14.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.1",
+    "@text-editor/react": "workspace:*",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0"
+  },
+  "test:main": "./src/index.ts"
+}

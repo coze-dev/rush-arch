@@ -1,0 +1,12 @@
+/* THIS FILE IS AUTO GENERATED, MODIFY `scripts/index.template.css` INSTEAD */
+/*
+ * Includes some icons from codicon
+ * Microsoft Corporation
+ * CC BY 4.0
+ */
+@font-face {
+  font-family: "codicon-cm";
+  font-weight: normal;
+  font-style: normal;
+  src: url({{WOFF}}) format('woff');
+}
