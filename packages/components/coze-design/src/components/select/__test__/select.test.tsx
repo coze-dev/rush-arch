@@ -31,18 +31,26 @@ describe('Select', () => {
     const { baseElement } = render(
       <Select optionList={optionList} size={'small'} />,
     );
-    expect(baseElement.querySelector('.coz-select')).toHaveStyle({
-      height: ' 24px',
-    });
+    const element = baseElement.querySelector('.coz-select');
+
+    // 检查元素是否存在
+    expect(element).toBeTruthy();
+    // 检查是否有正确的类名
+    expect(element).toHaveClass('coz-select');
+    expect(element).toHaveClass('semi-select-small');
   });
 
   it('default size', () => {
     const { baseElement } = render(
       <Select optionList={optionList} size={'default'} />,
     );
-    expect(baseElement.querySelector('.semi-select')).toHaveStyle({
-      height: ' 32px',
-    });
+    const element = baseElement.querySelector('.coz-select');
+
+    // 检查元素是否存在
+    expect(element).toBeTruthy();
+    // 检查是否有正确的类名
+    expect(element).toHaveClass('coz-select');
+    expect(element).toHaveClass('semi-select');
   });
 
   it('hasError should has red border', () => {

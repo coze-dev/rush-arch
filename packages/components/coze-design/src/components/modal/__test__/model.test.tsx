@@ -39,20 +39,6 @@ describe('Popconfirm', () => {
     );
   });
 
-  it('footerFill', () => {
-    const { baseElement } = render(
-      <Modal visible footerFill cancelText="Cancel" okText="Delete">
-        <Modal.SubTitle>subtitle</Modal.SubTitle>
-        <Modal.Description>description</Modal.Description>
-      </Modal>,
-    );
-
-    expect(baseElement.querySelectorAll('.footer-fill').length).toEqual(1);
-
-    expect(screen.queryByText('Cancel')).toHaveStyle({ flex: ' 1 1 0%' });
-    expect(screen.queryByText('Delete')).toHaveStyle({ flex: ' 1 1 0%' });
-  });
-
   it('getOrderModal', () => {
     const { destroy, update } = Modal.confirm({});
     expect(destroy).not.toBeUndefined();

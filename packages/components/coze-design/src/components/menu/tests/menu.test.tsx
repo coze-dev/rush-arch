@@ -60,6 +60,7 @@ describe('Menu', () => {
     });
     const { itemDom } = setup(
       <Menu
+        visible={true}
         render={
           <Menu.SubMenu mode="menu" onSelectionChange={onSelectionChange}>
             <Menu.Title>标题1</Menu.Title>
