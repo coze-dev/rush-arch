@@ -14,13 +14,13 @@
   },
   "files": [
     "bin",
-    "dist",
+    "lib",
     "CHANGELOG.md",
     "!**/*.map",
     "!**/*.tsbuildinfo"
   ],
   "scripts": {
-    "build": "rollup -c rollup.config.mjs",
+    "build": "rollup -c",
     "lint": "eslint ./ --cache",
     "serve": "tsx src/cli.ts serve --port 3000",
     "start": "tsx src/cli.ts start",
