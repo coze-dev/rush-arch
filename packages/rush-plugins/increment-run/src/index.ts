@@ -42,6 +42,7 @@ export function createIncrementCommand(): Command {
         'ts-check',
         'style',
         'package-audit',
+        'test',
       ];
       if (!validActions.includes(value)) {
         throw new Error(

@@ -12,7 +12,7 @@ export const runCommonCommands = (
   const prefix = '--from';
   const postfix: string[] = [];
   if (verbose) {
-    postfix.push('-v');
+    postfix.push('--verbose');
   }
   const args = [
     'common/scripts/install-run-rush',
