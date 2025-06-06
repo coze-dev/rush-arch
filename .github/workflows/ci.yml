@@ -52,23 +52,23 @@ jobs:
           node common/scripts/install-run-rush.js install
 
       - name: Increment Build
-        run: common/scripts/install-run-rush.js increment --action build -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        run: node common/scripts/install-run-rush.js increment --action build -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
         continue-on-error: true
 
       - name: Increment Test:cov
-        run: common/scripts/install-run-rush.js increment --action test:cov -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        run: node common/scripts/install-run-rush.js increment --action test:cov -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
         continue-on-error: true
 
       - name: Increment Lint
-        run: common/scripts/install-run-rush.js increment --action lint -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        run: node common/scripts/install-run-rush.js increment --action lint -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
         continue-on-error: true
 
       - name: Increment TS Check
-        run: common/scripts/install-run-rush.js increment --action ts-check -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        run: node common/scripts/install-run-rush.js increment --action ts-check -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
         continue-on-error: true
 
       - name: Increment Package Audit
-        run: common/scripts/install-run-rush.js increment --action package-audit -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        run: node common/scripts/install-run-rush.js increment --action package-audit -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
 
       - name: Fail if any report failed
         # NOTICE: To show all reports from the previous steps, the last step should check if any jobs failed.
