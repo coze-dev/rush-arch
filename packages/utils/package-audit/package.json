@@ -1,0 +1,29 @@
+{
+  "name": "@coze-arch/package-audit",
+  "version": "0.0.1",
+  "description": "package basement detect",
+  "license": "ISC",
+  "author": "tecvan.fe@gmail.com",
+  "maintainers": [],
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "exit 0",
+    "lint": "eslint ./ --cache",
+    "test": "vitest --run --passWithNoTests",
+    "test:cov": "npm run test -- --coverage"
+  },
+  "dependencies": {
+    "fast-glob": "^3.2.11"
+  },
+  "devDependencies": {
+    "@coze-arch/eslint-config": "workspace:*",
+    "@coze-arch/fs-enhance": "workspace:*",
+    "@coze-arch/monorepo-kits": "workspace:*",
+    "@coze-arch/ts-config": "workspace:*",
+    "@coze-arch/vitest-config": "workspace:*",
+    "@types/node": "^22",
+    "@vitest/coverage-v8": "^3.0.9",
+    "tsx": "^4.19.3",
+    "vitest": "^3.0.9"
+  }
+}

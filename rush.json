@@ -531,6 +531,17 @@
       "packageName": "@coze-arch/build-lib-preset",
       "projectFolder": "config/build-lib-preset",
       "tags": ["level-3"]
+    },
+    {
+      "packageName": "@coze-arch/rush-increment-run-plugin",
+      "projectFolder": "packages/rush-plugins/increment-run",
+      "tags": ["level-3"],
+      "shouldPublish": true
+    },
+    {
+      "packageName": "@coze-arch/package-audit",
+      "projectFolder": "packages/utils/package-audit",
+      "tags": ["level-3"]
     }
   ]
 }

@@ -35,17 +35,25 @@ export const lookupOnly = (packageName: string) => {
   return projects[0];
 };
 
+export const lookupProjectByFile = (
+  file: string,
+): RushConfigurationProject | undefined => {
+  const config = getRushConfiguration();
+  const lookup = config.getProjectLookupForRoot(config.rushJsonFolder);
+  return lookup.findChildPath(file);
+};
+
 export const lookupProjectsByFiles = (
   files: string[] | string,
 ): RushConfigurationProject[] => {
   const rushConfiguration: RushConfiguration = getRushConfiguration();
-  const changedFiles = typeof files === 'string' ? [files] : files;
+  const affectedFiles = typeof files === 'string' ? [files] : files;
   const changedProjects: Set<RushConfigurationProject> = new Set();
   const lookup = rushConfiguration.getProjectLookupForRoot(
     rushConfiguration.rushJsonFolder,
   );
 
-  for (const file of changedFiles) {
+  for (const file of affectedFiles) {
     const project = lookup.findChildPath(file);
     if (project) {
       if (!changedProjects.has(project)) {

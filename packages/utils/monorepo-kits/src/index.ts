@@ -6,11 +6,15 @@ export {
 
 export { getRushConfiguration } from './rush-config';
 
-export { type RushConfigurationProject } from '@rushstack/rush-sdk';
+export {
+  type RushConfigurationProject,
+  type RushConfiguration,
+} from '@rushstack/rush-sdk';
 
 export {
   lookupTo,
   lookupFrom,
+  lookupProjectByFile,
   lookupOnly,
   lookupProjectsByFiles,
 } from './lookup';

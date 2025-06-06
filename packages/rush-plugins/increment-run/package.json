@@ -1,73 +1,52 @@
 {
-  "name": "@coze-arch/rush-publish-plugin",
-  "version": "0.0.4",
-  "description": "rush plugin to generate change log and publish packages",
-  "keywords": [
-    "rush",
-    "plugin",
-    "command",
-    "release",
-    "publish"
-  ],
+  "name": "@coze-arch/rush-increment-run-plugin",
+  "version": "0.0.1",
+  "description": "incremently run commands for ci",
   "license": "ISC",
   "author": "tecvan.fe@gmail.com",
   "maintainers": [],
   "main": "src/index.ts",
   "bin": {
-    "rush-publish": "./src/run.js"
+    "rush-increment-run": "src/debug.js"
   },
   "files": [
-    "lib",
+    "dist",
     "!**/*.tsbuildinfo",
     "!**/*.map",
     "command-line.json",
     "rush-plugin-manifest.json"
   ],
   "scripts": {
-    "build": "tsc -b tsconfig.build.json --emitDeclarationOnly && rollup -c",
+    "build": "exit 0",
     "lint": "eslint ./ --cache",
     "test": "vitest --run --passWithNoTests",
     "test:cov": "npm run test -- --coverage"
   },
   "dependencies": {
-    "@inquirer/prompts": "^3.2.0",
-    "@rushstack/rush-sdk": "^5.150.0",
-    "chalk": "^4.1.2",
-    "conventional-changelog-angular": "^5.0.13",
-    "conventional-commits-parser": "^3.2.4",
-    "dayjs": "^1.11.13",
-    "open": "~10.1.0",
-    "semver": "^7.7.1",
+    "lodash": "^4.17.21",
     "shelljs": "^0.9.2"
   },
   "devDependencies": {
-    "@commitlint/types": "^17.4.0",
     "@coze-arch/build-lib-preset": "workspace:*",
     "@coze-arch/eslint-config": "workspace:*",
     "@coze-arch/fs-enhance": "workspace:*",
     "@coze-arch/logger": "workspace:*",
+    "@coze-arch/monorepo-kits": "workspace:*",
+    "@coze-arch/package-audit": "workspace:*",
     "@coze-arch/ts-config": "workspace:*",
     "@coze-arch/vitest-config": "workspace:*",
+    "@types/lodash": "^4.17.16",
     "@types/node": "^22",
-    "@types/semver": "^7.5.8",
     "@types/shelljs": "^0.8.15",
     "@vitest/coverage-v8": "^3.0.9",
     "commander": "^13.1.0",
     "rollup": "^4.41.1",
+    "stylelint": "^15.11.0",
     "sucrase": "^3.32.0",
     "vitest": "^3.0.9"
   },
   "peerDependencies": {
-    "commander": "^13.1.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "cozePublishConfig": {
-    "bin": {
-      "rush-publish": "./lib/index.js"
-    },
-    "main": "./lib/index.js",
-    "types": "lib/index.d.ts"
+    "commander": "^13.1.0",
+    "stylelint": "^15.11.0"
   }
 }
