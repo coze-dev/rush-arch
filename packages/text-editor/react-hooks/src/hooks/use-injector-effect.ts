@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react';
 
-import { type Injector, useInjector } from '@text-editor/react';
+import { type Injector, useInjector } from '@coze-editor/react';
 
 type InjectorHandler = (
   injector: Injector,

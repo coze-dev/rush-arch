@@ -1,2 +1,2 @@
-export * from '@text-editor/preset-prompt';
-export { default } from '@text-editor/preset-prompt';
+export * from '@coze-editor/preset-prompt';
+export { default } from '@coze-editor/preset-prompt';

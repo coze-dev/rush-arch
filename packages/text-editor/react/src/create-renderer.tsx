@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { type EditorPluginSpec } from '@text-editor/core';
+import { type EditorPluginSpec } from '@coze-editor/core';
 import { type Extension } from '@codemirror/state';
 
 import { Renderer, type InferRendererProps } from './renderer';

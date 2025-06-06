@@ -1,7 +1,7 @@
 import {
   type EditorPluginSpec,
   type InferEditorAPIFromPlugins,
-} from '@text-editor/core';
+} from '@coze-editor/core';
 
 const preset = [] as EditorPluginSpec<string, any, any>[];
 type EditorAPI = InferEditorAPIFromPlugins<typeof preset>;

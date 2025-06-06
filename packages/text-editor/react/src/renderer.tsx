@@ -13,7 +13,7 @@ import {
   type InferEvents,
   type InferValues,
   create,
-} from '@text-editor/core';
+} from '@coze-editor/core';
 import { type Extension } from '@codemirror/state';
 
 import { useInjector, useSetEditor } from './provider';

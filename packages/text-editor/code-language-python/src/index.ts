@@ -1,4 +1,4 @@
-import { type LanguageConfig } from '@text-editor/code-language-shared';
+import { type LanguageConfig } from '@coze-editor/code-language-shared';
 import type { Extension } from '@codemirror/state';
 import {
   globalCompletion,

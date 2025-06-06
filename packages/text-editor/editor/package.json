@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/editor",
+  "name": "@coze-editor/editor",
   "version": "1.0.0-alpha.45",
   "description": "flow-lang-sdk",
   "author": "fengzilong",
@@ -12,74 +12,74 @@
   ],
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.js",
-      "import": "./dist/esm/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/esm/index.js"
     },
     "./react": {
+      "types": "./dist/react.d.ts",
       "require": "./dist/react.js",
-      "import": "./dist/esm/react.js",
-      "types": "./dist/react.d.ts"
+      "import": "./dist/esm/react.js"
     },
     "./vscode": {
+      "types": "./dist/vscode.d.ts",
       "require": "./dist/vscode.js",
-      "import": "./dist/esm/vscode.js",
-      "types": "./dist/vscode.d.ts"
+      "import": "./dist/esm/vscode.js"
     },
     "./language-typescript": {
+      "types": "./dist/language-typescript.d.ts",
       "require": "./dist/language-typescript.js",
-      "import": "./dist/esm/language-typescript.js",
-      "types": "./dist/language-typescript.d.ts"
+      "import": "./dist/esm/language-typescript.js"
     },
     "./language-typescript/worker": {
+      "types": "./dist/language-typescript-worker.d.ts",
       "require": "./dist/language-typescript-worker.js",
-      "import": "./dist/esm/language-typescript-worker.js",
-      "types": "./dist/language-typescript-worker.d.ts"
+      "import": "./dist/esm/language-typescript-worker.js"
     },
     "./language-json": {
+      "types": "./dist/language-json.d.ts",
       "require": "./dist/language-json.js",
-      "import": "./dist/esm/language-json.js",
-      "types": "./dist/language-json.d.ts"
+      "import": "./dist/esm/language-json.js"
     },
     "./language-shell": {
+      "types": "./dist/language-shell.d.ts",
       "require": "./dist/language-shell.js",
-      "import": "./dist/esm/language-shell.js",
-      "types": "./dist/language-shell.d.ts"
+      "import": "./dist/esm/language-shell.js"
     },
     "./language-python": {
+      "types": "./dist/language-python.d.ts",
       "require": "./dist/language-python.js",
-      "import": "./dist/esm/language-python.js",
-      "types": "./dist/language-python.d.ts"
+      "import": "./dist/esm/language-python.js"
     },
     "./preset-universal": {
+      "types": "./dist/preset-universal.d.ts",
       "require": "./dist/preset-universal.js",
-      "import": "./dist/esm/preset-universal.js",
-      "types": "./dist/preset-universal.d.ts"
+      "import": "./dist/esm/preset-universal.js"
     },
     "./preset-none": {
+      "types": "./dist/preset-none.d.ts",
       "require": "./dist/preset-none.js",
-      "import": "./dist/esm/preset-none.js",
-      "types": "./dist/preset-none.d.ts"
+      "import": "./dist/esm/preset-none.js"
     },
     "./preset-expression": {
+      "types": "./dist/preset-expression.d.ts",
       "require": "./dist/preset-expression.js",
-      "import": "./dist/esm/preset-expression.js",
-      "types": "./dist/preset-expression.d.ts"
+      "import": "./dist/esm/preset-expression.js"
     },
     "./preset-prompt": {
+      "types": "./dist/preset-prompt.d.ts",
       "require": "./dist/preset-prompt.js",
-      "import": "./dist/esm/preset-prompt.js",
-      "types": "./dist/preset-prompt.d.ts"
+      "import": "./dist/esm/preset-prompt.js"
     },
     "./preset-variable": {
+      "types": "./dist/preset-variable.d.ts",
       "require": "./dist/preset-variable.js",
-      "import": "./dist/esm/preset-variable.js",
-      "types": "./dist/preset-variable.d.ts"
+      "import": "./dist/esm/preset-variable.js"
     },
     "./preset-code": {
+      "types": "./dist/preset-code.d.ts",
       "require": "./dist/preset-code.js",
-      "import": "./dist/esm/preset-code.js",
-      "types": "./dist/preset-code.d.ts"
+      "import": "./dist/esm/preset-code.js"
     }
   },
   "main": "./dist/esm/index.js",
@@ -95,25 +95,25 @@
   },
   "dependencies": {
     "@codemirror/commands": "^6.3.3",
-    "@text-editor/code-language-json": "workspace:*",
-    "@text-editor/code-language-python": "workspace:*",
-    "@text-editor/code-language-shared": "workspace:*",
-    "@text-editor/code-language-shell": "workspace:*",
-    "@text-editor/code-language-typescript": "workspace:*",
-    "@text-editor/core": "workspace:*",
-    "@text-editor/extensions": "workspace:*",
-    "@text-editor/preset-code": "workspace:*",
-    "@text-editor/preset-expression": "workspace:*",
-    "@text-editor/preset-none": "workspace:*",
-    "@text-editor/preset-prompt": "workspace:*",
-    "@text-editor/preset-universal": "workspace:*",
-    "@text-editor/preset-variable": "workspace:*",
-    "@text-editor/react": "workspace:*",
-    "@text-editor/react-components": "workspace:*",
-    "@text-editor/react-hooks": "workspace:*",
-    "@text-editor/react-merge": "workspace:*",
-    "@text-editor/utils": "workspace:*",
-    "@text-editor/vscode": "workspace:*"
+    "@coze-editor/code-language-json": "workspace:*",
+    "@coze-editor/code-language-python": "workspace:*",
+    "@coze-editor/code-language-shared": "workspace:*",
+    "@coze-editor/code-language-shell": "workspace:*",
+    "@coze-editor/code-language-typescript": "workspace:*",
+    "@coze-editor/core": "workspace:*",
+    "@coze-editor/extensions": "workspace:*",
+    "@coze-editor/preset-code": "workspace:*",
+    "@coze-editor/preset-expression": "workspace:*",
+    "@coze-editor/preset-none": "workspace:*",
+    "@coze-editor/preset-prompt": "workspace:*",
+    "@coze-editor/preset-universal": "workspace:*",
+    "@coze-editor/preset-variable": "workspace:*",
+    "@coze-editor/react": "workspace:*",
+    "@coze-editor/react-components": "workspace:*",
+    "@coze-editor/react-hooks": "workspace:*",
+    "@coze-editor/react-merge": "workspace:*",
+    "@coze-editor/utils": "workspace:*",
+    "@coze-editor/vscode": "workspace:*"
   },
   "devDependencies": {
     "@coze-arch/ts-config": "workspace:*",

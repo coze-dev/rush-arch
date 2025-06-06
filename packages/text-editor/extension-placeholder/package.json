@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/extension-placeholder",
+  "name": "@coze-editor/extension-placeholder",
   "version": "1.0.0-alpha.45",
   "description": "extension-placeholder",
   "author": "fengzilong",
@@ -22,7 +22,7 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@text-editor/utils": "workspace:*"
+    "@coze-editor/utils": "workspace:*"
   },
   "devDependencies": {
     "@coze-arch/ts-config": "workspace:*",

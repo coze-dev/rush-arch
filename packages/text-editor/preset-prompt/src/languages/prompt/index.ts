@@ -1,5 +1,5 @@
-import { parser as jinjaParser } from '@text-editor/lezer-parser-jinja2';
 import { parseMixed } from '@lezer/common';
+import { parser as jinjaParser } from '@coze-editor/lezer-parser-jinja2';
 import { LRLanguage } from '@codemirror/language';
 
 import { headingFold, markdownLanguage } from './markdown';

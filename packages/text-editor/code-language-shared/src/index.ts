@@ -5,7 +5,7 @@ import {
   type SignatureHelp,
 } from 'vscode-languageserver-types';
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { type Severity } from '@text-editor/extension-lint';
+import { type Severity } from '@coze-editor/extension-lint';
 import { type Extension, type Text as CMText } from '@codemirror/state';
 import { type LRLanguage, type StreamLanguage } from '@codemirror/language';
 

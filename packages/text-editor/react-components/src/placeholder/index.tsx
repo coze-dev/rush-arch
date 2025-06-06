@@ -1,11 +1,11 @@
 import { createPortal } from 'react-dom';
 import { type ReactNode } from 'react';
 
-import { useHTMLElement, useInjectorEffect } from '@text-editor/react-hooks';
+import { useHTMLElement, useInjectorEffect } from '@coze-editor/react-hooks';
 import {
   placeholder,
   activeLinePlaceholder,
-} from '@text-editor/extension-placeholder';
+} from '@coze-editor/extension-placeholder';
 
 function Placeholder({ children }: { children?: ReactNode }): ReactNode {
   const element = useHTMLElement('span');

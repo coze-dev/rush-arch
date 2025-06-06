@@ -1,25 +1,25 @@
-import universal from '@text-editor/preset-universal';
+import universal from '@coze-editor/preset-universal';
 import {
   scrollBeyondLastLine,
   colorizationBrackets,
   matchingBrackets,
-} from '@text-editor/extensions';
-import { scrollbar } from '@text-editor/extension-scrollbar';
-import { icons } from '@text-editor/extension-completion-icons';
-import { maxHeight, minHeight, height } from '@text-editor/core-plugins';
+} from '@coze-editor/extensions';
+import { scrollbar } from '@coze-editor/extension-scrollbar';
+import { icons } from '@coze-editor/extension-completion-icons';
+import { maxHeight, minHeight, height } from '@coze-editor/core-plugins';
 import {
   api,
   extension,
   type InferEditorAPIFromPlugins,
   option,
-} from '@text-editor/core';
+} from '@coze-editor/core';
 import {
   uriFacet,
   languageIdFacet,
   transformerFacet,
   textDocumentField,
   type Transformer,
-} from '@text-editor/code-language-shared';
+} from '@coze-editor/code-language-shared';
 import { EditorView, lineNumbers } from '@codemirror/view';
 import { Prec } from '@codemirror/state';
 import { foldGutter } from '@codemirror/language';
@@ -32,8 +32,8 @@ import { basicSetup } from './extension/basic-setup';
 import createTheme, { type Theme } from './create-theme';
 import { LINT_REFRESH_USER_EVENT } from './const';
 
-import '@text-editor/extension-scrollbar/dist/index.css';
-import '@text-editor/extension-completion-icons/dist/index.css';
+import '@coze-editor/extension-scrollbar/dist/index.css';
+import '@coze-editor/extension-completion-icons/dist/index.css';
 
 const SVG_FOLD_CLOSE =
   '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M10.072 8.024L5.715 3.667l.618-.62L11 7.716v.618L6.333 13l-.618-.619z" clip-rule="evenodd"/></svg>';

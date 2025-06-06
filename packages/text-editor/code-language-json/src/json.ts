@@ -1,4 +1,4 @@
-import { parser } from '@text-editor/lezer-parser-json';
+import { parser } from '@coze-editor/lezer-parser-json';
 import {
   continuedIndent,
   indentNodeProp,

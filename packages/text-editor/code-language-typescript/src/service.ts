@@ -14,13 +14,13 @@ import {
 } from 'typescript';
 import mitt from 'mitt';
 import { type Remote, wrap } from 'comlink';
+import createFuzzySearch from '@nozbe/microfuzz';
 import {
   type Diagnostic,
   type LanguageService as ILanguageService,
   MarkerTag,
   textDocumentField,
-} from '@text-editor/code-language-shared';
-import createFuzzySearch from '@nozbe/microfuzz';
+} from '@coze-editor/code-language-shared';
 import type {
   ChangeSpec,
   EditorState,

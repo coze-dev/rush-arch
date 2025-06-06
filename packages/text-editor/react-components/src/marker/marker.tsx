@@ -1,7 +1,7 @@
 import { useCallback, useLayoutEffect } from 'react';
 
-import { useStateField } from '@text-editor/react-hooks';
-import { useInjector } from '@text-editor/react';
+import { useStateField } from '@coze-editor/react-hooks';
+import { useInjector } from '@coze-editor/react';
 import { Decoration, type DecorationSet, EditorView } from '@codemirror/view';
 import { type Transaction } from '@codemirror/state';
 

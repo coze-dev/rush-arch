@@ -10,14 +10,14 @@ import {
 } from 'vscode-json-languageservice';
 import { Text } from 'text-mapping';
 import Fuse from 'fuse.js';
-import { parse } from '@text-editor/parser-json';
+import { v4 as uuid } from '@lukeed/uuid';
+import { parse } from '@coze-editor/parser-json';
 import {
   type LanguageService as ILanguageService,
   type LanguageServiceOptions,
   type Link,
   textDocumentField,
-} from '@text-editor/code-language-shared';
-import { v4 as uuid } from '@lukeed/uuid';
+} from '@coze-editor/code-language-shared';
 import {
   type ChangeSpec,
   type EditorState,

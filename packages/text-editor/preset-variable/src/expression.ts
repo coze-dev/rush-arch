@@ -1,4 +1,4 @@
-import { updateWholeDecorations, inputRules } from '@text-editor/extensions';
+import { updateWholeDecorations, inputRules } from '@coze-editor/extensions';
 import {
   basic,
   fontSize,
@@ -25,7 +25,7 @@ import {
   focusChangeNotifier,
   isFocused,
   editable,
-} from '@text-editor/core-plugins';
+} from '@coze-editor/core-plugins';
 import {
   option,
   api,
@@ -33,7 +33,7 @@ import {
   extension,
   type InferEditorAPIFromPlugins,
   domEventHandler,
-} from '@text-editor/core';
+} from '@coze-editor/core';
 import { highlightSpecialChars, keymap, EditorView } from '@codemirror/view';
 import { EditorState } from '@codemirror/state';
 import {

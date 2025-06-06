@@ -1,10 +1,10 @@
-import { FacetCombineStrategy } from '@text-editor/utils';
+import { FacetCombineStrategy } from '@coze-editor/utils';
 import astField, {
   type ArrayASTNode,
   type ASTNode,
   findNodeAtOffset,
   type PropertyASTNode,
-} from '@text-editor/extension-json-ast';
+} from '@coze-editor/extension-json-ast';
 import { showTooltip, type TooltipView } from '@codemirror/view';
 import {
   type EditorState,

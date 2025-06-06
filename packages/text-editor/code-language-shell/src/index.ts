@@ -1,4 +1,4 @@
-import type { LanguageService } from '@text-editor/code-language-shared';
+import type { LanguageService } from '@coze-editor/code-language-shared';
 import { StreamLanguage } from '@codemirror/language';
 
 import { shell as shellMode } from './shell';

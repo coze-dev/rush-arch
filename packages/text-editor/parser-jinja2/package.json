@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/parser-jinja2",
+  "name": "@coze-editor/parser-jinja2",
   "version": "1.0.0-alpha.45",
   "private": true,
   "description": "parser-jinja2",

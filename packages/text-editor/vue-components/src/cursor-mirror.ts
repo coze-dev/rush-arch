@@ -1,9 +1,9 @@
 import { defineComponent, onBeforeMount, onMounted, onUnmounted, type PropType } from 'vue';
-import { type BuiltinEditorAPI } from '@text-editor/vue';
-import { elementAtPosition, positionElementLayer, SelectionSide } from '@text-editor/extensions';
+import { type BuiltinEditorAPI } from '@coze-editor/vue';
+import { elementAtPosition, positionElementLayer, SelectionSide } from '@coze-editor/extensions';
 import { autoUpdate } from '@floating-ui/dom';
 
-import { useEditorRef, useInjector } from '@text-editor/vue';
+import { useEditorRef, useInjector } from '@coze-editor/vue';
 
 const CursorMirror = defineComponent({
   props: {

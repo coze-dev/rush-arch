@@ -1,5 +1,5 @@
-import { inputRules } from '@text-editor/extensions';
-import { replaceTextByRange } from '@text-editor/core-plugins';
+import { inputRules } from '@coze-editor/extensions';
+import { replaceTextByRange } from '@coze-editor/core-plugins';
 import { LanguageSupport } from '@codemirror/language';
 import { closeBrackets } from '@codemirror/autocomplete';
 

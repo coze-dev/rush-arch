@@ -9,4 +9,4 @@ export {
   useInjector,
 }
 
-export * from '@text-editor/core';
+export * from '@coze-editor/core';

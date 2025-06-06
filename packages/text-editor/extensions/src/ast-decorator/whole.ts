@@ -1,6 +1,6 @@
 import { omit } from 'es-toolkit';
-import { traverseAST } from '@text-editor/utils';
 import type { Tree, TreeCursor } from '@lezer/common';
+import { traverseAST } from '@coze-editor/utils';
 import {
   Decoration,
   type DecorationSet,

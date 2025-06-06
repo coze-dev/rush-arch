@@ -1,5 +1,5 @@
-import { FacetCombineStrategy } from '@text-editor/utils';
-import astField from '@text-editor/extension-json-ast';
+import { FacetCombineStrategy } from '@coze-editor/utils';
+import astField from '@coze-editor/extension-json-ast';
 import {
   Decoration,
   type DecorationSet,

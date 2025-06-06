@@ -4,4 +4,4 @@ export { createRenderer } from './create-renderer';
 
 export { EditorProvider, useEditor, useInjector } from './provider';
 
-export * from '@text-editor/core';
+export * from '@coze-editor/core';

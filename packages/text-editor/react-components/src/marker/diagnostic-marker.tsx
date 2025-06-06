@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useMemo } from 'react';
 
 import hash from 'hash-sum';
-import { useInjector } from '@text-editor/react';
+import { useInjector } from '@coze-editor/react';
 import { EditorView } from '@codemirror/view';
 
 import { BackgroundMarker } from './background-marker';

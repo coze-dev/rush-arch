@@ -1,5 +1,5 @@
-import { parser as templateParser } from '@text-editor/lezer-parser-template';
 import { parseMixed } from '@lezer/common';
+import { parser as templateParser } from '@coze-editor/lezer-parser-template';
 import { type Language, LRLanguage } from '@codemirror/language';
 
 interface MixOptions {

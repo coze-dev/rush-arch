@@ -1,1 +1,1 @@
-export * from '@text-editor/vscode';
+export * from '@coze-editor/vscode';

@@ -13,7 +13,7 @@ import {
   type InferValues,
   // from react
   useInjector,
-} from '@text-editor/react';
+} from '@coze-editor/react';
 import { type Extension } from '@codemirror/state';
 import { type MergeConfig, MergeView } from '@codemirror/merge';
 

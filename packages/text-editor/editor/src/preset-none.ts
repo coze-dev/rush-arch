@@ -1,2 +1,2 @@
-export * from '@text-editor/preset-none';
-export { default } from '@text-editor/preset-none';
+export * from '@coze-editor/preset-none';
+export { default } from '@coze-editor/preset-none';

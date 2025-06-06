@@ -1,6 +1,6 @@
 import { forwardRef, useImperativeHandle } from 'react';
 
-import { useLatest } from '@text-editor/react-hooks';
+import { useLatest } from '@coze-editor/react-hooks';
 
 interface Props {
   element: HTMLElement;

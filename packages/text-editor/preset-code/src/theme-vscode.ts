@@ -3,7 +3,7 @@ import {
   darkTheme,
   lightSyntaxTheme,
   lightTheme,
-} from '@text-editor/vscode';
+} from '@coze-editor/vscode';
 import { HighlightStyle, syntaxHighlighting } from '@codemirror/language';
 
 export const vscodeLight = [

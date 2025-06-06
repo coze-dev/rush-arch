@@ -7,12 +7,12 @@ import React, {
   useState,
 } from 'react';
 
-import { createPortalConnector } from '@text-editor/react-hooks';
+import { createPortalConnector } from '@coze-editor/react-hooks';
 import {
   useEditor,
   useInjector,
   type BuiltinEditorAPI,
-} from '@text-editor/react';
+} from '@coze-editor/react';
 import { type Tooltip } from '@codemirror/view';
 
 import {

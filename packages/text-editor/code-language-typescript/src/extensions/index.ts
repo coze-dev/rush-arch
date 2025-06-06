@@ -1,4 +1,4 @@
-import { textDocumentField } from '@text-editor/code-language-shared';
+import { textDocumentField } from '@coze-editor/code-language-shared';
 
 import { typescriptLanguageService } from '../service';
 import typeInformation from './type-information';

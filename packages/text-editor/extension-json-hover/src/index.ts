@@ -3,7 +3,7 @@ import astField, {
   type ASTNode,
   findNodeAtOffset,
   type PropertyASTNode,
-} from '@text-editor/extension-json-ast';
+} from '@coze-editor/extension-json-ast';
 import { hoverTooltip, type TooltipView } from '@codemirror/view';
 
 type JSONPath = string | number;

@@ -1,2 +1,2 @@
-export * from '@text-editor/preset-variable';
-export { default } from '@text-editor/preset-variable';
+export * from '@coze-editor/preset-variable';
+export { default } from '@coze-editor/preset-variable';

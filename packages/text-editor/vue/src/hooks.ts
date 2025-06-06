@@ -1,4 +1,4 @@
-import { createInjector, type Injector } from '@text-editor/core';
+import { createInjector, type Injector } from '@coze-editor/core';
 import { inject, provide, shallowRef, type ShallowRef } from 'vue';
 
 const EditorSymbol = Symbol();

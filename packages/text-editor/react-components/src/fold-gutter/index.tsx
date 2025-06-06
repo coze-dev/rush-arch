@@ -6,14 +6,14 @@ import React, {
   useState,
 } from 'react';
 
-import { disposeAll } from '@text-editor/utils';
+import { v4 } from '@lukeed/uuid';
+import { disposeAll } from '@coze-editor/utils';
 import {
   useInjectorEffect,
   useLatest,
   usePortalConnector,
-} from '@text-editor/react-hooks';
-import { useInjector } from '@text-editor/react';
-import { v4 } from '@lukeed/uuid';
+} from '@coze-editor/react-hooks';
+import { useInjector } from '@coze-editor/react';
 import { EditorView } from '@codemirror/view';
 import { Prec } from '@codemirror/state';
 import { codeFolding, foldGutter } from '@codemirror/language';

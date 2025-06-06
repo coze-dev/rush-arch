@@ -1,1 +1,1 @@
-export * from '@text-editor/code-language-json';
+export * from '@coze-editor/code-language-json';

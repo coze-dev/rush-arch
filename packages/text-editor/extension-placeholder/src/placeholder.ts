@@ -4,7 +4,7 @@
 // - use single view
 // - support multiple content sources(use last one)
 
-import { FacetCombineStrategy } from '@text-editor/utils';
+import { FacetCombineStrategy } from '@coze-editor/utils';
 import {
   Decoration,
   type DecorationSet,

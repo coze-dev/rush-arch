@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/react",
+  "name": "@coze-editor/react",
   "version": "1.0.0-alpha.45",
   "description": "react",
   "author": "fengzilong",
@@ -23,7 +23,7 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@text-editor/core": "workspace:*"
+    "@coze-editor/core": "workspace:*"
   },
   "devDependencies": {
     "@coze-arch/ts-config": "workspace:*",

@@ -1,1 +1,1 @@
-export * from '@text-editor/code-language-typescript';
+export * from '@coze-editor/code-language-typescript';

@@ -1,4 +1,4 @@
-import type { ASTNode } from '@text-editor/extension-json-ast';
+import type { ASTNode } from '@coze-editor/extension-json-ast';
 
 import { type JSONPropertyChecker } from './types';
 
