@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze/coze-design",
+      "comment": "setup npmrc",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze/coze-design",
+  "email": "tecvan.fe@qq.com"
+}

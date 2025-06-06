@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/semi-theme-hand01",
+      "comment": "setup npmrc",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/semi-theme-hand01",
+  "email": "tecvan.fe@qq.com"
+}
