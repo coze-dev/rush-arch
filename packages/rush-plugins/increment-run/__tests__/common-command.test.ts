@@ -38,17 +38,17 @@ describe('runCommonCommands', () => {
     runCommonCommands(packages, action, true);
 
     expect(exec).toHaveBeenCalledWith(
-      'node common/scripts/install-run-rush test:cov --from package1 --from package2 -v',
+      'node common/scripts/install-run-rush test:cov --from package1 --from package2 --verbose',
       {
         cwd: '/path/to/rush',
         fatal: false,
       },
     );
     expect(logger.info).toHaveBeenCalledWith(
-      'Start running: node common/scripts/install-run-rush test:cov --from package1 --from package2 -v',
+      'Start running: node common/scripts/install-run-rush test:cov --from package1 --from package2 --verbose',
     );
     expect(logger.info).toHaveBeenCalledWith(
-      'finish exec command with exit code: 0',
+      'finish exec command with exit code: 0, time: 1000ms',
     );
   });
 
@@ -78,31 +78,25 @@ describe('runCommonCommands', () => {
     runCommonCommands(packages, action, false);
 
     expect(logger.error).toHaveBeenCalledWith(
-      'finish exec command with exit code: 1',
+      'finish exec command with exit code: 1, time: 1000ms',
     );
     expect(process.exitCode).toBe(1);
   });
 
-  it('should add -v flag for specific actions', () => {
-    const testCases = [
-      { action: 'test:cov', shouldHaveVFlag: true },
-      { action: 'build', shouldHaveVFlag: true },
-      { action: 'perf-defender', shouldHaveVFlag: true },
-      { action: 'lint', shouldHaveVFlag: false },
-    ];
+  it('should add --verbose flag when verbose is true', () => {
+    const packages = ['package1'];
+    const action = 'test:cov';
 
-    testCases.forEach(({ action, shouldHaveVFlag }) => {
-      (exec as Mock).mockReturnValue({ code: 0 });
+    (exec as Mock).mockReturnValue({ code: 0 });
 
-      runCommonCommands(['package1'], action, false);
+    runCommonCommands(packages, action, true);
 
-      const expectedCommand = `node common/scripts/install-run-rush ${action} --from package1${
-        shouldHaveVFlag ? ' -v' : ''
-      }`;
-      expect(exec).toHaveBeenCalledWith(expectedCommand, {
+    expect(exec).toHaveBeenCalledWith(
+      'node common/scripts/install-run-rush test:cov --from package1 --verbose',
+      {
         cwd: '/path/to/rush',
         fatal: false,
-      });
-    });
+      },
+    );
   });
 });

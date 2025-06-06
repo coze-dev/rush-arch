@@ -4,15 +4,13 @@ import { auditPackage } from '@coze-arch/package-audit';
 import { report } from '../src/package-audit/report';
 import { runPackageAudit } from '../src/package-audit';
 
-vi.mock('@coze-infra/package-audit');
-vi.mock('../package-audit/report');
-vi.mock('../../../utils/project-analyzer', () => ({
-  getRushConfiguration: vi.fn(() => ({
-    rushJsonFolder: 'path/to/rushJsonFolder',
-    getProjectByName: vi.fn(packageName => ({
-      packageName,
-      projectFolder: `path/to/${packageName}`,
-    })),
+vi.mock('@coze-arch/package-audit', () => ({ auditPackage: vi.fn() }));
+vi.mock('../src/package-audit/report', () => ({ report: vi.fn() }));
+vi.mock('@coze-arch/monorepo-kits', () => ({
+  lookupOnly: vi.fn((packageName: string) => ({
+    packageName,
+    projectFolder: `path/to/${packageName}`,
+    projectRelativeFolder: packageName,
   })),
 }));
 

@@ -7,12 +7,15 @@ import {
   beforeEach,
   afterEach,
 } from 'vitest';
+import { RuleReportLevel } from '@coze-arch/package-audit/src/types';
 
 import { isCI } from '../src/utils/env';
 import { addReport, CIReportConclusion } from '../src/utils/ci-interactor';
 import { report as stylelintReport } from '../src/stylelint/report';
 import { report as packageAuditReport } from '../src/package-audit/report';
 import { report as lintReport } from '../src/lint/report';
+
+// Import RuleReportLevel for correct typing
 
 // Mock dependencies
 vi.mock('../src/utils/env', () => ({
@@ -56,7 +59,7 @@ describe('lint report', () => {
       name: 'ESLint Detect',
       conclusion: CIReportConclusion.SUCCESS,
       output: {
-        summary: '',
+        summary: 'GOOD',
         description: '',
       },
     });
@@ -80,7 +83,7 @@ describe('lint report', () => {
       name: 'ESLint Detect',
       conclusion: CIReportConclusion.FAILED,
       output: {
-        summary: expect.stringContaining('❌ ESLint Detect'),
+        summary: expect.stringContaining('# ESLint Detect Result'),
       },
     });
   });
@@ -116,7 +119,7 @@ describe('package-audit report', () => {
 
     const diagnostics = [
       {
-        level: 'error',
+        level: RuleReportLevel.ERROR,
         packageName: '@test/package',
         rule: 'no-vulnerabilities',
         content: 'Found security vulnerability',
@@ -129,7 +132,7 @@ describe('package-audit report', () => {
       name: 'Package Audit Checker',
       conclusion: CIReportConclusion.FAILED,
       output: {
-        summary: expect.stringContaining('❌ Package Audit Checker'),
+        summary: expect.stringContaining('# Package Audit Checker'),
       },
     });
   });
@@ -154,7 +157,7 @@ describe('stylelint report', () => {
       name: 'Stylelint Check',
       conclusion: CIReportConclusion.SUCCESS,
       output: {
-        summary: '',
+        summary: 'GOOD',
         description: '',
       },
     });
@@ -173,11 +176,15 @@ describe('stylelint report', () => {
               {
                 line: 1,
                 column: 1,
-                severity: 'error',
+                severity: 'error' as const,
                 text: 'Invalid property',
                 rule: 'property-no-unknown',
               },
             ],
+            deprecations: [],
+            invalidOptionWarnings: [],
+            parseErrors: [],
+            errored: false,
           },
         ],
         files: ['style.css'],
@@ -192,7 +199,7 @@ describe('stylelint report', () => {
       name: 'Stylelint Check',
       conclusion: CIReportConclusion.FAILED,
       output: {
-        summary: expect.stringContaining('❌ Stylelint Detect Result'),
+        summary: expect.stringContaining('# Stylelint Detect Result'),
       },
     });
   });

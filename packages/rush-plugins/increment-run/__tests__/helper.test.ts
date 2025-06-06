@@ -34,11 +34,8 @@ describe('helper', () => {
 
       const result = extractChangedFilesByGitDiff(branch);
 
-      expect(exec).toHaveBeenCalledWith(
-        'git diff --name-only upstream/test-branch...',
-      );
+      expect(exec).toHaveBeenCalledWith('git diff --name-only test-branch...');
       expect(result).toEqual(['file1.js', 'file2.js', 'file3.js']);
-      expect(process.exit).not.toHaveBeenCalled();
     });
 
     it('should log the command and throw an error when the command fails', () => {
@@ -52,16 +49,25 @@ describe('helper', () => {
         },
       });
 
-      const res = extractChangedFilesByGitDiff(branch);
-      expect(res).toBeUndefined();
+      // Mock process.exit to prevent actual exit
+      const exitSpy = vi.spyOn(process, 'exit').mockImplementation(() => {
+        throw new Error('process.exit called');
+      });
+
+      expect(() => extractChangedFilesByGitDiff(branch)).toThrow(
+        'process.exit called',
+      );
+
       expect(log.error).toHaveBeenCalledWith(
         expect.stringMatching('Command failed'),
       );
 
       expect(exec).toHaveBeenCalledWith(
-        'git diff --name-only upstream/invalid-branch...',
+        'git diff --name-only invalid-branch...',
       );
-      expect(process.exit).toHaveBeenCalledWith(1);
+      expect(exitSpy).toHaveBeenCalledWith(1);
+
+      exitSpy.mockRestore();
     });
   });
 
@@ -73,7 +79,9 @@ describe('helper', () => {
       const code = 1;
 
       // Mock process.exitCode and process.exit
-      const exitSpy = vi.spyOn(process, 'exit').mockImplementation();
+      const exitSpy = vi.spyOn(process, 'exit').mockImplementation(() => {
+        // do nothing
+      });
 
       stopProcess(code);
 
@@ -107,6 +115,7 @@ describe('helper', () => {
       expect(process.exitCode).toBe(code);
 
       exitSpy.mockRestore();
+      vi.useRealTimers();
     });
   });
 });

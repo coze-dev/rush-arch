@@ -1,4 +1,4 @@
-import { describe, expect, test, vi } from 'vitest';
+import { describe, expect, test, vi, type Mock } from 'vitest';
 
 import { groupChangedFilesByProject } from '../src/utils/project-analyzer';
 import { runStylelint } from '../src/stylelint';
@@ -11,12 +11,11 @@ vi.mock('shelljs', () => ({
   exec: vi.fn().mockReturnValue({ stdout: '', stderr: '' }),
 }));
 
-vi.mock('../../../utils/project-analyzer');
-vi.mock('../lint');
-vi.mock('../stylelint');
-vi.mock('../ts-check');
-vi.mock('../package-audit');
-vi.mock('../../../utils/logger', () => ({
+vi.mock('../src/utils/project-analyzer');
+vi.mock('../src/lint');
+vi.mock('../src/stylelint');
+vi.mock('../src/package-audit');
+vi.mock('@coze-arch/logger', () => ({
   logger: { debug: vi.fn(), info: vi.fn(), warning: vi.fn(), error: vi.fn() },
 }));
 
@@ -26,22 +25,22 @@ describe('increment', () => {
 
     const mockGroup = { '@coze-infra/rush-x': ['some/file'] };
 
-    vi.mocked(groupChangedFilesByProject).mockImplementation(files => {
+    (groupChangedFilesByProject as Mock).mockImplementation(files => {
       console.log('groupChangedFilesByProject called with:', files);
       return mockGroup;
     });
 
-    vi.mocked(runLint).mockImplementation(async args => {
+    (runLint as Mock).mockImplementation(async args => {
       console.log('runLint called with:', args);
       return Promise.resolve();
     });
 
-    vi.mocked(runStylelint).mockImplementation(async args => {
+    (runStylelint as Mock).mockImplementation(async args => {
       console.log('runStylelint called with:', args);
       return Promise.resolve();
     });
 
-    vi.mocked(runPackageAudit).mockImplementation(async args => {
+    (runPackageAudit as Mock).mockImplementation(async args => {
       console.log('runPackageAudit called with:', args);
       return Promise.resolve();
     });
@@ -49,25 +48,14 @@ describe('increment', () => {
 
   test('should run lint action', async () => {
     const mockFiles = ['some/file'];
-    const expectedArg = { '@coze-infra/rush-x': mockFiles };
+    const expectedArg = { '@coze-infra/rush-x': ['some/file'] };
 
     console.log('=== Starting lint action test ===');
-    console.log('Mock state before test:', {
-      groupChangedFilesByProject: vi.mocked(groupChangedFilesByProject).mock
-        .calls,
-      runLint: vi.mocked(runLint).mock.calls,
-    });
 
     await incrementAction({
       changedFiles: mockFiles,
       action: 'lint',
       verbose: true,
-    });
-
-    console.log('Mock state after test:', {
-      groupChangedFilesByProject: vi.mocked(groupChangedFilesByProject).mock
-        .calls,
-      runLint: vi.mocked(runLint).mock.calls,
     });
 
     expect(runLint).toHaveBeenCalledTimes(1);
@@ -76,11 +64,11 @@ describe('increment', () => {
 
   test('should run style action', async () => {
     const mockFiles = ['some/file'];
-    const expectedArg = { '@coze-infra/rush-x': mockFiles };
+    const expectedArg = { '@coze-infra/rush-x': ['some/file'] };
     console.log('Running style action test');
     await incrementAction({
       changedFiles: mockFiles,
-      action: 'lint',
+      action: 'style',
       verbose: false,
     });
     expect(runStylelint).toHaveBeenCalledWith(expectedArg);
@@ -88,7 +76,7 @@ describe('increment', () => {
 
   test('should run package-audit action', async () => {
     const mockFiles = ['some/file'];
-    const expectedArg = { '@coze-infra/rush-x': mockFiles };
+    const expectedArg = { '@coze-infra/rush-x': ['some/file'] };
     console.log('Running package-audit action test');
     await incrementAction({
       changedFiles: mockFiles,

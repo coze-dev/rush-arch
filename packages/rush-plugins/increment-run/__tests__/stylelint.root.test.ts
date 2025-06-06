@@ -16,11 +16,11 @@ vi.mock('@coze-arch/monorepo-kits', () => ({
       projectRelativeFolder: packageName,
     })),
   })),
-  lookupOnly: vi.fn().mockResolvedValue({
-    packageName: 'foo',
-    projectFolder: '/path/to/foo',
-    projectRelativeFolder: 'foo',
-  }),
+  lookupOnly: vi.fn((packageName: string) => ({
+    packageName,
+    projectFolder: `/path/to/${packageName}`,
+    projectRelativeFolder: packageName,
+  })),
 }));
 
 describe('increment run stylelint', () => {
