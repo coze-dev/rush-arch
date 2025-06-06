@@ -933,21 +933,21 @@ importers:
       '@codemirror/autocomplete':
         specifier: ^6.18.0
         version: 6.18.6
+      '@coze-editor/extension-lint':
+        specifier: workspace:*
+        version: link:../extension-lint
+      '@coze-editor/lezer-parser-json':
+        specifier: workspace:*
+        version: link:../lezer-parser-json
+      '@coze-editor/parser-json':
+        specifier: workspace:*
+        version: link:../parser-json
       '@lezer/json':
         specifier: ^1.0.2
         version: 1.0.3
       '@lukeed/uuid':
         specifier: ^2.0.1
         version: 2.0.1
-      '@text-editor/extension-lint':
-        specifier: workspace:*
-        version: link:../extension-lint
-      '@text-editor/lezer-parser-json':
-        specifier: workspace:*
-        version: link:../lezer-parser-json
-      '@text-editor/parser-json':
-        specifier: workspace:*
-        version: link:../parser-json
       fuse.js:
         specifier: ^7.0.0
         version: 7.1.0
@@ -961,10 +961,19 @@ importers:
         specifier: ^3.0.8
         version: 3.1.0
     devDependencies:
+      '@codemirror/language':
+        specifier: ^6.10.1
+        version: 6.11.1
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
-      '@text-editor/code-language-shared':
+      '@coze-editor/code-language-shared':
         specifier: workspace:*
         version: link:../code-language-shared
       '@types/node':
@@ -986,10 +995,16 @@ importers:
         specifier: ^6.1.4
         version: 6.2.1
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
-      '@text-editor/code-language-shared':
+      '@coze-editor/code-language-shared':
         specifier: workspace:*
         version: link:../code-language-shared
       '@types/node':
@@ -1007,10 +1022,10 @@ importers:
 
   ../../../packages/text-editor/code-language-shared:
     dependencies:
-      '@text-editor/extension-lint':
+      '@coze-editor/extension-lint':
         specifier: workspace:*
         version: link:../extension-lint
-      '@text-editor/utils':
+      '@coze-editor/utils':
         specifier: workspace:*
         version: link:../utils
       mitt:
@@ -1023,6 +1038,18 @@ importers:
         specifier: ^3.17.5
         version: 3.17.5
     devDependencies:
+      '@codemirror/autocomplete':
+        specifier: ^6.18.0
+        version: 6.18.6
+      '@codemirror/language':
+        specifier: ^6.10.1
+        version: 6.11.1
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1041,10 +1068,19 @@ importers:
 
   ../../../packages/text-editor/code-language-shell:
     devDependencies:
+      '@codemirror/language':
+        specifier: ^6.10.1
+        version: 6.11.1
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
-      '@text-editor/code-language-shared':
+      '@coze-editor/code-language-shared':
         specifier: workspace:*
         version: link:../code-language-shared
       '@types/node':
@@ -1093,10 +1129,19 @@ importers:
         specifier: ^3.0.8
         version: 3.1.0
     devDependencies:
+      '@codemirror/language':
+        specifier: ^6.10.1
+        version: 6.11.1
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
-      '@text-editor/code-language-shared':
+      '@coze-editor/code-language-shared':
         specifier: workspace:*
         version: link:../code-language-shared
       '@types/node':
@@ -1118,6 +1163,12 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1136,16 +1187,25 @@ importers:
 
   ../../../packages/text-editor/core-plugins:
     dependencies:
-      '@text-editor/core':
+      '@coze-editor/core':
         specifier: workspace:*
         version: link:../core
-      '@text-editor/extension-placeholder':
+      '@coze-editor/extension-placeholder':
         specifier: workspace:*
         version: link:../extension-placeholder
       es-toolkit:
         specifier: ^1.25.2
         version: 1.39.3
     devDependencies:
+      '@codemirror/commands':
+        specifier: ^6.3.3
+        version: 6.8.1
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1167,64 +1227,70 @@ importers:
       '@codemirror/commands':
         specifier: ^6.3.3
         version: 6.8.1
-      '@text-editor/code-language-json':
+      '@coze-editor/code-language-json':
         specifier: workspace:*
         version: link:../code-language-json
-      '@text-editor/code-language-python':
+      '@coze-editor/code-language-python':
         specifier: workspace:*
         version: link:../code-language-python
-      '@text-editor/code-language-shared':
+      '@coze-editor/code-language-shared':
         specifier: workspace:*
         version: link:../code-language-shared
-      '@text-editor/code-language-shell':
+      '@coze-editor/code-language-shell':
         specifier: workspace:*
         version: link:../code-language-shell
-      '@text-editor/code-language-typescript':
+      '@coze-editor/code-language-typescript':
         specifier: workspace:*
         version: link:../code-language-typescript
-      '@text-editor/core':
+      '@coze-editor/core':
         specifier: workspace:*
         version: link:../core
-      '@text-editor/extensions':
+      '@coze-editor/extensions':
         specifier: workspace:*
         version: link:../extensions
-      '@text-editor/preset-code':
+      '@coze-editor/preset-code':
         specifier: workspace:*
         version: link:../preset-code
-      '@text-editor/preset-expression':
+      '@coze-editor/preset-expression':
         specifier: workspace:*
         version: link:../preset-expression
-      '@text-editor/preset-none':
+      '@coze-editor/preset-none':
         specifier: workspace:*
         version: link:../preset-none
-      '@text-editor/preset-prompt':
+      '@coze-editor/preset-prompt':
         specifier: workspace:*
         version: link:../preset-prompt
-      '@text-editor/preset-universal':
+      '@coze-editor/preset-universal':
         specifier: workspace:*
         version: link:../preset-universal
-      '@text-editor/preset-variable':
+      '@coze-editor/preset-variable':
         specifier: workspace:*
         version: link:../preset-variable
-      '@text-editor/react':
+      '@coze-editor/react':
         specifier: workspace:*
         version: link:../react
-      '@text-editor/react-components':
+      '@coze-editor/react-components':
         specifier: workspace:*
         version: link:../react-components
-      '@text-editor/react-hooks':
+      '@coze-editor/react-hooks':
         specifier: workspace:*
         version: link:../react-hooks
-      '@text-editor/react-merge':
+      '@coze-editor/react-merge':
         specifier: workspace:*
         version: link:../react-merge
-      '@text-editor/utils':
+      '@coze-editor/utils':
         specifier: workspace:*
         version: link:../utils
-      '@text-editor/vscode':
+      '@coze-editor/vscode':
         specifier: workspace:*
         version: link:../vscode
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1258,6 +1324,12 @@ importers:
 
   ../../../packages/text-editor/extension-completion-icons:
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1279,6 +1351,12 @@ importers:
 
   ../../../packages/text-editor/extension-decorator:
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1297,16 +1375,22 @@ importers:
 
   ../../../packages/text-editor/extension-json-ast:
     dependencies:
-      '@text-editor/parser-json':
+      '@coze-editor/parser-json':
         specifier: workspace:*
         version: link:../parser-json
-      '@text-editor/utils':
+      '@coze-editor/utils':
         specifier: workspace:*
         version: link:../utils
       vscode-languageserver-textdocument:
         specifier: ^1.0.12
         version: 1.0.12
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1325,13 +1409,19 @@ importers:
 
   ../../../packages/text-editor/extension-json-empty-string-value-completion:
     dependencies:
-      '@text-editor/extension-json-ast':
+      '@coze-editor/extension-json-ast':
         specifier: workspace:*
         version: link:../extension-json-ast
-      '@text-editor/utils':
+      '@coze-editor/utils':
         specifier: workspace:*
         version: link:../utils
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1350,13 +1440,19 @@ importers:
 
   ../../../packages/text-editor/extension-json-hover:
     dependencies:
-      '@text-editor/extension-json-ast':
+      '@coze-editor/extension-json-ast':
         specifier: workspace:*
         version: link:../extension-json-ast
-      '@text-editor/utils':
+      '@coze-editor/utils':
         specifier: workspace:*
         version: link:../utils
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1375,13 +1471,19 @@ importers:
 
   ../../../packages/text-editor/extension-json-unnecessary-properties:
     dependencies:
-      '@text-editor/extension-json-ast':
+      '@coze-editor/extension-json-ast':
         specifier: workspace:*
         version: link:../extension-json-ast
-      '@text-editor/utils':
+      '@coze-editor/utils':
         specifier: workspace:*
         version: link:../utils
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1400,6 +1502,12 @@ importers:
 
   ../../../packages/text-editor/extension-links:
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1422,6 +1530,12 @@ importers:
         specifier: ^1.0.5
         version: 1.0.6
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1440,10 +1554,16 @@ importers:
 
   ../../../packages/text-editor/extension-placeholder:
     dependencies:
-      '@text-editor/utils':
+      '@coze-editor/utils':
         specifier: workspace:*
         version: link:../utils
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1462,6 +1582,12 @@ importers:
 
   ../../../packages/text-editor/extension-regexp-decorator:
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1484,6 +1610,12 @@ importers:
         specifier: ^2.10.1
         version: 2.11.4
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1502,18 +1634,18 @@ importers:
 
   ../../../packages/text-editor/extensions:
     dependencies:
+      '@coze-editor/extension-placeholder':
+        specifier: workspace:*
+        version: link:../extension-placeholder
+      '@coze-editor/lezer-parser-template':
+        specifier: workspace:*
+        version: link:../lezer-parser-template
+      '@coze-editor/utils':
+        specifier: workspace:*
+        version: link:../utils
       '@lezer/common':
         specifier: ^1.2.2
         version: 1.2.3
-      '@text-editor/extension-placeholder':
-        specifier: workspace:*
-        version: link:../extension-placeholder
-      '@text-editor/lezer-parser-template':
-        specifier: workspace:*
-        version: link:../lezer-parser-template
-      '@text-editor/utils':
-        specifier: workspace:*
-        version: link:../utils
       crelt:
         specifier: ^1.0.5
         version: 1.0.6
@@ -1521,6 +1653,15 @@ importers:
         specifier: ^1.25.2
         version: 1.39.3
     devDependencies:
+      '@codemirror/language':
+        specifier: ^6.10.1
+        version: 6.11.1
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1651,39 +1792,39 @@ importers:
       '@codemirror/language':
         specifier: ^6.10.1
         version: 6.11.1
+      '@coze-editor/core':
+        specifier: workspace:*
+        version: link:../core
+      '@coze-editor/core-plugins':
+        specifier: workspace:*
+        version: link:../core-plugins
+      '@coze-editor/extension-completion-icons':
+        specifier: workspace:*
+        version: link:../extension-completion-icons
+      '@coze-editor/extension-links':
+        specifier: workspace:*
+        version: link:../extension-links
+      '@coze-editor/extension-lint':
+        specifier: workspace:*
+        version: link:../extension-lint
+      '@coze-editor/extension-scrollbar':
+        specifier: workspace:*
+        version: link:../extension-scrollbar
+      '@coze-editor/extensions':
+        specifier: workspace:*
+        version: link:../extensions
+      '@coze-editor/preset-universal':
+        specifier: workspace:*
+        version: link:../preset-universal
+      '@coze-editor/utils':
+        specifier: workspace:*
+        version: link:../utils
+      '@coze-editor/vscode':
+        specifier: workspace:*
+        version: link:../vscode
       '@lezer/highlight':
         specifier: ~1.2.0
         version: 1.2.1
-      '@text-editor/core':
-        specifier: workspace:*
-        version: link:../core
-      '@text-editor/core-plugins':
-        specifier: workspace:*
-        version: link:../core-plugins
-      '@text-editor/extension-completion-icons':
-        specifier: workspace:*
-        version: link:../extension-completion-icons
-      '@text-editor/extension-links':
-        specifier: workspace:*
-        version: link:../extension-links
-      '@text-editor/extension-lint':
-        specifier: workspace:*
-        version: link:../extension-lint
-      '@text-editor/extension-scrollbar':
-        specifier: workspace:*
-        version: link:../extension-scrollbar
-      '@text-editor/extensions':
-        specifier: workspace:*
-        version: link:../extensions
-      '@text-editor/preset-universal':
-        specifier: workspace:*
-        version: link:../preset-universal
-      '@text-editor/utils':
-        specifier: workspace:*
-        version: link:../utils
-      '@text-editor/vscode':
-        specifier: workspace:*
-        version: link:../vscode
       codemirror-shiki:
         specifier: ^0.2.2
         version: 0.2.2(@codemirror/state@6.5.2)(@codemirror/view@6.37.1)(shiki@3.6.0)
@@ -1706,10 +1847,19 @@ importers:
         specifier: ^3.17.5
         version: 3.17.5
     devDependencies:
+      '@codemirror/commands':
+        specifier: ^6.3.3
+        version: 6.8.1
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
-      '@text-editor/code-language-shared':
+      '@coze-editor/code-language-shared':
         specifier: workspace:*
         version: link:../code-language-shared
       '@types/node':
@@ -1733,16 +1883,25 @@ importers:
       '@codemirror/language':
         specifier: ^6.10.1
         version: 6.11.1
-      '@text-editor/core':
+      '@coze-editor/core':
         specifier: workspace:*
         version: link:../core
-      '@text-editor/core-plugins':
+      '@coze-editor/core-plugins':
         specifier: workspace:*
         version: link:../core-plugins
-      '@text-editor/extensions':
+      '@coze-editor/extensions':
         specifier: workspace:*
         version: link:../extensions
     devDependencies:
+      '@codemirror/commands':
+        specifier: ^6.3.3
+        version: 6.8.1
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1761,10 +1920,16 @@ importers:
 
   ../../../packages/text-editor/preset-none:
     dependencies:
-      '@text-editor/core':
+      '@coze-editor/core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1789,6 +1954,21 @@ importers:
       '@codemirror/language':
         specifier: ^6.10.1
         version: 6.11.1
+      '@coze-editor/core':
+        specifier: workspace:*
+        version: link:../core
+      '@coze-editor/core-plugins':
+        specifier: workspace:*
+        version: link:../core-plugins
+      '@coze-editor/extensions':
+        specifier: workspace:*
+        version: link:../extensions
+      '@coze-editor/lezer-parser-jinja2':
+        specifier: workspace:*
+        version: link:../lezer-parser-jinja2
+      '@coze-editor/preset-expression':
+        specifier: workspace:*
+        version: link:../preset-expression
       '@lezer/common':
         specifier: ^1.2.2
         version: 1.2.3
@@ -1798,22 +1978,13 @@ importers:
       '@lezer/markdown':
         specifier: ^1.3.1
         version: 1.4.3
-      '@text-editor/core':
-        specifier: workspace:*
-        version: link:../core
-      '@text-editor/core-plugins':
-        specifier: workspace:*
-        version: link:../core-plugins
-      '@text-editor/extensions':
-        specifier: workspace:*
-        version: link:../extensions
-      '@text-editor/lezer-parser-jinja2':
-        specifier: workspace:*
-        version: link:../lezer-parser-jinja2
-      '@text-editor/preset-expression':
-        specifier: workspace:*
-        version: link:../preset-expression
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1832,16 +2003,22 @@ importers:
 
   ../../../packages/text-editor/preset-universal:
     dependencies:
-      '@text-editor/core':
+      '@coze-editor/core':
         specifier: workspace:*
         version: link:../core
-      '@text-editor/core-plugins':
+      '@coze-editor/core-plugins':
         specifier: workspace:*
         version: link:../core-plugins
-      '@text-editor/extensions':
+      '@coze-editor/extensions':
         specifier: workspace:*
         version: link:../extensions
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1866,6 +2043,21 @@ importers:
       '@codemirror/language':
         specifier: ^6.10.1
         version: 6.11.1
+      '@coze-editor/core':
+        specifier: workspace:*
+        version: link:../core
+      '@coze-editor/core-plugins':
+        specifier: workspace:*
+        version: link:../core-plugins
+      '@coze-editor/extensions':
+        specifier: workspace:*
+        version: link:../extensions
+      '@coze-editor/preset-expression':
+        specifier: workspace:*
+        version: link:../preset-expression
+      '@coze-editor/utils':
+        specifier: workspace:*
+        version: link:../utils
       '@lezer/common':
         specifier: ^1.2.2
         version: 1.2.3
@@ -1875,22 +2067,16 @@ importers:
       '@lezer/python':
         specifier: ^1.1.14
         version: 1.1.18
-      '@text-editor/core':
-        specifier: workspace:*
-        version: link:../core
-      '@text-editor/core-plugins':
-        specifier: workspace:*
-        version: link:../core-plugins
-      '@text-editor/extensions':
-        specifier: workspace:*
-        version: link:../extensions
-      '@text-editor/preset-expression':
-        specifier: workspace:*
-        version: link:../preset-expression
-      '@text-editor/utils':
-        specifier: workspace:*
-        version: link:../utils
     devDependencies:
+      '@codemirror/commands':
+        specifier: ^6.3.3
+        version: 6.8.1
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1909,10 +2095,16 @@ importers:
 
   ../../../packages/text-editor/react:
     dependencies:
-      '@text-editor/core':
+      '@coze-editor/core':
         specifier: workspace:*
         version: link:../core
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -1949,6 +2141,21 @@ importers:
       '@codemirror/merge':
         specifier: ^6.10.0
         version: 6.10.1
+      '@coze-editor/extension-placeholder':
+        specifier: workspace:*
+        version: link:../extension-placeholder
+      '@coze-editor/extensions':
+        specifier: workspace:*
+        version: link:../extensions
+      '@coze-editor/react-hooks':
+        specifier: workspace:*
+        version: link:../react-hooks
+      '@coze-editor/utils':
+        specifier: workspace:*
+        version: link:../utils
+      '@coze-editor/vscode':
+        specifier: workspace:*
+        version: link:../vscode
       '@floating-ui/dom':
         specifier: ^1.6.3
         version: 1.7.0
@@ -1958,21 +2165,6 @@ importers:
       '@lukeed/uuid':
         specifier: ^2.0.1
         version: 2.0.1
-      '@text-editor/extension-placeholder':
-        specifier: workspace:*
-        version: link:../extension-placeholder
-      '@text-editor/extensions':
-        specifier: workspace:*
-        version: link:../extensions
-      '@text-editor/react-hooks':
-        specifier: workspace:*
-        version: link:../react-hooks
-      '@text-editor/utils':
-        specifier: workspace:*
-        version: link:../utils
-      '@text-editor/vscode':
-        specifier: workspace:*
-        version: link:../vscode
       '@types/hash-sum':
         specifier: ^1.0.2
         version: 1.0.2
@@ -1983,10 +2175,16 @@ importers:
         specifier: ^2.10.0
         version: 2.12.5(@types/react@18.2.37)(react@18.2.0)
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
-      '@text-editor/react':
+      '@coze-editor/react':
         specifier: workspace:*
         version: link:../react
       '@types/node':
@@ -2001,6 +2199,12 @@ importers:
       eslint:
         specifier: 9.14.0
         version: 9.14.0(jiti@2.4.2)
+      react:
+        specifier: ~18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ~18.2.0
+        version: 18.2.0(react@18.2.0)
       tsup:
         specifier: ^8.0.1
         version: 8.5.0(@swc/core@1.11.29(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.8.0)
@@ -2010,10 +2214,19 @@ importers:
 
   ../../../packages/text-editor/react-hooks:
     devDependencies:
+      '@codemirror/commands':
+        specifier: ^6.3.3
+        version: 6.8.1
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
-      '@text-editor/react':
+      '@coze-editor/react':
         specifier: workspace:*
         version: link:../react
       '@types/node':
@@ -2028,6 +2241,12 @@ importers:
       eslint:
         specifier: 9.14.0
         version: 9.14.0(jiti@2.4.2)
+      react:
+        specifier: ~18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ~18.2.0
+        version: 18.2.0(react@18.2.0)
       tsup:
         specifier: ^8.0.1
         version: 8.5.0(@swc/core@1.11.29(@swc/helpers@0.5.17))(jiti@2.4.2)(postcss@8.5.3)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.8.0)
@@ -2041,10 +2260,16 @@ importers:
         specifier: ^6.10.0
         version: 6.10.1
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
-      '@text-editor/react':
+      '@coze-editor/react':
         specifier: workspace:*
         version: link:../react
       '@types/node':
@@ -2074,9 +2299,18 @@ importers:
 
   ../../../packages/text-editor/utils:
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
+      '@lezer/common':
+        specifier: ^1.2.2
+        version: 1.2.3
       '@types/node':
         specifier: ^22
         version: 22.13.13
@@ -2102,6 +2336,12 @@ importers:
         specifier: ^1.0.5
         version: 1.0.6
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -2120,16 +2360,22 @@ importers:
 
   ../../../packages/text-editor/vue:
     dependencies:
-      '@text-editor/core':
+      '@coze-editor/core':
         specifier: workspace:*
         version: link:../core
-      '@text-editor/core-plugins':
+      '@coze-editor/core-plugins':
         specifier: workspace:*
         version: link:../core-plugins
-      '@text-editor/extension-placeholder':
+      '@coze-editor/extension-placeholder':
         specifier: workspace:*
         version: link:../extension-placeholder
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
@@ -2145,26 +2391,35 @@ importers:
       typescript:
         specifier: ^5.8.2
         version: 5.8.2
+      vue:
+        specifier: ^3.5.0
+        version: 3.5.16(typescript@5.8.2)
 
   ../../../packages/text-editor/vue-components:
     dependencies:
+      '@coze-editor/extension-placeholder':
+        specifier: workspace:*
+        version: link:../extension-placeholder
+      '@coze-editor/extensions':
+        specifier: workspace:*
+        version: link:../extensions
+      '@coze-editor/utils':
+        specifier: workspace:*
+        version: link:../utils
       '@floating-ui/dom':
         specifier: ^1.6.3
         version: 1.7.0
-      '@text-editor/extension-placeholder':
-        specifier: workspace:*
-        version: link:../extension-placeholder
-      '@text-editor/extensions':
-        specifier: workspace:*
-        version: link:../extensions
-      '@text-editor/utils':
-        specifier: workspace:*
-        version: link:../utils
     devDependencies:
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
-      '@text-editor/vue':
+      '@coze-editor/vue':
         specifier: workspace:*
         version: link:../vue
       '@types/node':
@@ -2179,6 +2434,9 @@ importers:
       typescript:
         specifier: ^5.8.2
         version: 5.8.2
+      vue:
+        specifier: ^3.5.0
+        version: 3.5.16(typescript@5.8.2)
 
   ../../../packages/utils/fs-enhance:
     devDependencies:
@@ -6833,6 +7091,35 @@ packages:
 
   '@vscode/l10n@0.0.18':
     resolution: {integrity: sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ==}
+
+  '@vue/compiler-core@3.5.16':
+    resolution: {integrity: sha512-AOQS2eaQOaaZQoL1u+2rCJIKDruNXVBZSiUD3chnUrsoX5ZTQMaCvXlWNIfxBJuU15r1o7+mpo5223KVtIhAgQ==}
+
+  '@vue/compiler-dom@3.5.16':
+    resolution: {integrity: sha512-SSJIhBr/teipXiXjmWOVWLnxjNGo65Oj/8wTEQz0nqwQeP75jWZ0n4sF24Zxoht1cuJoWopwj0J0exYwCJ0dCQ==}
+
+  '@vue/compiler-sfc@3.5.16':
+    resolution: {integrity: sha512-rQR6VSFNpiinDy/DVUE0vHoIDUF++6p910cgcZoaAUm3POxgNOOdS/xgoll3rNdKYTYPnnbARDCZOyZ+QSe6Pw==}
+
+  '@vue/compiler-ssr@3.5.16':
+    resolution: {integrity: sha512-d2V7kfxbdsjrDSGlJE7my1ZzCXViEcqN6w14DOsDrUCHEA6vbnVCpRFfrc4ryCP/lCKzX2eS1YtnLE/BuC9f/A==}
+
+  '@vue/reactivity@3.5.16':
+    resolution: {integrity: sha512-FG5Q5ee/kxhIm1p2bykPpPwqiUBV3kFySsHEQha5BJvjXdZTUfmya7wP7zC39dFuZAcf/PD5S4Lni55vGLMhvA==}
+
+  '@vue/runtime-core@3.5.16':
+    resolution: {integrity: sha512-bw5Ykq6+JFHYxrQa7Tjr+VSzw7Dj4ldR/udyBZbq73fCdJmyy5MPIFR9IX/M5Qs+TtTjuyUTCnmK3lWWwpAcFQ==}
+
+  '@vue/runtime-dom@3.5.16':
+    resolution: {integrity: sha512-T1qqYJsG2xMGhImRUV9y/RseB9d0eCYZQ4CWca9ztCuiPj/XWNNN+lkNBuzVbia5z4/cgxdL28NoQCvC0Xcfww==}
+
+  '@vue/server-renderer@3.5.16':
+    resolution: {integrity: sha512-BrX0qLiv/WugguGsnQUJiYOE0Fe5mZTwi6b7X/ybGB0vfrPH9z0gD/Y6WOR1sGCgX4gc25L1RYS5eYQKDMoNIg==}
+    peerDependencies:
+      vue: 3.5.16
+
+  '@vue/shared@3.5.16':
+    resolution: {integrity: sha512-c/0fWy3Jw6Z8L9FmTyYfkpM5zklnqqa9+a6dz3DvONRKW2NEbh46BP0FHuLFSWi2TnQEtp91Z6zOWNrU6QiyPg==}
 
   '@webassemblyjs/ast@1.14.1':
     resolution: {integrity: sha512-nuBEDgQfm1ccRp/8bCQrx1frohyufl4JlbMMZ4P1wpeOfDhF6FQkxZJ1b/e+PLwr6X1Nhw6OLme5usuBWYBvuQ==}
@@ -13863,6 +14150,14 @@ packages:
   vscode-uri@3.1.0:
     resolution: {integrity: sha512-/BpdSx+yCQGnCvecbyXdxHDkuk55/G3xwnC0GqY4gmQ3j+A+g8kzzgB4Nk/SINjqn6+waqw3EgbVF2QKExkRxQ==}
 
+  vue@3.5.16:
+    resolution: {integrity: sha512-rjOV2ecxMd5SiAmof2xzh2WxntRcigkX/He4YFJ6WdRvVUrbt6DxC1Iujh10XLl8xCDRDtGKMeO3D+pRQ1PP9w==}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   w3c-keyname@2.2.8:
     resolution: {integrity: sha512-dpojBhNsCNN7T82Tm7k26A6G9ML3NkhDsnw9n/eoxSRlVBB4CEtIQ/KTCLI2Fwf3ataSXRhYFkQi3SlnFwPvPQ==}
 
@@ -15618,7 +15913,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.26.10
       '@babel/helper-plugin-utils': 7.27.1
-      '@babel/types': 7.26.10
+      '@babel/types': 7.27.3
       esutils: 2.0.3
 
   '@babel/preset-react@7.13.13(@babel/core@7.26.10)':
@@ -19686,6 +19981,60 @@ snapshots:
 
   '@vscode/l10n@0.0.18': {}
 
+  '@vue/compiler-core@3.5.16':
+    dependencies:
+      '@babel/parser': 7.27.3
+      '@vue/shared': 3.5.16
+      entities: 4.5.0
+      estree-walker: 2.0.2
+      source-map-js: 1.2.1
+
+  '@vue/compiler-dom@3.5.16':
+    dependencies:
+      '@vue/compiler-core': 3.5.16
+      '@vue/shared': 3.5.16
+
+  '@vue/compiler-sfc@3.5.16':
+    dependencies:
+      '@babel/parser': 7.27.3
+      '@vue/compiler-core': 3.5.16
+      '@vue/compiler-dom': 3.5.16
+      '@vue/compiler-ssr': 3.5.16
+      '@vue/shared': 3.5.16
+      estree-walker: 2.0.2
+      magic-string: 0.30.17
+      postcss: 8.5.3
+      source-map-js: 1.2.1
+
+  '@vue/compiler-ssr@3.5.16':
+    dependencies:
+      '@vue/compiler-dom': 3.5.16
+      '@vue/shared': 3.5.16
+
+  '@vue/reactivity@3.5.16':
+    dependencies:
+      '@vue/shared': 3.5.16
+
+  '@vue/runtime-core@3.5.16':
+    dependencies:
+      '@vue/reactivity': 3.5.16
+      '@vue/shared': 3.5.16
+
+  '@vue/runtime-dom@3.5.16':
+    dependencies:
+      '@vue/reactivity': 3.5.16
+      '@vue/runtime-core': 3.5.16
+      '@vue/shared': 3.5.16
+      csstype: 3.1.3
+
+  '@vue/server-renderer@3.5.16(vue@3.5.16(typescript@5.8.2))':
+    dependencies:
+      '@vue/compiler-ssr': 3.5.16
+      '@vue/shared': 3.5.16
+      vue: 3.5.16(typescript@5.8.2)
+
+  '@vue/shared@3.5.16': {}
+
   '@webassemblyjs/ast@1.14.1':
     dependencies:
       '@webassemblyjs/helper-numbers': 1.13.2
@@ -23354,7 +23703,7 @@ snapshots:
   istanbul-lib-instrument@5.2.1:
     dependencies:
       '@babel/core': 7.26.10
-      '@babel/parser': 7.26.10
+      '@babel/parser': 7.27.3
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.2.2
       semver: 6.3.1
@@ -23558,7 +23907,7 @@ snapshots:
   jscodeshift@0.15.2(@babel/preset-env@7.27.2(@babel/core@7.26.10)):
     dependencies:
       '@babel/core': 7.26.10
-      '@babel/parser': 7.26.10
+      '@babel/parser': 7.27.3
       '@babel/plugin-transform-class-properties': 7.27.1(@babel/core@7.26.10)
       '@babel/plugin-transform-modules-commonjs': 7.26.3(@babel/core@7.26.10)
       '@babel/plugin-transform-nullish-coalescing-operator': 7.27.1(@babel/core@7.26.10)
@@ -28253,6 +28602,16 @@ snapshots:
   vscode-languageserver-types@3.17.5: {}
 
   vscode-uri@3.1.0: {}
+
+  vue@3.5.16(typescript@5.8.2):
+    dependencies:
+      '@vue/compiler-dom': 3.5.16
+      '@vue/compiler-sfc': 3.5.16
+      '@vue/runtime-dom': 3.5.16
+      '@vue/server-renderer': 3.5.16(vue@3.5.16(typescript@5.8.2))
+      '@vue/shared': 3.5.16
+    optionalDependencies:
+      typescript: 5.8.2
 
   w3c-keyname@2.2.8: {}
 

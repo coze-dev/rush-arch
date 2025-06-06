@@ -2,6 +2,7 @@
   "name": "@coze-editor/preset-code",
   "version": "1.0.0-alpha.45",
   "description": "preset-code",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": [

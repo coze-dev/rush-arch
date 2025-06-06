@@ -2,6 +2,7 @@
   "name": "@coze-editor/preset-prompt",
   "version": "1.0.0-alpha.45",
   "description": "preset-prompt",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": [

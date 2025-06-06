@@ -2,6 +2,7 @@
   "name": "@coze-editor/preset-none",
   "version": "1.0.0-alpha.45",
   "description": "preset-none",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": [
