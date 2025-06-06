@@ -555,76 +555,91 @@
     {
       "packageName": "@coze-editor/editor",
       "projectFolder": "packages/text-editor/editor",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/react",
       "projectFolder": "packages/text-editor/react",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/extensions",
       "projectFolder": "packages/text-editor/extensions",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/vscode",
       "projectFolder": "packages/text-editor/vscode",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/core",
       "projectFolder": "packages/text-editor/core",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/utils",
       "projectFolder": "packages/text-editor/utils",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/preset-expression",
       "projectFolder": "packages/text-editor/preset-expression",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/preset-code",
       "projectFolder": "packages/text-editor/preset-code",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/preset-variable",
       "projectFolder": "packages/text-editor/preset-variable",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/parser-json",
       "projectFolder": "packages/text-editor/parser-json",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/extension-placeholder",
       "projectFolder": "packages/text-editor/extension-placeholder",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/extension-lint",
       "projectFolder": "packages/text-editor/extension-lint",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/preset-universal",
       "projectFolder": "packages/text-editor/preset-universal",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/core-plugins",
       "projectFolder": "packages/text-editor/core-plugins",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/preset-prompt",
       "projectFolder": "packages/text-editor/preset-prompt",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     // {
@@ -635,116 +650,139 @@
     {
       "packageName": "@coze-editor/react-components",
       "projectFolder": "packages/text-editor/react-components",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/preset-none",
       "projectFolder": "packages/text-editor/preset-none",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/react-hooks",
       "projectFolder": "packages/text-editor/react-hooks",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/extension-scrollbar",
       "projectFolder": "packages/text-editor/extension-scrollbar",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/extension-links",
       "projectFolder": "packages/text-editor/extension-links",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/code-language-shared",
       "projectFolder": "packages/text-editor/code-language-shared",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/code-language-shell",
       "projectFolder": "packages/text-editor/code-language-shell",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/lezer-parser-template",
       "projectFolder": "packages/text-editor/lezer-parser-template",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/code-language-json",
       "projectFolder": "packages/text-editor/code-language-json",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/lezer-parser-jinja2",
       "projectFolder": "packages/text-editor/lezer-parser-jinja2",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/extension-completion-icons",
       "projectFolder": "packages/text-editor/extension-completion-icons",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/code-language-python",
       "projectFolder": "packages/text-editor/code-language-python",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/lezer-parser-json",
       "projectFolder": "packages/text-editor/lezer-parser-json",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/react-merge",
       "projectFolder": "packages/text-editor/react-merge",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/extension-json-ast",
       "projectFolder": "packages/text-editor/extension-json-ast",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/extension-regexp-decorator",
       "projectFolder": "packages/text-editor/extension-regexp-decorator",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/extension-json-hover",
       "projectFolder": "packages/text-editor/extension-json-hover",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/extension-json-unnecessary-properties",
       "projectFolder": "packages/text-editor/extension-json-unnecessary-properties",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/extension-json-empty-string-value-completion",
       "projectFolder": "packages/text-editor/extension-json-empty-string-value-completion",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/vue",
       "projectFolder": "packages/text-editor/vue",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/vue-components",
       "projectFolder": "packages/text-editor/vue-components",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/extension-decorator",
       "projectFolder": "packages/text-editor/extension-decorator",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/code-language-typescript",
       "projectFolder": "packages/text-editor/code-language-typescript",
+      "shouldPublish": true,
       "tags": ["level-3"]
     }
     // {
