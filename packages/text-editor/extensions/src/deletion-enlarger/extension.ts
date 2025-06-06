@@ -1,4 +1,4 @@
-import { flatten, hasOverlap } from '@text-editor/utils';
+import { flatten, hasOverlap } from '@coze-editor/utils';
 import { ChangeSet, EditorState, Facet } from '@codemirror/state';
 
 interface DeletionEnlargerSpec {

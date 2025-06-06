@@ -1,8 +1,8 @@
 import { createPortal } from 'react-dom';
 import { useLayoutEffect, type ReactNode } from 'react';
 
-import { useHTMLElement } from '@text-editor/react-hooks';
-import { useInjector } from '@text-editor/react';
+import { useHTMLElement } from '@coze-editor/react-hooks';
+import { useInjector } from '@coze-editor/react';
 import { Decoration, EditorView, WidgetType } from '@codemirror/view';
 
 class InlayHintWidget extends WidgetType {

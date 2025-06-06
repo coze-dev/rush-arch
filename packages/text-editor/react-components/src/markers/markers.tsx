@@ -1,8 +1,8 @@
 import { useCallback, useLayoutEffect } from 'react';
 
-import { useStateField } from '@text-editor/react-hooks';
-import { useInjector } from '@text-editor/react';
-import { mergeableMarkers } from '@text-editor/extensions';
+import { useStateField } from '@coze-editor/react-hooks';
+import { useInjector } from '@coze-editor/react';
+import { mergeableMarkers } from '@coze-editor/extensions';
 
 interface MarkerDecorationSpec {
   from: number;

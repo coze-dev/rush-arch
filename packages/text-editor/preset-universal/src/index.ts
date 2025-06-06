@@ -1,4 +1,4 @@
-import { updateWholeDecorations } from '@text-editor/extensions';
+import { updateWholeDecorations } from '@coze-editor/extensions';
 import {
   focus,
   blur,
@@ -27,7 +27,7 @@ import {
   transformTextInSelection,
   getLineInfoAtPosition,
   getSelection,
-} from '@text-editor/core-plugins';
+} from '@coze-editor/core-plugins';
 import {
   option,
   api,
@@ -35,7 +35,7 @@ import {
   type InferEditorAPIFromPlugins,
   extension,
   domEventHandler,
-} from '@text-editor/core';
+} from '@coze-editor/core';
 
 const preset = [
   extension([disableKeybindingsField, focusChangeNotifier]),

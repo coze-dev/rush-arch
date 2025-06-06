@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/extensions",
+  "name": "@coze-editor/extensions",
   "version": "1.0.0-alpha.45",
   "description": "extensions",
   "author": "fengzilong",
@@ -22,10 +22,10 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
+    "@coze-editor/extension-placeholder": "workspace:*",
+    "@coze-editor/lezer-parser-template": "workspace:*",
+    "@coze-editor/utils": "workspace:*",
     "@lezer/common": "^1.2.2",
-    "@text-editor/extension-placeholder": "workspace:*",
-    "@text-editor/lezer-parser-template": "workspace:*",
-    "@text-editor/utils": "workspace:*",
     "crelt": "^1.0.5",
     "es-toolkit": "^1.25.2"
   },

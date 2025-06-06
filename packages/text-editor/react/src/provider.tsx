@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react';
 
-import { type Injector, createInjector } from '@text-editor/core';
+import { type Injector, createInjector } from '@coze-editor/core';
 
 const InternalEditorContext = createContext<unknown>(null);
 const InternalSetEditorContext = createContext<Dispatch<any> | null>(null);

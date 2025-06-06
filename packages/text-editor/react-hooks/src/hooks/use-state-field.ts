@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { type BuiltinEditorAPI, useEditor } from '@text-editor/react';
+import { type BuiltinEditorAPI, useEditor } from '@coze-editor/react';
 import {
   type EditorState,
   StateEffect,

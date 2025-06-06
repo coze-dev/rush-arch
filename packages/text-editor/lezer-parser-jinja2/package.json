@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/lezer-parser-jinja2",
+  "name": "@coze-editor/lezer-parser-jinja2",
   "version": "1.0.0-alpha.45",
   "description": "lezer-parser-jinja2",
   "author": "fengzilong",

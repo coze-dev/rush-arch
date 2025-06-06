@@ -1,1 +1,1 @@
-export * from '@text-editor/code-language-python';
+export * from '@coze-editor/code-language-python';

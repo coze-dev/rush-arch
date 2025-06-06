@@ -1,4 +1,4 @@
-import { useInjectorEffect, useLatest } from '@text-editor/react-hooks';
+import { useInjectorEffect, useLatest } from '@coze-editor/react-hooks';
 
 import { type MentionOptions } from './types';
 import { hasTrigger } from './is';

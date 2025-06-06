@@ -1,5 +1,5 @@
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { FacetCombineStrategy } from '@text-editor/utils';
+import { FacetCombineStrategy } from '@coze-editor/utils';
 import { type EditorState, Facet, StateField } from '@codemirror/state';
 
 interface Range {

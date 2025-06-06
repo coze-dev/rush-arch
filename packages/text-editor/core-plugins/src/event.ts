@@ -1,4 +1,4 @@
-import { EVENT_SILENT } from '@text-editor/core';
+import { EVENT_SILENT } from '@coze-editor/core';
 import { type EditorView, ViewPlugin, type ViewUpdate } from '@codemirror/view';
 import { StateEffect } from '@codemirror/state';
 

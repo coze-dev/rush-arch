@@ -1,12 +1,12 @@
 import { createPortal } from 'react-dom';
 import { type ReactNode, useEffect, useLayoutEffect, useRef } from 'react';
 
-import { useHTMLElement } from '@text-editor/react-hooks';
+import { useHTMLElement } from '@coze-editor/react-hooks';
 import {
   type BuiltinEditorAPI,
   useEditor,
   useInjector,
-} from '@text-editor/react';
+} from '@coze-editor/react';
 
 import { cursorBlockWidget } from './cursor-widget';
 

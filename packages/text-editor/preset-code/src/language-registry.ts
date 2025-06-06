@@ -5,14 +5,14 @@ import {
   type CompletionItem,
 } from 'vscode-languageserver-types';
 import shiki from 'codemirror-shiki';
-import { type Diagnostic, linter } from '@text-editor/extension-lint';
-import { type Link, links } from '@text-editor/extension-links';
+import { type Diagnostic, linter } from '@coze-editor/extension-lint';
+import { type Link, links } from '@coze-editor/extension-links';
 import {
   type LanguageConfig,
   MarkerTag,
   textDocumentField,
   type LanguageService,
-} from '@text-editor/code-language-shared';
+} from '@coze-editor/code-language-shared';
 import {
   EditorView,
   hoverTooltip,

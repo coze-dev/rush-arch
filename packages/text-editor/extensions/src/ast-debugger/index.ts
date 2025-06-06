@@ -1,4 +1,4 @@
-import { traverseAST } from '@text-editor/utils';
+import { traverseAST } from '@coze-editor/utils';
 import { type EditorView, ViewPlugin, type ViewUpdate } from '@codemirror/view';
 import { type EditorState } from '@codemirror/state';
 import { syntaxTree } from '@codemirror/language';

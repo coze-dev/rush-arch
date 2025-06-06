@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/react-merge",
+  "name": "@coze-editor/react-merge",
   "version": "1.0.0-alpha.45",
   "description": "react merge",
   "author": "fengzilong",
@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@coze-arch/ts-config": "workspace:*",
-    "@text-editor/react": "workspace:*",
+    "@coze-editor/react": "workspace:*",
     "@types/node": "^22",
     "@types/react": "18.2.37",
     "@types/react-dom": "18.2.15",
@@ -40,7 +40,7 @@
   "peerDependencies": {
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1",
-    "@text-editor/react": "workspace:*",
+    "@coze-editor/react": "workspace:*",
     "react": "~18.2.0",
     "react-dom": "~18.2.0"
   },

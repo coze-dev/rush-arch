@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/core-plugins",
+  "name": "@coze-editor/core-plugins",
   "version": "1.0.0-alpha.45",
   "description": "core-plugins",
   "author": "fengzilong",
@@ -22,8 +22,8 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@text-editor/core": "workspace:*",
-    "@text-editor/extension-placeholder": "workspace:*",
+    "@coze-editor/core": "workspace:*",
+    "@coze-editor/extension-placeholder": "workspace:*",
     "es-toolkit": "^1.25.2"
   },
   "devDependencies": {

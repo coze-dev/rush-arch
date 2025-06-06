@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/extension-json-hover",
+  "name": "@coze-editor/extension-json-hover",
   "version": "1.0.0-alpha.45",
   "description": "extension-json-hover",
   "author": "fengzilong",
@@ -22,8 +22,8 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@text-editor/extension-json-ast": "workspace:*",
-    "@text-editor/utils": "workspace:*"
+    "@coze-editor/extension-json-ast": "workspace:*",
+    "@coze-editor/utils": "workspace:*"
   },
   "devDependencies": {
     "@coze-arch/ts-config": "workspace:*",

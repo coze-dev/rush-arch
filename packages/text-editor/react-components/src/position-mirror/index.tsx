@@ -7,13 +7,13 @@ import {
   useState,
 } from 'react';
 
-import { type BuiltinEditorAPI } from '@text-editor/react';
-import { useEditor, useInjector } from '@text-editor/react';
+import { autoUpdate } from '@floating-ui/dom';
+import { type BuiltinEditorAPI } from '@coze-editor/react';
+import { useEditor, useInjector } from '@coze-editor/react';
 import {
   elementAtPosition,
   positionElementLayer,
-} from '@text-editor/extensions';
-import { autoUpdate } from '@floating-ui/dom';
+} from '@coze-editor/extensions';
 
 interface Props {
   position: number;

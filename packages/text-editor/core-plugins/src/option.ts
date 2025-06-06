@@ -1,4 +1,4 @@
-import { placeholder as cmPlaceholder } from '@text-editor/extension-placeholder';
+import { placeholder as cmPlaceholder } from '@coze-editor/extension-placeholder';
 import { EditorView, lineNumbers as cmLineNumbers } from '@codemirror/view';
 import { EditorState, Prec } from '@codemirror/state';
 

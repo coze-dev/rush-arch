@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/preset-expression",
+  "name": "@coze-editor/preset-expression",
   "version": "1.0.0-alpha.45",
   "description": "preset-expression",
   "author": "fengzilong",
@@ -24,9 +24,9 @@
   "dependencies": {
     "@codemirror/autocomplete": "^6.18.0",
     "@codemirror/language": "^6.10.1",
-    "@text-editor/core": "workspace:*",
-    "@text-editor/core-plugins": "workspace:*",
-    "@text-editor/extensions": "workspace:*"
+    "@coze-editor/core": "workspace:*",
+    "@coze-editor/core-plugins": "workspace:*",
+    "@coze-editor/extensions": "workspace:*"
   },
   "devDependencies": {
     "@coze-arch/ts-config": "workspace:*",

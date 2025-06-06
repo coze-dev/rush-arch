@@ -5,8 +5,8 @@ export {
   option,
   extension,
   EVENT_SILENT,
-} from '@text-editor/core';
+} from '@coze-editor/core';
 
-export { SpanWidget } from '@text-editor/utils';
+export { SpanWidget } from '@coze-editor/utils';
 
-export * from '@text-editor/extensions';
+export * from '@coze-editor/extensions';

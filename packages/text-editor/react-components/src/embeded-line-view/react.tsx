@@ -5,8 +5,8 @@ import {
   useHTMLElement,
   useInjectorEffect,
   useLatest,
-} from '@text-editor/react-hooks';
-import { type BuiltinEditorAPI, useEditor } from '@text-editor/react';
+} from '@coze-editor/react-hooks';
+import { type BuiltinEditorAPI, useEditor } from '@coze-editor/react';
 import { Decoration, EditorView, WidgetType } from '@codemirror/view';
 import { MapMode, StateEffect, StateField } from '@codemirror/state';
 

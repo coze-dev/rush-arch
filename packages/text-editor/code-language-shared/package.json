@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/code-language-shared",
+  "name": "@coze-editor/code-language-shared",
   "version": "1.0.0-alpha.45",
   "description": "code-languages",
   "author": "fengzilong",
@@ -22,8 +22,8 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@text-editor/extension-lint": "workspace:*",
-    "@text-editor/utils": "workspace:*",
+    "@coze-editor/extension-lint": "workspace:*",
+    "@coze-editor/utils": "workspace:*",
     "mitt": "^3.0.1",
     "vscode-languageserver-textdocument": "^1.0.12",
     "vscode-languageserver-types": "^3.17.5"

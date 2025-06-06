@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { type BuiltinEditorAPI, useEditor } from '@text-editor/react';
+import { type BuiltinEditorAPI, useEditor } from '@coze-editor/react';
 
 function useMouseSelectionPopup() {
   const editor = useEditor<BuiltinEditorAPI>();

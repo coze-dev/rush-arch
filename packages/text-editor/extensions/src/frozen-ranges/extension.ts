@@ -1,4 +1,4 @@
-import { hasOverlap } from '@text-editor/utils';
+import { hasOverlap } from '@coze-editor/utils';
 import { EditorSelection, EditorState, Facet } from '@codemirror/state';
 
 interface Range {

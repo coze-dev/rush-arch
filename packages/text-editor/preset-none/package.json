@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/preset-none",
+  "name": "@coze-editor/preset-none",
   "version": "1.0.0-alpha.45",
   "description": "preset-none",
   "author": "fengzilong",
@@ -22,7 +22,7 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@text-editor/core": "workspace:*"
+    "@coze-editor/core": "workspace:*"
   },
   "devDependencies": {
     "@coze-arch/ts-config": "workspace:*",

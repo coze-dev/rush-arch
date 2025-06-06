@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react';
 
-import { useInjector } from '@text-editor/react';
+import { useInjector } from '@coze-editor/react';
 
 import { diffView } from './extension';
 

@@ -1,6 +1,6 @@
 import { h, defineComponent, Fragment, onMounted, onUnmounted, type PropType, useTemplateRef, watch } from 'vue';
 import { useInjector, useSetEditor } from './hooks';
-import { create } from '@text-editor/core';
+import { create } from '@coze-editor/core';
 import type { Extension } from '@codemirror/state';
 
 export default defineComponent({

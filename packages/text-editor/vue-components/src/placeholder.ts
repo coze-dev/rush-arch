@@ -1,6 +1,6 @@
 import { h, defineComponent, onBeforeMount, onUnmounted, Teleport } from 'vue'
-import { placeholder } from '@text-editor/extension-placeholder'
-import { useInjector } from '@text-editor/vue'
+import { placeholder } from '@coze-editor/extension-placeholder'
+import { useInjector } from '@coze-editor/vue'
 
 const Placeholder = defineComponent({
   setup(_props, { slots }) {

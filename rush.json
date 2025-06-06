@@ -553,202 +553,202 @@
     },
     // ------- text editor start -------
     {
-      "packageName": "@text-editor/editor",
+      "packageName": "@coze-editor/editor",
       "projectFolder": "packages/text-editor/editor",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/react",
+      "packageName": "@coze-editor/react",
       "projectFolder": "packages/text-editor/react",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/extensions",
+      "packageName": "@coze-editor/extensions",
       "projectFolder": "packages/text-editor/extensions",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/vscode",
+      "packageName": "@coze-editor/vscode",
       "projectFolder": "packages/text-editor/vscode",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/core",
+      "packageName": "@coze-editor/core",
       "projectFolder": "packages/text-editor/core",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/utils",
+      "packageName": "@coze-editor/utils",
       "projectFolder": "packages/text-editor/utils",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/preset-expression",
+      "packageName": "@coze-editor/preset-expression",
       "projectFolder": "packages/text-editor/preset-expression",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/preset-code",
+      "packageName": "@coze-editor/preset-code",
       "projectFolder": "packages/text-editor/preset-code",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/preset-variable",
+      "packageName": "@coze-editor/preset-variable",
       "projectFolder": "packages/text-editor/preset-variable",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/parser-json",
+      "packageName": "@coze-editor/parser-json",
       "projectFolder": "packages/text-editor/parser-json",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/extension-placeholder",
+      "packageName": "@coze-editor/extension-placeholder",
       "projectFolder": "packages/text-editor/extension-placeholder",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/extension-lint",
+      "packageName": "@coze-editor/extension-lint",
       "projectFolder": "packages/text-editor/extension-lint",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/preset-universal",
+      "packageName": "@coze-editor/preset-universal",
       "projectFolder": "packages/text-editor/preset-universal",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/core-plugins",
+      "packageName": "@coze-editor/core-plugins",
       "projectFolder": "packages/text-editor/core-plugins",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/preset-prompt",
+      "packageName": "@coze-editor/preset-prompt",
       "projectFolder": "packages/text-editor/preset-prompt",
       "tags": ["level-3"]
     },
     // {
-    //   "packageName": "@text-editor/language-client",
+    //   "packageName": "@coze-editor/language-client",
     //   "projectFolder": "packages/text-editor/language-client",
     //   "tags": ["level-3"]
     // },
     {
-      "packageName": "@text-editor/react-components",
+      "packageName": "@coze-editor/react-components",
       "projectFolder": "packages/text-editor/react-components",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/preset-none",
+      "packageName": "@coze-editor/preset-none",
       "projectFolder": "packages/text-editor/preset-none",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/react-hooks",
+      "packageName": "@coze-editor/react-hooks",
       "projectFolder": "packages/text-editor/react-hooks",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/extension-scrollbar",
+      "packageName": "@coze-editor/extension-scrollbar",
       "projectFolder": "packages/text-editor/extension-scrollbar",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/extension-links",
+      "packageName": "@coze-editor/extension-links",
       "projectFolder": "packages/text-editor/extension-links",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/code-language-shared",
+      "packageName": "@coze-editor/code-language-shared",
       "projectFolder": "packages/text-editor/code-language-shared",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/code-language-shell",
+      "packageName": "@coze-editor/code-language-shell",
       "projectFolder": "packages/text-editor/code-language-shell",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/lezer-parser-template",
+      "packageName": "@coze-editor/lezer-parser-template",
       "projectFolder": "packages/text-editor/lezer-parser-template",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/code-language-json",
+      "packageName": "@coze-editor/code-language-json",
       "projectFolder": "packages/text-editor/code-language-json",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/lezer-parser-jinja2",
+      "packageName": "@coze-editor/lezer-parser-jinja2",
       "projectFolder": "packages/text-editor/lezer-parser-jinja2",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/extension-completion-icons",
+      "packageName": "@coze-editor/extension-completion-icons",
       "projectFolder": "packages/text-editor/extension-completion-icons",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/code-language-python",
+      "packageName": "@coze-editor/code-language-python",
       "projectFolder": "packages/text-editor/code-language-python",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/lezer-parser-json",
+      "packageName": "@coze-editor/lezer-parser-json",
       "projectFolder": "packages/text-editor/lezer-parser-json",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/react-merge",
+      "packageName": "@coze-editor/react-merge",
       "projectFolder": "packages/text-editor/react-merge",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/extension-json-ast",
+      "packageName": "@coze-editor/extension-json-ast",
       "projectFolder": "packages/text-editor/extension-json-ast",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/extension-regexp-decorator",
+      "packageName": "@coze-editor/extension-regexp-decorator",
       "projectFolder": "packages/text-editor/extension-regexp-decorator",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/extension-json-hover",
+      "packageName": "@coze-editor/extension-json-hover",
       "projectFolder": "packages/text-editor/extension-json-hover",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/extension-json-unnecessary-properties",
+      "packageName": "@coze-editor/extension-json-unnecessary-properties",
       "projectFolder": "packages/text-editor/extension-json-unnecessary-properties",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/extension-json-empty-string-value-completion",
+      "packageName": "@coze-editor/extension-json-empty-string-value-completion",
       "projectFolder": "packages/text-editor/extension-json-empty-string-value-completion",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/vue",
+      "packageName": "@coze-editor/vue",
       "projectFolder": "packages/text-editor/vue",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/vue-components",
+      "packageName": "@coze-editor/vue-components",
       "projectFolder": "packages/text-editor/vue-components",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/extension-decorator",
+      "packageName": "@coze-editor/extension-decorator",
       "projectFolder": "packages/text-editor/extension-decorator",
       "tags": ["level-3"]
     },
     {
-      "packageName": "@text-editor/code-language-typescript",
+      "packageName": "@coze-editor/code-language-typescript",
       "projectFolder": "packages/text-editor/code-language-typescript",
       "tags": ["level-3"]
     }
     // {
-    //   "packageName": "@text-editor/parser-jinja2",
+    //   "packageName": "@coze-editor/parser-jinja2",
     //   "projectFolder": "packages/text-editor/parser-jinja2",
     //   "tags": ["level-3"]
     // }

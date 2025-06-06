@@ -8,8 +8,8 @@ import {
   useHTMLElement,
   useInjectorEffect,
   useLatest,
-} from '@text-editor/react-hooks';
-import { useEditor, type BuiltinEditorAPI } from '@text-editor/react';
+} from '@coze-editor/react-hooks';
+import { useEditor, type BuiltinEditorAPI } from '@coze-editor/react';
 import { type EditorView, gutter as leftGutter } from '@codemirror/view';
 import { Facet, RangeSet } from '@codemirror/state';
 

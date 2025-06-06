@@ -1,10 +1,10 @@
+import { parser as pyParser } from '@lezer/python';
+import { parser as jsParser } from '@lezer/javascript';
 import {
   extension,
   type InferEditorAPIFromPlugins,
   option,
-} from '@text-editor/core';
-import { parser as pyParser } from '@lezer/python';
-import { parser as jsParser } from '@lezer/javascript';
+} from '@coze-editor/core';
 import { LRLanguage } from '@codemirror/language';
 import { autocompletion, closeBrackets } from '@codemirror/autocomplete';
 

@@ -1,5 +1,5 @@
-import { sharedPreset } from '@text-editor/preset-expression';
-import { focusableKeymap } from '@text-editor/extensions';
+import { sharedPreset } from '@coze-editor/preset-expression';
+import { focusableKeymap } from '@coze-editor/extensions';
 import {
   getMainSelectionRects,
   maxHeight,
@@ -9,13 +9,13 @@ import {
   redo,
   height,
   transformTextInSelection,
-} from '@text-editor/core-plugins';
+} from '@coze-editor/core-plugins';
 import {
   type InferEditorAPIFromPlugins,
   api,
   extension,
   option,
-} from '@text-editor/core';
+} from '@coze-editor/core';
 import { Prec } from '@codemirror/state';
 
 import { languageSupport, markdownLanguage, promptLanguage } from './language';

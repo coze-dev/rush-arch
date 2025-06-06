@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/extension-json-ast",
+  "name": "@coze-editor/extension-json-ast",
   "version": "1.0.0-alpha.45",
   "description": "extension-json-ast",
   "author": "fengzilong",
@@ -22,8 +22,8 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@text-editor/parser-json": "workspace:*",
-    "@text-editor/utils": "workspace:*",
+    "@coze-editor/parser-json": "workspace:*",
+    "@coze-editor/utils": "workspace:*",
     "vscode-languageserver-textdocument": "^1.0.12"
   },
   "devDependencies": {

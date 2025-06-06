@@ -1,1 +1,1 @@
-export * from '@text-editor/code-language-shell';
+export * from '@coze-editor/code-language-shell';

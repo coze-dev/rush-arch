@@ -4,7 +4,7 @@ import {
   type BuiltinEditorAPI,
   useEditor,
   useInjector,
-} from '@text-editor/react';
+} from '@coze-editor/react';
 import { Decoration, type EditorView } from '@codemirror/view';
 import {
   Facet,

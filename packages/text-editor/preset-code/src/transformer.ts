@@ -1,5 +1,5 @@
 import { Text } from 'text-mapping';
-import { type Transformer } from '@text-editor/code-language-shared';
+import { type Transformer } from '@coze-editor/code-language-shared';
 
 const transformerCreator =
   (processor: (text: Text) => Text): Transformer =>

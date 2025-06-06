@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 
-import { useInjector, InjectPosition } from '@text-editor/react';
+import { useInjector, InjectPosition } from '@coze-editor/react';
 import { EditorView } from '@codemirror/view';
 
 function useFocused() {

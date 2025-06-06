@@ -1,10 +1,10 @@
 import { TextDocument } from 'vscode-languageserver-textdocument';
-import { singleton } from '@text-editor/utils';
+import { singleton } from '@coze-editor/utils';
 import {
   type ASTNode,
   parse,
   findNodeAtOffset,
-} from '@text-editor/parser-json';
+} from '@coze-editor/parser-json';
 import { type EditorState, StateField } from '@codemirror/state';
 
 const field = StateField.define<ASTNode | undefined>({
@@ -45,4 +45,4 @@ export type {
   NumberASTNode,
   BooleanASTNode,
   NullASTNode,
-} from '@text-editor/parser-json';
+} from '@coze-editor/parser-json';

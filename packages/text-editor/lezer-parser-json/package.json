@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/lezer-parser-json",
+  "name": "@coze-editor/lezer-parser-json",
   "version": "1.0.0-alpha.45",
   "description": "lezer-parser-json",
   "author": "fengzilong",

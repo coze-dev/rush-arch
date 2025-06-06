@@ -1,5 +1,5 @@
 {
-  "name": "@text-editor/vue",
+  "name": "@coze-editor/vue",
   "version": "1.0.0-alpha.45",
   "description": "vue",
   "author": "fengzilong",
@@ -23,9 +23,9 @@
     "prepublishOnly": "pnpm run build"
   },
   "dependencies": {
-    "@text-editor/core": "workspace:*",
-    "@text-editor/core-plugins": "workspace:*",
-    "@text-editor/extension-placeholder": "workspace:*"
+    "@coze-editor/core": "workspace:*",
+    "@coze-editor/core-plugins": "workspace:*",
+    "@coze-editor/extension-placeholder": "workspace:*"
   },
   "devDependencies": {
     "@coze-arch/ts-config": "workspace:*",

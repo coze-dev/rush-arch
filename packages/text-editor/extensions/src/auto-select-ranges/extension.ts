@@ -1,4 +1,4 @@
-import { FacetCombineStrategy, flatten } from '@text-editor/utils';
+import { FacetCombineStrategy, flatten } from '@coze-editor/utils';
 import { ViewPlugin, type EditorView, type ViewUpdate } from '@codemirror/view';
 import { EditorSelection, type EditorState, Facet } from '@codemirror/state';
 

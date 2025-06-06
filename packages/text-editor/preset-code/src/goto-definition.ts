@@ -1,4 +1,4 @@
-import { FacetCombineStrategy } from '@text-editor/utils';
+import { FacetCombineStrategy } from '@coze-editor/utils';
 import { type EditorView, ViewPlugin } from '@codemirror/view';
 import { type Extension, Facet } from '@codemirror/state';
 
