@@ -14,6 +14,9 @@ export const runCommonCommands = (
   if (verbose) {
     postfix.push('--verbose');
   }
+  if (action === 'install') {
+    postfix.push('--to', 'tag:core');
+  }
   const args = [
     'common/scripts/install-run-rush',
     action,

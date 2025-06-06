@@ -49,7 +49,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libasound2-dev
-          node common/scripts/install-run-rush.js install -t @coze-arch/rush-increment-run-plugin
+          node common/scripts/install-run-rush.js install --to tag:core
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
           node common/scripts/install-run-rush.js increment --action install -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
 
