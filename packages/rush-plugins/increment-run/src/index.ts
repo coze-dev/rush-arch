@@ -32,25 +32,12 @@ export function createIncrementCommand(): Command {
       '需要作对比的目标分支，使用该参数前建议先执行 `git fetch`，确保对比结果的正确性',
     )
     .option('-v, --verbose', '是否打印详细日志', false)
-    .option('-a, --action <action>', '支持的增量操作命令', value => {
-      const validActions = [
-        'build',
-        'coverage',
-        'test:cov',
-        'lint',
-        'perf-defender',
-        'ts-check',
-        'style',
-        'package-audit',
-        'test',
-      ];
-      if (!validActions.includes(value)) {
-        throw new Error(
-          `Invalid action: ${value}. Valid actions are: ${validActions.join(', ')}`,
-        );
-      }
-      return value;
-    })
+    .option('-a, --action <action>', '支持的增量操作命令')
+    .option(
+      '-s, --separator <char>',
+      'Separator for the list of changed files',
+      ',',
+    )
     .action(
       async (
         options: Partial<{
@@ -59,6 +46,7 @@ export function createIncrementCommand(): Command {
           changedFiles: string;
           action: string;
           verbose: boolean;
+          separator: string;
         }>,
       ) => {
         let changedFiles: string[];
@@ -68,7 +56,7 @@ export function createIncrementCommand(): Command {
         } else if (options.changedPath) {
           changedFiles = (await readJsonFile(options.changedPath)) as string[];
         } else if (options.changedFiles) {
-          changedFiles = options.changedFiles.split(',');
+          changedFiles = options.changedFiles.split(options.separator || ',');
         } else {
           throw new Error('Nothing changes.');
         }

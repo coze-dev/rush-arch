@@ -6,7 +6,8 @@
     "outDir": "./dist",
     "module": "CommonJS",
     "target": "ES2020",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "types": ["vitest/globals"]
   },
   "include": ["__tests__", "vitest.config.ts"],
   "exclude": ["./dist"],

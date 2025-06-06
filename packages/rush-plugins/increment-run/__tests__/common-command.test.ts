@@ -1,0 +1,108 @@
+import { type Mock } from 'vitest';
+import { exec } from 'shelljs';
+import { getRushConfiguration } from '@coze-arch/monorepo-kits';
+import { logger } from '@coze-arch/logger';
+
+import { runCommonCommands } from '../src/common-command';
+
+// Mock dependencies
+vi.mock('shelljs', () => ({
+  exec: vi.fn(),
+}));
+vi.mock('@coze-arch/logger');
+vi.mock('@coze-arch/monorepo-kits');
+
+describe('runCommonCommands', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    // Mock getRushConfiguration
+    (getRushConfiguration as Mock).mockReturnValue({
+      rushJsonFolder: '/path/to/rush',
+    });
+    // Mock performance.now
+    vi.spyOn(performance, 'now')
+      .mockReturnValueOnce(0)
+      .mockReturnValueOnce(1000);
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('should execute rush command with correct arguments for test:cov action', () => {
+    const packages = ['package1', 'package2'];
+    const action = 'test:cov';
+
+    (exec as Mock).mockReturnValue({ code: 0 });
+
+    runCommonCommands(packages, action, true);
+
+    expect(exec).toHaveBeenCalledWith(
+      'node common/scripts/install-run-rush test:cov --from package1 --from package2 -v',
+      {
+        cwd: '/path/to/rush',
+        fatal: false,
+      },
+    );
+    expect(logger.info).toHaveBeenCalledWith(
+      'Start running: node common/scripts/install-run-rush test:cov --from package1 --from package2 -v',
+    );
+    expect(logger.info).toHaveBeenCalledWith(
+      'finish exec command with exit code: 0',
+    );
+  });
+
+  it('should execute rush command with correct arguments for lint action', () => {
+    const packages = ['package1'];
+    const action = 'lint';
+
+    (exec as Mock).mockReturnValue({ code: 0 });
+
+    runCommonCommands(packages, action, false);
+
+    expect(exec).toHaveBeenCalledWith(
+      'node common/scripts/install-run-rush lint --from package1',
+      {
+        cwd: '/path/to/rush',
+        fatal: false,
+      },
+    );
+  });
+
+  it('should handle command execution failure', () => {
+    const packages = ['package1'];
+    const action = 'build';
+
+    (exec as Mock).mockReturnValue({ code: 1 });
+
+    runCommonCommands(packages, action, false);
+
+    expect(logger.error).toHaveBeenCalledWith(
+      'finish exec command with exit code: 1',
+    );
+    expect(process.exitCode).toBe(1);
+  });
+
+  it('should add -v flag for specific actions', () => {
+    const testCases = [
+      { action: 'test:cov', shouldHaveVFlag: true },
+      { action: 'build', shouldHaveVFlag: true },
+      { action: 'perf-defender', shouldHaveVFlag: true },
+      { action: 'lint', shouldHaveVFlag: false },
+    ];
+
+    testCases.forEach(({ action, shouldHaveVFlag }) => {
+      (exec as Mock).mockReturnValue({ code: 0 });
+
+      runCommonCommands(['package1'], action, false);
+
+      const expectedCommand = `node common/scripts/install-run-rush ${action} --from package1${
+        shouldHaveVFlag ? ' -v' : ''
+      }`;
+      expect(exec).toHaveBeenCalledWith(expectedCommand, {
+        cwd: '/path/to/rush',
+        fatal: false,
+      });
+    });
+  });
+});

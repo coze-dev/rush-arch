@@ -1,8 +1,5 @@
-# should be optimize as increment build & test
 name: CI
 on:
-  push:
-    branches: ['main']
   pull_request:
     branches: ['main']
   # Allows you to run this workflow manually from the Actions tab
@@ -12,7 +9,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - NodeVersion: 20.14.x
+          - NodeVersion: 20.9.x
             NodeVersionDisplayName: 20
             OS: ubuntu-latest
     name: Node.js v${{ matrix.NodeVersionDisplayName }} (${{ matrix.OS }})
@@ -22,24 +19,61 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+
       - name: Config Git User
         # should be turn to ci user
         run: |
-          git config --local user.name "tecvan"
-          git config --local user.email "tecvan.fe@gmail.com"
+          git config --local user.name "flow_bot"
+          git config --local user.email "flow_bot@bytedance.com"
 
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.NodeVersion }}
 
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            common/temp/pnpm-local
+            common/temp/pnpm-store
+            common/temp/install-run
+          key: ${{ runner.os }}-rush-store-${{ hashFiles('common/config/subspaces/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-rush-store-main
+            ${{ runner.os }}-rush-store
+
       - name: Install Dependencies
-        run: node common/scripts/install-run-rush.js install
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev
+          node common/scripts/install-run-rush.js install
 
-      - name: Build
-        run: node common/scripts/install-run-rush.js build --verbose
+      - name: Increment Build
+        run: node infra/rush-x/bin/run increment --action build -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        continue-on-error: true
 
-      - name: Test:cov
-        run: node common/scripts/install-run-rush.js test:cov --verbose
+      - name: Increment Test:cov
+        run: node infra/rush-x/bin/run increment --action test:cov -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        continue-on-error: true
+
+      - name: Increment Lint
+        run: node infra/rush-x/bin/run increment --action lint -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        continue-on-error: true
+
+      # - name: Increment TS Check
+      #   run: node infra/rush-x/bin/run increment --action ts-check -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+      #   continue-on-error: true
+
+      - name: Increment Package Audit
+        run: node infra/rush-x/bin/run increment --action package-audit -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+
+      - name: Fail if any report failed
+        # NOTICE: To show all reports from the previous steps, the last step should check if any jobs failed.
+        if: env.REPORT_RESULT == 'failed'
+        run: echo "::notice::Please check 「 Summary 」 for detail info" && exit 1
 
       - name: Upload coverage reports
         uses: codecov/codecov-action@v4
@@ -47,9 +81,3 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           verbose: true
-
-      - name: Lint
-        # for current stage, we got so much lint error, so we have to ignore it
-        # TODO: it should be fixed ASAP
-        continue-on-error: true
-        run: node common/scripts/install-run-rush.js lint --verbose
