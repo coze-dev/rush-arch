@@ -1,0 +1,46 @@
+{
+  "name": "@coze-editor/core-plugins",
+  "version": "1.0.0-alpha.45",
+  "description": "core-plugins",
+  "license": "MIT",
+  "author": "fengzilong",
+  "maintainers": [],
+  "sideEffects": [
+    "**/*.css",
+    "**/*.less",
+    "**/*.sass",
+    "**/*.scss"
+  ],
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint && tsc --noEmit",
+    "prepublishOnly": "pnpm run build"
+  },
+  "dependencies": {
+    "@coze-editor/core": "workspace:*",
+    "@coze-editor/extension-placeholder": "workspace:*",
+    "es-toolkit": "^1.25.2"
+  },
+  "devDependencies": {
+    "@codemirror/commands": "^6.3.3",
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.1",
+    "@coze-arch/ts-config": "workspace:*",
+    "@types/node": "^22",
+    "eslint": "9.14.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "@codemirror/commands": "^6.3.3",
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.1"
+  },
+  "test:main": "./src/index.ts"
+}

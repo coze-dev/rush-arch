@@ -1,0 +1,1 @@
+export { MergeViewRenderer } from './renderer';
