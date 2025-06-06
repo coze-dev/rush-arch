@@ -7,7 +7,6 @@ import { type AuditDetectResult, type AuditRule } from '../types';
 const defaultEssentialFiles = [
   'eslint.config.{cjs,mjs,js,ts,mts,cts}',
   'tsconfig.json',
-  'OWNERS',
 ];
 
 export const checkEssentialConfigFiles: AuditRule<{

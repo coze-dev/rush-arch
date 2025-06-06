@@ -23,6 +23,34 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v45
 
+      - name: Process changed files
+        id: process-files
+        run: |
+          # 获取所有变更文件
+          all_files="${{ steps.changed-files.outputs.all_changed_files }}"
+
+          # 过滤掉 common/changes 目录下的文件
+          filtered_files=""
+          for file in $all_files; do
+            if [[ ! "$file" =~ ^common/changes/.* ]]; then
+              if [ -z "$filtered_files" ]; then
+                filtered_files="$file"
+              else
+                filtered_files="$filtered_files $file"
+              fi
+            fi
+          done
+
+          # 创建 JSON 格式的缓存文件
+          echo "[$( echo "$filtered_files" | sed 's/ /", "/g' | sed 's/^/"/' | sed 's/$/"/' )]" > changed-files-cache.json
+
+          # 输出过滤后的文件列表供后续步骤使用
+          echo "filtered_files=$filtered_files" >> $GITHUB_OUTPUT
+
+          echo "过滤前文件数量: $(echo $all_files | wc -w)"
+          echo "过滤后文件数量: $(echo $filtered_files | wc -w)"
+          echo "已生成缓存文件: changed-files-cache.json"
+
       - name: Config Git User
         # should be turn to ci user
         run: |
@@ -51,26 +79,26 @@ jobs:
           sudo apt-get install -y libasound2-dev
           node common/scripts/install-run-rush.js install --to tag:core
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
-          node common/scripts/install-run-rush.js increment --action install -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+          node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.filtered_files }}" -s ' '
 
       - name: Increment Build
-        run: node common/scripts/install-run-rush.js increment --action build -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        run: node common/scripts/install-run-rush.js increment --action build -p "${{ steps.process-files.outputs.filtered_files }}" -s ' '
         continue-on-error: true
 
       - name: Increment Test:cov
-        run: node common/scripts/install-run-rush.js increment --action test:cov -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        run: node common/scripts/install-run-rush.js increment --action test:cov -p "${{ steps.process-files.outputs.filtered_files }}" -s ' '
         continue-on-error: true
 
       - name: Increment Lint
-        run: node common/scripts/install-run-rush.js increment --action lint -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        run: node common/scripts/install-run-rush.js increment --action lint -p "${{ steps.process-files.outputs.filtered_files }}" -s ' '
         continue-on-error: true
 
       - name: Increment TS Check
-        run: node common/scripts/install-run-rush.js increment --action ts-check -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        run: node common/scripts/install-run-rush.js increment --action ts-check -p "${{ steps.process-files.outputs.filtered_files }}" -s ' '
         continue-on-error: true
 
       - name: Increment Package Audit
-        run: node common/scripts/install-run-rush.js increment --action package-audit -f "${{ steps.changed-files.outputs.all_changed_files }}" -s ' '
+        run: node common/scripts/install-run-rush.js increment --action package-audit -p "${{ steps.process-files.outputs.filtered_files }}" -s ' '
 
       - name: Fail if any report failed
         # NOTICE: To show all reports from the previous steps, the last step should check if any jobs failed.

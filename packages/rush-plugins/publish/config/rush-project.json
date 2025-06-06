@@ -7,6 +7,10 @@
     {
       "operationName": "ts-check",
       "outputFolderNames": ["lib"]
+    },
+    {
+      "operationName": "build",
+      "outputFolderNames": ["lib"]
     }
   ]
 }
