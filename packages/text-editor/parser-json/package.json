@@ -2,6 +2,7 @@
   "name": "@coze-editor/parser-json",
   "version": "1.0.0-alpha.45",
   "description": "parser-json",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": [

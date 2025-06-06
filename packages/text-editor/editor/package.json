@@ -2,6 +2,7 @@
   "name": "@coze-editor/editor",
   "version": "1.0.0-alpha.45",
   "description": "flow-lang-sdk",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": [

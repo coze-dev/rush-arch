@@ -2,6 +2,7 @@
   "name": "@coze-editor/preset-universal",
   "version": "1.0.0-alpha.45",
   "description": "preset-universal",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": [

@@ -2,6 +2,7 @@
   "name": "@coze-editor/preset-variable",
   "version": "1.0.0-alpha.45",
   "description": "preset-variable",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": [

@@ -2,6 +2,7 @@
   "name": "@coze-editor/vue",
   "version": "1.0.0-alpha.45",
   "description": "vue",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": [

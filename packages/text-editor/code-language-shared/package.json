@@ -2,6 +2,7 @@
   "name": "@coze-editor/code-language-shared",
   "version": "1.0.0-alpha.45",
   "description": "code-languages",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": [

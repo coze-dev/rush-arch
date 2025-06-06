@@ -2,6 +2,7 @@
   "name": "@coze-editor/react-merge",
   "version": "1.0.0-alpha.45",
   "description": "react merge",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": [

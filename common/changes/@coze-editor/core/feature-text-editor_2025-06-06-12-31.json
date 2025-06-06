@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/core",
+      "comment": "add LICENSE files",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/core",
+  "email": "19969954162@163.com"
+}

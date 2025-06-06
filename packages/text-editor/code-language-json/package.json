@@ -2,6 +2,7 @@
   "name": "@coze-editor/code-language-json",
   "version": "1.0.0-alpha.45",
   "description": "code-language-json",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": [

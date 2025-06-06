@@ -2,6 +2,7 @@
   "name": "@coze-editor/code-language-typescript",
   "version": "1.0.0-alpha.45",
   "description": "code-language-typescript",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": true,

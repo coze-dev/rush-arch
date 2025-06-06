@@ -2,6 +2,7 @@
   "name": "@coze-editor/core",
   "version": "1.0.0-alpha.45",
   "description": "core",
+  "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
   "sideEffects": [
