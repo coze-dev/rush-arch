@@ -22,6 +22,8 @@
     "prepublishOnly": "pnpm run build"
   },
   "devDependencies": {
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.1",
     "@coze-arch/ts-config": "workspace:*",
     "@types/node": "^22",
     "@with/svg-to-fonts": "^0.3.0",

@@ -60,7 +60,7 @@
 
    * The default value is false.
    */
-  "autoInstallPeers": true,
+  "autoInstallPeers": false,
 
   /**
    * If true, then Rush will add the `--strict-peer-dependencies` command-line parameter when
