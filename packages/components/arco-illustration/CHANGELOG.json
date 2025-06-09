@@ -1,0 +1,17 @@
+{
+  "name": "@coze-arch/arco-illustration",
+  "entries": [
+    {
+      "version": "0.0.2",
+      "tag": "HEAD",
+      "date": "2025-06-09T07:29:24.973Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "setup npmrc"
+          }
+        ]
+      }
+    }
+  ]
+}

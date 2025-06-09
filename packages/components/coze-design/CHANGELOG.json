@@ -1,0 +1,26 @@
+{
+  "name": "@coze-arch/coze-design",
+  "entries": [
+    {
+      "version": "0.0.2",
+      "tag": "HEAD",
+      "date": "2025-06-09T07:29:24.975Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "rename coze to coze-arch"
+          },
+          {
+            "comment": "fix eslint problems"
+          },
+          {
+            "comment": "coze-design import"
+          },
+          {
+            "comment": "type"
+          }
+        ]
+      }
+    }
+  ]
+}
