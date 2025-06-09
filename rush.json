@@ -553,6 +553,11 @@
     },
     // ------- text editor start -------
     {
+      "packageName": "@coze-editor/eslint-config",
+      "projectFolder": "packages/text-editor/eslint-config",
+      "tags": ["config"]
+    },
+    {
       "packageName": "@coze-editor/editor",
       "projectFolder": "packages/text-editor/editor",
       "shouldPublish": true,

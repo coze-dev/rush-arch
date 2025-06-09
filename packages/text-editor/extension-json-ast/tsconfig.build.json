@@ -17,6 +17,9 @@
       "path": "../../../config/ts-config/tsconfig.build.json"
     },
     {
+      "path": "../eslint-config/tsconfig.build.json"
+    },
+    {
       "path": "../parser-json/tsconfig.build.json"
     },
     {

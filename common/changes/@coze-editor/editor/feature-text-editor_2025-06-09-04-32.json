@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/editor",
+      "comment": "add ESLint config in each package",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/editor",
+  "email": "19969954162@163.com"
+}

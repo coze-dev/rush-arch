@@ -23,6 +23,9 @@
       "path": "../core/tsconfig.build.json"
     },
     {
+      "path": "../eslint-config/tsconfig.build.json"
+    },
+    {
       "path": "../extensions/tsconfig.build.json"
     }
   ]

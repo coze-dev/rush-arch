@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/vue",
+      "comment": "disable React ESLint rules for vue packages",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/vue",
+  "email": "19969954162@163.com"
+}

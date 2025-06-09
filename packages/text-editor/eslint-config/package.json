@@ -1,0 +1,25 @@
+{
+  "name": "@coze-editor/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "author": "fengzilong",
+  "maintainers": [],
+  "main": "src/index.js",
+  "scripts": {
+    "build": "exit 0",
+    "dev": "exit",
+    "lint": "eslint ./ --cache --quiet",
+    "test": "exit",
+    "test:cov": "exit"
+  },
+  "dependencies": {
+    "@coze-arch/eslint-config": "workspace:*"
+  },
+  "devDependencies": {
+    "@coze-arch/ts-config": "workspace:*",
+    "@coze-editor/eslint-config": "workspace:*",
+    "@types/eslint": "~9.6.1",
+    "@types/node": "^22",
+    "typescript": "^5.8.2"
+  }
+}
