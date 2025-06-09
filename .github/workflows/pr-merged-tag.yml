@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - fix/publish-in-main
     paths:
       - '**/package.json'
 
@@ -29,8 +30,8 @@ jobs:
 
       - name: Config Git User
         run: |
-          git config --local user.name "tecvan"
-          git config --local user.email "tecvan.fe@gmail.com"
+          git config --local user.name "flow_bot"
+          git config --local user.email "flow_bot@bytedance.com"
 
       - name: Install jq
         run: sudo apt-get install jq
@@ -105,7 +106,7 @@ jobs:
       - name: Run Release
         if: steps.check_version.outputs.has_changes == 'true'
         run: |
-          git tag --points-at ${{ github.event.head_commit.id }}
+          echo "${{ steps.check_version.outputs.tags_json }}"
           node common/scripts/install-run-rush.js release --commit ${{ github.event.head_commit.id }}
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
