@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { useCallback, useLayoutEffect } from 'react';
 
 import { useStateField } from '@coze-editor/react-hooks';

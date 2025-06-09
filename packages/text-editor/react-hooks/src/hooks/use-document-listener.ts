@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { Facet, StateField, type Text } from '@codemirror/state';
 
 import { useLatest } from './use-latest';

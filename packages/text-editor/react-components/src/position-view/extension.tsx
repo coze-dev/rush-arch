@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { type Tooltip, showTooltip } from '@codemirror/view';
 import { StateEffect, StateField } from '@codemirror/state';
 

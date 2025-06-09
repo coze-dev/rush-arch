@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { pack } from '@with/svg-to-fonts'

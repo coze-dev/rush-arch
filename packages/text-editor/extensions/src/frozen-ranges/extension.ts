@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { hasOverlap } from '@coze-editor/utils';
 import { EditorSelection, EditorState, Facet } from '@codemirror/state';
 

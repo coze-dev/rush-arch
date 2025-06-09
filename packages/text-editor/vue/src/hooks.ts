@@ -1,5 +1,8 @@
-import { createInjector, type Injector } from '@coze-editor/core';
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { inject, provide, shallowRef, type ShallowRef } from 'vue';
+import { createInjector, type Injector } from '@coze-editor/core';
 
 const EditorSymbol = Symbol();
 const SetEditorSymbol = Symbol();

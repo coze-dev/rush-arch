@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { Decoration, type DecorationSet, EditorView } from '@codemirror/view';
 import { type EditorState, StateField, type Range } from '@codemirror/state';
 

@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { tags as t } from '@lezer/highlight';
 import { EditorView } from '@codemirror/view';
 

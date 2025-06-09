@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 /* eslint-disable */
 import { printTree } from "@lezer-unofficial/printer"
 import { parser } from './index'

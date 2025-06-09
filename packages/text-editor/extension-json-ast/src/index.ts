@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { singleton } from '@coze-editor/utils';
 import {

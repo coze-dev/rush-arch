@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { type Disposable } from 'vscode-languageserver-protocol/browser'
 
 const timer = {

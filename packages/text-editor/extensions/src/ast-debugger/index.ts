@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { traverseAST } from '@coze-editor/utils';
 import { type EditorView, ViewPlugin, type ViewUpdate } from '@codemirror/view';
 import { type EditorState } from '@codemirror/state';

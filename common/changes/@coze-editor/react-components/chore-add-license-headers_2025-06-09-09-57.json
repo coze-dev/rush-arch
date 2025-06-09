@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react-components",
+      "comment": "add license header by running rush license-header",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/react-components",
+  "email": "stream-pipe@users.noreply.github.com"
+}

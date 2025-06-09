@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { useInjectorEffect, useLatest } from '@coze-editor/react-hooks';
 
 import { type MentionOptions } from './types';

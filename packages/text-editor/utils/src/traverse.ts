@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { NodeProp, type TreeCursor } from '@lezer/common';
 
 // TODO: 优化对外 options

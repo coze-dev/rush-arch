@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 // modified from @codemirror/view
 // updates:
 // - support handle user events(remove pointerEvents = "none", remove cloneNode)

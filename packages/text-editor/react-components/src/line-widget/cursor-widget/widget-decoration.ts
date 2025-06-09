@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { Decoration, WidgetType } from '@codemirror/view';
 
 import { type CursorWidgetConfig } from './common';

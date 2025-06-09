@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 const FacetCombineStrategy = {
   Flatten<T>(values: readonly T[][]): T[] {
     return values.reduce((memo, current) => [...memo, ...current], []);

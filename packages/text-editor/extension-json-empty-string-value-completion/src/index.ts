@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { FacetCombineStrategy } from '@coze-editor/utils';
 import astField, {
   type ArrayASTNode,

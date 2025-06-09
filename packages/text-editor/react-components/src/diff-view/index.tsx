@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { useLayoutEffect } from 'react';
 
 import { useInjector } from '@coze-editor/react';

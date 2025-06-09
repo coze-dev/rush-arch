@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { type IToken, Scanner, TokenType } from './scanner'
 import * as nodes from './node'
 

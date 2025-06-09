@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 export { CursorMirror, SelectionSide } from './cursor-mirror';
 
 export { PositionMirror } from './position-mirror';

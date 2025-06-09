@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { type SyntaxNode } from '@lezer/common';
 import { type EditorState } from '@codemirror/state';
 import { syntaxTree } from '@codemirror/language';

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/vue-components",
+      "comment": "add license header by running rush license-header",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/vue-components",
+  "email": "stream-pipe@users.noreply.github.com"
+}

@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 export { useStateField } from './use-state-field';
 
 export { useRangesManager } from './use-ranges-manager';

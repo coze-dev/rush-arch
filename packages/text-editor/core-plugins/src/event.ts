@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { EVENT_SILENT } from '@coze-editor/core';
 import { type EditorView, ViewPlugin, type ViewUpdate } from '@codemirror/view';
 import { StateEffect } from '@codemirror/state';

@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Emitter, type Event, DidChangeTextDocumentNotification, type DidChangeTextDocumentParams, VersionedTextDocumentIdentifier, TextDocumentSyncKind } from 'vscode-languageserver-protocol/browser';
 

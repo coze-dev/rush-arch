@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extension-decorator",
+      "comment": "add license header by running rush license-header",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/extension-decorator",
+  "email": "stream-pipe@users.noreply.github.com"
+}

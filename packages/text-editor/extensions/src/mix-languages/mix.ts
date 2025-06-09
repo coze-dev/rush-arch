@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { parseMixed } from '@lezer/common';
 import { parser as templateParser } from '@coze-editor/lezer-parser-template';
 import { type Language, LRLanguage } from '@codemirror/language';

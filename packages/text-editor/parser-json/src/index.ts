@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 // Modified from
 // vscode-json-languageservice
 //   - Tag: 5.4.1

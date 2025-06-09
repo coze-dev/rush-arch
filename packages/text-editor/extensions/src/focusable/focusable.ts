@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { type EditorView, WidgetType, keymap } from '@codemirror/view';
 
 // function blockAt(view: EditorView, pos: number): BlockInfo {

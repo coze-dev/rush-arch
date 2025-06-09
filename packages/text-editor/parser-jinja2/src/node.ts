@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 interface NodeConstructor<T> {
   new(offset?: number, len?: number): T;
 }

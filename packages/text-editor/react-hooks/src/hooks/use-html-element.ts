@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { useState } from 'react';
 
 function useHTMLElement(defaultTagName = 'div') {

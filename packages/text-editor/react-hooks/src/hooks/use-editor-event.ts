@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 // WHY use-editor-event: avoid conflicts with React hook: useEvent
 
 import { useEffect } from 'react';

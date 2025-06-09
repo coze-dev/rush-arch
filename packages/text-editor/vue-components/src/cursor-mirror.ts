@@ -1,9 +1,21 @@
-import { defineComponent, onBeforeMount, onMounted, onUnmounted, type PropType } from 'vue';
-import { type BuiltinEditorAPI } from '@coze-editor/vue';
-import { elementAtPosition, positionElementLayer, SelectionSide } from '@coze-editor/extensions';
-import { autoUpdate } from '@floating-ui/dom';
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
 
+import {
+  defineComponent,
+  onBeforeMount,
+  onMounted,
+  onUnmounted,
+  type PropType,
+} from 'vue';
+import { autoUpdate } from '@floating-ui/dom';
+import { type BuiltinEditorAPI } from '@coze-editor/vue';
 import { useEditorRef, useInjector } from '@coze-editor/vue';
+import {
+  elementAtPosition,
+  positionElementLayer,
+  SelectionSide,
+} from '@coze-editor/extensions';
 
 const CursorMirror = defineComponent({
   props: {
@@ -13,13 +25,13 @@ const CursorMirror = defineComponent({
   },
 
   setup({ side, onChange, onVisibleChange }, { expose }) {
-    const injector = useInjector()
-    const editor = useEditorRef<BuiltinEditorAPI>()
-    const dom = document.createElement('div')
+    const injector = useInjector();
+    const editor = useEditorRef<BuiltinEditorAPI>();
+    const dom = document.createElement('div');
 
-    expose({ element: dom })
+    expose({ element: dom });
 
-    let eject: (() => void) | null = null
+    let eject: (() => void) | null = null;
     onBeforeMount(() => {
       eject = injector.inject([
         elementAtPosition.of({
@@ -27,80 +39,85 @@ const CursorMirror = defineComponent({
           pos: side!,
         }),
         positionElementLayer,
-      ])
-    })
+      ]);
+    });
     onUnmounted(() => {
       if (typeof eject === 'function') {
-        eject()
+        eject();
       }
-    })
+    });
 
     // watch for position change
-    let disposeUpdateWatcher: (() => void) | null = null
+    let disposeUpdateWatcher: (() => void) | null = null;
     onMounted(() => {
       const floating = document.createElement('div');
       document.body.appendChild(floating);
 
-      const dispose = autoUpdate(dom, floating, () => {
-        if (typeof onChange === 'function') {
-          onChange()
-        }
-      }, { animationFrame: true });
+      const dispose = autoUpdate(
+        dom,
+        floating,
+        () => {
+          if (typeof onChange === 'function') {
+            onChange();
+          }
+        },
+        { animationFrame: true },
+      );
 
       disposeUpdateWatcher = () => {
         document.body.removeChild(floating);
         dispose();
-      }
-    })
+      };
+    });
     onUnmounted(() => {
       if (typeof disposeUpdateWatcher === 'function') {
-        disposeUpdateWatcher()
-        disposeUpdateWatcher = null
+        disposeUpdateWatcher();
+        disposeUpdateWatcher = null;
       }
-    })
+    });
 
     // watch for visible change
-    let disposeVisibleWatcher: (() => void) | null = null
+    let disposeVisibleWatcher: (() => void) | null = null;
     onMounted(() => {
       if (!editor) {
         return;
       }
 
-      const view = editor.value!.$view
+      const view = editor.value!.$view;
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (typeof onVisibleChange === 'function') {
-            onVisibleChange(entry.isIntersecting);
-          }
-        });
-      }, {
-        root: view.scrollDOM,
-        threshold: 0,
-      });
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (typeof onVisibleChange === 'function') {
+              onVisibleChange(entry.isIntersecting);
+            }
+          });
+        },
+        {
+          root: view.scrollDOM,
+          threshold: 0,
+        },
+      );
 
       observer.observe(dom);
 
       disposeVisibleWatcher = () => {
-        observer.disconnect()
-      }
-    })
+        observer.disconnect();
+      };
+    });
     onUnmounted(() => {
       if (typeof disposeVisibleWatcher === 'function') {
-        disposeVisibleWatcher()
-        disposeVisibleWatcher = null
+        disposeVisibleWatcher();
+        disposeVisibleWatcher = null;
       }
-    })
+    });
 
-    return {}
+    return {};
   },
 
   render() {
-    return null
+    return null;
   },
-})
+});
 
-export {
-  CursorMirror,
-  SelectionSide,
-}
+export { CursorMirror, SelectionSide };

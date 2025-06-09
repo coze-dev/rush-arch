@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { parser as pyParser } from '@lezer/python';
 import { parser as jsParser } from '@lezer/javascript';
 import {

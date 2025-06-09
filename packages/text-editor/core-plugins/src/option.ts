@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { placeholder as cmPlaceholder } from '@coze-editor/extension-placeholder';
 import { EditorView, lineNumbers as cmLineNumbers } from '@codemirror/view';
 import { EditorState, Prec } from '@codemirror/state';

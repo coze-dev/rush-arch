@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { inputRules } from '@coze-editor/extensions';
 import { replaceTextByRange } from '@coze-editor/core-plugins';
 import { LanguageSupport } from '@codemirror/language';

@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import type { ASTNode } from '@coze-editor/extension-json-ast';
 
 import { type JSONPropertyChecker } from './types';

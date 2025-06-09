@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 /// Basic rectangle type.
 interface Rect {
   readonly left: number;

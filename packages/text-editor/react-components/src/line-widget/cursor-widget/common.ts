@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 export interface CursorWidgetConfig {
   createDOM: () => HTMLElement;
   // 1-base

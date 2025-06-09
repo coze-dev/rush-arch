@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { FacetCombineStrategy, flatten } from '@coze-editor/utils';
 import { ViewPlugin, type EditorView, type ViewUpdate } from '@codemirror/view';
 import { EditorSelection, type EditorState, Facet } from '@codemirror/state';

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extension-json-ast",
+      "comment": "add license header by running rush license-header",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/extension-json-ast",
+  "email": "stream-pipe@users.noreply.github.com"
+}

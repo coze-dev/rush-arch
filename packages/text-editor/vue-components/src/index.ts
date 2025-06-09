@@ -1,8 +1,6 @@
-export {
-  Placeholder,
-} from './placeholder'
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
 
-export {
-  CursorMirror,
-  SelectionSide,
-} from './cursor-mirror'
+export { Placeholder } from './placeholder';
+
+export { CursorMirror, SelectionSide } from './cursor-mirror';

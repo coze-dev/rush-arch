@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 const SPACES = /^\s*/;
 
 export const getCodeStart = (text: string) => text.match(SPACES)![0].length;

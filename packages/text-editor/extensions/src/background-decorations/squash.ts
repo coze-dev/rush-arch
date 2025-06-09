@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import type { BackgroundDecoration } from './types';
 
 function squash(decorations: BackgroundDecoration[]) {

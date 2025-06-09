@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { createPortal } from 'react-dom';
 import React, { type ReactNode, useEffect, useState } from 'react';
 

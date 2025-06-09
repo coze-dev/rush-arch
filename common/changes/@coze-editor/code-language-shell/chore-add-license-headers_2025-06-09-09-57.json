@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/code-language-shell",
+      "comment": "add license header by running rush license-header",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/code-language-shell",
+  "email": "stream-pipe@users.noreply.github.com"
+}

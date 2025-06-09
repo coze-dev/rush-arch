@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { cursorWidgetState, setWidgetLineNumber } from './state';
 import { ConfigFacet, type CursorWidgetConfig } from './common';
 

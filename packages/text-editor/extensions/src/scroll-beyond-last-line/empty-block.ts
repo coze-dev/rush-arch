@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import type { LayerMarker } from '@codemirror/view';
 
 export class EmptyBlock implements LayerMarker {

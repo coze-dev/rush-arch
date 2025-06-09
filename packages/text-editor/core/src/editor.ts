@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import mitt, { type EventType, type Emitter } from 'mitt';
 import { EditorView } from '@codemirror/view';

@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { type LanguageConfig } from '@coze-editor/code-language-shared';
 import type { Extension } from '@codemirror/state';
 import {

@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 /* eslint-disable */
 import { Scanner, TokenType } from './scanner'
 import { Parser } from './parser'

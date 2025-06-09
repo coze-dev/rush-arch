@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { FacetCombineStrategy } from '@coze-editor/utils';
 import { type EditorState, Facet, StateField } from '@codemirror/state';

@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 // Credits to @codemirror/lint
 // copy from @codemirror/lint, 修改了 lintState 中 provide decorations 的绘制逻辑
 import elt from 'crelt';

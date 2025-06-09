@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-control-regex */
 import { TextStream } from './stream';

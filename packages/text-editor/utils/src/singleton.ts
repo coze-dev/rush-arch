@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 function singleton<T>(id: string, instance: T): T {
   const symbol = Symbol.for(id);
 

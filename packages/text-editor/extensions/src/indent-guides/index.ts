@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 /// Adapted from https://github.com/nota-lang/nota/blob/master/packages/nota-editor/lib/indentation-guides.ts 做了一些调整
 import { range } from 'es-toolkit';
 import {

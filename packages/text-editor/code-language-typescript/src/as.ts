@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { CompletionItemKind } from 'vscode-languageserver-types';
 import { ScriptElementKind } from 'typescript';
 

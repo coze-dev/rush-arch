@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 // modified from closeBrackets extension (from @codemirror/autocomplete)
 import { EditorView } from '@codemirror/view';
 import { type EditorState, Prec, type Extension } from '@codemirror/state';

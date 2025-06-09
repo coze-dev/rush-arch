@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { parseMixed } from '@lezer/common';
 import { parser as jinjaParser } from '@coze-editor/lezer-parser-jinja2';
 import { LRLanguage } from '@codemirror/language';

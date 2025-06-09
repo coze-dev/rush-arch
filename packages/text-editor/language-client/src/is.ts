@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 export function boolean(value: any): value is boolean {
 	return value === true || value === false;
 }

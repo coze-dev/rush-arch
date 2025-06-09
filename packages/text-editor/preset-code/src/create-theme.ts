@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 // from: https://github.com/vadimdemedes/thememirror/blob/main/source/create-theme.ts
 // license: MIT
 

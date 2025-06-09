@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 class SyncHook<T = unknown> {
   #fns: [string, T][] = [];
 

@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { flushSync } from 'react-dom';
 import React, { useState, useCallback } from 'react';
 import type { ReactPortal } from 'react';

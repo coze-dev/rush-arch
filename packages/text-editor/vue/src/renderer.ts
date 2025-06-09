@@ -1,7 +1,20 @@
-import { h, defineComponent, Fragment, onMounted, onUnmounted, type PropType, useTemplateRef, watch } from 'vue';
-import { useInjector, useSetEditor } from './hooks';
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
+import {
+  h,
+  defineComponent,
+  Fragment,
+  onMounted,
+  onUnmounted,
+  type PropType,
+  useTemplateRef,
+  watch,
+} from 'vue';
 import { create } from '@coze-editor/core';
 import type { Extension } from '@codemirror/state';
+
+import { useInjector, useSetEditor } from './hooks';
 
 export default defineComponent({
   props: {
@@ -12,17 +25,17 @@ export default defineComponent({
   },
 
   setup(props) {
-    const setEditor = useSetEditor()
-    const injector = useInjector()
-    const domRef = useTemplateRef<HTMLDivElement>('root')
+    const setEditor = useSetEditor();
+    const injector = useInjector();
+    const domRef = useTemplateRef<HTMLDivElement>('root');
 
-    let instance: any = null
+    let instance: any = null;
 
     onMounted(() => {
       const { render } = create({
         plugins: props.plugins ?? [],
         injector,
-      })
+      });
 
       const exported = render({
         parent: domRef.value!,
@@ -31,27 +44,30 @@ export default defineComponent({
         extensions: props.extensions,
       });
 
-      watch(() => props.options, (newOptions) => {
-        exported.$set(newOptions)
-      })
+      watch(
+        () => props.options,
+        newOptions => {
+          exported.$set(newOptions);
+        },
+      );
 
-      setEditor(exported)
+      setEditor(exported);
 
-      instance = exported
-    })
+      instance = exported;
+    });
 
     onUnmounted(() => {
       if (instance) {
-        instance.$destroy()
+        instance.$destroy();
       }
-    })
+    });
   },
 
   render() {
     return h(Fragment, null, [
       h('div', { ref: 'root' }),
       this.$slots.default ? this.$slots.default() : undefined,
-    ])
+    ]);
   },
 
   inheritAttrs: false,

@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { EditorView, layer, type ViewUpdate } from '@codemirror/view';
 
 import { EmptyBlock } from './empty-block';

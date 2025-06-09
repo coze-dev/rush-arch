@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 /* eslint-disable */
 // from: https://github.com/codemirror/legacy-modes/blob/main/mode/shell.js
 var words = {};
