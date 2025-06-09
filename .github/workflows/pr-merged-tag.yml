@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-      - fix/publish-in-main
-      - release/*
     paths:
       - '**/package.json'
 
