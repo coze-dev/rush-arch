@@ -189,10 +189,10 @@
           "./dist/types/index.d.ts"
         ],
         "icons": [
-          "./dist/types/icons.d.ts"
+          "./dist/types/components/icon/index.d.ts"
         ],
         "illustrations": [
-          "./dist/types/illustrations.d.ts"
+          "./dist/types/components/illustration/index.d.ts"
         ],
         "colors": [
           "./dist/types/components/colors/tokens/index.d.ts"
