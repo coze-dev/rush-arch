@@ -2,6 +2,18 @@
   "name": "@coze-arch/semi-theme-hand01",
   "entries": [
     {
+      "version": "0.0.3",
+      "tag": "HEAD",
+      "date": "2025-06-09T09:26:08.058Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update illustration & theme"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.2",
       "tag": "HEAD",
       "date": "2025-06-09T07:29:24.975Z",
