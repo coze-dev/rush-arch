@@ -1358,9 +1358,6 @@ importers:
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
-      '@coze-editor/eslint-config':
-        specifier: workspace:*
-        version: 'link:'
       '@types/eslint':
         specifier: ~9.6.1
         version: 9.6.1
