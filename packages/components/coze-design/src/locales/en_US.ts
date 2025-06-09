@@ -1,7 +1,7 @@
+/* eslint-disable unicorn/filename-case */
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-/* eslint-disable unicorn/filename-case */
 import type { Locale } from './interface';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

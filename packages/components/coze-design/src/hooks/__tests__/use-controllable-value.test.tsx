@@ -72,7 +72,7 @@ describe('useControllableValue', () => {
     const { result, rerender } = renderHook(
       (props: any) => useControllableValue(props),
       {
-        initialProps: { defaultValue: 'default value' } as TestProps,
+        initialProps: { defaultValue: 'default value' },
       },
     );
 
