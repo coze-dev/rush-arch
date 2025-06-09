@@ -1,0 +1,20 @@
+{
+  "name": "@coze-arch/rush-fix-ts-refers-plugin",
+  "entries": [
+    {
+      "version": "0.0.2",
+      "tag": "HEAD",
+      "date": "2025-06-09T06:40:09.638Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "build script for fix-ts-refers"
+          },
+          {
+            "comment": "setup publish for coze design"
+          }
+        ]
+      }
+    }
+  ]
+}
