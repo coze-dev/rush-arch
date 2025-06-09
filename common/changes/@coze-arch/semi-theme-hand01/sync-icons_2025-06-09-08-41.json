@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/semi-theme-hand01",
+      "comment": "update illustration & theme",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/semi-theme-hand01",
+  "email": "chenjiawei.inizio@bytedance.com"
+}

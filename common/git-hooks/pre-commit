@@ -14,4 +14,5 @@
 if [ "$PRE_LINT" != "1" ]; then
   node common/scripts/install-run-rush.js fix-ts-refers --use-cached-files --shallow --submit-changes || exit $?
   node common/scripts/install-run-rush.js -q lint-staged || exit $?
+  node common/scripts/install-run-rush.js license-header || exit $?
 fi
