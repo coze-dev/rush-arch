@@ -924,6 +924,9 @@ importers:
 
   ../../../packages/rush-plugins/run-tsc-plugin:
     devDependencies:
+      '@coze-arch/eslint-config':
+        specifier: workspace:*
+        version: link:../../../config/eslint-config
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
