@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/rush-fix-ts-refers-plugin",
+      "comment": "publish packages by tags",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/rush-fix-ts-refers-plugin",
+  "email": "tecvan.fe@qq.com"
+}

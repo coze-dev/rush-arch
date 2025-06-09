@@ -40,42 +40,56 @@ jobs:
       - name: Check Version Change and Create Tag
         id: check_version
         run: |
-          # 创建一个JSON数组来保存标签信息
-          echo "tags_json=[]" >> $GITHUB_OUTPUT
-
-          # 标记是否找到变更
+          # 初始化变量
+          TAGS_JSON="[]"
           HAS_CHANGES=false
 
+          echo "初始化 TAGS_JSON: $TAGS_JSON"
+
           # 找出所有修改过的package.json文件
-          CHANGED_PACKAGES=$(git diff --name-only HEAD^ HEAD | grep package.json)
+          CHANGED_PACKAGES=$(git diff --name-only HEAD^ HEAD | grep package.json || true)
+
+          echo "变更的 package.json 文件: $CHANGED_PACKAGES"
 
           # 对每个修改的package.json文件检查版本是否变更
           for PKG_FILE in $CHANGED_PACKAGES; do
+            echo "检查文件: $PKG_FILE"
+
             # 获取当前版本
             CURRENT_VERSION=$(cat $PKG_FILE | jq -r '.version')
+            echo "当前版本: $CURRENT_VERSION"
 
             # 获取之前的版本
-            PREVIOUS_VERSION=$(git show HEAD^:$PKG_FILE 2>/dev/null | jq -r '.version' 2>/dev/null)
+            PREVIOUS_VERSION=$(git show HEAD^:$PKG_FILE 2>/dev/null | jq -r '.version' 2>/dev/null || echo "unknown")
+            echo "之前版本: $PREVIOUS_VERSION"
 
             # 如果版本发生变化，则创建标签
-            if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ]; then
+            if [ "$CURRENT_VERSION" != "$PREVIOUS_VERSION" ] && [ "$PREVIOUS_VERSION" != "unknown" ]; then
               PKG_NAME=$(cat $PKG_FILE | jq -r '.name')
               TAG_NAME="v/${PKG_NAME}@${CURRENT_VERSION}"
 
-              echo "Version changed for $PKG_NAME: $PREVIOUS_VERSION -> $CURRENT_VERSION"
-              echo "Creating tag: $TAG_NAME"
+              echo "版本发生变化: $PREVIOUS_VERSION -> $CURRENT_VERSION"
+              echo "包名: $PKG_NAME"
+              echo "创建标签: $TAG_NAME"
 
               git tag -a "$TAG_NAME" -m "Release $PKG_NAME@$CURRENT_VERSION"
 
               # 将此标签添加到输出数组
-              tags_json=$(echo $tags_json | jq -c --arg tag "$TAG_NAME" '. += [$tag]')
+              TAGS_JSON=$(echo "$TAGS_JSON" | jq -c --arg tag "$TAG_NAME" '. += [$tag]')
               HAS_CHANGES=true
+
+              echo "更新后的 TAGS_JSON: $TAGS_JSON"
+            else
+              echo "版本未变化或无法获取之前版本，跳过"
             fi
           done
 
+          # 调试输出
+          echo "最终 TAGS_JSON: $TAGS_JSON"
+          echo "HAS_CHANGES: $HAS_CHANGES"
 
           # 输出标签JSON和变更状态
-          echo "tags_json=$tags_json" >> $GITHUB_OUTPUT
+          echo "tags_json=$TAGS_JSON" >> $GITHUB_OUTPUT
           echo "has_changes=$HAS_CHANGES" >> $GITHUB_OUTPUT
 
       - uses: actions/setup-node@v3
@@ -100,19 +114,8 @@ jobs:
       - name: Install Dependencies
         if: steps.check_version.outputs.has_changes == 'true'
         run: |
-          npm i -g @microsoft/rush@5.150.0
-          sudo apt-get update
-          sudo apt-get install -y libasound2-dev
-          node common/scripts/install-run-rush.js install
-
-      - name: Run Release
-        if: steps.check_version.outputs.has_changes == 'true'
-        run: |
           echo "tags: ${{ steps.check_version.outputs.tags_json }}"
           echo "${{ steps.check_version.outputs.has_changes }}"
-
-          echo "=== 当前分支的所有 tags ==="
-          git tag --list
 
           echo "=== 最近的 tags (按时间排序) ==="
           git tag --sort=-creatordate | head -10
@@ -121,6 +124,17 @@ jobs:
           echo '${{ steps.check_version.outputs.tags_json }}' | jq -r '.[]' | while read -r tag; do
             echo "  - $tag"
           done
+
+          git tag --points-at ${{ github.event.head_commit.id }}
+          exit 1
+          npm i -g @microsoft/rush@5.150.0
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev
+          node common/scripts/install-run-rush.js install
+
+      - name: Run Release
+        if: steps.check_version.outputs.has_changes == 'true'
+        run: |
 
           node common/scripts/install-run-rush.js release --commit ${{ github.event.head_commit.id }}
         env:
