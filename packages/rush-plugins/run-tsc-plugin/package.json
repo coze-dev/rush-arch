@@ -10,6 +10,9 @@
     "./command-line.json",
     "./rush-plugin-manifest.json"
   ],
+  "scripts": {
+    "lint": "eslint ./ --cache"
+  },
   "devDependencies": {
     "@coze-arch/eslint-config": "workspace:*",
     "@coze-arch/ts-config": "workspace:*"

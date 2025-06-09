@@ -3,7 +3,16 @@
   "compilerOptions": {
     "outDir": "dist",
     "rootDir": "./",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "tsBuildInfoFile": "dist/tsconfig.build.tsbuildinfo"
   },
-  "include": ["./command-line.json"]
+  "include": ["./command-line.json"],
+  "references": [
+    {
+      "path": "../../../config/eslint-config/tsconfig.build.json"
+    },
+    {
+      "path": "../../../config/ts-config/tsconfig.build.json"
+    }
+  ]
 }

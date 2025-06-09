@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    {
+      "path": "./tsconfig.build.json"
+    }
+  ],
+  "exclude": ["**/*"]
+}
