@@ -2,21 +2,13 @@ const { defineConfig } = require('@coze-arch/eslint-config');
 
 exports.defineWebConfig = function defineWebConfig({
   packageRoot,
+  ignores = [],
   rules,
 } = {}) {
   return defineConfig({
     packageRoot,
     preset: 'web',
-    rules: {},
-    ignores: [
-      '**/*.config.*',
-      '**/lezer-parser**',
-      '**/language-client/**',
-      '**/lezer-parser-jinja2/**',
-      '**/extension-completion-icons/svg/**',
-      '**/extension-completion-icons/scripts/**',
-      '**/*.js',
-    ],
+    ignores: ['**/*.config.*', '**/language-client/**', '**/*.js', ...ignores],
     rules: {
       '@typescript-eslint/no-empty-function': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn',
