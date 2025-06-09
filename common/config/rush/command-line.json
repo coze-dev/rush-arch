@@ -218,7 +218,7 @@
       "ignoreMissingScript": true,
       "enableParallelism": true,
       "incremental": true,
-      "shellCommand": "eslint ./ --cache",
+      "shellCommand": "eslint ./ --cache --no-error-on-unmatched-pattern",
       "ignoreDependencyOrder": true,
       "allowWarningsInSuccessfulBuild": true,
       "summary": "⭐️️ Run lint command for each package",
