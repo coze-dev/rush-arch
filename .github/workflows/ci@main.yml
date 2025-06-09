@@ -2,7 +2,8 @@
 name: CI@main
 on:
   push:
-    branches: ['main']
+    # test only
+    branches: ['main', 'ci/main-pipeline']
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 jobs:
