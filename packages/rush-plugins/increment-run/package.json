@@ -17,7 +17,7 @@
     "rush-plugin-manifest.json"
   ],
   "scripts": {
-    "build": "exit 0",
+    "build": "rollup -c",
     "lint": "eslint ./ --cache",
     "test": "vitest --run --passWithNoTests",
     "test:cov": "npm run test -- --coverage"
@@ -51,9 +51,9 @@
     "stylelint": "^15.11.0"
   },
   "cozePublishConfig": {
-    "main": "dist/index.js",
+    "main": "lib/index.js",
     "bin": {
-      "rush-increment-run": "dist/index.js"
+      "rush-increment-run": "lib/index.js"
     }
   }
 }
