@@ -1,0 +1,20 @@
+{
+  "name": "@coze-arch/rush-increment-run-plugin",
+  "entries": [
+    {
+      "version": "0.0.2",
+      "tag": "HEAD",
+      "date": "2025-06-09T02:35:42.024Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "incremently run rush command for ci env"
+          },
+          {
+            "comment": "test"
+          }
+        ]
+      }
+    }
+  ]
+}
