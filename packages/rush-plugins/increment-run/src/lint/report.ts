@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { isCI } from '../utils/env';
 import { addReport, CIReportConclusion } from '../utils/ci-interactor';
 import { stopProcess } from '../helper';

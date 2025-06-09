@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { exec as _exec, type ExecOptions } from 'shelljs';
 
 export interface ExecResult {

@@ -80,7 +80,6 @@ export { default as IconCozSpatialStylizationFill } from './IconCozSpatialStyliz
 export { default as IconCozRotationFill } from './IconCozRotationFill';
 export { default as IconCozPromptOptimize } from './IconCozPromptOptimize';
 export { default as IconCozText } from './IconCozText';
-export { default as IconCozImageExtend } from './IconCozImageExtend';
 export { default as IconCozPerspectiveCorrect } from './IconCozPerspectiveCorrect';
 export { default as IconCozScaling } from './IconCozScaling';
 export { default as IconCozSunFill } from './IconCozSunFill';
@@ -494,5 +493,20 @@ export { default as IconCozInfinity } from './IconCozInfinity';
 export { default as IconCozHistory } from './IconCozHistory';
 export { default as IconCozUserSwitch } from './IconCozUserSwitch';
 export { default as IconCozCompassFill } from './IconCozCompassFill';
+export { default as IconCozCallback } from './IconCozCallback';
+export { default as IconCozCallbackFill } from './IconCozCallbackFill';
+export { default as IconCozAsynchronousTaskFill } from './IconCozAsynchronousTaskFill';
+export { default as IconCozAspectRatio43 } from './IconCozAspectRatio43';
+export { default as IconCozAspectRatio219 } from './IconCozAspectRatio219';
+export { default as IconCozImageExtend } from './IconCozImageExtend';
+export { default as IconCozAspectRatio916 } from './IconCozAspectRatio916';
+export { default as IconCozAspectRatio34 } from './IconCozAspectRatio34';
+export { default as IconCozAspectRatio11 } from './IconCozAspectRatio11';
+export { default as IconCozAspectRatio169 } from './IconCozAspectRatio169';
+export { default as IconCozDesktopFill } from './IconCozDesktopFill';
+export { default as IconCozVideoCameraFill } from './IconCozVideoCameraFill';
+export { default as IconCozDesktopSlashFill } from './IconCozDesktopSlashFill';
+export { default as IconCozVideoCameraSlashFill } from './IconCozVideoCameraSlashFill';
+export { default as IconCozVideoCamera } from './IconCozVideoCamera';
 
 export * from './type';

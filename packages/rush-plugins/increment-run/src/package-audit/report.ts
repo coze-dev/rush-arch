@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { type AuditPackageReports } from '@coze-arch/package-audit';
 import { logger } from '@coze-arch/logger';
 

@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import path from 'path';
 
 import { exec as _exec } from 'shelljs';

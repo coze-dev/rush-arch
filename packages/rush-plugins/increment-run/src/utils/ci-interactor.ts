@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { promises as fs } from 'fs';
 
 import * as core from '@actions/core';

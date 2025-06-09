@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 // fix ts config references of each package
 import path from 'path';
 import { writeFile } from 'fs/promises';

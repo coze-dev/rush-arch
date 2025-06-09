@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/arco-illustration",
+      "comment": "update arco-icon to 0.0.100",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/arco-illustration",
+  "email": "289056872@qq.com"
+}

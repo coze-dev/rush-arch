@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { logger } from '@coze-arch/logger';
 
 import { groupChangedFilesByProject } from './utils/project-analyzer';

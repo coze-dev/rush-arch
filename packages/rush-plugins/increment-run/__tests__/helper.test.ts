@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { type Mock } from 'vitest';
 import { exec } from 'shelljs';
 import { logger as log } from '@coze-arch/logger';

@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { auditPackage } from '@coze-arch/package-audit';
 import { lookupOnly } from '@coze-arch/monorepo-kits';
 

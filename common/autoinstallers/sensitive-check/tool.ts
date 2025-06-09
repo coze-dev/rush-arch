@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import * as fs from 'fs';
 import * as path from 'path';
 import { exec } from 'child_process';

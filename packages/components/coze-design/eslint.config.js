@@ -7,6 +7,7 @@ module.exports = defineConfig({
   packageRoot: __dirname,
   preset: 'web',
   rules: {
+    'unicorn/filename-case': 'off',
     'no-restricted-imports': 'off',
     'max-len': [
       'error',

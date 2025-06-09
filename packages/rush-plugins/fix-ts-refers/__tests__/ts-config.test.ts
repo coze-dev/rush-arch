@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { writeFile } from 'fs/promises';
 
 import { vi, type Mock } from 'vitest';

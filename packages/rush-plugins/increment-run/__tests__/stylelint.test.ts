@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import stylelint from 'stylelint';
 import { isFileExists } from '@coze-arch/fs-enhance';
 

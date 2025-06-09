@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { describe, expect, test, vi, type Mock } from 'vitest';
 
 import { groupChangedFilesByProject } from '../src/utils/project-analyzer';

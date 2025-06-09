@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { RushConfiguration } from '@rushstack/rush-sdk';
 
 export const getRushConfiguration = (() => {

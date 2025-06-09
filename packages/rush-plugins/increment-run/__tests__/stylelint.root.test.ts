@@ -1,3 +1,6 @@
+//  Copyright (c) 2025 coze-dev
+//  SPDX-License-Identifier: MIT
+
 import { runStylelint } from '../src/stylelint';
 
 vi.mock('../src/stylelint/stylelint', () => ({ runLintInProject: vi.fn() }));

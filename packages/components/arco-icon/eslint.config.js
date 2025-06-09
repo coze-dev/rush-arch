@@ -7,6 +7,7 @@ module.exports = defineConfig({
   packageRoot: __dirname,
   preset: 'web',
   rules: {
+    'max-lines': 'off',
     '@coze-arch/no-batch-import-or-export': 'off',
     '@typescript-eslint/naming-convention': 'off',
     '@typescript-eslint/consistent-type-imports': 'off',
