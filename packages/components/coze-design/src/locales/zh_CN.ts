@@ -1,9 +1,6 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-//  Copyright (c) 2025 coze-dev
-//  SPDX-License-Identifier: MIT
-
 import type { Locale } from './interface';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
