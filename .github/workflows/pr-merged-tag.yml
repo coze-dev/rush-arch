@@ -29,8 +29,8 @@ jobs:
 
       - name: Config Git User
         run: |
-          git config --local user.name "tecvan"
-          git config --local user.email "tecvan.fe@gmail.com"
+          git config --local user.name "flow_bot"
+          git config --local user.email "flow_bot@bytedance.com"
 
       - name: Install jq
         run: sudo apt-get install jq
