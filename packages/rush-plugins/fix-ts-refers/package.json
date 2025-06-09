@@ -1,6 +1,6 @@
 {
   "name": "@coze-arch/rush-fix-ts-refers-plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "rush plugin for auto fix ts references in ts projects",
   "license": "ISC",
   "author": "tecvan.fe@gmail.com",
