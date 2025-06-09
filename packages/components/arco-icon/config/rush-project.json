@@ -1,6 +1,10 @@
 {
   "operationSettings": [
     {
+      "operationName": "build",
+      "outputFolderNames": ["dist"]
+    },
+    {
       "operationName": "ts-check",
       "outputFolderNames": ["./dist"]
     }

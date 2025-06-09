@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/rush-fix-ts-refers-plugin",
+      "comment": "config",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/rush-fix-ts-refers-plugin",
+  "email": "289056872@qq.com"
+}
