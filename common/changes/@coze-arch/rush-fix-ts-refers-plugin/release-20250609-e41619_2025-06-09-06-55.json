@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@coze-arch/rush-fix-ts-refers-plugin",
-      "comment": "build script for fix-ts-refers",
+      "comment": "publish packages by tags",
       "type": "patch"
     }
   ],
   "packageName": "@coze-arch/rush-fix-ts-refers-plugin",
-  "email": "tecvan.fe@gmail.com"
+  "email": "tecvan.fe@qq.com"
 }

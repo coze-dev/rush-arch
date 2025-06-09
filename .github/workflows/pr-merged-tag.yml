@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - fix/publish-in-main
+      - release/*
     paths:
       - '**/package.json'
 
@@ -106,7 +107,9 @@ jobs:
       - name: Run Release
         if: steps.check_version.outputs.has_changes == 'true'
         run: |
-          echo "${{ steps.check_version.outputs.tags_json }}"
+          echo "tags: ${{ steps.check_version.outputs.tags_json }}"
+          echo "${{ steps.check_version.outputs.tags_json }}" | tr -d '[]' | tr ',' '\n' | while read -r tag; do
+          echo "${{ steps.check_version.outputs.has_changes }}"
           node common/scripts/install-run-rush.js release --commit ${{ github.event.head_commit.id }}
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
