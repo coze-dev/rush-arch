@@ -891,6 +891,9 @@ importers:
       '@coze-arch/logger':
         specifier: workspace:*
         version: link:../../utils/logger
+      '@coze-arch/monorepo-kits':
+        specifier: workspace:*
+        version: link:../../utils/monorepo-kits
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config

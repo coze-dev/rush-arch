@@ -9,24 +9,66 @@ import type {
 import { getRushConfiguration } from './rush-config';
 
 export const lookupTo = (to: string) => {
+  const cached = new Map<string, string[]>();
   const config = getRushConfiguration();
-  const projects = config.projects.filter(p => p.packageName === to);
-  if (projects.length === 0) {
-    throw new Error(`Project ${to} not found`);
-  }
-  const project = projects[0];
-  const deps = Array.from(project.dependencyProjects.values()).map(
-    p => p.packageName,
-  );
-  return deps;
+  const core = (pkgName: string) => {
+    if (cached.has(pkgName)) {
+      return cached.get(pkgName);
+    }
+    const result: string[] = [pkgName];
+    cached.set(pkgName, result);
+    const projects = config.projects.filter(p => p.packageName === pkgName);
+    if (projects.length === 0) {
+      throw new Error(`Project ${pkgName} not found`);
+    }
+    const project = projects[0];
+    const deps = Array.from(project.dependencyProjects.values()).map(
+      p => p.packageName,
+    );
+    result.push(...deps);
+    deps.forEach(dep => {
+      const subPkgs = core(dep);
+      if (subPkgs) {
+        result.push(...subPkgs);
+      }
+    });
+    return result;
+  };
+  const result = core(to);
+  return [...new Set(result)];
 };
 
 export const lookupFrom = (from: string) => {
+  const cached = new Map<string, Set<string>>();
   const config = getRushConfiguration();
-  const projects = config.projects.filter(p => p.packageName === from);
-  if (projects.length === 0) {
-    throw new Error(`Project ${from} not found`);
-  }
+  const core = (pkgName: string) => {
+    if (cached.has(pkgName)) {
+      return cached.get(pkgName);
+    }
+    const result = new Set<string>();
+    cached.set(pkgName, result);
+    const projects = config.projects.filter(p => p.packageName === pkgName);
+    if (projects.length === 0) {
+      throw new Error(`Project ${pkgName} not found`);
+    }
+    const project = projects[0];
+    const deps = Array.from([
+      ...project.dependencyProjects.values(),
+      ...project.consumingProjects.values(),
+    ]).map(p => p.packageName);
+    deps.forEach(dep => {
+      result.add(dep);
+      const subPkgs = cached.has(dep) ? cached.get(dep) : core(dep);
+      if (subPkgs) {
+        subPkgs.forEach(p => {
+          result.add(p);
+        });
+      }
+    });
+    return result;
+  };
+  const result = core(from);
+  return [...new Set(result)];
 };
 
 export const lookupOnly = (packageName: string) => {

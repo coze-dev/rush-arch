@@ -46,6 +46,7 @@
     "@coze-arch/eslint-config": "workspace:*",
     "@coze-arch/fs-enhance": "workspace:*",
     "@coze-arch/logger": "workspace:*",
+    "@coze-arch/monorepo-kits": "workspace:*",
     "@coze-arch/ts-config": "workspace:*",
     "@coze-arch/vitest-config": "workspace:*",
     "@types/node": "^22",

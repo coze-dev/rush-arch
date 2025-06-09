@@ -32,6 +32,9 @@
     },
     {
       "path": "../../utils/logger/tsconfig.build.json"
+    },
+    {
+      "path": "../../utils/monorepo-kits/tsconfig.build.json"
     }
   ]
 }

@@ -2,8 +2,8 @@
 //  SPDX-License-Identifier: MIT
 
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
+import { lookupFrom, lookupOnly, lookupTo } from '@coze-arch/monorepo-kits';
 
-import { getRushConfiguration } from '../../utils/get-rush-config';
 import { type PublishOptions } from './types';
 
 enum RetrievePattern {
@@ -16,10 +16,9 @@ const retrievePackages = (
   pattern: RetrievePattern,
   packages: string[],
 ): Set<RushConfigurationProject> => {
-  const rushConfiguration = getRushConfiguration();
   const matchedPackages = new Set<RushConfigurationProject>();
   packages.forEach(pkg => {
-    const project = rushConfiguration.getProjectByName(pkg);
+    const project = lookupOnly(pkg);
     if (!project) {
       throw new Error(`Package "${pkg}" not found in rush configuration`);
     }
@@ -28,19 +27,18 @@ const retrievePackages = (
         `Package "${pkg}" is not set to publish. if you want to publish it, please set the "shouldPublish" property to true in the \`rush.json\` file.`,
       );
     }
-    const matched: RushConfigurationProject['dependencyProjects'][] = [];
+    const matched: string[] = [];
     switch (pattern) {
       case 'to': {
-        matched.push(project.dependencyProjects);
+        matched.push(...lookupTo(pkg));
         break;
       }
       case 'from': {
-        matched.push(project.consumingProjects);
-        matched.push(project.dependencyProjects);
+        matched.push(...lookupFrom(pkg));
         break;
       }
       case 'only': {
-        // do nothing
+        matched.push(pkg);
         break;
       }
       default: {
@@ -48,14 +46,12 @@ const retrievePackages = (
       }
     }
 
-    for (const matchedSet of matched) {
-      for (const p of matchedSet) {
-        if (p.shouldPublish) {
-          matchedPackages.add(p);
-        }
+    for (const pkgName of matched) {
+      const p = lookupOnly(pkgName);
+      if (p) {
+        matchedPackages.add(p);
       }
     }
-    matchedPackages.add(project);
   });
   return matchedPackages;
 };
