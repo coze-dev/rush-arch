@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extension-completion-icons",
+      "comment": "reset versions",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/extension-completion-icons",
+  "email": "stream-pipe@users.noreply.github.com"
+}

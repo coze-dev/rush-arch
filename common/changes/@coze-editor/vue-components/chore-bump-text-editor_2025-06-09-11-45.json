@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/vue-components",
+      "comment": "reset versions",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/vue-components",
+  "email": "stream-pipe@users.noreply.github.com"
+}

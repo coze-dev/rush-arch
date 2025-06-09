@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extension-decorator",
+      "comment": "reset versions",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/extension-decorator",
+  "email": "stream-pipe@users.noreply.github.com"
+}

@@ -1,6 +1,6 @@
 {
   "name": "@coze-editor/parser-jinja2",
-  "version": "1.0.0-alpha.45",
+  "version": "0.0.0",
   "private": true,
   "description": "parser-jinja2",
   "license": "MIT",
