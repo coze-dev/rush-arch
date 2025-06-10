@@ -11,6 +11,7 @@ import { getRushConfiguration } from '../../utils/get-rush-config';
 type PackageJson = Record<string, unknown> & {
   cozePublishConfig?: Record<string, unknown>;
   dependencies?: Record<string, string>;
+  peerDependencies?: Record<string, string>;
 };
 type PrehandleJob = (packageJson: PackageJson) => Promise<PackageJson>;
 
@@ -21,12 +22,14 @@ const updateDependencyVersions: PrehandleJob = async (
   packageJson: PackageJson,
 ) => {
   const rushConfiguration = getRushConfiguration();
-  const { dependencies } = packageJson;
-  if (dependencies) {
-    for (const [dep, ver] of Object.entries(dependencies)) {
-      const project = rushConfiguration.getProjectByName(dep);
-      if (/^workspace:/.test(ver) && project) {
-        dependencies[dep] = project.packageJson.version;
+  const depTypes = ['dependencies', 'peerDependencies'];
+  for (const depType of depTypes) {
+    if (packageJson[depType]) {
+      for (const [dep, ver] of Object.entries(packageJson[depType])) {
+        const project = rushConfiguration.getProjectByName(dep);
+        if (/^workspace:/.test(ver) && project) {
+          packageJson[depType][dep] = project.packageJson.version;
+        }
       }
     }
   }
