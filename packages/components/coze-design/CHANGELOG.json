@@ -2,6 +2,18 @@
   "name": "@coze-arch/coze-design",
   "entries": [
     {
+      "version": "0.0.5",
+      "tag": "HEAD",
+      "date": "2025-06-10T08:48:53.982Z",
+      "comments": {
+        "none": [
+          {
+            "comment": "Publish for noop"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.4",
       "tag": "HEAD",
       "date": "2025-06-10T07:58:12.950Z",
