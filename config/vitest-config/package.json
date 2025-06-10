@@ -1,6 +1,6 @@
 {
   "name": "@coze-arch/vitest-config",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "tecvan.fe@gmail.com",
   "maintainers": [],
   "main": "src/index.js",
