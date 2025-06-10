@@ -1272,6 +1272,21 @@ importers:
       '@coze-editor/core':
         specifier: workspace:*
         version: link:../core
+      '@coze-editor/extension-json-ast':
+        specifier: workspace:*
+        version: link:../extension-json-ast
+      '@coze-editor/extension-json-empty-string-value-completion':
+        specifier: workspace:*
+        version: link:../extension-json-empty-string-value-completion
+      '@coze-editor/extension-json-hover':
+        specifier: workspace:*
+        version: link:../extension-json-hover
+      '@coze-editor/extension-json-unnecessary-properties':
+        specifier: workspace:*
+        version: link:../extension-json-unnecessary-properties
+      '@coze-editor/extension-regexp-decorator':
+        specifier: workspace:*
+        version: link:../extension-regexp-decorator
       '@coze-editor/extensions':
         specifier: workspace:*
         version: link:../extensions
@@ -1311,6 +1326,12 @@ importers:
       '@coze-editor/vscode':
         specifier: workspace:*
         version: link:../vscode
+      '@coze-editor/vue':
+        specifier: workspace:*
+        version: link:../vue
+      '@coze-editor/vue-components':
+        specifier: workspace:*
+        version: link:../vue-components
     devDependencies:
       '@codemirror/state':
         specifier: ^6.4.1

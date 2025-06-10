@@ -38,6 +38,21 @@
       "path": "../eslint-config/tsconfig.build.json"
     },
     {
+      "path": "../extension-json-ast/tsconfig.build.json"
+    },
+    {
+      "path": "../extension-json-empty-string-value-completion/tsconfig.build.json"
+    },
+    {
+      "path": "../extension-json-hover/tsconfig.build.json"
+    },
+    {
+      "path": "../extension-json-unnecessary-properties/tsconfig.build.json"
+    },
+    {
+      "path": "../extension-regexp-decorator/tsconfig.build.json"
+    },
+    {
       "path": "../extensions/tsconfig.build.json"
     },
     {
@@ -75,6 +90,12 @@
     },
     {
       "path": "../vscode/tsconfig.build.json"
+    },
+    {
+      "path": "../vue-components/tsconfig.build.json"
+    },
+    {
+      "path": "../vue/tsconfig.build.json"
     }
   ]
 }

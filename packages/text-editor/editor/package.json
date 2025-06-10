@@ -1,7 +1,7 @@
 {
   "name": "@coze-editor/editor",
   "version": "0.0.0",
-  "description": "flow-lang-sdk",
+  "description": "editor",
   "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
@@ -102,6 +102,11 @@
     "@coze-editor/code-language-shell": "workspace:*",
     "@coze-editor/code-language-typescript": "workspace:*",
     "@coze-editor/core": "workspace:*",
+    "@coze-editor/extension-json-ast": "workspace:*",
+    "@coze-editor/extension-json-empty-string-value-completion": "workspace:*",
+    "@coze-editor/extension-json-hover": "workspace:*",
+    "@coze-editor/extension-json-unnecessary-properties": "workspace:*",
+    "@coze-editor/extension-regexp-decorator": "workspace:*",
     "@coze-editor/extensions": "workspace:*",
     "@coze-editor/preset-code": "workspace:*",
     "@coze-editor/preset-expression": "workspace:*",
@@ -114,7 +119,9 @@
     "@coze-editor/react-hooks": "workspace:*",
     "@coze-editor/react-merge": "workspace:*",
     "@coze-editor/utils": "workspace:*",
-    "@coze-editor/vscode": "workspace:*"
+    "@coze-editor/vscode": "workspace:*",
+    "@coze-editor/vue": "workspace:*",
+    "@coze-editor/vue-components": "workspace:*"
   },
   "devDependencies": {
     "@codemirror/state": "^6.4.1",
