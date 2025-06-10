@@ -1,6 +1,6 @@
 {
   "name": "@coze-editor/lezer-parser-json",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.7c51b1",
   "description": "lezer-parser-json",
   "license": "MIT",
   "author": "fengzilong",
