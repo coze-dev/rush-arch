@@ -301,6 +301,7 @@ export {
   ImagePreview,
   Button as SemiButton,
   Select as SemiSelect,
+  Cascader as SemiCascader,
 } from './components/semi';
 
 /*原生semi props 透传*/
