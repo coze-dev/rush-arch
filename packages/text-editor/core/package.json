@@ -19,8 +19,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "lint": "eslint && tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "lint": "eslint && tsc --noEmit"
   },
   "dependencies": {
     "mitt": "^3.0.1"

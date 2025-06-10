@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-code",
+      "comment": "tmp",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/preset-code",
+  "email": "tecvan.fe@qq.com"
+}

@@ -14,8 +14,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "lint": "eslint && tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "lint": "eslint && tsc --noEmit"
   },
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.1",

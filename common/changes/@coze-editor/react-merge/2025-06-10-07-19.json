@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react-merge",
+      "comment": "tmp",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/react-merge",
+  "email": "tecvan.fe@qq.com"
+}

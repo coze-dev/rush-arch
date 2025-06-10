@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extension-scrollbar",
+      "comment": "tmp",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/extension-scrollbar",
+  "email": "tecvan.fe@qq.com"
+}

@@ -11,11 +11,16 @@ export function buildReleaseManifest(
   packages: PackageToPublish[],
 ): ReleaseManifest[] {
   const rushConfiguration = getRushConfiguration();
-  return packages.map(pkg => {
-    const project = rushConfiguration.getProjectByName(pkg.packageName);
-    if (!project) {
-      throw new Error(`Cannot find project: ${pkg.packageName}`);
-    }
-    return { project, version: project.packageJson.version };
-  });
+  return packages
+    .map(pkg => {
+      const project = rushConfiguration.getProjectByName(pkg.packageName);
+      if (!project) {
+        throw new Error(`Cannot find project: ${pkg.packageName}`);
+      }
+      if (project.shouldPublish) {
+        return { project, version: project.packageJson.version };
+      }
+      return undefined;
+    })
+    .filter(Boolean) as ReleaseManifest[];
 }

@@ -19,8 +19,7 @@
   ],
   "scripts": {
     "build": "node scripts/update-iconfont.mjs && tsup",
-    "lint": "eslint && tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "lint": "eslint && tsc --noEmit"
   },
   "devDependencies": {
     "@codemirror/state": "^6.4.1",

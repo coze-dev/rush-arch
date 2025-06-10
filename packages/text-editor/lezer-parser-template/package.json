@@ -18,8 +18,7 @@
   ],
   "scripts": {
     "build": "lezer-generator src/template.grammar -o src/index.js",
-    "lint": "eslint",
-    "prepublishOnly": "npm run build"
+    "lint": "eslint"
   },
   "dependencies": {
     "@lezer/highlight": "~1.2.0",

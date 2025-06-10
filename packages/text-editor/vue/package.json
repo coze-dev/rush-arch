@@ -20,8 +20,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "vite --force --port=8000",
-    "lint": "eslint && tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "lint": "eslint && tsc --noEmit"
   },
   "dependencies": {
     "@coze-editor/core": "workspace:*",

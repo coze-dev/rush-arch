@@ -19,8 +19,7 @@
   "scripts": {
     "build": "lezer-generator src/json.grammar -o src/index.js",
     "jinja:test": "npm run build & npx tsx src/test.ts",
-    "lint": "eslint",
-    "prepublishOnly": "npm run build"
+    "lint": "eslint"
   },
   "dependencies": {
     "@lezer/highlight": "~1.2.0",

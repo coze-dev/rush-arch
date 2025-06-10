@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extension-completion-icons",
+      "comment": "tmp",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/extension-completion-icons",
+  "email": "tecvan.fe@qq.com"
+}

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extension-regexp-decorator",
+      "comment": "tmp",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/extension-regexp-decorator",
+  "email": "tecvan.fe@qq.com"
+}

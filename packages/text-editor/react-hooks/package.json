@@ -19,8 +19,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "lint": "eslint && tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "lint": "eslint && tsc --noEmit"
   },
   "devDependencies": {
     "@codemirror/commands": "^6.3.3",

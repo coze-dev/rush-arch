@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/lezer-parser-json",
+      "comment": "tmp",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/lezer-parser-json",
+  "email": "tecvan.fe@qq.com"
+}

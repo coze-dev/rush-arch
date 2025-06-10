@@ -19,8 +19,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "lint": "eslint && tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "lint": "eslint && tsc --noEmit"
   },
   "dependencies": {
     "@vscode/l10n": "^0.0.18",
