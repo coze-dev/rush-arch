@@ -15,8 +15,8 @@ enum RetrievePattern {
 const retrievePackages = (
   pattern: RetrievePattern,
   packages: string[],
-): Set<RushConfigurationProject> => {
-  const matchedPackages = new Set<RushConfigurationProject>();
+): string[] => {
+  const matchedPackages = new Set<string>();
   packages.forEach(pkg => {
     const project = lookupOnly(pkg);
     if (!project) {
@@ -46,14 +46,12 @@ const retrievePackages = (
       }
     }
 
-    for (const pkgName of matched) {
-      const p = lookupOnly(pkgName);
-      if (p) {
-        matchedPackages.add(p);
-      }
-    }
+    matched.forEach(pkgName => {
+      matchedPackages.add(pkgName);
+    });
   });
-  return matchedPackages;
+
+  return [...matchedPackages];
 };
 
 export const validateAndGetPackages = (options: PublishOptions) => {
@@ -61,12 +59,25 @@ export const validateAndGetPackages = (options: PublishOptions) => {
   if (retrievePatterns.every(pattern => (options[pattern]?.length || 0) <= 0)) {
     throw new Error('No packages to publish');
   }
-  return retrievePatterns.reduce((acc, pattern) => {
+  const res = retrievePatterns.reduce((acc, pattern) => {
     const packages = options[pattern];
     if (!packages || packages.length <= 0) {
       return acc;
     }
     const placeholders = retrievePackages(pattern as RetrievePattern, packages);
-    return new Set([...acc, ...placeholders]);
-  }, new Set<RushConfigurationProject>());
+    placeholders.forEach(pkgName => {
+      acc.add(pkgName);
+    });
+    return acc;
+  }, new Set<string>());
+  const result = [...res]
+    .map(pkgName => {
+      const p = lookupOnly(pkgName);
+      if (p && p.shouldPublish) {
+        return p;
+      }
+      return undefined;
+    })
+    .filter(Boolean) as RushConfigurationProject[];
+  return result;
 };
