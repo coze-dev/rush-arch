@@ -5,7 +5,10 @@ import { type TreeSelectProps as COZTreeSelectProps } from './components/tree-se
 import { type TooltipProps as CozTooltipProps } from './components/tooltip';
 import { type ToastProps as CozToastProps } from './components/toast';
 import { type TextAreaProps as CozTextAreaProps } from './components/textarea';
-import { type TagProps as CozTagProps } from './components/tag';
+import {
+  type TagProps as CozTagProps,
+  type TagColor as CozTagColor,
+} from './components/tag';
 import type {
   TableProps as CozTableProps,
   TableMethods as CozTableMethods,
@@ -39,12 +42,16 @@ import { type DatePickerProps as CozDatePickerProps } from './components/date-pi
 import { type CollapsibleProps as CozCollapsibleProps } from './components/collapsible';
 import { type CollapseProps as CozCollapseProps } from './components/collapse';
 import { type CheckboxProps as CozCheckboxProps } from './components/checkbox';
-import { type CascaderProps as CozCascaderProps } from './components/cascader';
+import {
+  type CascaderProps as CozCascaderProps,
+  type CascaderValue as CozCascaderValue,
+} from './components/cascader';
 import {
   type ButtonProps as CozButtonProps,
   type LoadingButtonProps as CozLoadingButtonProps,
   type AIButtonProps as CozAIButtonProps,
   type SplitButtonProps as CozSplitButtonProps,
+  type ButtonColor as CozButtonColor,
 } from './components/button';
 import { type BreadcrumbProps as CozBreadcrumbProps } from './components/breadcrumb';
 import { type BannerProps as CozBannerProps } from './components/banner';
@@ -69,6 +76,7 @@ export type ButtonProps = CozButtonProps;
 export type LoadingButtonProps = CozLoadingButtonProps;
 export type AIButtonProps = CozAIButtonProps;
 export type SplitButtonProps = CozSplitButtonProps;
+export type ButtonColor = CozButtonColor;
 
 // 仅做微调，可以直接覆盖原有semi Step组件
 export {
@@ -103,6 +111,7 @@ export type ToastProps = CozToastProps;
 
 export { Tag } from './components/tag';
 export type TagProps = CozTagProps;
+export type TagColor = CozTagColor;
 
 export {
   Chip,
@@ -182,6 +191,7 @@ export type TreeSelectProps = COZTreeSelectProps;
 
 export { Cascader } from './components/cascader';
 export type CascaderProps = CozCascaderProps;
+export type CascaderValue = CozCascaderValue;
 
 export { SegmentTab, type SegmentTabProps } from './components/segment-tab';
 
