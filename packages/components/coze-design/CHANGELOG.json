@@ -2,6 +2,18 @@
   "name": "@coze-arch/coze-design",
   "entries": [
     {
+      "version": "0.0.6",
+      "tag": "HEAD",
+      "date": "2025-06-10T12:28:52.993Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "type export"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.5",
       "tag": "HEAD",
       "date": "2025-06-10T08:48:53.982Z",

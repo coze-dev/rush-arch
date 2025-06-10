@@ -2,6 +2,18 @@
   "name": "@coze-arch/semi-theme-hand01",
   "entries": [
     {
+      "version": "0.0.6",
+      "tag": "HEAD",
+      "date": "2025-06-10T12:28:52.993Z",
+      "comments": {
+        "none": [
+          {
+            "comment": "Publish for noop"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.5",
       "tag": "HEAD",
       "date": "2025-06-10T08:48:53.983Z",
