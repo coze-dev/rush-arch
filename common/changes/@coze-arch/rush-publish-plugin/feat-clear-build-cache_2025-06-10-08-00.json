@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/rush-publish-plugin",
+      "comment": "allow publish mutil packages",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/rush-publish-plugin",
+  "email": "tecvan.fe@qq.com"
+}
