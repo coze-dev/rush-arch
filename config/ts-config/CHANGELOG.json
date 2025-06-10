@@ -1,0 +1,17 @@
+{
+  "name": "@coze-arch/ts-config",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "HEAD",
+      "date": "2025-06-10T04:10:55.335Z",
+      "comments": {
+        "none": [
+          {
+            "comment": "Publish for noop"
+          }
+        ]
+      }
+    }
+  ]
+}

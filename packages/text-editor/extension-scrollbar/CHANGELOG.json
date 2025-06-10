@@ -1,0 +1,26 @@
+{
+  "name": "@coze-editor/extension-scrollbar",
+  "entries": [
+    {
+      "version": "0.1.0",
+      "tag": "HEAD",
+      "date": "2025-06-10T04:10:55.375Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add license header by running rush license-header"
+          },
+          {
+            "comment": "reset versions"
+          },
+          {
+            "comment": "add LICENSE files"
+          },
+          {
+            "comment": "add ESLint config in each package"
+          }
+        ]
+      }
+    }
+  ]
+}
