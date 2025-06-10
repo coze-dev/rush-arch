@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsup",
     "lint": "eslint && tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@coze-editor/core": "workspace:*"

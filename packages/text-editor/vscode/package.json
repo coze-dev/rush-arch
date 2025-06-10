@@ -21,7 +21,7 @@
     "build": "tsup",
     "dev": "vite --force",
     "lint": "eslint && tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@codemirror/search": "^6.5.5",

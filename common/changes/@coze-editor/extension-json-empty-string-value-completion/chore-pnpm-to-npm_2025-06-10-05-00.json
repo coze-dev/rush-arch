@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extension-json-empty-string-value-completion",
+      "comment": "pnpm -> npm",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/extension-json-empty-string-value-completion",
+  "email": "stream-pipe@users.noreply.github.com"
+}

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react-merge",
+      "comment": "pnpm -> npm",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/react-merge",
+  "email": "stream-pipe@users.noreply.github.com"
+}

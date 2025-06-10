@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/vue",
+      "comment": "pnpm -> npm",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/vue",
+  "email": "stream-pipe@users.noreply.github.com"
+}

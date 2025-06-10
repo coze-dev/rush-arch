@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsup",
     "lint": "eslint && tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "crelt": "^1.0.5"

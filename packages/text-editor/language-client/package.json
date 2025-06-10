@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsup",
     "lint": "eslint && tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "vscode-languageserver-protocol": "^3.17.5",

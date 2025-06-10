@@ -20,7 +20,7 @@
   "scripts": {
     "build": "tsup",
     "lint": "eslint && tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
     "@codemirror/language": "^6.10.1",

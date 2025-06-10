@@ -21,7 +21,7 @@
     "build": "tsup",
     "dev": "vite --force --port=8000",
     "lint": "eslint && tsc --noEmit",
-    "prepublishOnly": "pnpm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@coze-editor/core": "workspace:*",
