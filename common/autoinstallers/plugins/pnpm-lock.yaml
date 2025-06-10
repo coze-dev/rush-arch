@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@coze-arch/rush-clear-build-cache-plugin':
+        specifier: ../../../packages/rush-plugins/clear-build-cache
+        version: link:../../../packages/rush-plugins/clear-build-cache
       '@coze-arch/rush-fix-ts-refers-plugin':
         specifier: ../../../packages/rush-plugins/fix-ts-refers
         version: link:../../../packages/rush-plugins/fix-ts-refers
@@ -130,8 +133,8 @@ packages:
     resolution: {integrity: sha512-ueEepnujpqee2o5aIYnvHU6C0A42MNdsIDeqy5BydrkuC5R1ZuUFnm27EeFJGoEHJQgn3uleRvmTXaJgfXbt4g==}
     engines: {node: '>=0.4.0'}
 
-  acorn@8.14.1:
-    resolution: {integrity: sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg==}
+  acorn@8.15.0:
+    resolution: {integrity: sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg==}
     engines: {node: '>=0.4.0'}
     hasBin: true
 
@@ -471,8 +474,8 @@ packages:
     resolution: {integrity: sha512-XgZ0pFcakEUlbwQEVNg3+QAis1FyTL3Qel9FYy8pSkQqoG3PNoT0bOCQtOXcOkur21r2Eq2kI+IE+gsmAEVlYw==}
     engines: {node: '>=0.10.0'}
 
-  core-js-pure@3.42.0:
-    resolution: {integrity: sha512-007bM04u91fF4kMgwom2I5cQxAFIy8jVulgr9eozILl/SZE53QOqnW/+vviC+wQWLv+AunBG+8Q0TLoeSsSxRQ==}
+  core-js-pure@3.43.0:
+    resolution: {integrity: sha512-i/AgxU2+A+BbJdMxh3v7/vxi2SbFqxiFmg6VsDwYB4jkucrd1BZNA9a9gphC0fYMG5IBSgQcbQnk865VCLe7xA==}
 
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
@@ -1644,7 +1647,7 @@ snapshots:
 
   '@babel/runtime-corejs3@7.27.6':
     dependencies:
-      core-js-pure: 3.42.0
+      core-js-pure: 3.43.0
 
   '@colors/colors@1.5.0':
     optional: true
@@ -1751,9 +1754,9 @@ snapshots:
 
   acorn-walk@8.3.4:
     dependencies:
-      acorn: 8.14.1
+      acorn: 8.15.0
 
-  acorn@8.14.1: {}
+  acorn@8.15.0: {}
 
   aggregate-error@3.1.0:
     dependencies:
@@ -2149,7 +2152,7 @@ snapshots:
 
   copy-descriptor@0.1.1: {}
 
-  core-js-pure@3.42.0: {}
+  core-js-pure@3.43.0: {}
 
   core-util-is@1.0.3: {}
 
@@ -3347,7 +3350,7 @@ snapshots:
       '@tsconfig/node18': 18.2.4
       '@tsconfig/node20': 20.1.5
       '@types/node': 20.19.0
-      acorn: 8.14.1
+      acorn: 8.15.0
       acorn-walk: 8.3.4
       arg: 4.1.3
       diff: 4.0.2

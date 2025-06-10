@@ -49,6 +49,11 @@
       "packageName": "@coze-arch/rush-increment-run",
       "pluginName": "@coze-arch/rush-increment-run",
       "autoinstallerName": "plugins"
+    },
+    {
+      "packageName": "@coze-arch/rush-clear-build-cache-plugin",
+      "pluginName": "@coze-arch/rush-clear-build-cache-plugin",
+      "autoinstallerName": "plugins"
     }
   ]
 }

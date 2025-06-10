@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/rush-clear-build-cache-plugin",
+      "comment": "rush plugin for remove build cache",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-arch/rush-clear-build-cache-plugin",
+  "email": "tecvan.fe@qq.com"
+}

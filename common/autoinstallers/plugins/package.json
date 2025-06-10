@@ -7,6 +7,7 @@
     "tecvan.fe@gmail.com"
   ],
   "dependencies": {
+    "@coze-arch/rush-clear-build-cache-plugin": "../../../packages/rush-plugins/clear-build-cache",
     "@coze-arch/rush-fix-ts-refers-plugin": "../../../packages/rush-plugins/fix-ts-refers",
     "@coze-arch/rush-increment-run": "../../../packages/rush-plugins/increment-run",
     "@coze-arch/rush-publish-plugin": "../../../packages/rush-plugins/publish",

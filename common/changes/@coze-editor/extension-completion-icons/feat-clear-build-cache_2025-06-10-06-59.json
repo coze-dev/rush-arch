@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extension-completion-icons",
+      "comment": "rush plugin for remove build cache",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/extension-completion-icons",
+  "email": "tecvan.fe@qq.com"
+}

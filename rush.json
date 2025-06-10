@@ -789,6 +789,12 @@
       "projectFolder": "packages/text-editor/code-language-typescript",
       "shouldPublish": true,
       "tags": ["level-3"]
+    },
+    {
+      "packageName": "@coze-arch/rush-clear-build-cache-plugin",
+      "projectFolder": "packages/rush-plugins/clear-build-cache",
+      "tags": ["level-3"],
+      "shouldPublish": true
     }
     // {
     //   "packageName": "@coze-editor/parser-jinja2",

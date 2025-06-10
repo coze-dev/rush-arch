@@ -194,7 +194,7 @@ importers:
         specifier: ~15.11.0
         version: 15.11.0
       json5:
-        specifier: ^2.2.1
+        specifier: ^2.2.3
         version: 2.2.3
       prettier:
         specifier: ^3.5.3
@@ -726,6 +726,37 @@ importers:
       tsx:
         specifier: ^4.19.3
         version: 4.19.3
+      vitest:
+        specifier: ^3.0.9
+        version: 3.0.9(@types/debug@4.1.12)(@types/node@22.13.13)(happy-dom@17.4.4)(less@4.3.0)(sass@1.89.0)(sugarss@2.0.0)(terser@5.39.2)
+
+  ../../../packages/rush-plugins/clear-build-cache:
+    dependencies:
+      json5:
+        specifier: ^2.2.3
+        version: 2.2.3
+    devDependencies:
+      '@coze-arch/eslint-config':
+        specifier: workspace:*
+        version: link:../../../config/eslint-config
+      '@coze-arch/monorepo-kits':
+        specifier: workspace:*
+        version: link:../../utils/monorepo-kits
+      '@coze-arch/ts-config':
+        specifier: workspace:*
+        version: link:../../../config/ts-config
+      '@coze-arch/vitest-config':
+        specifier: workspace:*
+        version: link:../../../config/vitest-config
+      '@types/node':
+        specifier: ^22
+        version: 22.13.13
+      '@vitest/coverage-v8':
+        specifier: ^3.0.9
+        version: 3.0.9(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.13.13)(happy-dom@17.4.4)(less@4.3.0)(sass@1.89.0)(sugarss@2.0.0)(terser@5.39.2))
+      sucrase:
+        specifier: ^3.32.0
+        version: 3.35.0
       vitest:
         specifier: ^3.0.9
         version: 3.0.9(@types/debug@4.1.12)(@types/node@22.13.13)(happy-dom@17.4.4)(less@4.3.0)(sass@1.89.0)(sugarss@2.0.0)(terser@5.39.2)
