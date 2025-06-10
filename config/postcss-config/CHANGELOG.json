@@ -1,0 +1,17 @@
+{
+  "name": "@coze-arch/postcss-config",
+  "entries": [
+    {
+      "version": "0.0.2",
+      "tag": "HEAD",
+      "date": "2025-06-10T07:58:12.933Z",
+      "comments": {
+        "none": [
+          {
+            "comment": "Publish for noop"
+          }
+        ]
+      }
+    }
+  ]
+}
