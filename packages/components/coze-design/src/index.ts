@@ -52,6 +52,7 @@ import {
   type AIButtonProps as CozAIButtonProps,
   type SplitButtonProps as CozSplitButtonProps,
   type ButtonColor as CozButtonColor,
+  type IconButtonProps as CozIconButtonProps,
 } from './components/button';
 import { type BreadcrumbProps as CozBreadcrumbProps } from './components/breadcrumb';
 import { type BannerProps as CozBannerProps } from './components/banner';
@@ -77,6 +78,7 @@ export type LoadingButtonProps = CozLoadingButtonProps;
 export type AIButtonProps = CozAIButtonProps;
 export type SplitButtonProps = CozSplitButtonProps;
 export type ButtonColor = CozButtonColor;
+export type IconButtonProps = CozIconButtonProps;
 
 // 仅做微调，可以直接覆盖原有semi Step组件
 export {

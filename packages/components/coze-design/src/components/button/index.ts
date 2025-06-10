@@ -16,4 +16,5 @@ export type {
   LoadingButtonProps,
   AIButtonProps,
   SplitButtonProps,
+  IconButtonProps,
 } from './button-types';
