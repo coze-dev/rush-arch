@@ -1,6 +1,6 @@
 {
   "name": "@coze-editor/extension-json-empty-string-value-completion",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.37c297",
   "description": "extension-json-empty-string-value-completion",
   "license": "MIT",
   "author": "fengzilong",
