@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-prompt",
+      "comment": "add publish config",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/preset-prompt",
+  "email": "tecvan.fe@qq.com"
+}

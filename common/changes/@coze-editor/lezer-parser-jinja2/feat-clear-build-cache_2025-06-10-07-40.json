@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/lezer-parser-jinja2",
+      "comment": "add publish config",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/lezer-parser-jinja2",
+  "email": "tecvan.fe@qq.com"
+}

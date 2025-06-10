@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react-components",
+      "comment": "add publish config",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/react-components",
+  "email": "tecvan.fe@qq.com"
+}

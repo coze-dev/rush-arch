@@ -37,5 +37,9 @@
     "@codemirror/view": "^6.26.1",
     "@lezer/common": "^1.2.2"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "test:main": "./src/index.ts"
 }

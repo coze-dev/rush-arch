@@ -36,5 +36,9 @@
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "test:main": "./src/index.ts"
 }

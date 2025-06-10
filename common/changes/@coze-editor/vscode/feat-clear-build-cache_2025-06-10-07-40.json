@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/vscode",
+      "comment": "add publish config",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/vscode",
+  "email": "tecvan.fe@qq.com"
+}

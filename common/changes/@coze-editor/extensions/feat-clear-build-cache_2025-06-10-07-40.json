@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extensions",
+      "comment": "add publish config",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/extensions",
+  "email": "tecvan.fe@qq.com"
+}

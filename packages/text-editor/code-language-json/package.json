@@ -51,5 +51,9 @@
     "@codemirror/view": "^6.26.1",
     "@coze-editor/code-language-shared": "workspace:*"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "test:main": "./src/index.ts"
 }

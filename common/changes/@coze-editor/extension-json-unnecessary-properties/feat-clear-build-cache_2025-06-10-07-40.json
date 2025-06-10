@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extension-json-unnecessary-properties",
+      "comment": "add publish config",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/extension-json-unnecessary-properties",
+  "email": "tecvan.fe@qq.com"
+}

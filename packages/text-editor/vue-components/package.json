@@ -45,5 +45,9 @@
     "@coze-editor/vue": "workspace:*",
     "vue": "^3.5.0"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "test:main": "./src/index.ts"
 }

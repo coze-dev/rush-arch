@@ -32,5 +32,9 @@
     "@types/node": "^22",
     "eslint": "9.14.0",
     "typescript": "^5.8.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
   }
 }

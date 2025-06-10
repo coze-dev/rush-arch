@@ -62,5 +62,9 @@
     "@coze-editor/code-language-shared": "workspace:*"
   },
   "packageManager": "pnpm@9.15.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "test:main": "./src/index.ts"
 }
