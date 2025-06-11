@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/rush-clear-build-cache-plugin",
+      "comment": "fix ci",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/rush-clear-build-cache-plugin",
+  "email": "tecvan.fe@qq.com"
+}
