@@ -445,55 +445,55 @@
     {
       "packageName": "@coze-arch/eslint-config",
       "projectFolder": "config/eslint-config",
-      "tags": ["config"]
+      "tags": ["config", "level-1"]
     },
     {
       "packageName": "@coze-arch/ts-config",
       "projectFolder": "config/ts-config",
-      "tags": ["config"]
+      "tags": ["config", "level-1"]
     },
     {
       "packageName": "@coze-arch/vitest-config",
       "projectFolder": "config/vitest-config",
-      "tags": ["config"]
+      "tags": ["config", "level-1"]
     },
     {
       "packageName": "@coze-arch/postcss-config",
       "projectFolder": "config/postcss-config",
-      "tags": ["config"]
+      "tags": ["config", "level-1"]
     },
     {
       "packageName": "@coze-arch/stylelint-config",
       "projectFolder": "config/stylelint-config",
-      "tags": ["config"]
+      "tags": ["config", "level-1"]
     },
     {
       "packageName": "@coze-arch/tailwind-config",
       "projectFolder": "config/tailwind-config",
-      "tags": ["config"]
+      "tags": ["config", "level-1"]
     },
     {
       "projectFolder": "packages/mcp/npm",
       "packageName": "@coze-arch/npm-mcp-server",
       "shouldPublish": true,
-      "tags": ["mcp"]
+      "tags": ["mcp", "level-3"]
     },
     {
       "packageName": "@coze-arch/rush-run-tsc-plugin",
       "projectFolder": "packages/rush-plugins/run-tsc-plugin",
       "shouldPublish": true,
-      "tags": ["level-3"]
+      "tags": ["level-2"]
     },
     {
       "packageName": "@coze-arch/rush-publish-plugin",
       "projectFolder": "packages/rush-plugins/publish",
       "shouldPublish": true,
-      "tags": ["level-3"]
+      "tags": ["level-2"]
     },
     {
       "packageName": "@coze-arch/logger",
       "projectFolder": "packages/utils/logger",
-      "tags": ["level-3"]
+      "tags": ["level-4"]
     },
     {
       "packageName": "@coze-arch/arco-icon",
@@ -522,13 +522,13 @@
     {
       "packageName": "@coze-arch/fs-enhance",
       "projectFolder": "packages/utils/fs-enhance",
-      "tags": ["level-3"]
+      "tags": ["level-1"]
     },
     {
       "packageName": "@coze-arch/rush-fix-ts-refers-plugin",
       "projectFolder": "packages/rush-plugins/fix-ts-refers",
       "shouldPublish": true,
-      "tags": ["level-3"]
+      "tags": ["level-2"]
     },
     {
       "packageName": "@coze-arch/monorepo-kits",
@@ -538,24 +538,24 @@
     {
       "packageName": "@coze-arch/build-lib-preset",
       "projectFolder": "config/build-lib-preset",
-      "tags": ["level-3"]
+      "tags": ["level-1"]
     },
     {
       "packageName": "@coze-arch/rush-increment-run-plugin",
       "projectFolder": "packages/rush-plugins/increment-run",
-      "tags": ["level-3", "core"],
+      "tags": ["level-1", "core"],
       "shouldPublish": true
     },
     {
       "packageName": "@coze-arch/package-audit",
       "projectFolder": "packages/utils/package-audit",
-      "tags": ["level-3", "core"]
+      "tags": ["level-1", "core"]
     },
     // ------- text editor start -------
     {
       "packageName": "@coze-editor/eslint-config",
       "projectFolder": "packages/text-editor/eslint-config",
-      "tags": ["config"]
+      "tags": ["config", "level-1"]
     },
     {
       "packageName": "@coze-editor/editor",
@@ -795,6 +795,11 @@
       "projectFolder": "packages/rush-plugins/clear-build-cache",
       "tags": ["level-3"],
       "shouldPublish": true
+    },
+    {
+      "packageName": "@coze-arch/rush-dep-level-check-plugin",
+      "projectFolder": "packages/rush-plugins/dep-level-check",
+      "tags": ["level-3"]
     }
     // {
     //   "packageName": "@coze-editor/parser-jinja2",

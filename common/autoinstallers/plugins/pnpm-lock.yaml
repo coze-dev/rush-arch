@@ -11,6 +11,9 @@ importers:
       '@coze-arch/rush-clear-build-cache-plugin':
         specifier: ../../../packages/rush-plugins/clear-build-cache
         version: link:../../../packages/rush-plugins/clear-build-cache
+      '@coze-arch/rush-dep-level-check-plugin':
+        specifier: ../../../packages/rush-plugins/dep-level-check
+        version: link:../../../packages/rush-plugins/dep-level-check
       '@coze-arch/rush-fix-ts-refers-plugin':
         specifier: ../../../packages/rush-plugins/fix-ts-refers
         version: link:../../../packages/rush-plugins/fix-ts-refers
