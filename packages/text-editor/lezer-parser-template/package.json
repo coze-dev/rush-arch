@@ -1,6 +1,6 @@
 {
   "name": "@coze-editor/lezer-parser-template",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.d92d50",
   "description": "lezer-parser-template",
   "license": "MIT",
   "author": "fengzilong",
