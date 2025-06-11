@@ -1,6 +1,6 @@
 {
   "name": "@coze-arch/rush-increment-run-plugin",
-  "version": "0.0.2",
+  "version": "0.0.2-alpha.350cef",
   "description": "incremently run commands for ci",
   "license": "ISC",
   "author": "tecvan.fe@gmail.com",
