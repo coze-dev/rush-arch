@@ -799,7 +799,8 @@
     {
       "packageName": "@coze-arch/rush-dep-level-check-plugin",
       "projectFolder": "packages/rush-plugins/dep-level-check",
-      "tags": ["level-3"]
+      "tags": ["level-3"],
+      "shouldPublish": true
     }
     // {
     //   "packageName": "@coze-editor/parser-jinja2",
