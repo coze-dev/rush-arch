@@ -279,14 +279,14 @@ export const insertText = ({
   }
 };
 
-export interface ReplaceTextOptions {
+type ReplaceTextOptions = {
   from: number;
   to: number;
   text: string;
   cursorOffset?: number;
   scrollIntoView?: boolean;
   userEvent?: string;
-}
+};
 export const replaceText =
   ({ view }: Context) =>
   (options: ReplaceTextOptions) => {

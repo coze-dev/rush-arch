@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/core-plugins",
+      "comment": "use type instead of interface",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/core-plugins",
+  "email": "stream-pipe@users.noreply.github.com"
+}
