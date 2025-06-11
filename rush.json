@@ -493,7 +493,7 @@
     {
       "packageName": "@coze-arch/logger",
       "projectFolder": "packages/utils/logger",
-      "tags": ["level-4"]
+      "tags": ["level-1"]
     },
     {
       "packageName": "@coze-arch/arco-icon",
