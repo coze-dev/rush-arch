@@ -17,7 +17,7 @@
     "rush-plugin-manifest.json"
   ],
   "scripts": {
-    "build": "exit 0",
+    "build": "rollup -c",
     "lint": "eslint ./ --cache",
     "test": "vitest --run --passWithNoTests",
     "test:cov": "npm run test -- --coverage"
