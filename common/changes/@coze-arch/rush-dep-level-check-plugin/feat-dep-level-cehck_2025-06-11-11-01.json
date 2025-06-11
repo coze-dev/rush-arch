@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/rush-dep-level-check-plugin",
+      "comment": "rush plugin for checking rush dep levels",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-arch/rush-dep-level-check-plugin",
+  "email": "tecvan.fe@qq.com"
+}

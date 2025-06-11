@@ -35,6 +35,9 @@
     "sucrase": "^3.32.0",
     "vitest": "^3.0.9"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "cozePublishConfig": {
     "env": "production"
   }
