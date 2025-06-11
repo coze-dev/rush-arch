@@ -1,13 +1,12 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-interface RangeLike {
+interface Range {
   from: number;
   to: number;
-  [key: string]: unknown;
 }
 
-function mergeIntervals(ranges: RangeLike[]) {
+function mergeIntervals(ranges: Range[]) {
   if (ranges.length === 0) {
     return [];
   }
@@ -39,10 +38,7 @@ function mergeIntervals(ranges: RangeLike[]) {
   return merged;
 }
 
-function findContainingRange(
-  ranges: RangeLike[],
-  pos: number,
-): RangeLike | undefined {
+function findContainingRange(ranges: Range[], pos: number): Range | undefined {
   for (const range of ranges) {
     if (pos >= range.from && pos <= range.to) {
       return range;

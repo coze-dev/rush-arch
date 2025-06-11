@@ -10,7 +10,6 @@ import { mergeIntervals, findContainingRange } from './utils';
 interface Range {
   from: number;
   to: number;
-  [key: string]: unknown;
 }
 type RangesProvider = (state: EditorState) => Range[];
 type SelectUserEvent = 'select' | 'select.pointer';
