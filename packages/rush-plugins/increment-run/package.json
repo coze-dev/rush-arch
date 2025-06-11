@@ -49,5 +49,10 @@
   "peerDependencies": {
     "commander": "^13.1.0",
     "stylelint": "^15.11.0"
+  },
+  "cozePublishConfig": {
+    "bin": {
+      "rush-increment-run": "./lib/index.js"
+    }
   }
 }
