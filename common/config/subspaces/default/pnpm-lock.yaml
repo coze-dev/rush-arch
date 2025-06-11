@@ -761,6 +761,46 @@ importers:
         specifier: ^3.0.9
         version: 3.0.9(@types/debug@4.1.12)(@types/node@22.13.13)(happy-dom@17.4.4)(less@4.3.0)(sass@1.89.0)(sugarss@2.0.0)(terser@5.39.2)
 
+  ../../../packages/rush-plugins/dep-level-check:
+    dependencies:
+      '@rushstack/rush-sdk':
+        specifier: ^5.150.0
+        version: 5.150.0(@types/node@22.13.13)
+    devDependencies:
+      '@coze-arch/build-lib-preset':
+        specifier: workspace:*
+        version: link:../../../config/build-lib-preset
+      '@coze-arch/eslint-config':
+        specifier: workspace:*
+        version: link:../../../config/eslint-config
+      '@coze-arch/logger':
+        specifier: workspace:*
+        version: link:../../utils/logger
+      '@coze-arch/ts-config':
+        specifier: workspace:*
+        version: link:../../../config/ts-config
+      '@coze-arch/vitest-config':
+        specifier: workspace:*
+        version: link:../../../config/vitest-config
+      '@types/node':
+        specifier: ^22
+        version: 22.13.13
+      '@vitest/coverage-v8':
+        specifier: ^3.0.9
+        version: 3.0.9(vitest@3.0.9(@types/debug@4.1.12)(@types/node@22.13.13)(happy-dom@17.4.4)(less@4.3.0)(sass@1.89.0)(sugarss@2.0.0)(terser@5.39.2))
+      commander:
+        specifier: ^13.1.0
+        version: 13.1.0
+      rollup:
+        specifier: ^4.41.1
+        version: 4.41.1
+      sucrase:
+        specifier: ^3.32.0
+        version: 3.35.0
+      vitest:
+        specifier: ^3.0.9
+        version: 3.0.9(@types/debug@4.1.12)(@types/node@22.13.13)(happy-dom@17.4.4)(less@4.3.0)(sass@1.89.0)(sugarss@2.0.0)(terser@5.39.2)
+
   ../../../packages/rush-plugins/fix-ts-refers:
     dependencies:
       prettier:
