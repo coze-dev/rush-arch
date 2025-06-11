@@ -7,7 +7,7 @@
   "maintainers": [],
   "main": "index.js",
   "files": [
-    "dist",
+    "lib",
     "!**/*.tsbuildinfo",
     "!**/*.map",
     "command-line.json",
