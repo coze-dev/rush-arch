@@ -1,0 +1,159 @@
+---
+name: Tooltip
+description: 文字提示组件：当用户与元素交互时展示简短的提示信息，用于解释功能或操作，支持多种触发方式和展示位置。
+---
+
+# Tooltip 文字提示
+
+## 基本信息
+
+### 何时使用
+
+- 当用户与元素交互时需要展示简短的提示信息
+- 当需要对某个功能或操作进行解释说明时
+- 当需要展示元素的补充信息时
+
+### 如何引入
+
+```tsx
+import { Tooltip } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Design 的 Tooltip 组件封装，继承了其大部分功能
+- 默认使用了 Coze Design 的主题变量
+- 支持亮色和暗色两种主题
+- 支持 12 个不同的展示位置
+- 支持多种触发方式：悬停、点击、右键和聚焦
+- 支持自定义内容和样式
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/tooltip)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161056&m=dev)
+- [Semi Tooltip 文档](https://semi.design/zh-CN/show/tooltip)
+
+## 功能演示
+
+### 基础用法
+
+最基础的用法，当鼠标悬停在元素上时显示提示。
+
+```tsx preview
+import { Tooltip, Tag } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <Tooltip content="这是一个提示文字">
+    <Tag color="primary">悬停查看提示</Tag>
+  </Tooltip>
+);
+
+export default Demo;
+```
+
+### 主题
+
+Tooltip 支持亮色和暗色两种主题。
+
+```tsx preview
+import { Tooltip, Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex gap-4">
+    <Tooltip content="这是亮色主题" theme="light">
+      <Button>亮色主题</Button>
+    </Tooltip>
+    <Tooltip content="这是暗色主题" theme="dark">
+      <Button>暗色主题</Button>
+    </Tooltip>
+  </div>
+);
+
+export default Demo;
+```
+
+### 位置
+
+Tooltip 支持 12 个不同的展示位置。
+
+```tsx preview
+import { Tooltip, Button } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  const positions = [
+    ['topLeft', 'TL'],
+    ['top', 'Top'],
+    ['topRight', 'TR'],
+    ['leftTop', 'LT'],
+    ['left', 'Left'],
+    ['leftBottom', 'LB'],
+    ['rightTop', 'RT'],
+    ['right', 'Right'],
+    ['rightBottom', 'RB'],
+    ['bottomLeft', 'BL'],
+    ['bottom', 'Bottom'],
+    ['bottomRight', 'BR'],
+  ];
+
+  return (
+    <div className="grid grid-cols-3 gap-4">
+      {positions.map(([pos, text]) => (
+        <Tooltip key={pos} content={`Position: ${pos}`} position={pos}>
+          <Button className="w-full">{text}</Button>
+        </Tooltip>
+      ))}
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 触发方式
+
+Tooltip 支持多种触发方式：悬停、点击、右键和聚焦。
+
+```tsx preview
+import { Tooltip, Button, Input } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <Tooltip content="悬停触发的提示">
+      <Button>悬停显示</Button>
+    </Tooltip>
+
+    <Tooltip content="点击触发的提示" trigger="click">
+      <Button>点击显示</Button>
+    </Tooltip>
+
+    <Tooltip content="右键触发的提示" trigger="contextMenu">
+      <Button>右键显示</Button>
+    </Tooltip>
+
+    <Tooltip content="聚焦触发的提示" trigger="focus">
+      <Input placeholder="聚焦显示" style={{ width: 200 }} />
+    </Tooltip>
+  </div>
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### Tooltip Props
+
+| 属性              | 说明                       | 类型                                                                                                                                                             | 默认值    |
+| ----------------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| content           | 提示内容                   | `ReactNode \| RenderContent`                                                                                                                                     | -         |
+| position          | 弹出位置                   | `'top' \| 'topLeft' \| 'topRight' \| 'left' \| 'leftTop' \| 'leftBottom' \| 'right' \| 'rightTop' \| 'rightBottom' \| 'bottom' \| 'bottomLeft' \| 'bottomRight'` | `'top'`   |
+| theme             | 主题                       | `'light' \| 'dark'`                                                                                                                                              | `'light'` |
+| trigger           | 触发方式                   | `'hover' \| 'focus' \| 'click' \| 'contextMenu' \| 'custom'`                                                                                                     | `'hover'` |
+| visible           | 是否显示                   | `boolean`                                                                                                                                                        | `false`   |
+| clickToHide       | 点击后是否隐藏             | `boolean`                                                                                                                                                        | `false`   |
+| className         | 容器类名                   | `string`                                                                                                                                                         | -         |
+| style             | 容器样式                   | `CSSProperties`                                                                                                                                                  | -         |
+| getPopupContainer | 指定提示框挂载的 HTML 节点 | `() => HTMLElement`                                                                                                                                              | -         |
+
+除了以上属性，Tooltip 组件还支持原生 Semi Tooltip 组件的大部分属性。 具体请参考 [Semi Tooltip 文档](https://semi.design/zh-CN/show/tooltip#API%20参考)。

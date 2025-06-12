@@ -1,0 +1,116 @@
+---
+name: Layout
+description: 布局组件：用于快速搭建页面的基本结构，提供固定的页面框架、标题管理和内容区域布局，包含 Header、Content、Footer 三个部分。
+---
+
+# Layout 布局
+
+## 基本信息
+
+### 何时使用
+
+Layout 布局组件用于快速搭建页面的基本结构，适用于需要固定的页面框架、标题管理、内容区域布局的场景。
+
+### 如何引入
+
+```tsx
+import { Layout } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件提供了基础的页面布局结构，包括 Header、Content、Footer 三个部分
+- Header 组件支持标题和面包屑导航的展示
+- Content 组件支持内容区域的垂直滚动
+- 可以通过 title 属性统一管理页面标题
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/layout)
+- [Semi Layout](https://semi.design/zh-CN/basic/layout)
+
+## 代码演示
+
+### 基础用法
+
+最基本的布局用法。
+
+```tsx preview
+import { Layout } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <Layout>
+      <Layout.Header title="页面标题" />
+      <Layout.Content>
+        <div style={{ padding: 20 }}>内容区域</div>
+      </Layout.Content>
+      <Layout.Footer>
+        <div style={{ textAlign: 'center' }}>页脚内容</div>
+      </Layout.Footer>
+    </Layout>
+  );
+};
+
+export default Demo;
+```
+
+### 可滚动内容
+
+内容区域可以设置为滚动模式。
+
+```tsx preview
+import { Layout } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <Layout style={{ height: '300px' }}>
+      <Layout.Header title="滚动内容演示" />
+      <Layout.Content scrollY>
+        <div style={{ padding: 20 }}>
+          {Array(20)
+            .fill(null)
+            .map((_, index) => (
+              <div key={index} style={{ marginBottom: 20 }}>
+                这是第 {index + 1} 行内容
+              </div>
+            ))}
+        </div>
+      </Layout.Content>
+    </Layout>
+  );
+};
+
+export default Demo;
+```
+
+## API 参考
+
+### CozLayout
+
+| 属性         | 说明                   | 类型      | 默认值  |
+| ------------ | ---------------------- | --------- | ------- |
+| className    | 容器 className         | `string`  | -       |
+| title        | 页面标题               | `string`  | -       |
+| keepDocTitle | 是否保持原有的文档标题 | `boolean` | `false` |
+
+### CozLayout.Header
+
+| 属性       | 说明           | 类型           | 默认值 |
+| ---------- | -------------- | -------------- | ------ |
+| className  | 头部 className | `string`       | -      |
+| title      | 头部标题       | `string`       | -      |
+| breadcrumb | 面包屑导航     | `ReactElement` | -      |
+
+### CozLayout.Content
+
+| 属性      | 说明             | 类型      | 默认值  |
+| --------- | ---------------- | --------- | ------- |
+| className | 内容区 className | `string`  | -       |
+| scrollY   | 是否允许垂直滚动 | `boolean` | `false` |
+
+### CozLayout.Footer
+
+| 属性      | 说明           | 类型     | 默认值 |
+| --------- | -------------- | -------- | ------ |
+| className | 底部 className | `string` | -      |

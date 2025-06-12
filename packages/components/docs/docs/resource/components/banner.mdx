@@ -1,0 +1,157 @@
+---
+name: Banner
+description: 横幅组件：用于向用户显示常驻提示信息，支持多种类型和样式，可由用户主动关闭。
+---
+
+# Banner 横幅
+
+横幅组件用于向用户显示提示信息，通常是常驻的，需要用户主动将其关闭。基于 Semi Design 的 Banner 组件进行了定制化改造。
+
+## 基本信息
+
+### 如何引入
+
+```ts
+import { Banner } from '@coze-arch/coze-design';
+```
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/banner)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161056&m=dev)
+- [Semi Banner 文档](https://semi.design/zh-CN/feedback/banner)
+
+### 注意事项
+
+- Banner 组件支持四种类型：
+  - info：对应 color 为 brand，token 色为 coz-mg-hglt-secondary
+  - success：对应 color 为 green，token 色为 coz-mg-hglt-secondary-green
+  - warning：对应 color 为 yellow，token 色为 coz-mg-hglt-secondary-yellow
+  - danger：对应 color 为 red，token 色为 coz-mg-hglt-secondary-red
+- 可以通过 `card` 属性来使用卡片样式，需要同时设置 `fullMode={false}`
+- 支持自定义关闭图标和对齐方式
+- 支持自定义图标，通过 `icon` 属性设置
+- 默认不显示边框（`bordered={false}`）
+- 默认样式：
+  - 标题使用 `text-lg` 字体大小，`font-medium` 字重，颜色为 `coz-fg-plus`
+  - 描述文本使用 `font-normal` 字重，颜色为 `coz-fg-primary`
+  - 内边距为 `px-18px py-4px`
+  - 卡片模式下有圆角 `rounded-normal`
+
+## 代码演示
+
+### 基础用法
+
+展示最基本的横幅提示。默认为 info 类型，居中对齐。
+
+```tsx preview
+import { Banner } from '@coze-arch/coze-design';
+
+const Demo = () => <Banner description="这是一条基础的横幅提示信息" />;
+
+export default Demo;
+```
+
+### 不同类型
+
+通过 `type` 属性设置不同的提示类型。每种类型都有对应的颜色和样式。
+
+```tsx preview
+import { Banner } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="space-y-4">
+    <Banner type="info" description="这是一条信息提示" />
+    <Banner type="success" description="这是一条成功提示" />
+    <Banner type="warning" description="这是一条警告提示" />
+    <Banner type="danger" description="这是一条危险提示" />
+  </div>
+);
+
+export default Demo;
+```
+
+### 可关闭的横幅
+
+通过 `closeIcon` 属性设置关闭按钮。支持完全自定义关闭按钮的样式。默认使用 `IconCozCross` 图标，颜色为 `coz-fg-secondary`。
+
+```tsx preview
+import { Banner } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [visible, setVisible] = useState(true);
+
+  return visible ? (
+    <Banner
+      fullMode={true}
+      description={
+        <div>
+          这是一条可关闭的提示信息
+          <span
+            className="coz-fg-hglt pl-2 cursor-pointer"
+            onClick={() => setVisible(false)}
+          >
+            不再显示
+          </span>
+        </div>
+      }
+    />
+  ) : null;
+};
+
+export default Demo;
+```
+
+### 卡片样式
+
+使用 `card` 属性展示卡片样式的横幅。注意需要同时设置 `fullMode={false}` 来实现卡片效果。卡片样式支持添加标题和自定义内容。卡片内的按钮会自动应用 `rounded-mini` 圆角样式。
+
+```tsx preview
+import { Banner, Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="border border-solid coz-stroke-primary rounded w-480px p-20px">
+    <Banner
+      card={true}
+      fullMode={false}
+      title="标题"
+      type="info"
+      bordered={false}
+      description="这是一条卡片样式的横幅提示信息"
+    >
+      <div className="text-right px-12px my-12px">
+        <Button color="hgltplus">不需要</Button>
+      </div>
+    </Banner>
+  </div>
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### Banner Props
+
+| 属性        | 说明             | 类型                                           | 默认值     |
+| ----------- | ---------------- | ---------------------------------------------- | ---------- |
+| card        | 是否使用卡片样式 | `boolean`                                      | `false`    |
+| type        | 横幅类型         | `'info' \| 'success' \| 'warning' \| 'danger'` | `'info'`   |
+| justify     | 内容对齐方式     | `'start' \| 'center'`                          | `'center'` |
+| description | 横幅内容         | `ReactNode`                                    | -          |
+| title       | 标题             | `ReactNode`                                    | -          |
+| closeIcon   | 关闭图标         | `boolean \| ReactNode`                         | `true`     |
+| fullMode    | 是否使用全宽模式 | `boolean`                                      | `false`    |
+| onClose     | 关闭时的回调函数 | `() => void`                                   | -          |
+| icon        | 自定义图标       | `ReactNode`                                    | `null`     |
+| className   | 自定义类名       | `string`                                       | -          |
+| bordered    | 是否显示边框     | `boolean`                                      | `false`    |
+
+注意：除了以上列出的属性外，组件还支持所有 Semi Banner 的属性，具体请参考 [Semi Banner 文档](https://semi.design/zh-CN/feedback/banner#API参考)。
+
+### 类型定义
+
+```ts
+type BannerType = 'info' | 'danger' | 'warning' | 'success';
+```

@@ -801,6 +801,17 @@
       "projectFolder": "packages/rush-plugins/dep-level-check",
       "tags": ["level-3"],
       "shouldPublish": true
+    },
+    {
+      "packageName": "@coze-arch/coze-design-doc",
+      "projectFolder": "packages/components/docs",
+      "tags": ["level-4"]
+    },
+    {
+      "packageName": "@coze-arch/pkg-root-webpack-plugin",
+      "projectFolder": "packages/utils/pkg-root-webpack-plugin",
+      "shouldPublish": true,
+      "tags": ["level-1"]
     }
     // {
     //   "packageName": "@coze-editor/parser-jinja2",

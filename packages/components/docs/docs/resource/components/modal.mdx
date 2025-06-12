@@ -1,0 +1,421 @@
+---
+name: Modal
+description: 对话框组件：临时的覆盖层，用于显示重要信息或获取用户输入，适用于需要用户处理事务而不打断工作流程的场景。
+---
+
+# Modal 对话框
+
+## 基本信息
+
+### 何时使用
+
+Modal 对话框是一种临时的覆盖层，用于显示重要信息或获取用户输入。它通常用于以下场景：
+
+- 需要用户处理事务，又不希望跳转页面以致打断工作流程时
+- 需要显示详细信息或进行用户输入时
+- 需要显示系统提示、报错、确认等信息时
+
+### 如何引入
+
+```tsx
+import { Modal } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Modal 组件基础上定制
+- 支持两种类型：`modal` 和 `dialog`
+- 提供多种预设尺寸和高度选项
+- 支持自定义按钮颜色和加载状态
+- 提供多种静态方法：`info`、`success`、`error`、`warning`、`confirm`
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/modal)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-160009&m=dev)
+- [Semi Modal 文档](https://semi.design/zh-CN/show/modal)
+
+## 功能演示
+
+### 基本用法
+
+最基础的对话框用法，展示了 modal 和 dialog 两种类型。
+
+```tsx preview
+import { Modal, Button } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [visible, setVisible] = useState({ modal: false, dialog: false });
+
+  return (
+    <>
+      <Button onClick={() => setVisible({ ...visible, modal: true })}>
+        打开 Modal
+      </Button>
+      <Button
+        className="ml-2"
+        onClick={() => setVisible({ ...visible, dialog: true })}
+      >
+        打开 Dialog
+      </Button>
+
+      <Modal
+        type="modal"
+        title="删除此机器人？"
+        visible={visible.modal}
+        onOk={() => setVisible({ ...visible, modal: false })}
+        onCancel={() => setVisible({ ...visible, modal: false })}
+        cancelText="取消"
+        okText="删除"
+      >
+        此操作无法撤销
+      </Modal>
+
+      <Modal
+        type="dialog"
+        title="删除此机器人？"
+        visible={visible.dialog}
+        onOk={() => setVisible({ ...visible, dialog: false })}
+        onCancel={() => setVisible({ ...visible, dialog: false })}
+        cancelText="取消"
+        okText="删除"
+      >
+        此操作无法撤销
+      </Modal>
+    </>
+  );
+};
+
+export default Demo;
+```
+
+### 不同尺寸
+
+Modal 提供多种预设尺寸选项。
+
+```tsx preview
+import { Modal, Button } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [visible, setVisible] = useState({});
+  const sizes = ['default', 'large', 'xl', 'xxl', 'fill'];
+
+  return (
+    <div className="flex gap-2 flex-wrap">
+      {sizes.map(size => (
+        <>
+          <Button onClick={() => setVisible({ ...visible, [size]: true })}>
+            {size} 尺寸
+          </Button>
+          <Modal
+            type="modal"
+            size={size}
+            title="对话框标题"
+            visible={visible[size]}
+            onOk={() => setVisible({ ...visible, [size]: false })}
+            onCancel={() => setVisible({ ...visible, [size]: false })}
+            cancelText="取消"
+            okText="确定"
+          >
+            不同尺寸的对话框内容
+          </Modal>
+        </>
+      ))}
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 自定义高度
+
+Modal 支持多种高度设置：`fit-content`（默认）、`fill` 和具体数值。
+
+```tsx preview
+import { Modal, Button } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [visible, setVisible] = useState({});
+  const heights = [
+    { height: 'fit-content', content: '适应内容高度' },
+    { height: 'fill', content: '填充可用空间' },
+    { height: 300, content: '固定高度 300px' },
+  ];
+
+  return (
+    <div className="flex gap-2 flex-wrap">
+      {heights.map(({ height, content }) => (
+        <>
+          <Button onClick={() => setVisible({ ...visible, [height]: true })}>
+            高度: {height}
+          </Button>
+          <Modal
+            type="modal"
+            height={height}
+            title="对话框标题"
+            visible={visible[height]}
+            onOk={() => setVisible({ ...visible, [height]: false })}
+            onCancel={() => setVisible({ ...visible, [height]: false })}
+            cancelText="取消"
+            okText="确定"
+          >
+            {content}
+          </Modal>
+        </>
+      ))}
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 按钮颜色
+
+支持自定义确认按钮的颜色。
+
+```tsx preview
+import { Modal, Button } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [visible, setVisible] = useState({});
+  const colors = ['brand', 'yellow', 'red'];
+
+  return (
+    <div className="flex gap-2 flex-wrap">
+      {colors.map(color => (
+        <>
+          <Button
+            color={color}
+            onClick={() => setVisible({ ...visible, [color]: true })}
+          >
+            {color} 按钮
+          </Button>
+          <Modal
+            type="modal"
+            title="对话框标题"
+            visible={visible[color]}
+            onOk={() => setVisible({ ...visible, [color]: false })}
+            onCancel={() => setVisible({ ...visible, [color]: false })}
+            cancelText="取消"
+            okText="确定"
+            okButtonColor={color}
+          >
+            自定义按钮颜色的对话框
+          </Modal>
+        </>
+      ))}
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 加载状态
+
+支持显示按钮的加载状态。
+
+```tsx preview
+import { Modal, Button } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setVisible(true)}>显示加载状态</Button>
+      <Modal
+        type="modal"
+        title="对话框标题"
+        visible={visible}
+        onOk={() => setVisible(false)}
+        onCancel={() => setVisible(false)}
+        cancelText="取消"
+        okText="确定"
+        confirmLoading
+        cancelLoading
+      >
+        按钮处于加载状态
+      </Modal>
+    </>
+  );
+};
+
+export default Demo;
+```
+
+### 静态方法
+
+Modal 提供了一系列静态方法，用于快速创建不同类型的对话框。
+
+```tsx preview
+import { Modal, Button } from '@coze-arch/coze-design';
+import { IconCozLoading } from '@coze-arch/coze-design/icons';
+
+const Demo = () => {
+  const showModal = type => {
+    Modal[type]({
+      title: '操作提示',
+      content: '这是一个通过静态方法创建的对话框',
+      type: 'dialog',
+      cancelText: '取消',
+      okText: '确定',
+    });
+  };
+
+  return (
+    <div className="flex gap-2 flex-wrap">
+      <Button color="brand" onClick={() => showModal('success')}>
+        success
+      </Button>
+      <Button color="brand" onClick={() => showModal('info')}>
+        info
+      </Button>
+      <Button color="red" onClick={() => showModal('error')}>
+        error
+      </Button>
+      <Button color="yellow" onClick={() => showModal('warning')}>
+        warning
+      </Button>
+      <Button color="brand" onClick={() => showModal('confirm')}>
+        confirm
+      </Button>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 自定义内容
+
+Modal 提供了一些辅助组件来帮助构建内容。
+
+```tsx preview
+import { Modal, Button } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setVisible(true)}>显示自定义内容</Button>
+      <Modal
+        type="modal"
+        title="对话框标题"
+        visible={visible}
+        onOk={() => setVisible(false)}
+        onCancel={() => setVisible(false)}
+        cancelText="取消"
+        okText="确定"
+      >
+        <Modal.SubTitle>副标题</Modal.SubTitle>
+        <Modal.Description>这是一段描述文本</Modal.Description>
+        <Modal.Content>这是主要内容区域</Modal.Content>
+      </Modal>
+    </>
+  );
+};
+
+export default Demo;
+```
+
+## API
+
+### Modal Props
+
+| 属性               | 说明                     | 类型                                                                                     | 默认值              |
+| ------------------ | ------------------------ | ---------------------------------------------------------------------------------------- | ------------------- |
+| type               | 对话框类型               | `'dialog' \| 'modal'`                                                                    | `'modal'`           |
+| size               | 对话框尺寸               | `'default' \| 'small' \| 'medium' \| 'large' \| 'xl' \| 'xxl' \| 'fill' \| 'full-width'` | `'default'`         |
+| height             | 对话框高度               | `'fit-content' \| 'fill' \| number`                                                      | `'fit-content'`     |
+| width              | 对话框宽度               | `string \| number`                                                                       | -                   |
+| title              | 标题                     | `ReactNode`                                                                              | -                   |
+| visible            | 是否可见                 | `boolean`                                                                                | `false`             |
+| okButtonColor      | 确认按钮颜色             | `'brand' \| 'yellow' \| 'red'`                                                           | `'brand'`           |
+| okButtonProps      | 确认按钮属性             | `ButtonProps`                                                                            | `{}`                |
+| cancelButtonProps  | 取消按钮属性             | `ButtonProps`                                                                            | `{}`                |
+| confirmLoading     | 确认按钮加载状态         | `boolean`                                                                                | `false`             |
+| cancelLoading      | 取消按钮加载状态         | `boolean`                                                                                | `false`             |
+| onOk               | 点击确认回调             | `() => void \| Promise<void>`                                                            | -                   |
+| onCancel           | 点击取消回调             | `() => void`                                                                             | -                   |
+| afterClose         | 完全关闭后的回调         | `() => void`                                                                             | -                   |
+| hasScroll          | 是否启用滚动             | `boolean`                                                                                | `true`              |
+| linearGradientMask | 是否启用渐变遮罩         | `boolean`                                                                                | `false`             |
+| autoLoading        | 是否自动处理按钮加载状态 | `boolean`                                                                                | `false`             |
+| showCancelButton   | 是否显示取消按钮         | `boolean`                                                                                | `true`              |
+| okButtonClassName  | 确认按钮的自定义类名     | `string`                                                                                 | -                   |
+| okText             | 确认按钮文字             | `ReactNode`                                                                              | -                   |
+| cancelText         | 取消按钮文字             | `ReactNode`                                                                              | -                   |
+| className          | 对话框容器类名           | `string`                                                                                 | -                   |
+| style              | 对话框容器样式           | `CSSProperties`                                                                          | -                   |
+| bodyStyle          | 对话框内容区域样式       | `CSSProperties`                                                                          | -                   |
+| footer             | 自定义页脚内容           | `ReactNode`                                                                              | -                   |
+| footerFill         | 页脚按钮是否填充宽度     | `boolean`                                                                                | `false`             |
+| closable           | 是否显示关闭按钮         | `boolean`                                                                                | `type !== 'dialog'` |
+| closeOnEsc         | 是否支持 ESC 键关闭      | `boolean`                                                                                | `false`             |
+| maskClosable       | 点击遮罩是否可以关闭     | `boolean`                                                                                | `true`              |
+| zIndex             | 对话框层级               | `number`                                                                                 | -                   |
+| scrollerYRef       | 滚动容器的引用           | `RefObject<HTMLDivElement>`                                                              | -                   |
+
+除了以上 API，CozModal 组件还支持原生 Semi Modal 组件的所有属性。 具体请参考 [Semi Modal 文档](https://semi.design/zh-CN/show/modal#API%20参考)。
+
+### Modal.SubTitle Props
+
+| 属性      | 说明       | 类型            | 默认值 |
+| --------- | ---------- | --------------- | ------ |
+| children  | 副标题内容 | `ReactNode`     | -      |
+| className | 自定义类名 | `string`        | -      |
+| style     | 自定义样式 | `CSSProperties` | -      |
+
+### Modal.Description Props
+
+| 属性      | 说明       | 类型            | 默认值 |
+| --------- | ---------- | --------------- | ------ |
+| children  | 描述内容   | `ReactNode`     | -      |
+| className | 自定义类名 | `string`        | -      |
+| style     | 自定义样式 | `CSSProperties` | -      |
+
+### Modal.Content Props
+
+| 属性      | 说明       | 类型            | 默认值 |
+| --------- | ---------- | --------------- | ------ |
+| children  | 主要内容   | `ReactNode`     | -      |
+| className | 自定义类名 | `string`        | -      |
+| style     | 自定义样式 | `CSSProperties` | -      |
+
+### 静态方法
+
+以下方法都会返回一个引用，可以通过该引用更新或关闭对话框：
+
+```typescript
+interface ModalStaticFuncReturn {
+  destroy: () => void;
+  update: (config: ModalProps) => void;
+}
+```
+
+- `Modal.info(config): ModalStaticFuncReturn`
+  - 默认按钮颜色：`brand`
+- `Modal.success(config): ModalStaticFuncReturn`
+  - 默认按钮颜色：`brand`
+- `Modal.error(config): ModalStaticFuncReturn`
+  - 默认按钮颜色：`red`
+- `Modal.warning(config): ModalStaticFuncReturn`
+  - 默认按钮颜色：`yellow`
+- `Modal.confirm(config): ModalStaticFuncReturn`
+  - 默认按钮颜色：`brand`
+
+其中 `config` 参数的类型与 Modal Props 相同。
+
+### 全局方法
+
+- `Modal.destroyAll()`: 关闭通过静态方法创建的所有对话框

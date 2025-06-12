@@ -1,0 +1,278 @@
+---
+name: Typography
+description: 排版组件：用于展示标题、段落、文本和数字等不同类型的文本内容，支持格式化和样式调整，处理文本溢出和省略。
+---
+
+# Typography 排版
+
+## 基本信息
+
+### 何时使用
+
+- 当需要展示标题、段落、文本和数字等不同类型的文本内容时
+- 当需要对文本内容进行格式化和样式调整时
+- 当需要处理文本溢出和省略的场景时
+- 当需要对数字进行特殊格式化处理时
+
+### 如何引入
+
+```tsx
+import { Typography } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Design 的 Typography 组件封装，继承了其所有功能
+- 扩展了字体大小和行高的预设值
+- 支持通过 className 自定义样式
+- 提供了四个子组件：Title、Text、Paragraph 和 Numeral
+- 每个子组件都有其特定的字号和行高预设
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/typography)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161057&m=dev)
+- [Semi Typography 文档](https://semi.design/zh-CN/basic/typography)
+
+## 功能演示
+
+### 基础用法
+
+展示所有子组件的基本使用方式。
+
+```tsx preview
+import { Typography } from '@coze-arch/coze-design';
+
+const { Title, Text, Paragraph, Numeral } = Typography;
+
+const Demo = () => (
+  <div className="flex flex-col gap-8">
+    <Title heading={3}>标题Title</Title>
+    <Text size="normal">文字Text</Text>
+    <Paragraph size="normal">段落Paragraph</Paragraph>
+    <Numeral className="coz-fg-primary" precision={2}>
+      <p>数字Numeral：1.6111e1 K</p>
+    </Numeral>
+  </div>
+);
+
+export default Demo;
+```
+
+### 标题组件
+
+Title 组件支持不同的标题级别和预设字号。
+
+```tsx preview
+import { Typography } from '@coze-arch/coze-design';
+
+const { Title } = Typography;
+
+const Demo = () => (
+  <div className="flex flex-col gap-2">
+    <Title fontSize="28px">COZTitle28（特大标题）</Title>
+    <Title fontSize="20px">COZTitle20（大标题）</Title>
+    <Title fontSize="16px">COZTitle16（标题）</Title>
+    <Title fontSize="14px">COZTitle14（小标题）</Title>
+    <Title fontSize="12px">COZTitle12（特小标题）</Title>
+  </div>
+);
+
+export default Demo;
+```
+
+### 文本组件
+
+Text 组件提供了多种预设字号选择。
+
+```tsx preview
+import { Typography } from '@coze-arch/coze-design';
+
+const { Text } = Typography;
+
+const Demo = () => (
+  <div className="flex flex-col gap-2">
+    <Text fontSize="16px">COZText16（大文字）</Text>
+    <Text fontSize="14px">COZText14（标准文字）</Text>
+    <Text fontSize="12px">COZText12（小文字）</Text>
+    <Text fontSize="10px">COZText10（特小文字）</Text>
+  </div>
+);
+
+export default Demo;
+```
+
+### 段落组件
+
+Paragraph 组件支持文本展开折叠和省略功能。
+
+```tsx preview
+import { Typography } from '@coze-arch/coze-design';
+
+const { Paragraph } = Typography;
+
+const Demo = () => (
+  <Paragraph
+    ellipsis={{
+      rows: 3,
+      expandable: true,
+      collapsible: true,
+      collapseText: '折叠我吧',
+    }}
+    className="coz-fg-primary"
+    style={{ width: 300 }}
+  >
+    支持展开和折叠：Coze Design
+    设计系统包含设计语言以及一整套可复用的前端组件，帮助设计师与开发者更容易地打造高质量的、用户体验一致的、符合设计规范的
+    Web 应用。
+  </Paragraph>
+);
+
+export default Demo;
+```
+
+### 数字组件
+
+Numeral 组件用于处理数字的展示格式。
+
+```tsx preview
+import { Typography } from '@coze-arch/coze-design';
+
+const { Numeral } = Typography;
+
+const Demo = () => (
+  <div className="flex flex-col gap-2">
+    <Numeral className="coz-fg-primary" precision={2}>
+      <p>点赞量：1.6111e1 K</p>
+    </Numeral>
+    <Numeral rule="percentages" className="coz-fg-primary" precision={2}>
+      <p>好评率: 0.915</p>
+    </Numeral>
+  </div>
+);
+
+export default Demo;
+```
+
+### 文字省略
+
+Typography 组件支持文字省略功能，可以配置 tooltip 或 popover 提示。
+
+```tsx preview
+import { Typography } from '@coze-arch/coze-design';
+
+const { Paragraph } = Typography;
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <Paragraph
+      fontSize="14px"
+      ellipsis={{
+        rows: 2,
+        showTooltip: {
+          type: 'tooltip',
+          opts: {
+            content: '完整文本内容',
+          },
+        },
+      }}
+      style={{ width: 500 }}
+    >
+      Coze Design
+      设计系统包含设计语言以及一整套可复用的前端组件，帮助设计师与开发者更容易地打造高质量的、用户体验一致的、符合设计规范的
+      Web 应用。
+    </Paragraph>
+
+    <Paragraph
+      fontSize="14px"
+      ellipsis={{
+        rows: 2,
+        showTooltip: false,
+      }}
+      style={{ width: 500 }}
+    >
+      仅使用省略号：Coze Design
+      设计系统包含设计语言以及一整套可复用的前端组件，帮助设计师与开发者更容易地打造高质量的、用户体验一致的、符合设计规范的
+      Web 应用。
+    </Paragraph>
+  </div>
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### Typography.Title
+
+| 属性      | 说明       | 类型                                                          | 默认值      |
+| --------- | ---------- | ------------------------------------------------------------- | ----------- |
+| fontSize  | 字体大小   | `'28px' \| '20px' \| '16px' \| '14px' \| '12px' \| 'inherit'` | `'inherit'` |
+| heading   | 标题级别   | `1 \| 2 \| 3 \| 4 \| 5 \| 6`                                  | -           |
+| className | 自定义类名 | `string`                                                      | -           |
+
+字号与行高对应关系：
+
+- **28px**：`font-size: 28px` | `line-height: 36px`
+- **20px**：`font-size: 20px` | `line-height: 28px`
+- **16px**：`font-size: 16px` | `line-height: 22px`
+- **14px**：`font-size: 14px` | `line-height: 20px`
+- **12px**：`font-size: 12px` | `line-height: 16px`
+
+### Typography.Text
+
+| 属性      | 说明       | 类型                                                | 默认值      |
+| --------- | ---------- | --------------------------------------------------- | ----------- |
+| fontSize  | 字体大小   | `'16px' \| '14px' \| '12px' \| '10px' \| 'inherit'` | `'inherit'` |
+| size      | 预设大小   | `'normal' \| 'small' \| 'inherit'`                  | -           |
+| className | 自定义类名 | `string`                                            | -           |
+
+字号与行高对应关系：
+
+- **16px**：`font-size: 16px` | `line-height: 28px`
+- **14px**：`font-size: 14px` | `line-height: 20px`
+- **12px**：`font-size: 12px` | `line-height: 16px`
+- **10px**：`font-size: 10px` | `line-height: 14px`
+
+### Typography.Paragraph
+
+| 属性      | 说明         | 类型                                      | 默认值      |
+| --------- | ------------ | ----------------------------------------- | ----------- |
+| fontSize  | 字体大小     | `'16px' \| '14px' \| '12px' \| 'inherit'` | `'inherit'` |
+| ellipsis  | 自动溢出省略 | `boolean \| Ellipsis`                     | -           |
+| className | 自定义类名   | `string`                                  | -           |
+
+字号与行高对应关系：
+
+- **16px**：`font-size: 16px` | `line-height: 28px`
+- **14px**：`font-size: 14px` | `line-height: 20px`
+- **12px**：`font-size: 12px` | `line-height: 16px`
+
+### Typography.Numeral
+
+| 属性      | 说明         | 类型            | 默认值 |
+| --------- | ------------ | --------------- | ------ |
+| precision | 数字精度     | `number`        | -      |
+| rule      | 格式化规则   | `'percentages'` | -      |
+| truncate  | 截断配置     | `boolean`       | -      |
+| parser    | 自定义解析器 | `function`      | -      |
+| className | 自定义类名   | `string`        | -      |
+
+### Ellipsis 类型
+
+```ts
+interface Ellipsis {
+  rows?: number;
+  expandable?: boolean;
+  collapsible?: boolean;
+  collapseText?: string;
+  showTooltip?:
+    | boolean
+    | {
+        type: 'tooltip' | 'popover';
+        opts?: object;
+      };
+}
+```
+
+除了以上属性，Typography 组件还支持原生 Semi Typography 组件的所有属性。 具体请参考 [Semi Typography 文档](https://semi.design/zh-CN/basic/typography#API%20参考)。

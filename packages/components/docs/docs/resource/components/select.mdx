@@ -1,0 +1,291 @@
+---
+name: Select
+description: 选择器组件：用于从一组选项中选择一个或多个选项，支持分组、多选、搜索等丰富功能。
+---
+
+# Select 选择器
+
+## 基本信息
+
+### 何时使用
+
+当用户需要从一组选项中选择一个或多个选项时使用。区别于 SingleSelect，Select 组件提供了更丰富的功能，如分组、多选、搜索等。
+
+### 如何引入
+
+```tsx
+import { Select } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Select 组件封装，继承了其所有功能
+- 默认使用了 Coze Design 的主题变量和样式
+- 支持 `default` 和 `small` 两种尺寸
+- 提供了自定义的选项渲染和选中标记样式
+- 支持单选和多选模式
+- 可以通过 `showTick` 属性控制是否显示选中标记
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/select)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161797&m=dev)
+- [Semi Select 文档](https://semi.design/zh-CN/input/select)
+
+## 功能演示
+
+### 基础用法
+
+最基本的选择器用法。
+
+```tsx preview
+import { Select } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <Select
+    placeholder="请选择"
+    style={{ width: '200px' }}
+    showClear
+    optionList={[
+      { value: '1', label: '选项1' },
+      { value: '2', label: '选项2' },
+      { value: '3', label: '选项3' },
+    ]}
+  />
+);
+
+export default Demo;
+```
+
+### 不同尺寸
+
+Select 支持 `default` 和 `small` 两种尺寸。
+
+```tsx preview
+import { Select } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: '16px' }}>
+    <div>
+      <h4>默认尺寸</h4>
+      <Select
+        placeholder="请选择"
+        style={{ width: '200px' }}
+        size="default"
+        optionList={[
+          { value: '1', label: '选项1' },
+          { value: '2', label: '选项2' },
+          { value: '3', label: '选项3' },
+        ]}
+      />
+    </div>
+    <div>
+      <h4>小尺寸</h4>
+      <Select
+        placeholder="请选择"
+        style={{ width: '200px' }}
+        size="small"
+        optionList={[
+          { value: '1', label: '选项1' },
+          { value: '2', label: '选项2' },
+          { value: '3', label: '选项3' },
+        ]}
+      />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 选项分组
+
+使用 `OptGroup` 进行选项分组。
+
+```tsx preview
+import { Select } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <Select placeholder="请选择" style={{ width: '200px' }} filter>
+    <Select.OptGroup label="亚洲">
+      <Select.Option value="cn">中国</Select.Option>
+      <Select.Option value="jp">日本</Select.Option>
+      <Select.Option value="kr">韩国</Select.Option>
+    </Select.OptGroup>
+    <Select.OptGroup label="欧洲">
+      <Select.Option value="uk">英国</Select.Option>
+      <Select.Option value="fr">法国</Select.Option>
+      <Select.Option value="de">德国</Select.Option>
+    </Select.OptGroup>
+  </Select>
+);
+
+export default Demo;
+```
+
+### 多选模式
+
+使用 `multiple` 属性启用多选模式。
+
+```tsx preview
+import { Select } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <Select
+    placeholder="请选择"
+    style={{ width: '300px' }}
+    multiple
+    showRestTagsPopover
+    optionList={[
+      { value: '1', label: '选项1' },
+      { value: '2', label: '选项2' },
+      { value: '3', label: '选项3' },
+      { value: '4', label: '选项4' },
+      { value: '5', label: '选项5' },
+    ]}
+  />
+);
+
+export default Demo;
+```
+
+### 不同状态
+
+展示选择器的不同状态。
+
+```tsx preview
+import { Select } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <div>
+      <h4>禁用状态</h4>
+      <Select
+        placeholder="请选择"
+        style={{ width: '200px' }}
+        disabled
+        optionList={[
+          { value: '1', label: '选项1' },
+          { value: '2', label: '选项2' },
+          { value: '3', label: '选项3' },
+        ]}
+      />
+    </div>
+    <div>
+      <h4>错误状态</h4>
+      <Select
+        placeholder="请选择"
+        style={{ width: '200px' }}
+        hasError
+        optionList={[
+          { value: '1', label: '选项1' },
+          { value: '2', label: '选项2' },
+          { value: '3', label: '选项3' },
+        ]}
+      />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### Chip 模式
+
+Select 组件支持 Chip 样式的展示模式，可以通过 `chipRender` 属性来控制。支持两种渲染模式：
+
+- `selectedItem`：在选项中以 Chip 形式展示
+- `trigger`：在触发器中以 Chip 形式展示
+
+```tsx preview
+import { Select } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  const options = [
+    'brand',
+    'primary',
+    'green',
+    'yellow',
+    'red',
+    'cyan',
+    'blue',
+    'purple',
+    'magenta',
+  ].map(color => ({
+    label: color,
+    value: color,
+    chipColor: color,
+  }));
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div>
+        <h4>单选 - selectedItem 模式</h4>
+        <Select
+          chipRender="selectedItem"
+          dropdownStyle={{ width: 200 }}
+          optionList={options}
+          defaultValue="brand"
+        />
+      </div>
+      <div>
+        <h4>多选 - selectedItem 模式</h4>
+        <Select
+          multiple
+          chipRender="selectedItem"
+          dropdownStyle={{ width: 200 }}
+          optionList={options}
+          defaultValue={['primary', 'green']}
+        />
+      </div>
+      <div>
+        <h4>trigger 模式</h4>
+        <Select
+          chipRender="trigger"
+          optionList={options}
+          dropdownStyle={{ minWidth: 200 }}
+          defaultValue="brand"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+## API 参考
+
+### Select Props
+
+| 属性         | 说明                 | 类型                                                                                         | 默认值      |
+| ------------ | -------------------- | -------------------------------------------------------------------------------------------- | ----------- |
+| size         | 选择器尺寸           | `'default' \| 'small'`                                                                       | `'default'` |
+| hasError     | 是否为错误状态       | `boolean`                                                                                    | `false`     |
+| disabled     | 是否禁用             | `boolean`                                                                                    | `false`     |
+| showTick     | 是否显示选中标记     | `boolean`                                                                                    | `true`      |
+| multiple     | 是否多选             | `boolean`                                                                                    | `false`     |
+| filter       | 是否可搜索           | `boolean`                                                                                    | `false`     |
+| chipRender   | Chip 渲染模式        | `'selectedItem' \| 'trigger'`                                                                | -           |
+| optionList   | 选项数据源           | `Array<{value: string \| number, label: ReactNode, chipColor?: string, disabled?: boolean}>` | -           |
+| value        | 当前选中的值（受控） | `string \| number \| Array<string \| number>`                                                | -           |
+| defaultValue | 默认选中的值         | `string \| number \| Array<string \| number>`                                                | -           |
+| placeholder  | 选择框默认文字       | `string`                                                                                     | -           |
+| className    | 自定义类名           | `string`                                                                                     | -           |
+| style        | 自定义样式           | `CSSProperties`                                                                              | -           |
+
+除了以上属性，Select 组件还支持原生 Semi Select 组件的所有属性。 具体请参考 [Semi Select 文档](https://semi.design/zh-CN/input/select#API%20参考)。
+
+### Select.Option Props
+
+| 属性     | 说明         | 类型               | 默认值  |
+| -------- | ------------ | ------------------ | ------- |
+| value    | 选项值       | `string \| number` | -       |
+| label    | 选项显示内容 | `ReactNode`        | -       |
+| disabled | 是否禁用     | `boolean`          | `false` |
+
+### Select.OptGroup Props
+
+| 属性  | 说明     | 类型        | 默认值 |
+| ----- | -------- | ----------- | ------ |
+| label | 分组标题 | `ReactNode` | -      |

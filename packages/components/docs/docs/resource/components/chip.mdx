@@ -1,0 +1,197 @@
+---
+name: Chip
+description: 按钮标签组件：用于展示标签、状态、分类等信息，支持多种交互方式和样式选项。
+---
+
+# Chip 按钮标签
+
+## 基本信息
+
+### 何时使用
+
+当需要展示标签、状态、分类等信息时使用。Chip 组件提供了丰富的样式选项和交互方式，适用于多种场景。
+
+### 如何引入
+
+```tsx
+import { Chip } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 提供了三种交互样式：只读（readonly）、可移除（remove）和可选择（select）
+- 支持多种预设颜色主题
+- 支持两种尺寸：small 和 mini
+- 可以设置禁用和加载状态
+- 支持自定义点击和移除事件
+
+### 快捷链接
+
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=12538-146322&m=dev)
+
+## 功能演示
+
+### 基础用法
+
+最基本的标签用法。
+
+```tsx preview
+import { Chip } from '@coze-arch/coze-design';
+
+const Demo = () => <Chip>Basic Chip</Chip>;
+
+export default Demo;
+```
+
+### 不同尺寸
+
+Chip 支持 `small` 和 `mini` 两种尺寸。
+
+```tsx preview
+import { Chip } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: '16px' }}>
+    <Chip size="small">small</Chip>
+    <Chip size="mini">mini</Chip>
+  </div>
+);
+
+export default Demo;
+```
+
+### 颜色主题
+
+Chip 提供了多种预设的颜色主题。
+
+```tsx preview
+import { Chip } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+    <Chip color="brand">brand</Chip>
+    <Chip color="primary">primary</Chip>
+    <Chip color="green">green</Chip>
+    <Chip color="yellow">yellow</Chip>
+    <Chip color="red">red</Chip>
+    <Chip color="cyan">cyan</Chip>
+    <Chip color="blue">blue</Chip>
+    <Chip color="purple">purple</Chip>
+    <Chip color="magenta">magenta</Chip>
+  </div>
+);
+
+export default Demo;
+```
+
+### 交互样式
+
+Chip 支持三种交互样式：readonly、remove 和 select。
+
+```tsx preview
+import { Chip } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <div>
+      <h4>只读样式</h4>
+      <div style={{ display: 'flex', gap: '8px' }}>
+        <Chip chipStyle="readonly" color="brand">
+          readonly
+        </Chip>
+        <Chip chipStyle="readonly" color="primary">
+          readonly
+        </Chip>
+      </div>
+    </div>
+    <div>
+      <h4>可移除样式</h4>
+      <div style={{ display: 'flex', gap: '8px' }}>
+        <Chip chipStyle="remove" color="green">
+          remove
+        </Chip>
+        <Chip chipStyle="remove" color="yellow">
+          remove
+        </Chip>
+      </div>
+    </div>
+    <div>
+      <h4>可选择样式</h4>
+      <div style={{ display: 'flex', gap: '8px' }}>
+        <Chip chipStyle="select" color="blue">
+          select
+        </Chip>
+        <Chip chipStyle="select" color="purple">
+          select
+        </Chip>
+      </div>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 禁用状态
+
+通过 `disabled` 属性设置禁用状态。
+
+```tsx preview
+import { Chip } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: '8px' }}>
+    <Chip disabled color="brand">
+      disabled
+    </Chip>
+    <Chip disabled chipStyle="remove" color="primary">
+      disabled
+    </Chip>
+    <Chip disabled chipStyle="select" color="green">
+      disabled
+    </Chip>
+  </div>
+);
+
+export default Demo;
+```
+
+### 加载状态
+
+通过 `loading` 属性设置加载状态。
+
+```tsx preview
+import { Chip } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: '8px' }}>
+    <Chip loading color="brand">
+      loading
+    </Chip>
+    <Chip loading chipStyle="remove" color="primary">
+      loading
+    </Chip>
+    <Chip loading chipStyle="select" color="green">
+      loading
+    </Chip>
+  </div>
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### Chip Props
+
+| 属性          | 说明         | 类型                                                                                                | 默认值       |
+| ------------- | ------------ | --------------------------------------------------------------------------------------------------- | ------------ |
+| size          | 标签尺寸     | `'small' \| 'mini'`                                                                                 | `'small'`    |
+| disabled      | 是否禁用     | `boolean`                                                                                           | `false`      |
+| loading       | 是否加载中   | `boolean`                                                                                           | `false`      |
+| color         | 颜色主题     | `'brand' \| 'primary' \| 'green' \| 'yellow' \| 'red' \| 'cyan' \| 'blue' \| 'purple' \| 'magenta'` | -            |
+| chipStyle     | 交互样式     | `'readonly' \| 'remove' \| 'select'`                                                                | `'readonly'` |
+| onClick       | 点击事件     | `(e: React.MouseEvent<HTMLDivElement>) => void`                                                     | -            |
+| onClickRemove | 移除点击事件 | `(e: React.MouseEvent<SVGElement>) => void`                                                         | -            |
+| className     | 自定义类名   | `string`                                                                                            | -            |
+| style         | 自定义样式   | `CSSProperties`                                                                                     | -            |

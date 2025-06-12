@@ -1,0 +1,414 @@
+---
+name: Badge
+description: 徽标组件：用于展示数字、文本或状态标记，适用于消息提醒、状态标识和新功能提示等场景。
+---
+
+# Badge 徽标
+
+## 基本信息
+
+### 何时使用
+
+徽标组件用于展示数字、文本或状态标记，常用于消息提醒、状态标识和新功能提示等场景。适合在需要引起用户注意的地方使用，如未读消息数量、新功能标签等。
+
+### 如何引入
+
+```tsx
+import { Badge } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于Semi Badge组件进行定制，提供了更多的样式变体和布局选项
+- coze-design调整了position为TopRight的默认偏移，固定x、y偏移为8px（除mini类型外）
+- 当使用`type="mini"`时，徽标会显示为小红点，此时`count`属性无效
+- 当`count`为0或undefined时，徽标默认不显示，可以通过`showZero`属性控制是否显示
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/badge)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161053&m=dev)
+- [Semi Badge](https://semi.design/zh-CN/show/badge)
+
+## 功能演示
+
+### 基本用法
+
+Badge组件可以包裹任何元素，为其添加徽标提示。徽标内容通过`count`属性设置，支持数字和文本。
+
+```tsx preview
+import { CozAvatar, Badge } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-row gap-2 p-4">
+    <Badge count={33}>
+      <CozAvatar color="orange" type="bot" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+    <Badge count="beta">
+      <CozAvatar color="green" type="bot" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+    <Badge count={1000} overflowCount={999}>
+      <CozAvatar color="orange" type="bot" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+  </div>
+);
+
+export default Demo;
+```
+
+### 徽标类型
+
+Badge组件提供了三种不同的类型，适用于不同的使用场景。
+
+```tsx preview
+import { CozAvatar, Badge, AIButton } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-row gap-4 p-4">
+    <Badge type="default" count={666} countStyle={{ right: 2, top: 2 }}>
+      <CozAvatar color="green" type="bot" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+    <Badge type="alt" count="beta">
+      <AIButton color="aihglt">Bot竞技场</AIButton>
+    </Badge>
+    <Badge type="mini" countStyle={{ right: 8, top: 6 }}>
+      <CozAvatar color="indigo" type="person" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+  </div>
+);
+
+export default Demo;
+```
+
+### 徽标位置
+
+可以通过`position`属性设置徽标的显示位置，包括：`leftTop`、`leftBottom`、`rightTop`(默认)、`rightBottom`。
+
+```tsx preview
+import { CozAvatar, Badge } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-row gap-4 p-4">
+    <Badge type="mini" position="rightTop" countStyle={{ right: 8, top: 6 }}>
+      <CozAvatar color="green" type="person" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+    <Badge
+      type="mini"
+      position="rightBottom"
+      countStyle={{ right: 8, bottom: 6 }}
+    >
+      <CozAvatar color="green" type="person" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+    <Badge type="mini" position="leftTop" countStyle={{ left: 8, top: 6 }}>
+      <CozAvatar color="green" type="person" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+    <Badge
+      type="mini"
+      position="leftBottom"
+      countStyle={{ left: 8, bottom: 6 }}
+    >
+      <CozAvatar color="green" type="person" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+  </div>
+);
+
+export default Demo;
+```
+
+### 自定义图标
+
+Badge组件支持自定义图标作为徽标内容。当传入的`count`是React节点时，将直接渲染该节点。
+
+```tsx preview
+import { CozAvatar, Badge } from '@coze-arch/coze-design';
+import { IconCozFireFill } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex flex-row gap-4 p-4">
+    <Badge
+      count={<IconCozFireFill className="coz-fg-hglt-red text-20px" />}
+      countStyle={{ top: -3, right: 8 }}
+    >
+      <CozAvatar color="purple" type="person" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+  </div>
+);
+
+export default Demo;
+```
+
+### 独立使用
+
+Badge组件支持不传入任何子节点内容，作为独立组件使用。
+
+```tsx preview
+import { Badge } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-row gap-4 p-4">
+    <Badge />
+    <Badge count="beta" type="alt" />
+    <Badge
+      type="mini"
+      countStyle={{ backgroundColor: 'var(--coz-fg-hglt-green)' }}
+    />
+  </div>
+);
+
+export default Demo;
+```
+
+### 数字上限
+
+当数字超过`overflowCount`设置的值时，会显示为`${overflowCount}+`的形式。默认的`overflowCount`为99。
+
+```tsx preview
+import { CozAvatar, Badge } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-row gap-4 p-4">
+    <Badge count={99}>
+      <CozAvatar color="orange" type="bot" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+    <Badge count={100}>
+      <CozAvatar color="orange" type="bot" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+    <Badge count={1000} overflowCount={999}>
+      <CozAvatar color="orange" type="bot" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+  </div>
+);
+
+export default Demo;
+```
+
+### 自定义样式
+
+通过`countStyle`属性，可以自定义徽标的样式，包括颜色、位置、大小等。
+
+```tsx preview
+import { Badge, CozAvatar } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex gap-4 p-4">
+    <Badge
+      count={8}
+      countStyle={{
+        backgroundColor: 'var(--coz-fg-hglt-green)',
+        color: 'white',
+        fontWeight: 'bold',
+      }}
+    >
+      <CozAvatar color="orange" type="bot" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+
+    <Badge
+      count="HOT"
+      type="alt"
+      countStyle={{
+        backgroundColor: 'var(--coz-fg-hglt-red)',
+        padding: '0 8px',
+      }}
+    >
+      <CozAvatar color="purple" type="bot" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+
+    <Badge
+      type="mini"
+      countStyle={{
+        backgroundColor: 'var(--coz-fg-hglt-yellow)',
+        width: '12px',
+        height: '12px',
+        right: 5,
+        top: 5,
+      }}
+    >
+      <CozAvatar color="green" type="bot" size="lg">
+        BD
+      </CozAvatar>
+    </Badge>
+  </div>
+);
+
+export default Demo;
+```
+
+### 与导航组件结合
+
+Badge组件可以与导航组件结合使用，如TabBar、SegmentTab等。
+
+```tsx preview
+import { Badge, TabBar, SegmentTab } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-col gap-6 p-4">
+    <div>
+      <h4 className="mb-2 text-sm">与TabBar结合：</h4>
+      <TabBar mode="tab">
+        <TabBar.TabPanel tab="我的" itemKey="tab1">
+          我的
+        </TabBar.TabPanel>
+        <TabBar.TabPanel
+          tab={
+            <div className="flex items-center">
+              <span>插件</span> <Badge cozLayout count={99} />
+            </div>
+          }
+          itemKey="tab2"
+        >
+          插件
+        </TabBar.TabPanel>
+        <TabBar.TabPanel
+          tab={
+            <div className="flex items-center">
+              <span>消息</span> <Badge type="mini" cozLayout />
+            </div>
+          }
+          itemKey="tab3"
+        >
+          消息
+        </TabBar.TabPanel>
+      </TabBar>
+    </div>
+
+    <div>
+      <h4 className="mb-2 text-sm">与SegmentTab结合：</h4>
+      <SegmentTab defaultValue={1} style={{ width: 300 }}>
+        <SegmentTab.Tab value={1}>全部</SegmentTab.Tab>
+        <SegmentTab.Tab value={2}>
+          <div className="flex items-center justify-center">
+            未读
+            <Badge type="default" cozLayout count={99}></Badge>
+          </div>
+        </SegmentTab.Tab>
+        <SegmentTab.Tab value={3}>
+          <div className="flex items-center justify-center">
+            已读
+            <Badge type="mini" cozLayout></Badge>
+          </div>
+        </SegmentTab.Tab>
+      </SegmentTab>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 与按钮组件结合
+
+Badge组件可以与按钮组件结合使用，如Button、IconButton等。
+
+```tsx preview
+import { Badge, Button, IconButton } from '@coze-arch/coze-design';
+import {
+  IconCozPeopleFill,
+  IconCozMicrophone,
+  IconCozBell,
+} from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex flex-col gap-6 p-4">
+    <div>
+      <h4 className="mb-2 text-sm">与普通按钮结合：</h4>
+      <div className="flex gap-4">
+        <Button icon={<IconCozPeopleFill />} showBadge={true}>
+          按钮
+        </Button>
+        <Button
+          icon={<IconCozPeopleFill />}
+          showBadge={true}
+          badgeColor="unset"
+          color="highlight"
+        >
+          高亮按钮
+        </Button>
+        <Button
+          icon={<IconCozBell />}
+          showBadge={true}
+          badgeCount={5}
+          color="primary"
+        >
+          消息按钮
+        </Button>
+      </div>
+    </div>
+
+    <div>
+      <h4 className="mb-2 text-sm">与图标按钮结合：</h4>
+      <div className="flex gap-4 items-center">
+        <Badge type="mini">
+          <IconButton size="large" icon={<IconCozMicrophone />} />
+        </Badge>
+
+        <Badge count={9}>
+          <IconButton icon={<IconCozMicrophone />} />
+        </Badge>
+
+        <Badge type="mini">
+          <IconButton
+            size="small"
+            icon={<IconCozMicrophone />}
+            color="secondary"
+          />
+        </Badge>
+
+        <Badge count={99} overflowCount={99}>
+          <IconButton size="large" icon={<IconCozBell />} color="primary" />
+        </Badge>
+      </div>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+## API
+
+### Badge Props
+
+| 属性名        | 说明                                    | 类型                                                       | 默认值       |
+| :------------ | :-------------------------------------- | :--------------------------------------------------------- | :----------- |
+| type          | 徽标类型                                | `'default' \| 'alt' \| 'mini'`                             | `'default'`  |
+| count         | 徽标内容                                | `ReactNode \| number \| string`                            | -            |
+| overflowCount | 数字超出此值时显示为`${overflowCount}+` | `number`                                                   | `99`         |
+| position      | 徽标位置                                | `'leftTop' \| 'leftBottom' \| 'rightTop' \| 'rightBottom'` | `'rightTop'` |
+| dot           | 是否显示为小红点                        | `boolean`                                                  | `false`      |
+| showZero      | 当count为0时是否显示徽标                | `boolean`                                                  | `false`      |
+| cozLayout     | 是否使用Coze布局样式                    | `boolean`                                                  | `false`      |
+| countStyle    | 自定义徽标样式                          | `CSSProperties`                                            | -            |
+| className     | 自定义类名                              | `string`                                                   | -            |
+| style         | 自定义样式                              | `CSSProperties`                                            | -            |
+
+除了以上属性，Badge 组件还支持原生 Semi Badge 组件的所有属性。 具体请参考 [Semi Badge 文档](https://semi.design/zh-CN/show/badge#API参考)。

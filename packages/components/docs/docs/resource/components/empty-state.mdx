@@ -1,0 +1,186 @@
+---
+name: EmptyState
+description: 空状态组件：用于展示无数据、操作结果反馈或引导用户采取行动的占位提示。
+---
+
+# Empty State 空状态
+
+## 基本信息
+
+### 何时使用
+
+空状态组件用于以下场景：
+
+- 页面或模块暂无数据时的占位提示
+- 操作结果的反馈展示（如加载失败、无权限等）
+- 需要用户采取行动时的引导提示
+
+### 如何引入
+
+```tsx
+import { EmptyState } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Empty 组件进行定制化扩展
+- 支持暗色模式，可通过 `darkModeIcon` 属性设置暗色模式下的图标
+- 按钮尺寸会根据 EmptyState 的 size 属性自动调整
+- 全屏模式（`full_screen`）会自动居中显示内容
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/empty-state)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161051&m=dev)
+- [Semi Empty 文档](https://semi.design/zh-CN/show/empty)
+
+## 功能演示
+
+### 基础用法
+
+展示不同尺寸的空状态。
+
+```tsx preview
+import { EmptyState } from '@coze-arch/coze-design';
+import { IconCozWarningCircle } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex flex-col gap-16">
+    <div>
+      <h4>默认尺寸（32x32）</h4>
+      <EmptyState
+        size="default"
+        icon={<IconCozWarningCircle className="coz-fg-dim text-32px" />}
+        title="暂无数据"
+        description="请添加数据后查看"
+      />
+    </div>
+    <div>
+      <h4>大尺寸（48x48）</h4>
+      <EmptyState
+        size="large"
+        icon={<IconCozWarningCircle className="coz-fg-dim text-48px" />}
+        title="暂无数据"
+        description="请添加数据后查看"
+      />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 全屏展示
+
+适用于需要全屏展示的空状态场景，如空页面或错误页。
+
+```tsx preview
+import { EmptyState } from '@coze-arch/coze-design';
+import { IconCozIllusAdd } from '@coze-arch/coze-design/illustrations';
+
+const Demo = () => (
+  <EmptyState
+    size="full_screen"
+    icon={<IconCozIllusAdd />}
+    title="开始创建"
+    description="点击下方按钮开始创建内容"
+    buttonText="创建"
+    onButtonClick={() => {}}
+  />
+);
+
+export default Demo;
+```
+
+### 带操作的空状态
+
+可以添加按钮和额外内容来引导用户操作。
+
+```tsx preview
+import { EmptyState, Toast } from '@coze-arch/coze-design';
+import { IconCozWarningCircle } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex flex-col gap-16">
+    <div>
+      <h4>带按钮的空状态</h4>
+      <EmptyState
+        title="加载失败"
+        buttonText="重试"
+        icon={<IconCozWarningCircle />}
+        description="数据加载失败，请重试"
+        onButtonClick={() => {
+          Toast.info({ content: '点击重试' });
+        }}
+      />
+    </div>
+    <div>
+      <h4>带额外内容的空状态</h4>
+      <EmptyState
+        buttonText="重试"
+        extra={
+          <div className="py-8px coz-fg-primary text-lg">您可以稍后再试</div>
+        }
+        icon={<IconCozWarningCircle />}
+        title="加载失败"
+        description="数据加载失败，请重试"
+        onButtonClick={() => {
+          Toast.info({ content: '点击重试' });
+        }}
+      />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 暗色模式支持
+
+通过 `darkModeIcon` 属性可以设置暗色模式下显示的图标。
+
+```tsx preview
+import { EmptyState } from '@coze-arch/coze-design';
+import {
+  IconCozIllusAdd,
+  IconCozIllusAddDark,
+} from '@coze-arch/coze-design/illustrations';
+
+const Demo = () => (
+  <EmptyState
+    icon={<IconCozIllusAdd />}
+    darkModeIcon={<IconCozIllusAddDark />}
+    title="开始创建"
+    description="点击下方按钮开始创建内容"
+    buttonText="创建"
+  />
+);
+
+export default Demo;
+```
+
+## API
+
+### EmptyState
+
+| 属性          | 说明                       | 类型                                    | 默认值      |
+| ------------- | -------------------------- | --------------------------------------- | ----------- |
+| icon          | 自定义图标                 | `ReactNode`                             | -           |
+| darkModeIcon  | 暗色模式下的自定义图标     | `ReactNode`                             | -           |
+| size          | 尺寸大小                   | `'full_screen' \| 'large' \| 'default'` | `'default'` |
+| buttonText    | 按钮文案，不传则不展示按钮 | `string`                                | -           |
+| onButtonClick | 按钮点击回调               | `() => void`                            | -           |
+| buttonProps   | 按钮属性                   | `ButtonProps`                           | -           |
+| extra         | 额外的自定义内容           | `ReactNode \| string`                   | -           |
+| title         | 标题文本                   | `ReactNode`                             | -           |
+| description   | 描述文本                   | `ReactNode`                             | -           |
+| className     | 容器类名                   | `string`                                | -           |
+| style         | 容器样式                   | `CSSProperties`                         | -           |
+
+除了以上属性，EmptyState 组件还支持原生 Semi Empty 组件的所有属性。 具体请参考 [Semi Empty 文档](https://semi.design/zh-CN/show/empty#API%20参考)。
+
+### 尺寸说明
+
+- `default`: 适用于局部空状态展示，图标尺寸 32x32
+- `large`: 适用于重要区域的空状态展示，图标尺寸 48x48
+- `full_screen`: 适用于整页空状态展示，内容居中布局，通常搭配插画类图标使用

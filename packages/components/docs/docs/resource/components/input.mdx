@@ -1,0 +1,256 @@
+---
+name: Input
+description: 输入框组件：用于收集用户文本输入的基础表单控件，支持多种状态和格式，适用于表单、搜索等场景。
+---
+
+# Input 输入框
+
+## 基本信息
+
+### 何时使用
+
+输入框是最基础的表单控件，用于收集用户的文本输入信息。常用于表单、搜索、对话框等场景。
+
+### 如何引入
+
+```tsx
+import { Input } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Input 组件基础上进行定制
+- 新增了 loading 和 error 状态的支持
+- 优化了字数限制的显示方式，会在后缀位置自动显示字符计数
+- 增强了中文输入法（IME）的支持
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/input)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161808&m=dev)
+- [Semi Input 文档](https://semi.design/zh-CN/input/input)
+
+## 功能演示
+
+### 基本用法
+
+最简单的输入框用法。
+
+```tsx preview
+import { Input } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return <Input placeholder="请输入内容" />;
+};
+
+export default Demo;
+```
+
+### 禁用状态
+
+通过 `disabled` 属性设置输入框为禁用状态。
+
+```tsx preview
+import { Input } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return <Input disabled value="禁用状态" />;
+};
+
+export default Demo;
+```
+
+### 加载状态
+
+通过 `loading` 属性显示加载状态，此时输入框会被禁用。这是我们在 Semi Input 基础上扩展的特性。
+
+```tsx preview
+import { Input } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return <Input loading placeholder="加载中..." />;
+};
+
+export default Demo;
+```
+
+### 错误状态
+
+通过 `error` 属性显示错误状态。这是我们在 Semi Input 基础上扩展的特性。
+
+```tsx preview
+import { Input } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return <Input error placeholder="错误状态" />;
+};
+
+export default Demo;
+```
+
+### 前缀和后缀
+
+使用 `prefix` 和 `suffix` 属性设置前缀和后缀，可以是文本或图标。
+
+```tsx preview
+import { Input } from '@coze-arch/coze-design';
+import { IconCozLoading } from '@coze-arch/coze-design/icons';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <Input prefix="http://" suffix=".com" />
+      <Input prefix={<IconCozLoading />} suffix={<IconCozLoading />} />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 字数限制
+
+使用 `maxLength` 属性限制输入字符数，会在后缀位置自动显示字符计数。支持自定义字符长度计算方法。
+
+```tsx preview
+import { Input } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <Input maxLength={10} placeholder="最多输入10个字符" />
+      <Input
+        maxLength={10}
+        getValueLength={value => value.replace(/[\u4e00-\u9fa5]/g, 'aa').length}
+        placeholder="中文字符按2个长度计算"
+      />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 不同尺寸
+
+提供 `small`、`default` 两种尺寸。
+
+```tsx preview
+import { Input } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <Input size="small" placeholder="小尺寸" />
+      <Input placeholder="默认尺寸" />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 中文输入法支持
+
+组件内置了对中文输入法的支持，可以通过 `onCompositionStart`、`onCompositionEnd` 和 `onCompositionUpdate` 事件来处理输入法编辑过程。
+
+```tsx preview
+import { Input } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <Input
+      placeholder="输入中文时不会触发字数统计"
+      maxLength={10}
+      onCompositionStart={() => console.log('开始输入')}
+      onCompositionEnd={() => console.log('输入完成')}
+    />
+  );
+};
+
+export default Demo;
+```
+
+### 在表单中使用
+
+在表单中使用时，推荐使用 `FormInput` 组件，它是 Input 组件的表单封装版本，支持表单验证等特性。
+
+```tsx preview
+import { Form } from '@douyinfe/semi-ui';
+import { FormInput } from '@coze-arch/coze-design';
+import { Button } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  const handleSubmit = values => {
+    console.log('表单值：', values);
+  };
+
+  return (
+    <Form onSubmit={handleSubmit} style={{ width: 400 }}>
+      <FormInput
+        field="username"
+        label="用户名"
+        rules={[{ required: true, message: '请输入用户名' }]}
+      />
+      <FormInput
+        field="email"
+        label="邮箱"
+        rules={[
+          { required: true, message: '请输入邮箱' },
+          { type: 'email', message: '请输入有效的邮箱地址' },
+        ]}
+      />
+      <FormInput
+        field="password"
+        label="密码"
+        type="password"
+        size="small"
+        rules={[{ required: true, message: '请输入密码' }]}
+      />
+      <div style={{ marginTop: 16 }}>
+        <Button type="submit" color="brand">
+          提交
+        </Button>
+      </div>
+    </Form>
+  );
+};
+
+export default Demo;
+```
+
+## API
+
+### Input Props
+
+| 属性                | 说明                             | 类型                                      | 默认值      |
+| ------------------- | -------------------------------- | ----------------------------------------- | ----------- |
+| loading             | 是否显示加载状态                 | `boolean`                                 | `false`     |
+| error               | 是否为错误状态                   | `boolean`                                 | `false`     |
+| disabled            | 是否禁用                         | `boolean`                                 | `false`     |
+| size                | 输入框大小                       | `'default' \| 'small'`                    | `'default'` |
+| maxLength           | 最大输入长度                     | `number`                                  | -           |
+| prefix              | 前缀图标或文本                   | `ReactNode`                               | -           |
+| suffix              | 后缀图标或文本                   | `ReactNode`                               | -           |
+| value               | 输入框内容                       | `string`                                  | -           |
+| defaultValue        | 输入框默认内容                   | `string`                                  | -           |
+| onChange            | 输入框内容变化时的回调           | `(value: string, e: ChangeEvent) => void` | -           |
+| onCompositionStart  | 输入法编辑器开始新的输入时的回调 | `(e: CompositionEvent) => void`           | -           |
+| onCompositionEnd    | 输入法编辑器结束输入时的回调     | `(e: CompositionEvent) => void`           | -           |
+| onCompositionUpdate | 输入法编辑器更新时的回调         | `(e: CompositionEvent) => void`           | -           |
+| getValueLength      | 自定义计算字符长度的方法         | `(value: string) => number`               | -           |
+
+除了以上 API，Input 组件还支持原生 Semi Input 组件的所有属性。 具体请参考 [Semi Input 文档](https://semi.design/zh-CN/input/input#API%20参考)。
+
+### FormInput Props
+
+FormInput 组件是基于 Input 组件的表单封装，除了支持 Input 的所有属性外，还支持以下属性：
+
+| 属性     | 说明           | 类型                                                        | 默认值 |
+| -------- | -------------- | ----------------------------------------------------------- | ------ |
+| field    | 表单字段名     | `string`                                                    | -      |
+| label    | 字段标签       | `string \| ReactNode`                                       | -      |
+| rules    | 校验规则       | `Array<FormValidateRule>`                                   | -      |
+| validate | 自定义校验函数 | `(value: any) => Promise<void> \| Promise<string \| Error>` | -      |
+
+更多表单相关的属性请参考 [Semi Form 文档](https://semi.design/zh-CN/input/form)。

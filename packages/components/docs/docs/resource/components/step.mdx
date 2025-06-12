@@ -1,0 +1,77 @@
+---
+name: Step
+description: 步骤条组件：用于展示任务的分步骤流程，告知用户当前处理进度，引导用户按照流程完成任务。
+---
+
+# Step 步骤条
+
+## 基本信息
+
+### 何时使用
+
+- 当任务需要分步骤完成时
+- 需要告知用户当前处理进度时
+- 引导用户按照流程完成任务时
+
+### 如何引入
+
+```tsx
+import { CozSteps } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Design 的 Steps 组件封装，继承了其所有功能
+- 默认使用了 Coze Design 的主题变量
+- 优化了 description 为空时的 StepItem 的垂直居中样式
+- 支持基础步骤展示和各种类型的步骤条
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/step)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-160627&m=dev)
+- [Semi Steps 文档](https://semi.design/zh-CN/navigation/steps)
+
+## 功能演示
+
+### 基础用法
+
+最基本的步骤条用法。
+
+```tsx preview
+import { CozSteps } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <CozSteps current={1} type="basic">
+    <CozSteps.Step title="已完成" description="这是一段描述文本" />
+    <CozSteps.Step title="进行中" description="这是一段描述文本" />
+    <CozSteps.Step title="待进行" description="这是一段描述文本" />
+  </CozSteps>
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### Steps Props
+
+| 属性      | 说明           | 类型                                         | 默认值         |
+| --------- | -------------- | -------------------------------------------- | -------------- |
+| current   | 当前步骤       | `number`                                     | `0`            |
+| direction | 步骤条方向     | `'horizontal' \| 'vertical'`                 | `'horizontal'` |
+| size      | 步骤条尺寸     | `'default' \| 'small'`                       | `'default'`    |
+| status    | 当前步骤状态   | `'wait' \| 'process' \| 'finish' \| 'error'` | `'process'`    |
+| type      | 步骤条类型     | `'default' \| 'basic' \| 'nav'`              | `'default'`    |
+| onChange  | 点击切换的回调 | `(current: number) => void`                  | -              |
+
+### Step Props
+
+| 属性        | 说明     | 类型                                         | 默认值  |
+| ----------- | -------- | -------------------------------------------- | ------- |
+| title       | 标题     | `ReactNode`                                  | -       |
+| description | 描述     | `ReactNode`                                  | -       |
+| status      | 状态     | `'wait' \| 'process' \| 'finish' \| 'error'` | -       |
+| disabled    | 是否禁用 | `boolean`                                    | `false` |
+
+除了以上属性，Steps 和 Step 组件还支持原生 Semi Steps 组件的所有属性。 具体请参考 [Semi Steps 文档](https://semi.design/zh-CN/navigation/steps#API%20参考)。

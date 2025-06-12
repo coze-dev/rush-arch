@@ -1,0 +1,248 @@
+---
+name: SingleSelect
+description: 单选框组件：用于在一组互斥的选项中进行单选，支持自定义布局和图标展示，提供多种样式选择。
+---
+
+# SingleSelect 单选框
+
+## 基本信息
+
+### 何时使用
+
+当用户需要在一组互斥的选项中进行单选时使用，支持自定义布局和图标展示。
+
+### 如何引入
+
+```tsx
+import { SingleSelect } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi RadioGroup 组件封装，继承了其所有功能
+- 默认使用了 Coze Design 的主题变量
+- 提供了 `hug` 和 `fill` 两种布局方式，满足不同场景需求
+- 支持自定义图标和文本的组合展示
+- 支持禁用整个组件或单个选项
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/single-select)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161795&m=dev)
+- [Semi RadioGroup 文档](https://semi.design/zh-CN/input/radio)
+
+## 功能演示
+
+### 基础用法
+
+最基本的单选框用法。
+
+```tsx preview
+import { SingleSelect } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <SingleSelect
+    defaultValue="1"
+    options={[
+      { value: '1', label: 'Option 1' },
+      { value: '2', label: 'Option 2' },
+      { value: '3', label: 'Option 3' },
+    ]}
+  />
+);
+
+export default Demo;
+```
+
+### 布局方式
+
+提供了两种布局方式：`hug`（默认）和 `fill`。
+
+- `hug`：选项宽度随内容自适应
+- `fill`：选项宽度填充满容器
+
+```tsx preview
+import { SingleSelect } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <div>
+      <h4>Hug 布局（默认）</h4>
+      <SingleSelect
+        layout="hug"
+        defaultValue="1"
+        options={[
+          { value: '1', label: 'Hug Layout' },
+          { value: '2', label: 'Option 2' },
+          { value: '3', label: 'Option 3' },
+        ]}
+      />
+    </div>
+    <div>
+      <h4>Fill 布局</h4>
+      <SingleSelect
+        layout="fill"
+        defaultValue="1"
+        options={[
+          { value: '1', label: 'Fill Layout' },
+          { value: '2', label: 'Option 2' },
+          { value: '3', label: 'Option 3' },
+        ]}
+      />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 尺寸大小
+
+支持 `default` 和 `small` 两种尺寸。
+
+```tsx preview
+import { SingleSelect } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <div>
+      <h4>默认尺寸</h4>
+      <SingleSelect
+        size="default"
+        layout="fill"
+        defaultValue="1"
+        options={[
+          { value: '1', label: 'Default Size' },
+          { value: '2', label: 'Option 2' },
+          { value: '3', label: 'Option 3' },
+        ]}
+      />
+    </div>
+    <div>
+      <h4>小尺寸</h4>
+      <SingleSelect
+        size="small"
+        layout="fill"
+        defaultValue="1"
+        options={[
+          { value: '1', label: 'Small Size' },
+          { value: '2', label: 'Option 2' },
+          { value: '3', label: 'Option 3' },
+        ]}
+      />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 禁用状态
+
+可以禁用整个组件或单个选项。
+
+```tsx preview
+import { SingleSelect } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+    <div>
+      <h4>禁用单个选项</h4>
+      <SingleSelect
+        defaultValue="2"
+        options={[
+          { value: '1', label: 'Option 1', disabled: true },
+          { value: '2', label: 'Option 2', disabled: true },
+          { value: '3', label: 'Option 3' },
+        ]}
+      />
+    </div>
+    <div>
+      <h4>禁用整个组件</h4>
+      <SingleSelect
+        disabled
+        defaultValue="1"
+        options={[
+          { value: '1', label: 'Option 1' },
+          { value: '2', label: 'Option 2' },
+          { value: '3', label: 'Option 3' },
+        ]}
+      />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 带图标
+
+使用 `SingleSelectLabel` 组件可以创建带有图标的选项，支持默认图标和选中状态图标。
+
+```tsx preview
+import { SingleSelect } from '@coze-arch/coze-design';
+import {
+  IconCozThumbsup,
+  IconCozThumbsupFill,
+  IconCozThumbdown,
+  IconCozThumbdownFill,
+} from '@coze-arch/coze-design/icons';
+
+const { SingleSelectLabel } = SingleSelect;
+
+const Demo = () => (
+  <SingleSelect
+    defaultValue="1"
+    options={[
+      {
+        value: '1',
+        label: (
+          <SingleSelectLabel
+            icon={<IconCozThumbsup />}
+            activeIcon={<IconCozThumbsupFill />}
+            text="1,024"
+          />
+        ),
+      },
+      {
+        value: '2',
+        label: (
+          <SingleSelectLabel
+            icon={<IconCozThumbdown />}
+            activeIcon={<IconCozThumbdownFill />}
+            text="206"
+          />
+        ),
+      },
+    ]}
+  />
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### SingleSelect Props
+
+| 属性         | 说明                   | 类型                                | 默认值      |
+| ------------ | ---------------------- | ----------------------------------- | ----------- |
+| layout       | 布局方式               | `'fill' \| 'hug'`                   | `'hug'`     |
+| size         | 尺寸大小               | `'small' \| 'default'`              | `'default'` |
+| options      | 选项数据               | `Array<RadioGroupProps['options']>` | -           |
+| defaultValue | 默认选中的值           | `string \| number`                  | -           |
+| value        | 选中的值（受控）       | `string \| number`                  | -           |
+| disabled     | 是否禁用               | `boolean`                           | `false`     |
+| onChange     | 选中值改变时的回调函数 | `(e: Event) => void`                | -           |
+| className    | 自定义类名             | `string`                            | -           |
+| style        | 自定义样式             | `CSSProperties`                     | -           |
+
+除了以上属性，SingleSelect 组件还支持原生 Semi RadioGroup 组件的所有属性。 具体请参考 [Semi RadioGroup 文档](https://semi.design/zh-CN/input/radio#API%20参考)。
+
+### SingleSelectLabel Props
+
+| 属性       | 说明           | 类型        | 默认值 |
+| ---------- | -------------- | ----------- | ------ |
+| icon       | 默认图标       | `ReactNode` | -      |
+| activeIcon | 选中状态的图标 | `ReactNode` | -      |
+| text       | 文本内容       | `string`    | -      |

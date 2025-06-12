@@ -1,0 +1,326 @@
+---
+name: Tag
+description: 标签组件：用于标记和分类内容，标记事物的属性和维度，支持多种颜色和尺寸，可进行简单的状态标记。
+---
+
+# Tag 标签
+
+## 基本信息
+
+### 何时使用
+
+- 需要标记和分类内容时
+- 需要标记事物的属性和维度时
+- 需要进行简单的状态标记时
+
+### 如何引入
+
+```tsx
+import { Tag } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Design 的 Tag 组件封装，继承了其所有功能
+- 默认使用了 Coze Design 的主题变量
+- 支持两种尺寸：`small`（默认）和 `mini`
+- 支持多种预设颜色：`brand`、`primary`、`green`、`yellow`、`red`、`cyan`、`blue`、`purple`、`magenta`
+- 支持内置图标和自定义图标
+- 支持加载和禁用状态
+- 支持点击和关闭事件
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/tag)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161052&m=dev)
+- [Semi Tag 文档](https://semi.design/zh-CN/show/tag)
+
+## 功能演示
+
+### 基础用法
+
+最基本的标签用法，展示不同尺寸。
+
+```tsx preview
+import { Tag } from '@coze-arch/coze-design';
+import { IconCozFace } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex gap-4">
+    <Tag size="small">标准尺寸</Tag>
+    <Tag size="mini">迷你尺寸</Tag>
+  </div>
+);
+
+export default Demo;
+```
+
+### 不同颜色
+
+支持多种预设颜色。
+
+```tsx preview
+import { Tag } from '@coze-arch/coze-design';
+import { IconCozFace } from '@coze-arch/coze-design/icons';
+
+const colors = [
+  'brand',
+  'primary',
+  'green',
+  'yellow',
+  'red',
+  'cyan',
+  'blue',
+  'purple',
+  'magenta',
+] as const;
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>普通状态</h4>
+      <div className="flex gap-2 mt-2">
+        {colors.map(color => (
+          <Tag key={color} color={color}>
+            {color}
+          </Tag>
+        ))}
+      </div>
+    </div>
+    <div>
+      <h4>可交互</h4>
+      <div className="flex gap-2 mt-2">
+        {colors.map(color => (
+          <Tag
+            key={color}
+            color={color}
+            onClick={() => console.log('clicked:', color)}
+          >
+            {color}
+          </Tag>
+        ))}
+      </div>
+    </div>
+    <div>
+      <h4>禁用状态</h4>
+      <div className="flex gap-2 mt-2">
+        {colors.map(color => (
+          <Tag key={color} color={color} disabled>
+            {color}
+          </Tag>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 带图标
+
+支持内置图标和自定义图标。
+
+```tsx preview
+import { Tag } from '@coze-arch/coze-design';
+import { IconCozFace } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>标准尺寸</h4>
+      <div className="flex gap-2 mt-2">
+        <Tag size="small" prefixIcon="info">
+          信息
+        </Tag>
+        <Tag size="small" prefixIcon="clock">
+          等待中
+        </Tag>
+        <Tag size="small" prefixIcon="check">
+          已完成
+        </Tag>
+        <Tag size="small" prefixIcon={<IconCozFace />}>
+          自定义图标
+        </Tag>
+        <Tag size="small" prefixIcon="info" />
+      </div>
+    </div>
+    <div>
+      <h4>迷你尺寸</h4>
+      <div className="flex gap-2 mt-2">
+        <Tag size="mini" prefixIcon="info">
+          信息
+        </Tag>
+        <Tag size="mini" prefixIcon="clock">
+          等待中
+        </Tag>
+        <Tag size="mini" prefixIcon="check">
+          已完成
+        </Tag>
+        <Tag size="mini" prefixIcon={<IconCozFace />}>
+          自定义图标
+        </Tag>
+        <Tag size="mini" prefixIcon="info" />
+      </div>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 可交互
+
+支持点击和关闭事件。
+
+```tsx preview
+import { Tag } from '@coze-arch/coze-design';
+import { IconCozFace } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>标准尺寸</h4>
+      <div className="flex gap-2 mt-2">
+        <Tag
+          size="small"
+          onClick={() => {
+            console.log('clicked');
+          }}
+        >
+          可点击
+        </Tag>
+        <Tag
+          size="small"
+          closable
+          onClose={() => {
+            console.log('closed');
+          }}
+        >
+          可关闭
+        </Tag>
+      </div>
+    </div>
+    <div>
+      <h4>迷你尺寸</h4>
+      <div className="flex gap-2 mt-2">
+        <Tag
+          size="mini"
+          onClick={() => {
+            console.log('clicked');
+          }}
+        >
+          可点击
+        </Tag>
+        <Tag
+          size="mini"
+          closable
+          onClose={() => {
+            console.log('closed');
+          }}
+        >
+          可关闭
+        </Tag>
+      </div>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 特殊状态
+
+支持加载和禁用状态。
+
+```tsx preview
+import { Tag } from '@coze-arch/coze-design';
+import { IconCozFace } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>标准尺寸</h4>
+      <div className="flex gap-2 mt-2">
+        <Tag size="small" loading>
+          加载中
+        </Tag>
+        <Tag size="small" disabled>
+          已禁用
+        </Tag>
+        <Tag size="small" loading disabled>
+          加载且禁用
+        </Tag>
+      </div>
+    </div>
+    <div>
+      <h4>迷你尺寸</h4>
+      <div className="flex gap-2 mt-2">
+        <Tag size="mini" loading>
+          加载中
+        </Tag>
+        <Tag size="mini" disabled>
+          已禁用
+        </Tag>
+        <Tag size="mini" loading disabled>
+          加载且禁用
+        </Tag>
+      </div>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 带提示的标签
+
+当标签内容需要额外解释或提示时，可以配合 Tooltip 使用。
+
+```tsx preview
+import { Tag, Tooltip } from '@coze-arch/coze-design';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>信息图标提示</h4>
+      <div className="flex gap-2 mt-2">
+        <Tag
+          size="small"
+          color="blue"
+          suffixIcon={
+            <Tooltip content="该功能正在公测中，如有问题请及时反馈">
+              <IconCozInfoCircle />
+            </Tooltip>
+          }
+        >
+          Beta 功能
+        </Tag>
+      </div>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### Tag Props
+
+| 属性       | 说明         | 类型                                                                                                | 默认值    |
+| ---------- | ------------ | --------------------------------------------------------------------------------------------------- | --------- |
+| size       | 标签尺寸     | `'small' \| 'mini'`                                                                                 | `'small'` |
+| color      | 标签颜色     | `'brand' \| 'primary' \| 'green' \| 'yellow' \| 'red' \| 'cyan' \| 'blue' \| 'purple' \| 'magenta'` | `'brand'` |
+| prefixIcon | 前缀图标     | `'info' \| 'clock' \| 'check' \| ReactNode`                                                         | -         |
+| suffixIcon | 后缀图标     | `'cross' \| 'info' \| ReactNode`                                                                    | -         |
+| loading    | 是否加载中   | `boolean`                                                                                           | `false`   |
+| disabled   | 是否禁用     | `boolean`                                                                                           | `false`   |
+| closable   | 是否可关闭   | `boolean`                                                                                           | `false`   |
+| onClick    | 点击事件回调 | `(e: MouseEvent) => void`                                                                           | -         |
+| onClose    | 关闭事件回调 | `(e: MouseEvent) => void`                                                                           | -         |
+| className  | 自定义类名   | `string`                                                                                            | -         |
+| style      | 自定义样式   | `CSSProperties`                                                                                     | -         |
+
+除了以上属性，Tag 组件还支持原生 Semi Tag 组件的所有属性。 具体请参考 [Semi Tag 文档](https://semi.design/zh-CN/show/tag#API%20参考)。

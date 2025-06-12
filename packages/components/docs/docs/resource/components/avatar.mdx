@@ -1,0 +1,259 @@
+---
+name: Avatar
+description: 头像组件：用于展示用户、机器人、平台等的头像图标，支持多种尺寸和类型，可显示图片、字符或图标。
+---
+
+# Avatar 头像
+
+## 基本信息
+
+### 何时使用
+
+Avatar 头像组件用于展示用户头像、机器人头像、平台头像等场景，支持图片、字符以及图标的展示。
+
+### 如何引入
+
+```tsx
+import { CozAvatar } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Avatar 组件基础上定制
+- 支持四种不同类型的头像：人物（person）、机器人（bot）、平台（platform）和团队（team）
+- 提供了丰富的尺寸选项，从超大（ultra）到超小（micro）
+- 支持可编辑状态，通过 hoverMask 属性启用
+- 头像形状会根据类型自动设置：bot 和 platform 类型为方形，其他类型为圆形
+- 支持 `src` 和 `color` 两种形态，当两者同时存在时，`src` 优先级更高
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/avatar)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=14-9270&m=dev)
+- [Semi Avatar 文档](https://semi.design/zh-CN/show/avatar)
+
+## 功能演示
+
+### 基本用法
+
+最简单的头像使用方式。支持 `src`（图片）和 `color`（背景色）两种形态，当同时设置时，`src` 会优先生效。
+
+```tsx preview
+import { CozAvatar } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <CozAvatar>U</CozAvatar>
+      <CozAvatar src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/avatarDemo.jpeg" />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 尺寸
+
+Avatar 提供了丰富的尺寸选项，从超大到超小，满足不同场景的需求。
+
+```tsx preview
+import { CozAvatar } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+      <CozAvatar size="ultra">U</CozAvatar>
+      <CozAvatar size="xxl">X</CozAvatar>
+      <CozAvatar size="xl">X</CozAvatar>
+      <CozAvatar size="lg">L</CozAvatar>
+      <CozAvatar size="plus">P</CozAvatar>
+      <CozAvatar size="default">D</CozAvatar>
+      <CozAvatar size="small">S</CozAvatar>
+      <CozAvatar size="mini">M</CozAvatar>
+      <CozAvatar size="micro">M</CozAvatar>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 颜色
+
+Avatar 支持多种预设颜色，可以用来区分不同的用户或场景。
+
+```tsx preview
+import { CozAvatar } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <CozAvatar color="blue">B</CozAvatar>
+      <CozAvatar color="cyan">C</CozAvatar>
+      <CozAvatar color="green">G</CozAvatar>
+      <CozAvatar color="yellow">Y</CozAvatar>
+      <CozAvatar color="purple">P</CozAvatar>
+      <CozAvatar color="orange">O</CozAvatar>
+      <CozAvatar color="red">R</CozAvatar>
+      <CozAvatar color="pink">P</CozAvatar>
+      <CozAvatar color="indigo">I</CozAvatar>
+      <CozAvatar color="grey">G</CozAvatar>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 可编辑状态
+
+通过设置 `hoverMask` 属性来启用编辑遮罩层，适用于需要修改头像的场景。相较于 Semi Avatar 的实现，这里的 `hoverMask` 改为了 `boolean` 类型，并预设了编辑态的图标样式，传入 `true` 即可启用。
+
+```tsx preview
+import { CozAvatar } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <CozAvatar hoverMask>E</CozAvatar>
+      <CozAvatar
+        hoverMask
+        src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/avatarDemo.jpeg"
+      />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 头像组
+
+使用 `CozAvatar.AvatarGroup` 可以将多个头像组合显示，支持不同的尺寸配置和堆叠方向。通过 `maxCount` 属性可以限制显示的头像数量，超出部分会显示为数字。
+
+```tsx preview
+import { CozAvatar } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <CozAvatar.AvatarGroup size="small">
+        <CozAvatar>A</CozAvatar>
+        <CozAvatar>B</CozAvatar>
+        <CozAvatar>C</CozAvatar>
+      </CozAvatar.AvatarGroup>
+
+      <CozAvatar.AvatarGroup>
+        <CozAvatar>A</CozAvatar>
+        <CozAvatar>B</CozAvatar>
+        <CozAvatar>C</CozAvatar>
+      </CozAvatar.AvatarGroup>
+
+      <CozAvatar.AvatarGroup size="medium">
+        <CozAvatar>A</CozAvatar>
+        <CozAvatar>B</CozAvatar>
+        <CozAvatar>C</CozAvatar>
+      </CozAvatar.AvatarGroup>
+
+      <CozAvatar.AvatarGroup size="large">
+        <CozAvatar>A</CozAvatar>
+        <CozAvatar>B</CozAvatar>
+        <CozAvatar>C</CozAvatar>
+      </CozAvatar.AvatarGroup>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 事件处理
+
+Avatar 支持多种事件处理，包括点击和鼠标悬停事件。
+
+```tsx preview
+import { CozAvatar } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <CozAvatar
+        onClick={() => console.log('Avatar clicked')}
+        onMouseEnter={() => console.log('Mouse entered')}
+        onMouseLeave={() => console.log('Mouse left')}
+        hoverMask
+      >
+        E
+      </CozAvatar>
+      <CozAvatar
+        src="https://sf6-cdn-tos.douyinstatic.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/root-web-sites/avatarDemo.jpeg"
+        onClick={() => console.log('Image avatar clicked')}
+        hoverMask
+      />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+## API
+
+### CozAvatar Props
+
+| 属性         | 说明                     | 类型                                                                                                       | 默认值      |
+| ------------ | ------------------------ | ---------------------------------------------------------------------------------------------------------- | ----------- |
+| alt          | 图像无法显示时的替代文本 | `string`                                                                                                   | `''`        |
+| children     | 头像的文本内容           | `ReactNode`                                                                                                | -           |
+| className    | 自定义类名               | `string`                                                                                                   | -           |
+| color        | 头像背景色               | `'blue' \| 'cyan' \| 'green' \| 'yellow' \| 'purple' \| 'orange' \| 'grey' \| 'red' \| 'pink' \| 'indigo'` | `'blue'`    |
+| size         | 头像尺寸                 | `'ultra' \| 'xxl' \| 'xl' \| 'lg' \| 'plus' \| 'default' \| 'small' \| 'mini' \| 'micro'`                  | `'default'` |
+| src          | 图片头像的资源地址       | `string`                                                                                                   | -           |
+| type         | 头像类型                 | `'bot' \| 'platform' \| 'person' \| 'team'`                                                                | `'person'`  |
+| hoverMask    | 是否显示编辑遮罩         | `boolean`                                                                                                  | `false`     |
+| onClick      | 点击头像的回调           | `(e: MouseEvent) => void`                                                                                  | -           |
+| onMouseEnter | 鼠标进入头像的回调       | `(e: MouseEvent) => void`                                                                                  | -           |
+| onMouseLeave | 鼠标离开头像的回调       | `(e: MouseEvent) => void`                                                                                  | -           |
+
+除了以上属性，CozAvatar 组件还支持原生 Semi Avatar 组件的其他属性，具体请参考 [Semi Avatar 文档](https://semi.design/zh-CN/show/avatar#API%20参考)。
+
+### CozAvatar.AvatarGroup Props
+
+| 属性        | 说明               | 类型                                          | 默认值      |
+| ----------- | ------------------ | --------------------------------------------- | ----------- |
+| className   | 自定义类名         | `string`                                      | -           |
+| maxCount    | 最多显示的头像数量 | `number`                                      | -           |
+| overlapFrom | 头像堆叠方向       | `'start' \| 'end'`                            | `'end'`     |
+| shape       | 头像组形状         | `'circle' \| 'square'`                        | `'circle'`  |
+| size        | 头像组尺寸         | `'small' \| 'default' \| 'medium' \| 'large'` | `'default'` |
+| style       | 自定义样式         | `CSSProperties`                               | -           |
+
+### Types
+
+```tsx
+// 头像背景色类型
+export type AvatarColor =
+  | 'blue'
+  | 'cyan'
+  | 'green'
+  | 'yellow'
+  | 'purple'
+  | 'orange'
+  | 'grey'
+  | 'red'
+  | 'pink'
+  | 'indigo';
+
+// 头像尺寸类型
+export type AvatarSize =
+  | 'ultra'
+  | 'xxl'
+  | 'xl'
+  | 'lg'
+  | 'plus'
+  | 'default'
+  | 'small'
+  | 'mini'
+  | 'micro';
+```

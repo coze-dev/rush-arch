@@ -1,0 +1,195 @@
+---
+name: Checkbox
+description: 复选框组件：用于在一组选项中进行多项选择，或表示两种状态之间的切换，支持单独使用和组合使用。
+---
+
+# Checkbox 复选框
+
+## 基本信息
+
+### 何时使用
+
+复选框组件用于在一组选项中进行多选，或者单独使用表示在两个状态之间切换。
+
+### 如何引入
+
+```tsx
+import { Checkbox } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Checkbox 组件基础上定制
+- 支持单独使用和组合使用（Checkbox.Group）
+- 支持半选状态（indeterminate）
+- 支持禁用状态
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/checkbox)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161792&m=dev)
+- [Semi Checkbox 文档](https://semi.design/zh-CN/input/checkbox)
+
+## 功能演示
+
+### 基本用法
+
+最基本的复选框用法。
+
+```tsx preview
+import { Checkbox } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return <Checkbox>Coze Design</Checkbox>;
+};
+
+export default Demo;
+```
+
+### 受控组件
+
+使用 `checked` 和 `onChange` 属性实现受控组件。
+
+```tsx preview
+import { Checkbox } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <Checkbox checked={checked} onChange={e => setChecked(e.target.checked)}>
+      受控复选框
+    </Checkbox>
+  );
+};
+
+export default Demo;
+```
+
+### 全选/半选状态
+
+使用 `indeterminate` 属性可以设置复选框的半选状态。
+
+```tsx preview
+import { Checkbox } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [checkedList, setCheckedList] = useState([]);
+  const options = ['选项A', '选项B', '选项C'];
+  const indeterminate =
+    checkedList.length > 0 && checkedList.length < options.length;
+  const checkAll = checkedList.length === options.length;
+
+  const onCheckAllChange = e => {
+    setCheckedList(e.target.checked ? options : []);
+  };
+
+  return (
+    <div className="flex flex-col gap-2">
+      <Checkbox
+        indeterminate={indeterminate}
+        checked={checkAll}
+        onChange={onCheckAllChange}
+      >
+        全选
+      </Checkbox>
+      <Checkbox.Group value={checkedList} onChange={setCheckedList}>
+        {options.map(option => (
+          <Checkbox key={option} value={option}>
+            {option}
+          </Checkbox>
+        ))}
+      </Checkbox.Group>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 禁用状态
+
+使用 `disabled` 属性可以禁用复选框。
+
+```tsx preview
+import { Checkbox } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-2">
+      <Checkbox disabled>禁用状态</Checkbox>
+      <Checkbox disabled defaultChecked>
+        已选禁用状态
+      </Checkbox>
+      <Checkbox disabled indeterminate>
+        半选禁用状态
+      </Checkbox>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 复选框组
+
+使用 `Checkbox.Group` 可以实现一组复选框。支持水平和垂直两种排列方式。
+
+```tsx preview
+import { Checkbox } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <div>
+        <h4>水平排列</h4>
+        <Checkbox.Group direction="horizontal">
+          <Checkbox value={1}>选项A</Checkbox>
+          <Checkbox value={2}>选项B</Checkbox>
+          <Checkbox value={3}>选项C</Checkbox>
+        </Checkbox.Group>
+      </div>
+
+      <div>
+        <h4>垂直排列</h4>
+        <Checkbox.Group direction="vertical">
+          <Checkbox value={1}>选项A</Checkbox>
+          <Checkbox value={2}>选项B</Checkbox>
+          <Checkbox value={3}>选项C</Checkbox>
+        </Checkbox.Group>
+      </div>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+## API 参考
+
+### Checkbox Props
+
+| 属性           | 说明             | 类型                         | 默认值  |
+| -------------- | ---------------- | ---------------------------- | ------- |
+| checked        | 指定当前是否选中 | `boolean`                    | -       |
+| defaultChecked | 初始是否选中     | `boolean`                    | `false` |
+| disabled       | 禁用状态         | `boolean`                    | `false` |
+| indeterminate  | 半选状态         | `boolean`                    | `false` |
+| value          | 选框的值         | `any`                        | -       |
+| onChange       | 变化时的回调函数 | `(e: CheckboxEvent) => void` | -       |
+
+除了以上属性，Checkbox 组件还支持原生 Semi Checkbox 组件的所有属性。
+
+### Checkbox.Group Props
+
+| 属性         | 说明             | 类型                         | 默认值         |
+| ------------ | ---------------- | ---------------------------- | -------------- |
+| defaultValue | 默认选中的选项   | `any[]`                      | `[]`           |
+| disabled     | 整组禁用         | `boolean`                    | `false`        |
+| direction    | 排列方向         | `'horizontal' \| 'vertical'` | `'horizontal'` |
+| value        | 指定选中的选项   | `any[]`                      | -              |
+| onChange     | 变化时的回调函数 | `(value: any[]) => void`     | -              |
+
+除了以上属性，Checkbox.Group 组件还支持原生 Semi Checkbox.Group 组件的所有属性。 具体请参考 [Semi Checkbox.Group 文档](https://semi.design/zh-CN/input/checkbox#API参考)。

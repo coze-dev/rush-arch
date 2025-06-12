@@ -1,0 +1,169 @@
+---
+name: Radio
+description: 单选框组件：用于在一组互斥的选项中选择一个选项，支持单独使用和组合使用两种方式。
+---
+
+# Radio 单选框
+
+## 基本信息
+
+### 何时使用
+
+在一组互斥的选项中选择一个选项时使用。
+
+### 如何引入
+
+```tsx
+import { Radio, RadioGroup } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Radio 组件封装，继承了其所有功能
+- 默认使用了 Coze Design 的主题变量
+- 支持单独使用和 RadioGroup 组合使用两种方式
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/radio)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161790&m=dev)
+- [Semi Radio 文档](https://semi.design/zh-CN/input/radio)
+
+## 功能演示
+
+### 基本用法
+
+最基本的单选框用法。
+
+```tsx preview
+import { Radio } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <Radio defaultChecked>默认选中</Radio>
+    <Radio>未选中</Radio>
+    <Radio checked>受控选中</Radio>
+    <Radio disabled>禁用未选中</Radio>
+    <Radio disabled checked>
+      禁用已选中
+    </Radio>
+  </div>
+);
+
+export default Demo;
+```
+
+### 单选框组
+
+使用 RadioGroup 实现一组互斥的单选框。
+
+```tsx preview
+import { Radio } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+    <div>
+      <h4>水平排列</h4>
+      <Radio.Group direction="horizontal" defaultValue={1}>
+        <Radio value={1}>选项A</Radio>
+        <Radio value={2}>选项B</Radio>
+        <Radio value={3}>选项C</Radio>
+      </Radio.Group>
+    </div>
+
+    <div>
+      <h4>垂直排列</h4>
+      <Radio.Group direction="vertical" defaultValue={1}>
+        <Radio value={1}>选项A</Radio>
+        <Radio value={2}>选项B</Radio>
+        <Radio value={3}>选项C</Radio>
+      </Radio.Group>
+    </div>
+
+    <div>
+      <h4>禁用状态</h4>
+      <Radio.Group disabled direction="horizontal" defaultValue={1}>
+        <Radio value={1}>选项A</Radio>
+        <Radio value={2}>选项B</Radio>
+        <Radio value={3}>选项C</Radio>
+      </Radio.Group>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 卡片样式
+
+使用 `mode="advanced"` 和 `type="pureCard"` 可以展示卡片样式的单选框。
+
+```tsx preview
+import { Radio } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <Radio
+    mode="advanced"
+    type="pureCard"
+    extra="这是一段描述文本，用于解释该选项的更多信息。"
+  >
+    这是一个选项
+  </Radio>
+);
+
+export default Demo;
+```
+
+### 受控模式
+
+使用 `value` 和 `onChange` 实现受控的选择状态。
+
+```tsx preview
+import { useState } from 'react';
+import { Radio } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  const [value, setValue] = useState(1);
+
+  return (
+    <Radio.Group
+      value={value}
+      onChange={e => setValue(e.target.value)}
+      direction="horizontal"
+    >
+      <Radio value={1}>选项A</Radio>
+      <Radio value={2}>选项B</Radio>
+      <Radio value={3}>选项C</Radio>
+    </Radio.Group>
+  );
+};
+
+export default Demo;
+```
+
+## API 参考
+
+### Radio Props
+
+| 属性           | 说明           | 类型                                         | 默认值      |
+| -------------- | -------------- | -------------------------------------------- | ----------- |
+| checked        | 是否选中       | `boolean`                                    | -           |
+| defaultChecked | 默认是否选中   | `boolean`                                    | `false`     |
+| disabled       | 是否禁用       | `boolean`                                    | `false`     |
+| value          | 选项值         | `any`                                        | -           |
+| onChange       | 变化时回调函数 | `(e: ChangeEvent<HTMLInputElement>) => void` | -           |
+| mode           | 显示模式       | `'default' \| 'advanced'`                    | `'default'` |
+| type           | 卡片类型       | `'default' \| 'pureCard' \| 'card'`          | `'default'` |
+| extra          | 额外描述信息   | `ReactNode`                                  | -           |
+
+### RadioGroup Props
+
+| 属性         | 说明           | 类型                         | 默认值       |
+| ------------ | -------------- | ---------------------------- | ------------ |
+| defaultValue | 默认选中的值   | `any`                        | -            |
+| disabled     | 是否禁用       | `boolean`                    | `false`      |
+| direction    | 排列方向       | `'vertical' \| 'horizontal'` | `'vertical'` |
+| value        | 选中的值       | `any`                        | -            |
+| onChange     | 变化时回调函数 | `(value: any) => void`       | -            |
+
+除了以上属性，Radio 和 RadioGroup 组件还支持原生 Semi Radio 组件的所有属性。 具体请参考 [Semi Radio 文档](https://semi.design/zh-CN/input/radio#API%20参考)。

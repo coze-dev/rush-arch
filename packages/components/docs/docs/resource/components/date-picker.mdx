@@ -1,0 +1,258 @@
+---
+name: DatePicker
+description: 日期选择器组件：用于快速选择日期或日期范围，支持多种选择模式和格式化选项。
+---
+
+# DatePicker 日期选择器
+
+## 基本信息
+
+### 何时使用
+
+日期选择器用于让用户快速选择日期或日期范围。适用于以下场景：
+
+- 需要输入日期的表单
+- 需要选择日期范围进行数据筛选
+- 需要选择月份或年月的场景
+- 需要选择具体时间的场景
+
+### 如何引入
+
+```tsx
+import { DatePicker } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi DatePicker 组件进行定制化改造
+- 提供了更符合 Coze Design 设计风格的外观和交互体验
+- 支持日期、日期范围、月份、月份范围等多种选择模式
+- 提供了 default 和 small 两种尺寸选择
+- 可以通过 format 属性自定义日期格式
+- 支持通过 renderDate 属性自定义日期单元格渲染
+- 暂不支持自定义快捷选项
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/date-picker)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161805&m=dev)
+- [Semi DatePicker 文档](https://semi.design/zh-CN/input/datepicker)
+
+## 功能演示
+
+### 基础用法
+
+最基础的日期选择器用法，展示了不同的选择类型。
+
+```tsx preview
+import { DatePicker } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex gap-4">
+        <DatePicker placeholder="选择日期" />
+        <DatePicker type="dateRange" placeholder="选择日期范围" />
+      </div>
+      <div className="flex gap-4">
+        <DatePicker type="month" placeholder="选择月份" />
+        <DatePicker type="monthRange" placeholder="选择月份范围" />
+      </div>
+      <div className="flex gap-4">
+        <DatePicker type="dateTime" placeholder="选择日期时间" />
+        <DatePicker type="dateTimeRange" placeholder="选择日期时间范围" />
+      </div>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 尺寸选择
+
+提供了 `default` 和 `small` 两种尺寸。
+
+```tsx preview
+import { DatePicker } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex gap-4">
+      <DatePicker size="default" placeholder="默认尺寸" />
+      <DatePicker size="small" placeholder="小尺寸" />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 默认值与多选
+
+支持设置默认值和多选模式。
+
+```tsx preview
+import { DatePicker } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex gap-4">
+      <DatePicker defaultValue="2024-03-07" placeholder="默认值" />
+      <DatePicker multiple placeholder="多选模式" />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 自定义格式
+
+通过 `format` 属性可以自定义日期的显示格式。
+
+```tsx preview
+import { DatePicker } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex gap-4">
+      <DatePicker format="yyyy年MM月dd日" placeholder="自定义日期格式" />
+      <DatePicker
+        type="dateTime"
+        format="yyyy年MM月dd日 hh时mm分"
+        placeholder="自定义日期时间格式"
+      />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 图标控制
+
+通过 `showPrefix` 和 `showSuffix` 属性可以控制前缀和后缀图标的显示。
+
+```tsx preview
+import { DatePicker } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex gap-4">
+      <DatePicker showPrefix={false} placeholder="无前缀图标" />
+      <DatePicker showSuffix={false} placeholder="无后缀图标" />
+      <DatePicker showClear={false} placeholder="无清除按钮" />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 禁用状态
+
+使用 `disabled` 属性可以禁用日期选择器。
+
+```tsx preview
+import { DatePicker } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex gap-4">
+      <DatePicker disabled placeholder="禁用状态" />
+      <DatePicker type="dateRange" disabled placeholder="禁用范围选择" />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 自定义日期渲染
+
+通过 `renderDate` 属性可以自定义日期单元格的渲染内容，结合 `disabledDate` 可以实现更复杂的日期选择逻辑。
+
+```tsx preview
+import { DatePicker, Tooltip } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <DatePicker
+      type="dateRange"
+      placeholder="选择日期范围"
+      disabledDate={date => {
+        if (!date) {
+          return false;
+        } // 确保日期不是undefined
+        const today = new Date();
+        const oneWeekAhead = new Date(today);
+        oneWeekAhead.setDate(today.getDate() + 7);
+        return date > oneWeekAhead;
+      }}
+      renderDate={(dayNumber, fullDate) => {
+        if (fullDate) {
+          // fullDate格式为 xxxx-xx-xx
+          const date = new Date(fullDate);
+          const today = new Date();
+          const oneWeekAhead = new Date(today);
+          oneWeekAhead.setDate(today.getDate() + 7);
+
+          // 如果日期超过一周，添加提示
+          if (date > oneWeekAhead) {
+            return (
+              <Tooltip content="超过一周">
+                <span>{dayNumber}</span>
+              </Tooltip>
+            );
+          }
+        }
+        return <>{dayNumber}</>;
+      }}
+    />
+  );
+};
+
+export default Demo;
+```
+
+## API
+
+### DatePicker Props
+
+| 属性           | 说明                     | 类型                                                                                          | 默认值                       |
+| -------------- | ------------------------ | --------------------------------------------------------------------------------------------- | ---------------------------- |
+| type           | 选择器类型               | `'date'` \| `'dateRange'` \| `'month'` \| `'dateTime'` \| `'dateTimeRange'` \| `'monthRange'` | `'date'`                     |
+| size           | 选择器尺寸               | `'default'` \| `'small'`                                                                      | `'default'`                  |
+| showPrefix     | 是否显示前缀图标         | `boolean`                                                                                     | `true`                       |
+| showSuffix     | 是否显示后缀图标         | `boolean`                                                                                     | `true`                       |
+| showClear      | 是否显示清除按钮         | `boolean`                                                                                     | `true`                       |
+| disabled       | 是否禁用                 | `boolean`                                                                                     | `false`                      |
+| multiple       | 是否支持多选             | `boolean`                                                                                     | `false`                      |
+| value          | 当前值                   | `string` \| `string[]`                                                                        | -                            |
+| defaultValue   | 默认值                   | `string` \| `string[]`                                                                        | -                            |
+| format         | 日期格式化               | `string`                                                                                      | 根据 type 不同有不同的默认值 |
+| rangeSeparator | 范围选择的分隔符         | `string`                                                                                      | `'～'`                       |
+| disabledDate   | 禁用日期的判断函数       | `(date: Date) => boolean`                                                                     | -                            |
+| renderDate     | 自定义日期单元格渲染函数 | `(dayNumber?: number, fullDate?: string) => React.ReactNode`                                  | -                            |
+| onChange       | 值改变时的回调函数       | `(date: any, dateString: string \| string[]) => void`                                         | -                            |
+| onClear        | 点击清除按钮时的回调函数 | `() => void`                                                                                  | -                            |
+
+除了以上属性，DatePicker 组件还支持原生 Semi DatePicker 组件的所有属性。 具体请参考 [Semi DatePicker 文档](https://semi.design/zh-CN/input/datepicker#API%20参考)。
+
+### 格式化说明
+
+日期格式化字符串遵循以下规则：
+
+- `yyyy`: 年份，如 2024
+- `MM`: 月份，如 03
+- `dd`: 日期，如 07
+- `hh`: 小时，如 08
+- `mm`: 分钟，如 30
+- `ss`: 秒，如 45
+
+不同 type 的默认格式化：
+
+- date: `yyyy-MM-dd`
+- month: `yyyy-MM`
+- dateTime: `yyyy-MM-dd hh:mm:ss`

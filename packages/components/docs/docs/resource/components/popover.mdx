@@ -1,0 +1,185 @@
+---
+name: Popover
+description: 气泡卡片组件：用于在用户与特定元素交互时展示临时的上下文信息、提示或相关操作，支持多种触发方式。
+---
+
+# Popover 气泡卡片
+
+## 基本信息
+
+### 何时使用
+
+气泡卡片组件用于在用户与特定元素交互时（如点击、悬停），展示临时的上下文信息、提示或相关操作。
+
+### 如何引入
+
+```tsx
+import { Popover } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Popover 组件封装，继承了其所有功能
+- 默认使用了 Coze Design 的主题变量，可以通过 `style` 属性进行覆盖
+- 当使用 `trigger="custom"` 时，需要手动控制 `visible` 属性来显示/隐藏气泡卡片
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/popover)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-160011&m=dev)
+- [Semi Popover 文档](https://semi.design/zh-CN/show/popover)
+
+## 功能演示
+
+### 基本用法
+
+最基本的用法，通过 `content` 属性设置显示内容，`trigger` 属性设置触发方式。
+
+```tsx preview
+import { Popover, Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 8 }}>
+    <Popover
+      content={
+        <article>
+          Hi ByteDancer, this is a popover.
+          <br /> We have 2 lines.
+        </article>
+      }
+      trigger="click"
+      position="bottom"
+      showArrow
+    >
+      <Button>点击触发</Button>
+    </Popover>
+
+    <Popover
+      content={<article>鼠标悬停显示的内容</article>}
+      trigger="hover"
+      position="top"
+      showArrow
+    >
+      <Button>悬停触发</Button>
+    </Popover>
+  </div>
+);
+
+export default Demo;
+```
+
+### 不同位置
+
+Popover 支持 12 个不同的弹出位置。
+
+```tsx preview
+import { Popover, Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+    {[
+      'top',
+      'topLeft',
+      'topRight',
+      'left',
+      'leftTop',
+      'leftBottom',
+      'right',
+      'rightTop',
+      'rightBottom',
+      'bottom',
+      'bottomLeft',
+      'bottomRight',
+    ].map(position => (
+      <Popover
+        key={position}
+        content={`Position: ${position}`}
+        position={position}
+        showArrow
+      >
+        <Button>{position}</Button>
+      </Popover>
+    ))}
+  </div>
+);
+
+export default Demo;
+```
+
+### 自定义样式
+
+你可以通过 `style` 和 `className` 属性来自定义气泡卡片的样式。
+
+```tsx preview
+import { Popover, Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <Popover
+    content={
+      <article>
+        自定义样式的气泡卡片
+        <br /> 使用了绿色主题
+      </article>
+    }
+    trigger="click"
+    position="bottom"
+    showArrow
+    style={{
+      backgroundColor: 'var(--coz-fg-hglt-green)',
+      borderColor: 'var(--coz-fg-hglt-green)',
+      color: 'var(--coz-fg-hglt-plus)',
+      borderWidth: 1,
+      borderStyle: 'solid',
+    }}
+  >
+    <Button color="primary">自定义样式</Button>
+  </Popover>
+);
+
+export default Demo;
+```
+
+### 受控模式
+
+使用 `visible` 和 `onVisibleChange` 实现受控的显示状态。
+
+```tsx preview
+import { useState } from 'react';
+import { Popover, Button } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <Popover
+      content="这是一个受控的 Popover"
+      trigger="custom"
+      visible={visible}
+      onVisibleChange={setVisible}
+    >
+      <Button onClick={() => setVisible(!visible)}>
+        {visible ? '点击关闭' : '点击打开'}
+      </Button>
+    </Popover>
+  );
+};
+
+export default Demo;
+```
+
+## API 参考
+
+### Popover Props
+
+| 属性            | 说明                                      | 类型                                                                                                                                                           | 默认值   |
+| --------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| className       | 自定义类名                                | `string`                                                                                                                                                       | -        |
+| content         | 显示的内容                                | `ReactNode`                                                                                                                                                    | -        |
+| position        | 弹出位置                                  | `top` \| `topLeft` \| `topRight` \| `left` \| `leftTop` \| `leftBottom` \| `right` \| `rightTop` \| `rightBottom` \| `bottom` \| `bottomLeft` \| `bottomRight` | `bottom` |
+| showArrow       | 是否显示箭头                              | `boolean`                                                                                                                                                      | `false`  |
+| style           | 自定义样式                                | `CSSProperties`                                                                                                                                                | -        |
+| trigger         | 触发方式                                  | `hover` \| `focus` \| `click` \| `custom`                                                                                                                      | `hover`  |
+| visible         | 手动控制显示隐藏（trigger=custom 时生效） | `boolean`                                                                                                                                                      | -        |
+| onVisibleChange | 显示隐藏时的回调                          | `(visible: boolean) => void`                                                                                                                                   | -        |
+
+除了以上属性，Popover 组件还支持原生 Semi Popover 组件的所有属性。 具体请参考 [Semi Popover 文档](https://semi.design/zh-CN/show/popover#API%20参考)。

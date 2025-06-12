@@ -1,0 +1,135 @@
+---
+name: SegmentTab
+description: 分段器组件：用于在不同视图或功能之间进行切换，提供类似标签页但更紧凑和独特的视觉样式。
+---
+
+# SegmentTab 分段器
+
+## 基本信息
+
+### 何时使用
+
+当需要在不同视图或功能之间进行切换时使用，提供了一种类似标签页但更紧凑和独特的视觉样式。
+
+### 如何引入
+
+```tsx
+import { SegmentTab } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi RadioGroup 组件封装，继承了其按钮类型的功能
+- 默认使用了 Coze Design 的主题变量
+- 支持 `default` 和 `small` 两种尺寸
+- 可以通过 `options` 属性快速设置选项，也支持通过子组件方式使用
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/segment-tab)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161794&m=dev)
+- [Semi RadioGroup 文档](https://semi.design/zh-CN/input/radio#RadioGroup)
+
+## 功能演示
+
+### 基础用法
+
+最基础的分段器用法。
+
+```tsx preview
+import { SegmentTab } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <SegmentTab defaultValue="Tab1" options={['Tab1', 'Tab2', 'Tab3']} />
+);
+
+export default Demo;
+```
+
+### 不同尺寸
+
+SegmentTab 支持 `default` 和 `small` 两种尺寸。
+
+```tsx preview
+import { SegmentTab, Space } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <div>
+      <h4>默认尺寸</h4>
+      <SegmentTab
+        defaultValue="Tab1"
+        options={['Tab1', 'Tab2', 'Tab3']}
+        size="default"
+      />
+    </div>
+    <div>
+      <h4>小尺寸</h4>
+      <SegmentTab
+        defaultValue="Tab1"
+        options={['Tab1', 'Tab2', 'Tab3']}
+        size="small"
+      />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 禁用状态
+
+可以通过 `disabled` 属性禁用整个分段器。
+
+```tsx preview
+import { SegmentTab } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <SegmentTab defaultValue="Tab1" options={['Tab1', 'Tab2', 'Tab3']} disabled />
+);
+
+export default Demo;
+```
+
+### 受控模式
+
+使用 `value` 和 `onChange` 实现受控模式。
+
+```tsx preview
+import { SegmentTab } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [value, setValue] = useState('Tab1');
+
+  return (
+    <SegmentTab
+      value={value}
+      options={['Tab1', 'Tab2', 'Tab3']}
+      onChange={e => {
+        console.log('选中值:', e);
+        setValue(e.target.value);
+      }}
+    />
+  );
+};
+
+export default Demo;
+```
+
+## API 参考
+
+### SegmentTab Props
+
+| 属性         | 说明                 | 类型                                | 默认值      |
+| ------------ | -------------------- | ----------------------------------- | ----------- |
+| size         | 分段器尺寸           | `'default' \| 'small'`              | `'default'` |
+| options      | 选项数组             | `string[] \| number[]`              | -           |
+| defaultValue | 默认选中的值         | `string \| number`                  | -           |
+| value        | 当前选中的值（受控） | `string \| number`                  | -           |
+| onChange     | 选项变化时的回调函数 | `(value: string \| number) => void` | -           |
+| disabled     | 是否禁用             | `boolean`                           | `false`     |
+| className    | 自定义类名           | `string`                            | -           |
+| style        | 自定义样式           | `CSSProperties`                     | -           |
+
+除了以上属性，SegmentTab 组件还支持原生 Semi RadioGroup 组件的按钮类型的所有属性。 具体请参考 [Semi RadioGroup 文档](https://semi.design/zh-CN/input/radio#RadioGroup)。

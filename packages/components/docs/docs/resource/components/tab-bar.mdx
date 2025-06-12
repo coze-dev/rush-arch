@@ -1,0 +1,280 @@
+---
+name: TabBar
+description: 标签栏组件：用于在不同视图之间切换，支持选项卡和单选两种模式，可用于内容分类展示或导航菜单。
+---
+
+# TabBar 标签栏
+
+## 基本信息
+
+### 何时使用
+
+- 需要在不同视图之间切换时
+- 需要分类展示内容时
+- 需要作为导航菜单使用时
+
+### 如何引入
+
+```tsx
+import { TabBar } from '@coze-arch/coze-design';
+
+const { TabPanel } = TabBar;
+```
+
+### 注意事项
+
+- 组件基于 Semi Design 的 Tabs 组件封装，继承了其所有功能
+- 默认使用了 Coze Design 的主题变量
+- 支持两种模式：
+  - `tab`：选项卡模式，用于内容切换展示，无需配置回调事件和选中值
+  - `select`：单选模式，类似单选卡片，隐藏内容区域，常用于选择场景
+- 支持两种类型：
+  - `button`：按钮式外观（默认）
+  - `text`：文本式外观（对应 Semi 的 line 类型）
+- 支持三种对齐方式：`left`、`center`、`right`
+- 支持自定义标签内容，如添加徽标等
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/tab-bar)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-160626&m=dev)
+- [Semi Tabs 文档](https://semi.design/zh-CN/navigation/tabs)
+
+## 功能演示
+
+### 基础用法
+
+最基本的标签栏用法。
+
+```tsx preview
+import { TabBar } from '@coze-arch/coze-design';
+
+const { TabPanel } = TabBar;
+
+const Demo = () => (
+  <TabBar defaultActiveKey="1">
+    <TabPanel tab="效率工具" itemKey="1">
+      效率工具内容
+    </TabPanel>
+    <TabPanel tab="商务服务" itemKey="2">
+      商务服务内容
+    </TabPanel>
+    <TabPanel tab="文本创作" itemKey="3">
+      文本创作内容
+    </TabPanel>
+    <TabPanel tab="学习教育" itemKey="4">
+      学习教育内容
+    </TabPanel>
+  </TabBar>
+);
+
+export default Demo;
+```
+
+### 不同模式
+
+支持 `tab` 和 `select` 两种模式：
+
+- `tab`：选项卡模式，用于内容切换展示
+- `select`：单选模式，隐藏内容区域，用于选择场景
+
+```tsx preview
+import { TabBar } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const { TabPanel } = TabBar;
+
+const Demo = () => {
+  const [selectedKey, setSelectedKey] = useState('效率工具');
+
+  return (
+    <div className="flex flex-col gap-8">
+      <div>
+        <h4>标签页模式（tab）</h4>
+        <TabBar mode="tab" defaultActiveKey="1">
+          <TabPanel tab="效率工具" itemKey="1">
+            效率工具内容
+          </TabPanel>
+          <TabPanel tab="商务服务" itemKey="2">
+            商务服务内容
+          </TabPanel>
+          <TabPanel tab="文本创作" itemKey="3">
+            文本创作内容
+          </TabPanel>
+        </TabBar>
+      </div>
+      <div>
+        <h4>选择器模式（select）</h4>
+        <div className="flex flex-col gap-2">
+          <TabBar
+            mode="select"
+            activeKey={selectedKey}
+            onTabClick={key => setSelectedKey(key)}
+          >
+            <TabPanel tab="效率工具" itemKey="效率工具" />
+            <TabPanel tab="商务服务" itemKey="商务服务" />
+            <TabPanel tab="文本创作" itemKey="文本创作" />
+          </TabBar>
+          <div className="text-lg text-foreground-4">已选中：{selectedKey}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 不同类型
+
+支持 `button` 和 `text` 两种类型：
+
+- `button`：按钮式外观（默认）
+- `text`：文本式外观（对应 Semi 的 line 类型）
+
+```tsx preview
+import { TabBar } from '@coze-arch/coze-design';
+
+const { TabPanel } = TabBar;
+
+const Demo = () => (
+  <div className="flex flex-col gap-8">
+    <div>
+      <h4>按钮类型（button）</h4>
+      <TabBar type="button" defaultActiveKey="1">
+        <TabPanel tab="我的" itemKey="1">
+          我的内容
+        </TabPanel>
+        <TabPanel tab="插件" itemKey="2">
+          插件内容
+        </TabPanel>
+        <TabPanel tab="工作流" itemKey="3">
+          工作流内容
+        </TabPanel>
+      </TabBar>
+    </div>
+    <div>
+      <h4>文本类型（text）</h4>
+      <TabBar type="text" defaultActiveKey="1">
+        <TabPanel tab="我的" itemKey="1">
+          我的内容
+        </TabPanel>
+        <TabPanel tab="插件" itemKey="2">
+          插件内容
+        </TabPanel>
+        <TabPanel tab="工作流" itemKey="3">
+          工作流内容
+        </TabPanel>
+      </TabBar>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 对齐方式
+
+支持三种对齐方式：`left`、`center`、`right`。
+
+```tsx preview
+import { TabBar } from '@coze-arch/coze-design';
+
+const { TabPanel } = TabBar;
+
+const Demo = () => (
+  <div className="flex flex-col gap-8 w-full">
+    <div>
+      <h4>左对齐（默认）</h4>
+      <TabBar align="left" defaultActiveKey="1">
+        <TabPanel tab="效率工具" itemKey="1" />
+        <TabPanel tab="商务服务" itemKey="2" />
+        <TabPanel tab="文本创作" itemKey="3" />
+      </TabBar>
+    </div>
+    <div>
+      <h4>居中对齐</h4>
+      <TabBar align="center" defaultActiveKey="1">
+        <TabPanel tab="效率工具" itemKey="1" />
+        <TabPanel tab="商务服务" itemKey="2" />
+        <TabPanel tab="文本创作" itemKey="3" />
+      </TabBar>
+    </div>
+    <div>
+      <h4>右对齐</h4>
+      <TabBar align="right" defaultActiveKey="1">
+        <TabPanel tab="效率工具" itemKey="1" />
+        <TabPanel tab="商务服务" itemKey="2" />
+        <TabPanel tab="文本创作" itemKey="3" />
+      </TabBar>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 自定义标签
+
+支持自定义标签内容，如添加徽标等。
+
+```tsx preview
+import { TabBar, Badge } from '@coze-arch/coze-design';
+
+const { TabPanel } = TabBar;
+
+const Demo = () => (
+  <div className="p-4">
+    <TabBar defaultActiveKey="1">
+      <TabPanel tab="效率工具" itemKey="1">
+        效率工具内容
+      </TabPanel>
+      <TabPanel tab="商务服务" itemKey="2">
+        商务服务内容
+      </TabPanel>
+      <TabPanel
+        tab={
+          <div className="relative">
+            <Badge type="success" count="beta" style={{ right: -6, top: -6 }}>
+              <span>新功能</span>
+            </Badge>
+          </div>
+        }
+        itemKey="3"
+      >
+        新功能内容
+      </TabPanel>
+    </TabBar>
+  </div>
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### TabBar Props
+
+| 属性             | 说明               | 类型                              | 默认值     |
+| ---------------- | ------------------ | --------------------------------- | ---------- |
+| mode             | 标签栏模式         | `'tab' \| 'select'`               | `'tab'`    |
+| type             | 标签栏类型         | `'button' \| 'text'`              | `'button'` |
+| align            | 对齐方式           | `'left' \| 'center' \| 'right'`   | `'left'`   |
+| activeKey        | 当前激活项（受控） | `string \| number`                | -          |
+| defaultActiveKey | 默认激活项         | `string \| number`                | -          |
+| onTabClick       | 点击标签时的回调   | `(key: string \| number) => void` | -          |
+| tabPaneMotion    | 是否开启动画       | `boolean`                         | `false`    |
+| className        | 自定义类名         | `string`                          | -          |
+| style            | 自定义样式         | `CSSProperties`                   | -          |
+
+### TabPanel Props
+
+| 属性      | 说明         | 类型               | 默认值  |
+| --------- | ------------ | ------------------ | ------- |
+| tab       | 标签显示内容 | `ReactNode`        | -       |
+| itemKey   | 标签唯一标识 | `string \| number` | -       |
+| disabled  | 是否禁用     | `boolean`          | `false` |
+| className | 自定义类名   | `string`           | -       |
+| style     | 自定义样式   | `CSSProperties`    | -       |
+
+除了以上属性，TabBar 组件还支持原生 Semi Tabs 组件的所有属性。 具体请参考 [Semi Tabs 文档](https://semi.design/zh-CN/navigation/tabs#API%20参考)。

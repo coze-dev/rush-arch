@@ -1,0 +1,128 @@
+---
+name: Search
+description: 搜索框组件：用于通过输入关键词进行搜索，支持中文输入优化，避免拼音输入过程中触发搜索。
+---
+
+# Search 搜索框
+
+## 基本信息
+
+### 何时使用
+
+需要通过输入关键词进行搜索时使用，支持中文输入优化。
+
+### 如何引入
+
+```tsx
+import { Search } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Input 组件封装，继承了其所有功能
+- 默认使用了 Coze Design 的主题变量
+- 针对中文输入法做了特殊优化，避免拼音输入过程中触发搜索
+- 默认带有搜索图标，可通过 `hideIcon` 属性隐藏
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/search)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161799&m=dev)
+- [Semi Search 文档](https://semi.design/zh-CN/input/input)
+
+## 功能演示
+
+### 基本用法
+
+最基本的搜索框用法。
+
+```tsx preview
+import { Search } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <Search placeholder="请输入搜索内容" />
+    <Search placeholder="隐藏搜索图标" hideIcon />
+    <Search placeholder="禁用状态" disabled />
+  </div>
+);
+
+export default Demo;
+```
+
+### 不同尺寸
+
+搜索框支持不同的尺寸。
+
+```tsx preview
+import { Search } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <div>
+      <h4>默认尺寸</h4>
+      <Search size="default" placeholder="默认尺寸" />
+    </div>
+    <div>
+      <h4>小尺寸</h4>
+      <Search size="small" placeholder="小尺寸" />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 自定义宽度
+
+通过 `width` 属性设置搜索框宽度。
+
+```tsx preview
+import { Search } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+    <Search width={200} placeholder="固定宽度 200px" />
+    <Search width="50%" placeholder="相对宽度 50%" />
+  </div>
+);
+
+export default Demo;
+```
+
+### 搜索回调
+
+使用 `onSearch` 和 `onChange` 处理搜索和输入事件。
+
+```tsx preview
+import { Search } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <Search
+    placeholder="输入完成后触发搜索"
+    onSearch={value => console.log('搜索值:', value)}
+    onChange={(value, e) => console.log('输入值:', value)}
+  />
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### Search Props
+
+| 属性         | 说明             | 类型                                | 默认值      |
+| ------------ | ---------------- | ----------------------------------- | ----------- |
+| value        | 输入框的值       | `string`                            | -           |
+| defaultValue | 默认值           | `string`                            | -           |
+| placeholder  | 提示文本         | `string`                            | -           |
+| disabled     | 是否禁用         | `boolean`                           | `false`     |
+| size         | 尺寸             | `'default' \| 'small'`              | `'default'` |
+| width        | 宽度             | `number \| string`                  | `'auto'`    |
+| hideIcon     | 是否隐藏图标     | `boolean`                           | `false`     |
+| showClear    | 是否显示清除按钮 | `boolean`                           | `true`      |
+| onChange     | 输入时的回调     | `(value: string, e: Event) => void` | -           |
+| onSearch     | 搜索时的回调     | `(value: string) => void`           | -           |
+
+除了以上属性，Search 组件还支持原生 Semi Input 组件的所有属性。 具体请参考 [Semi Input 文档](https://semi.design/zh-CN/input/input#API%20参考)。

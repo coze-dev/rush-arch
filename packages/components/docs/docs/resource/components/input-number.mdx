@@ -1,0 +1,220 @@
+---
+name: InputNumber
+description: 数字输入框组件：用于输入数字，支持按钮调节、键盘操作等交互方式，适用于需要精确数值输入的场景。
+---
+
+# CozInputNumber 数字输入框
+
+## 基本信息
+
+### 何时使用
+
+数字输入框用于输入数字，支持按钮调节、键盘操作等交互方式。常用于需要精确数值输入的场景。
+
+### 如何引入
+
+```tsx
+import { CozInputNumber } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi InputNumber 组件基础上进行定制
+- 默认使用内置按钮样式（innerButtons）
+- 支持键盘上下键和 Shift + 上下键快速调节
+- 支持错误状态展示
+- 支持小尺寸和默认尺寸两种规格
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/input-number)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161811&m=dev)
+- [Semi InputNumber 文档](https://semi.design/zh-CN/input/inputnumber)
+
+## 功能演示
+
+### 基本用法
+
+最基本的数字输入框用法。
+
+```tsx preview
+import { CozInputNumber } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <CozInputNumber
+      defaultValue={1}
+      min={0}
+      max={100}
+      onChange={value => console.log('当前值：', value)}
+    />
+  );
+};
+
+export default Demo;
+```
+
+### 不同尺寸
+
+提供 `small`、`default` 两种尺寸。
+
+```tsx preview
+import { CozInputNumber } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <CozInputNumber size="small" defaultValue={1} />
+      <CozInputNumber size="default" defaultValue={1} />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 步进设置
+
+通过 `step` 和 `shiftStep` 属性可以设置常规步进值和按住 Shift 时的步进值。
+
+```tsx preview
+import { CozInputNumber } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <CozInputNumber
+        defaultValue={1}
+        step={0.1}
+        shiftStep={1}
+        min={0}
+        max={10}
+      />
+      <CozInputNumber
+        defaultValue={100}
+        step={10}
+        shiftStep={100}
+        min={0}
+        max={1000}
+      />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 前缀和后缀
+
+使用 `prefix` 和 `suffix` 属性可以添加前缀和后缀。
+
+```tsx preview
+import { CozInputNumber } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <CozInputNumber prefix="¥" defaultValue={100} />
+      <CozInputNumber suffix="%" defaultValue={50} min={0} max={100} />
+      <CozInputNumber prefix="$" suffix="USD" defaultValue={99.99} />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 禁用状态
+
+通过 `disabled` 属性禁用输入框。
+
+```tsx preview
+import { CozInputNumber } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return <CozInputNumber disabled defaultValue={100} />;
+};
+
+export default Demo;
+```
+
+### 错误状态
+
+通过 `error` 属性显示错误状态。
+
+```tsx preview
+import { CozInputNumber } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return <CozInputNumber error defaultValue={100} />;
+};
+
+export default Demo;
+```
+
+### 滑块控制
+
+通过 `sliderControl` 属性启用滑块控制模式，可以通过滑块来调节数值。支持与按钮组合使用。
+
+```tsx preview
+import { CozInputNumber } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      {/* 带前后缀的滑块控制 */}
+      <CozInputNumber
+        prefix="¥"
+        defaultValue={10}
+        suffix="元"
+        sliderControl={true}
+        step={0.01}
+      />
+
+      {/* 滑块控制与按钮组合 */}
+      <CozInputNumber
+        prefix="$"
+        suffix="USD"
+        step={0.01}
+        sliderControl={true}
+        hideButtons={false}
+      />
+
+      {/* 外置按钮的滑块控制 */}
+      <CozInputNumber
+        prefix="€"
+        suffix="EUR"
+        step={0.01}
+        sliderControl={true}
+        hideButtons={false}
+        innerButtons={false}
+      />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+## API
+
+### CozInputNumber Props
+
+| 属性           | 说明                  | 类型                                | 默认值      |
+| -------------- | --------------------- | ----------------------------------- | ----------- |
+| value          | 当前值                | `number \| string`                  | -           |
+| defaultValue   | 默认值                | `number \| string`                  | -           |
+| min            | 最小值                | `number`                            | -           |
+| max            | 最大值                | `number`                            | -           |
+| step           | 步进值                | `number`                            | `1`         |
+| shiftStep      | 按住 Shift 时的步进值 | `number`                            | `10`        |
+| disabled       | 是否禁用              | `boolean`                           | `false`     |
+| error          | 是否为错误状态        | `boolean`                           | `false`     |
+| size           | 输入框大小            | `'default' \| 'small'`              | `'default'` |
+| prefix         | 前缀                  | `ReactNode`                         | -           |
+| suffix         | 后缀                  | `ReactNode`                         | -           |
+| sliderControl  | 是否启用滑块控制      | `boolean`                           | `false`     |
+| onChange       | 值变化时的回调        | `(value: number \| string) => void` | -           |
+| onNumberChange | 值变化为数字时的回调  | `(value: number) => void`           | -           |
+
+除了以上 API，CozInputNumber 组件还支持原生 Semi InputNumber 组件的所有属性。 具体请参考 [Semi InputNumber 文档](https://semi.design/zh-CN/input/inputnumber#API%20参考)。

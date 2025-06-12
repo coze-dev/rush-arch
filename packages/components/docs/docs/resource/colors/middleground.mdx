@@ -1,0 +1,64 @@
+import { Table } from '@douyinfe/semi-ui';
+
+import {
+  mgColumns,
+  mgThemes,
+  mgFunctional,
+  mgCard,
+} from '@coze-arch/coze-design/colors';
+
+# 中景色 middleground
+
+中景色是介于前景色和背景色之间的颜色层次，主要用于界面中的中间层元素，如卡片、面板、分割线等。合理使用中景色可以增强界面的层次感和空间感。
+
+## 使用原则
+
+- **层次区分**: 中景色应与前景色和背景色形成明显的层次区分
+- **视觉引导**: 通过中景色的变化引导用户视线和注意力
+- **适度对比**: 与背景色保持适度的对比，不应过强或过弱
+
+## 应用场景
+
+- 卡片和面板背景
+- 次级导航区域
+- 分割线和边框
+- 表格行交替色
+- 悬浮和选中状态的背景
+
+## 颜色分类
+
+### 主题色 (Theme)
+
+主题色是与品牌相关的中景色调，用于表达品牌特性和主题风格。
+
+<Table
+  sticky={{ top: 70 }}
+  size="default"
+  columns={mgColumns}
+  dataSource={mgThemes}
+  pagination={false}
+/>
+
+### 功能色 (Functional)
+
+功能色用于表达不同功能状态的中景色，如成功、警告、错误等状态的背景色。
+
+<Table
+  sticky={{ top: 70 }}
+  size="default"
+  columns={mgColumns}
+  dataSource={mgFunctional}
+  pagination={false}
+/>
+
+### 卡片色 (Card)
+
+卡片色专用于卡片、面板等容器元素的颜色，提供不同层级和状态的卡片背景。
+
+<Table
+  sticky={{ top: 70 }}
+  size="default"
+  columns={mgColumns}
+  dataSource={mgCard}
+  pagination={false}
+/>

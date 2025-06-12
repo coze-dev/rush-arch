@@ -1,0 +1,113 @@
+---
+name: Breadcrumb
+description: 面包屑组件：用于显示当前页面在系统层级结构中的位置，帮助用户快速导航到上级页面。
+---
+
+# Breadcrumb 面包屑
+
+## 基本信息
+
+### 何时使用
+
+面包屑是一种导航辅助工具，在以下场景使用：
+
+- 需要显示当前页面在系统层级结构中的位置时
+- 需要快速返回之前任意层级的页面时
+- 系统层级结构超过两级时
+
+### 如何引入
+
+```tsx
+import { Breadcrumb } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Breadcrumb 组件基础上定制
+- 新增了 `size` 属性，支持 `default` 和 `small` 两种尺寸
+- 使用 `compact` 属性来实现小尺寸效果，但用户只需关注 `size` 属性即可
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/breadcrumb)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=18375-231048&m=dev)
+- [Semi Breadcrumb 文档](https://semi.design/zh-CN/navigation/breadcrumb)
+
+## 代码演示
+
+### 基础用法
+
+最基础的面包屑用法。
+
+```tsx preview
+import { Breadcrumb } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <Breadcrumb>
+    <Breadcrumb.Item>Coze Design</Breadcrumb.Item>
+    <Breadcrumb.Item>Components</Breadcrumb.Item>
+    <Breadcrumb.Item>Breadcrumb</Breadcrumb.Item>
+  </Breadcrumb>
+);
+
+export default Demo;
+```
+
+### 不同尺寸
+
+面包屑支持 `default` 和 `small` 两种尺寸。
+
+```tsx preview
+import { Breadcrumb } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <>
+    <Breadcrumb style={{ marginBottom: 20 }}>
+      <Breadcrumb.Item>Coze Design</Breadcrumb.Item>
+      <Breadcrumb.Item>Components</Breadcrumb.Item>
+      <Breadcrumb.Item>Default Size</Breadcrumb.Item>
+    </Breadcrumb>
+
+    <Breadcrumb size="small">
+      <Breadcrumb.Item>Coze Design</Breadcrumb.Item>
+      <Breadcrumb.Item>Components</Breadcrumb.Item>
+      <Breadcrumb.Item>Small Size</Breadcrumb.Item>
+    </Breadcrumb>
+  </>
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### Breadcrumb
+
+| 属性      | 说明       | 类型                   | 默认值      |
+| --------- | ---------- | ---------------------- | ----------- |
+| className | 类名       | `string`               | -           |
+| dataTheme | 主题变量   | `string`               | -           |
+| size      | 面包屑尺寸 | `'default' \| 'small'` | `'default'` |
+| style     | 自定义样式 | `CSSProperties`        | -           |
+| routes    | 路由栈信息 | `Array<Route>`         | -           |
+| separator | 分隔符     | `ReactNode`            | `/`         |
+
+除了以上属性，Breadcrumb 组件还支持原生 Semi Breadcrumb 组件的所有属性（除了 `compact`）。 具体请参考 [Semi Breadcrumb 文档](https://semi.design/zh-CN/navigation/breadcrumb#API%20参考)。
+
+### Route
+
+| 属性 | 说明 | 类型        | 默认值 |
+| ---- | ---- | ----------- | ------ |
+| href | 链接 | `string`    | -      |
+| icon | 图标 | `ReactNode` | -      |
+| name | 名称 | `ReactNode` | -      |
+| path | 路径 | `string`    | -      |
+
+### Breadcrumb.Item
+
+| 属性    | 说明     | 类型                      | 默认值  |
+| ------- | -------- | ------------------------- | ------- |
+| href    | 链接     | `string`                  | -       |
+| icon    | 图标     | `ReactNode`               | -       |
+| noLink  | 不可点击 | `boolean`                 | `false` |
+| onClick | 点击回调 | `(e: MouseEvent) => void` | -       |

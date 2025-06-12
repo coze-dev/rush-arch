@@ -1,0 +1,182 @@
+---
+name: TimePicker
+description: 时间选择器组件：用于输入或选择具体时间，支持时间范围选择和自定义时间格式，提供标准化的时间展示。
+---
+
+# TimePicker 时间选择器
+
+## 基本信息
+
+### 何时使用
+
+- 当用户需要输入或选择具体时间时
+- 需要选择时间范围时
+- 需要以标准化的格式展示时间时
+
+### 如何引入
+
+```tsx
+import { TimePicker } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Design 的 TimePicker 组件封装，继承了其大部分功能
+- 默认使用了 Coze Design 的主题变量
+- 支持单个时间点和时间范围选择
+- 支持自定义时间格式
+- 支持显示/隐藏图标和单位
+- 提供两种尺寸：default 和 small
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/time-picker)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161806&m=dev)
+- [Semi TimePicker 文档](https://semi.design/zh-CN/input/timepicker)
+
+## 功能演示
+
+### 基础用法
+
+展示时间选择器的基本用法，包括单个时间选择和时间范围选择。
+
+```tsx preview
+import { TimePicker } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>单个时间</h4>
+      <TimePicker placeholder="请选择时间" />
+    </div>
+    <div>
+      <h4>时间范围</h4>
+      <TimePicker type="timeRange" placeholder={['开始时间', '结束时间']} />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 不同尺寸
+
+TimePicker 提供了两种尺寸：default 和 small。
+
+```tsx preview
+import { TimePicker } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>默认尺寸</h4>
+      <TimePicker placeholder="请选择时间" />
+    </div>
+    <div>
+      <h4>小尺寸</h4>
+      <TimePicker size="small" placeholder="请选择时间" />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 时间格式
+
+支持自定义时间格式，可以选择是否显示单位。
+
+```tsx preview
+import { TimePicker } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>显示单位（默认）</h4>
+      <TimePicker format="HH:mm:ss" placeholder="请选择时间" />
+    </div>
+    <div>
+      <h4>不显示单位</h4>
+      <TimePicker showUnit={false} format="HH:mm:ss" placeholder="请选择时间" />
+    </div>
+    <div>
+      <h4>自定义格式（HH:mm）</h4>
+      <TimePicker format="HH:mm" placeholder="请选择时间" />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 图标显示
+
+可以选择是否显示前缀图标。
+
+```tsx preview
+import { TimePicker } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>显示图标（默认）</h4>
+      <TimePicker placeholder="请选择时间" />
+    </div>
+    <div>
+      <h4>不显示图标</h4>
+      <TimePicker showIcon={false} placeholder="请选择时间" />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 禁用状态
+
+```tsx preview
+import { TimePicker } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>禁用状态</h4>
+      <TimePicker disabled placeholder="禁用状态" />
+    </div>
+    <div>
+      <h4>禁用时间范围</h4>
+      <TimePicker
+        type="timeRange"
+        disabled
+        placeholder={['开始时间', '结束时间']}
+      />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### TimePicker Props
+
+| 属性           | 说明               | 类型                                                                 | 默认值     |
+| -------------- | ------------------ | -------------------------------------------------------------------- | ---------- |
+| value          | 时间选择器的值     | `string \| string[]`                                                 | -          |
+| defaultValue   | 默认值             | `string \| string[]`                                                 | -          |
+| placeholder    | 提示文本           | `string \| string[]`                                                 | -          |
+| type           | 选择器类型         | `'time' \| 'timeRange'`                                              | `'time'`   |
+| format         | 时间格式           | `string`                                                             | `HH:mm:ss` |
+| showIcon       | 是否显示前缀图标   | `boolean`                                                            | `true`     |
+| showUnit       | 是否显示时间单位   | `boolean`                                                            | `true`     |
+| size           | 选择器大小         | `'default' \| 'small'`                                               | `default`  |
+| disabled       | 是否禁用           | `boolean`                                                            | `false`    |
+| className      | 自定义类名         | `string`                                                             | -          |
+| popupClassName | 弹出层的自定义类名 | `string`                                                             | -          |
+| style          | 自定义样式         | `CSSProperties`                                                      | -          |
+| onChange       | 时间变化时的回调   | `(time: string \| string[], timeString: string \| string[]) => void` | -          |
+| onFocus        | 获取焦点时的回调   | `(e: Event) => void`                                                 | -          |
+| onBlur         | 失去焦点时的回调   | `(e: Event) => void`                                                 | -          |
+
+除了以上属性，TimePicker 组件还支持原生 Semi TimePicker 组件的大部分属性。 具体请参考 [Semi TimePicker 文档](https://semi.design/zh-CN/input/timepicker#API%20参考)。

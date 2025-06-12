@@ -1,0 +1,218 @@
+---
+name: Toast
+description: 轻提示组件：用于向用户展示简短的操作反馈或提示信息，以非阻塞方式提醒用户，支持多种类型和自定义内容。
+---
+
+# Toast 轻提示
+
+## 基本信息
+
+### 何时使用
+
+- 需要向用户展示简短的操作反馈或提示信息时
+- 需要以非阻塞的方式提醒用户时
+- 需要展示系统的通知或状态变更时
+
+### 如何引入
+
+```tsx
+import { Toast } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Design 的 Toast 组件封装，继承了其大部分功能
+- 默认使用了 Coze Design 的主题变量
+- 支持多种类型：`default`、`info`、`success`、`warning`、`error`
+- 支持自定义图标和内容
+- 支持自动关闭和手动关闭
+- 支持更新已存在的 Toast 内容
+- 默认显示在页面顶部居中位置
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/toast)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161055&m=dev)
+- [Semi Toast 文档](https://semi.design/zh-CN/feedback/toast)
+
+## 功能演示
+
+### 基础用法
+
+最基本的轻提示用法。
+
+```tsx preview
+import { Toast, Button } from '@coze-arch/coze-design';
+import { IconCozClockFill } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex gap-2">
+    <Button
+      onClick={() =>
+        Toast.info({
+          content: '这是一条提示信息',
+          duration: 3,
+        })
+      }
+    >
+      显示提示
+    </Button>
+  </div>
+);
+
+export default Demo;
+```
+
+### 不同类型
+
+支持多种类型的轻提示，每种类型都有对应的图标和样式。
+
+```tsx preview
+import { Toast, Button } from '@coze-arch/coze-design';
+import { IconCozClockFill } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex gap-2">
+    <Button onClick={() => Toast.info('这是一条信息')}>信息</Button>
+    <Button color="green" onClick={() => Toast.success('操作成功')}>
+      成功
+    </Button>
+    <Button color="yellow" onClick={() => Toast.warning('注意警告')}>
+      警告
+    </Button>
+    <Button color="red" onClick={() => Toast.error('发生错误')}>
+      错误
+    </Button>
+  </div>
+);
+
+export default Demo;
+```
+
+### 自定义配置
+
+支持自定义图标、显示时长和关闭按钮等。
+
+```tsx preview
+import { Toast, Button } from '@coze-arch/coze-design';
+import { IconCozClockFill } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex gap-2">
+    <Button
+      onClick={() =>
+        Toast.info({
+          content: '自定义图标和关闭按钮',
+          duration: 0,
+          showClose: true,
+          icon: <IconCozClockFill className="text-brand-6" />,
+        })
+      }
+    >
+      自定义配置
+    </Button>
+  </div>
+);
+
+export default Demo;
+```
+
+### 更新内容
+
+可以通过 ID 更新已存在的 Toast 内容。
+
+```tsx preview
+import { Toast, Button } from '@coze-arch/coze-design';
+import { IconCozClockFill } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex gap-2">
+    <Button
+      onClick={() => {
+        const id = 'update-toast';
+        Toast.info({ content: '初始内容', id });
+        setTimeout(() => {
+          Toast.success({ content: '更新后的内容', id });
+        }, 2000);
+      }}
+    >
+      更新内容
+    </Button>
+  </div>
+);
+
+export default Demo;
+```
+
+### 手动关闭
+
+支持手动控制 Toast 的显示和关闭。
+
+```tsx preview
+import { Toast, Button } from '@coze-arch/coze-design';
+import { IconCozClockFill } from '@coze-arch/coze-design/icons';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [toastId, setToastId] = useState<string | null>(null);
+
+  const showToast = () => {
+    if (toastId) return;
+    const id = Toast.info({
+      content: '这是一条可手动关闭的提示',
+      duration: 0,
+      showClose: true,
+      onClose: () => setToastId(null),
+    });
+    setToastId(id);
+  };
+
+  const hideToast = () => {
+    if (toastId) {
+      Toast.close(toastId);
+      setToastId(null);
+    }
+  };
+
+  return (
+    <div className="flex gap-2">
+      <Button onClick={showToast}>显示</Button>
+      <Button color="red" onClick={hideToast}>
+        关闭
+      </Button>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+## API 参考
+
+### Toast 静态方法
+
+| 方法名  | 说明         | 参数类型               | 返回值   |
+| ------- | ------------ | ---------------------- | -------- |
+| info    | 信息提示     | `string \| ToastProps` | `string` |
+| success | 成功提示     | `string \| ToastProps` | `string` |
+| warning | 警告提示     | `string \| ToastProps` | `string` |
+| error   | 错误提示     | `string \| ToastProps` | `string` |
+| create  | 创建提示     | `ToastProps`           | `string` |
+| close   | 关闭指定提示 | `string`               | `void`   |
+
+### ToastProps
+
+| 属性      | 说明                 | 类型                                                       | 默认值      |
+| --------- | -------------------- | ---------------------------------------------------------- | ----------- |
+| content   | 提示内容             | `ReactNode`                                                | -           |
+| duration  | 自动关闭的延时（秒） | `number`                                                   | `3`         |
+| id        | Toast 的唯一标识     | `string`                                                   | -           |
+| icon      | 自定义图标           | `ReactNode`                                                | -           |
+| showClose | 是否显示关闭按钮     | `boolean`                                                  | `false`     |
+| type      | 提示类型             | `'default' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` |
+| className | 自定义类名           | `string`                                                   | -           |
+| style     | 自定义样式           | `CSSProperties`                                            | -           |
+| onClose   | 关闭时的回调函数     | `() => void`                                               | -           |
+| onClick   | 点击时的回调函数     | `(e: MouseEvent) => void`                                  | -           |
+
+除了以上属性，Toast 组件还支持原生 Semi Toast 组件的大部分属性。 具体请参考 [Semi Toast 文档](https://semi.design/zh-CN/feedback/toast#API%20参考)。

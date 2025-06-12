@@ -1,0 +1,165 @@
+---
+name: InputCode
+description: 验证码输入框组件：用于输入验证码、密码等场景，提供分段输入的交互体验，支持密码和文本两种显示模式。
+---
+
+# InputCode 验证码输入框
+
+## 基本信息
+
+### 何时使用
+
+验证码输入框用于输入验证码、密码等场景，提供分段输入的交互体验。常用于手机验证码、邮箱验证码、密码输入等场景。
+
+### 如何引入
+
+```tsx
+import { InputCode } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Input 组件基础上进行定制
+- 支持密码和文本两种显示模式
+- 密码模式下会自动隐藏已输入的字符
+- 支持自定义输入框数量
+- 支持键盘操作和自动聚焦
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/input-code)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161813&m=dev)
+- [Semi Input 文档](https://semi.design/zh-CN/input/input)
+
+## 功能演示
+
+### 基本用法
+
+最基本的验证码输入框用法。默认为 6 位验证码输入。
+
+```tsx preview
+import { InputCode } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div>
+      <InputCode
+        type="text"
+        onChange={value => console.log('当前输入：', value)}
+        onFinish={value => console.log('输入完成：', value)}
+      />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 密码模式
+
+使用 `type="password"` 可以将输入框设置为密码模式，输入的字符会在短暂显示后被隐藏。
+
+```tsx preview
+import { InputCode } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <InputCode type="text" placeholder="文本模式" />
+      <InputCode type="password" placeholder="密码模式" />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 自定义长度
+
+通过 `length` 属性可以自定义输入框的数量。
+
+```tsx preview
+import { InputCode } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <InputCode length={4} placeholder="4位验证码" />
+      <InputCode length={6} placeholder="6位验证码" />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 禁用状态
+
+通过 `disabled` 属性可以禁用输入框。
+
+```tsx preview
+import { InputCode } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return <InputCode disabled value="123456" />;
+};
+
+export default Demo;
+```
+
+### 错误状态
+
+通过 `error` 属性可以将输入框设置为错误状态。
+
+```tsx preview
+import { InputCode } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return <InputCode error value="123456" />;
+};
+
+export default Demo;
+```
+
+### 受控组件
+
+通过 `value` 和 `onChange` 属性可以将输入框设置为受控组件。
+
+```tsx preview
+import { InputCode } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [value, setValue] = useState('');
+
+  return (
+    <div className="flex flex-col gap-4">
+      <InputCode
+        value={value}
+        onChange={setValue}
+        onFinish={value => console.log('输入完成：', value)}
+      />
+      <div>当前输入：{value}</div>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+## API
+
+### InputCode Props
+
+| 属性       | 说明                 | 类型                      | 默认值       |
+| ---------- | -------------------- | ------------------------- | ------------ |
+| length     | 输入框数量           | `number`                  | `6`          |
+| type       | 输入框类型           | `'text' \| 'password'`    | `'password'` |
+| value      | 输入框的值           | `string`                  | -            |
+| disabled   | 是否禁用             | `boolean`                 | `false`      |
+| error      | 是否为错误状态       | `boolean`                 | `false`      |
+| inputProps | 传递给 Input 的属性  | `InputProps`              | -            |
+| onChange   | 输入值变化时的回调   | `(value: string) => void` | -            |
+| onFinish   | 完成所有输入时的回调 | `(value: string) => void` | -            |
+
+除了以上 API，InputCode 组件还支持原生 Input 元素的所有属性（除了 onChange）。 具体请参考 [Semi Input 文档](https://semi.design/zh-CN/input/input#API%20参考)。

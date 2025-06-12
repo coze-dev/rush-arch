@@ -1,0 +1,509 @@
+---
+name: Table
+description: 表格组件：以行列形式展示结构化数据，支持排序、筛选、分页等交互功能，适用于展示大量数据记录的场景。
+---
+
+# Table 表格
+
+## 基本信息
+
+### 何时使用
+
+表格是一种以行列形式展示数据的组件，用于展示大量结构化数据，并支持排序、筛选、分页等交互操作。
+
+### 如何引入
+
+```tsx
+import { Table } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Table 组件基础上定制
+- 支持自定义空状态展示
+- 支持触底加载更多数据
+- 提供了 TableMeta 和 TableAction 子组件，用于展示表格行的元数据和操作按钮
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/table)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=489-62341&m=dev)
+- [Semi Table 文档](https://semi.design/zh-CN/show/table)
+
+## 功能演示
+
+### 基本用法
+
+最基础的表格用法。
+
+```tsx preview
+import { Table } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  const columns = [
+    {
+      title: '名称',
+      dataIndex: 'name',
+    },
+    {
+      title: '大小',
+      dataIndex: 'size',
+    },
+    {
+      title: '所有者',
+      dataIndex: 'owner',
+    },
+    {
+      title: '更新日期',
+      dataIndex: 'updateTime',
+    },
+  ];
+
+  const data = [
+    {
+      key: '1',
+      name: 'Semi Design 设计稿.fig',
+      size: '2M',
+      owner: '姜鹏志',
+      updateTime: '2020-02-02 05:13',
+    },
+    {
+      key: '2',
+      name: 'Semi Design 分享演示文稿',
+      size: '2M',
+      owner: '郝宣',
+      updateTime: '2020-01-17 05:31',
+    },
+    {
+      key: '3',
+      name: '设计文档',
+      size: '34KB',
+      owner: 'Zoey Edwards',
+      updateTime: '2020-01-26 11:01',
+    },
+  ];
+
+  return (
+    <Table
+      tableProps={{
+        columns,
+        dataSource: data,
+      }}
+    />
+  );
+};
+
+export default Demo;
+```
+
+### 带序号和复选框的表格
+
+使用 `indexRowSelection` 属性可以实现序号和复选框的切换效果。
+
+```tsx preview
+import { Table } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  const columns = [
+    {
+      title: '名称',
+      dataIndex: 'name',
+    },
+    {
+      title: '大小',
+      dataIndex: 'size',
+    },
+    {
+      title: '所有者',
+      dataIndex: 'owner',
+    },
+  ];
+
+  const data = [
+    {
+      key: '1',
+      name: 'Semi Design 设计稿.fig',
+      size: '2M',
+      owner: '姜鹏志',
+    },
+    {
+      key: '2',
+      name: 'Semi Design 分享演示文稿',
+      size: '2M',
+      owner: '郝宣',
+    },
+    {
+      key: '3',
+      name: '设计文档',
+      size: '34KB',
+      owner: 'Zoey Edwards',
+    },
+  ];
+
+  return (
+    <Table
+      tableProps={{
+        columns,
+        dataSource: data,
+        rowSelection: {
+          onChange: (selectedRowKeys, selectedRows) => {
+            console.log(
+              `selectedRowKeys: ${selectedRowKeys}`,
+              'selectedRows: ',
+              selectedRows,
+            );
+          },
+        },
+      }}
+      indexRowSelection={true}
+    />
+  );
+};
+
+export default Demo;
+```
+
+### 使用 TableMeta 展示元数据
+
+TableMeta 组件可以用于展示表格行的元数据，包括图标、名称、描述等信息。
+
+```tsx preview
+import { Table } from '@coze-arch/coze-design';
+import { IconCozPeopleFill } from '@coze-arch/coze-design/icons';
+
+const Demo = () => {
+  const columns = [
+    {
+      title: '名称',
+      dataIndex: 'name',
+      render: (text, record) => (
+        <Table.TableMeta
+          name={record.name}
+          description={record.description}
+          icon={<IconCozPeopleFill style={{ fontSize: 24, marginRight: 8 }} />}
+        />
+      ),
+    },
+    {
+      title: '大小',
+      dataIndex: 'size',
+    },
+    {
+      title: '所有者',
+      dataIndex: 'owner',
+    },
+  ];
+
+  const data = [
+    {
+      key: '1',
+      name: 'Semi Design 设计稿',
+      description: '包含所有设计资源和规范',
+      size: '2M',
+      owner: '姜鹏志',
+    },
+    {
+      key: '2',
+      name: 'Semi Design 分享演示文稿',
+      description: '分享会议使用的演示文稿',
+      size: '2M',
+      owner: '郝宣',
+    },
+    {
+      key: '3',
+      name: '设计文档',
+      description: '详细的设计文档说明',
+      size: '34KB',
+      owner: 'Zoey Edwards',
+    },
+  ];
+
+  return (
+    <Table
+      tableProps={{
+        columns,
+        dataSource: data,
+      }}
+    />
+  );
+};
+
+export default Demo;
+```
+
+### 使用 TableAction 展示操作按钮
+
+TableAction 组件可以用于展示表格行的操作按钮，包括编辑、复制、删除等操作。
+
+```tsx preview
+import { Table } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  const columns = [
+    {
+      title: '名称',
+      dataIndex: 'name',
+    },
+    {
+      title: '大小',
+      dataIndex: 'size',
+    },
+    {
+      title: '操作',
+      dataIndex: 'operation',
+      render: (text, record) => (
+        <Table.TableAction
+          editProps={{
+            handler: () => {
+              console.log('编辑', record);
+            },
+          }}
+          copyProps={{
+            handler: () => {
+              console.log('复制', record);
+            },
+          }}
+          deleteProps={{
+            handler: () => {
+              console.log('删除', record);
+            },
+            deleteDesc: `确定要删除 "${record.name}" 吗？`,
+          }}
+          actionList={[
+            {
+              actionKey: 'download',
+              actionText: '下载',
+              handler: () => {
+                console.log('下载', record);
+              },
+            },
+          ]}
+        />
+      ),
+    },
+  ];
+
+  const data = [
+    {
+      key: '1',
+      name: 'Semi Design 设计稿.fig',
+      size: '2M',
+    },
+    {
+      key: '2',
+      name: 'Semi Design 分享演示文稿',
+      size: '2M',
+    },
+    {
+      key: '3',
+      name: '设计文档',
+      size: '34KB',
+    },
+  ];
+
+  return (
+    <Table
+      tableProps={{
+        columns,
+        dataSource: data,
+      }}
+    />
+  );
+};
+
+export default Demo;
+```
+
+### 支持触底加载更多
+
+通过 `enableLoad` 和 `onLoad` 属性可以实现触底加载更多数据的功能。
+
+```tsx preview
+import { Table } from '@coze-arch/coze-design';
+import { useState, useRef } from 'react';
+
+const Demo = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const pageRef = useRef(1);
+
+  const tableRef = useRef(null);
+
+  const columns = [
+    {
+      title: '序号',
+      dataIndex: 'id',
+    },
+    {
+      title: '名称',
+      dataIndex: 'name',
+    },
+    {
+      title: '内容',
+      dataIndex: 'content',
+    },
+  ];
+
+  // 模拟加载数据
+  const loadData = () => {
+    if (loading) return;
+
+    setLoading(true);
+
+    // 模拟异步请求
+    setTimeout(() => {
+      const newPage = pageRef.current;
+      const newData = Array(10)
+        .fill(0)
+        .map((_, index) => ({
+          key: `${newPage}-${index}`,
+          id: (newPage - 1) * 10 + index + 1,
+          name: `项目 ${(newPage - 1) * 10 + index + 1}`,
+          content: `这是第 ${newPage} 页的第 ${index + 1} 条数据`,
+        }));
+
+      setData(prev => [...prev, ...newData]);
+      setLoading(false);
+      pageRef.current += 1;
+
+      // 模拟数据加载完毕
+      if (pageRef.current > 3) {
+        setHasMore(false);
+      }
+    }, 1000);
+  };
+
+  // 初始加载
+  if (data.length === 0 && !loading && hasMore) {
+    loadData();
+  }
+
+  return (
+    <div style={{ height: 300 }}>
+      <Table
+        ref={tableRef}
+        tableProps={{
+          columns,
+          dataSource: data,
+          loading,
+        }}
+        enableLoad={true}
+        loadMode="cursor"
+        hasMore={hasMore}
+        onLoad={loadData}
+        offsetY={0}
+      />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 自定义空状态
+
+通过 `empty` 属性可以自定义表格的空状态展示。
+
+```tsx preview
+import { Table } from '@coze-arch/coze-design';
+import { EmptyState } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  const columns = [
+    {
+      title: '名称',
+      dataIndex: 'name',
+    },
+    {
+      title: '大小',
+      dataIndex: 'size',
+    },
+    {
+      title: '所有者',
+      dataIndex: 'owner',
+    },
+  ];
+
+  return (
+    <Table
+      tableProps={{
+        columns,
+        dataSource: [],
+      }}
+      empty={
+        <EmptyState
+          title="暂无数据"
+          description="当前没有任何数据，请稍后再试"
+          image="https://lf3-static.bytednsdoc.com/obj/eden-cn/ptlz_zlp/ljhwZthlaukjlkulzlp/empty-state/empty_state_no_content.svg"
+        />
+      }
+    />
+  );
+};
+
+export default Demo;
+```
+
+## API
+
+### Table Props
+
+| 属性                 | 说明                                 | 类型                 | 默认值   |
+| -------------------- | ------------------------------------ | -------------------- | -------- |
+| offsetY              | 表格内容区域距离视口顶部的偏移量     | `number`             | `0`      |
+| scrollX              | 表格内容区域的水平滚动宽度           | `number`             | `0`      |
+| tableProps           | Semi Table 的属性                    | `TableProps`         | -        |
+| empty                | 自定义空状态内容                     | `ReactElement`       | -        |
+| total                | 数据总条数，用于判断是否还有更多数据 | `number`             | `0`      |
+| hasMore              | 是否还有更多数据，用于游标模式       | `boolean`            | `false`  |
+| onLoad               | 加载更多数据的回调函数               | `() => void`         | -        |
+| enableLoad           | 是否启用触底加载功能                 | `boolean`            | `false`  |
+| loadMode             | 加载模式                             | `'page' \| 'cursor'` | `'page'` |
+| wrapperClassName     | 表格容器的类名                       | `string`             | -        |
+| useHoverStyle        | 是否使用悬停样式                     | `boolean`            | `true`   |
+| strictDataSourceProp | 是否严格遵循传递的 dataSource        | `boolean`            | `false`  |
+| indexRowSelection    | 是否使用序号和复选框的行选择样式     | `boolean`            | `false`  |
+
+除了以上属性，Table 组件还支持原生 Semi Table 组件的所有属性。 具体请参考 [Semi Table 文档](https://semi.design/zh-CN/show/table#API%20参考)。
+
+### TableMeta Props
+
+| 属性            | 说明             | 类型           | 默认值 |
+| --------------- | ---------------- | -------------- | ------ |
+| className       | 自定义类名       | `string`       | -      |
+| avatarClassName | 头像的自定义类名 | `string`       | -      |
+| icon_url        | 图标 URL         | `string`       | -      |
+| icon            | 自定义图标       | `ReactElement` | -      |
+| name            | 名称             | `string`       | -      |
+| nameIcon        | 名称旁边的图标   | `ReactElement` | -      |
+| description     | 描述信息         | `string`       | -      |
+| suffix          | 额外的后缀元素   | `ReactElement` | -      |
+
+### TableAction Props
+
+| 属性        | 说明           | 类型                                                                                                      | 默认值 |
+| ----------- | -------------- | --------------------------------------------------------------------------------------------------------- | ------ |
+| editProps   | 编辑按钮的属性 | `Omit<ActionItemProps, 'actionKey' \| 'actionText'>`                                                      | -      |
+| copyProps   | 复制按钮的属性 | `Omit<ActionItemProps, 'actionKey' \| 'actionText'>`                                                      | -      |
+| deleteProps | 删除按钮的属性 | `Omit<ActionItemProps, 'actionKey' \| 'actionText'> & { deleteDesc?: string; disableConfirm?: boolean; }` | -      |
+| enableProps | 启用按钮的属性 | `Omit<ActionItemProps, 'actionKey' \| 'actionText'>`                                                      | -      |
+| actionList  | 扩展操作列表   | `ActionItemProps[]`                                                                                       | -      |
+
+### ActionItemProps
+
+| 属性         | 说明           | 类型                          | 默认值  |
+| ------------ | -------------- | ----------------------------- | ------- |
+| actionKey    | 操作标识       | `string`                      | -       |
+| actionText   | 操作名称       | `string`                      | -       |
+| extActionDom | 额外的操作元素 | `ReactElement`                | -       |
+| disabled     | 是否禁用       | `boolean`                     | `false` |
+| handler      | 点击处理函数   | `() => void \| Promise<void>` | -       |
+| hide         | 是否隐藏       | `boolean`                     | `false` |
+
+### TableMethods
+
+| 方法         | 说明                             | 类型                |
+| ------------ | -------------------------------- | ------------------- |
+| reset        | 重置表格状态，包括滚动位置和数据 | `() => void`        |
+| getTableList | 获取表格数据列表                 | `<T>() => Array<T>` |

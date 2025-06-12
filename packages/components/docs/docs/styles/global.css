@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --rp-c-brand: rgb(var(--coze-brand-5));
+  --rp-c-brand-dark: rgb(var(--coze-brand-6));
+  --rp-c-brand-darker: rgb(var(--coze-brand-7));
+  --rp-c-brand-light: rgb(var(--coze-brand-3));
+  --rp-c-brand-lighter: rgb(var(--coze-brand-2));
+}
+
+/* 修复主页安妮样式问题 */
+.rspress-home-hero-tagline + div {
+  @apply sm:grid md:flex lg:flex;
+}

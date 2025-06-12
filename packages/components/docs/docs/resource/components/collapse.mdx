@@ -1,0 +1,163 @@
+---
+name: Collapse
+description: 折叠面板组件：用于将复杂内容区域分组和隐藏，支持折叠/展开操作，适合信息分类展示。
+---
+
+# Collapse 折叠面板
+
+## 基本信息
+
+### 何时使用
+
+折叠面板组件用于将复杂的内容区域分组和隐藏，可以折叠/展开内容区域，对信息进行分类展示。
+
+### 如何引入
+
+```tsx
+import { Collapse } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Collapse 组件基础上定制
+- 支持单个面板和多个面板组合使用
+- 支持手风琴模式（accordion）
+- 支持自定义面板头部和内容
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/collapse)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-160628&m=dev)
+- [Semi Collapse 文档](https://semi.design/zh-CN/show/collapse)
+
+## 功能演示
+
+### 基本用法
+
+最基本的折叠面板用法。
+
+```tsx preview
+import { Collapse } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <Collapse>
+      <Collapse.Panel header="这是一个折叠面板" itemKey="1">
+        这里是折叠面板的内容区域，可以放置任何内容。
+      </Collapse.Panel>
+      <Collapse.Panel header="这是第二个折叠面板" itemKey="2">
+        这里是第二个折叠面板的内容。
+      </Collapse.Panel>
+    </Collapse>
+  );
+};
+
+export default Demo;
+```
+
+### 手风琴模式
+
+通过设置 `accordion` 属性开启手风琴模式，每次只能展开一个面板。
+
+```tsx preview
+import { Collapse } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <Collapse accordion>
+      <Collapse.Panel header="第一个面板" itemKey="1">
+        第一个面板的内容
+      </Collapse.Panel>
+      <Collapse.Panel header="第二个面板" itemKey="2">
+        第二个面板的内容
+      </Collapse.Panel>
+      <Collapse.Panel header="第三个面板" itemKey="3">
+        第三个面板的内容
+      </Collapse.Panel>
+    </Collapse>
+  );
+};
+
+export default Demo;
+```
+
+### 受控组件
+
+使用 `activeKey` 和 `onChange` 属性实现受控组件。
+
+```tsx preview
+import { Collapse } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [activeKey, setActiveKey] = useState(['1']);
+
+  return (
+    <Collapse activeKey={activeKey} onChange={keys => setActiveKey(keys)}>
+      <Collapse.Panel header="受控面板 1" itemKey="1">
+        面板 1 的内容
+      </Collapse.Panel>
+      <Collapse.Panel header="受控面板 2" itemKey="2">
+        面板 2 的内容
+      </Collapse.Panel>
+    </Collapse>
+  );
+};
+
+export default Demo;
+```
+
+### 自定义面板
+
+可以自定义面板的头部和内容样式。
+
+```tsx preview
+import { Collapse } from '@coze-arch/coze-design';
+import { IconCozArrowDown } from '@coze-arch/coze-design/icons';
+
+const Demo = () => {
+  const customHeader = (
+    <div className="flex items-center gap-2">
+      <IconCozArrowDown />
+      <span>自定义头部</span>
+    </div>
+  );
+
+  return (
+    <Collapse>
+      <Collapse.Panel header={customHeader} itemKey="1">
+        <div className="p-4 bg-gray-100 rounded">
+          这是一个自定义样式的内容区域
+        </div>
+      </Collapse.Panel>
+    </Collapse>
+  );
+};
+
+export default Demo;
+```
+
+## API 参考
+
+### Collapse Props
+
+| 属性             | 说明                 | 类型                                | 默认值  |
+| ---------------- | -------------------- | ----------------------------------- | ------- |
+| activeKey        | 当前展开的面板的 key | `string[] \| string`                | -       |
+| defaultActiveKey | 默认展开的面板的 key | `string[] \| string`                | -       |
+| accordion        | 是否开启手风琴模式   | `boolean`                           | `false` |
+| onChange         | 切换面板时的回调     | `(key: string[] \| string) => void` | -       |
+
+除了以上属性，Collapse 组件还支持原生 Semi Collapse 组件的所有属性。 具体请参考 [Semi Collapse 文档](https://semi.design/zh-CN/show/collapse#API%20参考)。
+
+### Collapse.Panel Props
+
+| 属性      | 说明                       | 类型              | 默认值  |
+| --------- | -------------------------- | ----------------- | ------- |
+| header    | 面板头部内容               | `React.ReactNode` | -       |
+| itemKey   | 面板的唯一标识             | `string`          | -       |
+| disabled  | 是否禁用面板               | `boolean`         | `false` |
+| showArrow | 是否显示展开图标           | `boolean`         | `true`  |
+| extra     | 自定义渲染面板右上角的内容 | `React.ReactNode` | -       |
+
+除了以上属性，Collapse.Panel 组件还支持原生 Semi Collapse.Panel 组件的所有属性。

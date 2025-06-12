@@ -1,0 +1,16 @@
+{
+  "operationSettings": [
+    {
+      "operationName": "build",
+      "outputFolderNames": ["doc_build"]
+    },
+    {
+      "operationName": "test:cov",
+      "outputFolderNames": ["coverage"]
+    },
+    {
+      "operationName": "ts-check",
+      "outputFolderNames": ["dist"]
+    }
+  ]
+}

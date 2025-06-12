@@ -1,0 +1,164 @@
+---
+name: Switch
+description: 开关组件：用于表示开关状态或两种状态之间的切换，切换时会直接触发状态改变，支持多种尺寸和状态。
+---
+
+# Switch 开关
+
+## 基本信息
+
+### 何时使用
+
+- 需要表示开关状态/两种状态之间的切换时
+- 和 checkbox 的区别是，切换 switch 会直接触发状态改变，而 checkbox 一般用于状态标记，需要和提交操作配合
+
+### 如何引入
+
+```tsx
+import { Switch } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Design 的 Switch 组件封装，继承了其所有功能
+- 默认使用了 Coze Design 的主题变量
+- 支持三种尺寸：`default`、`small`、`mini`
+- 支持受控和非受控两种使用方式
+- 支持加载中和禁用状态
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/switch)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161793&m=dev)
+- [Semi Switch 文档](https://semi.design/zh-CN/input/switch)
+
+## 功能演示
+
+### 基础用法
+
+最基本的开关用法。
+
+```tsx preview
+import { Switch } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex gap-4">
+    <Switch />
+    <Switch defaultChecked />
+  </div>
+);
+
+export default Demo;
+```
+
+### 不同尺寸
+
+支持三种尺寸：`default`、`small`、`mini`。
+
+```tsx preview
+import { Switch } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>默认状态</h4>
+      <div className="flex gap-4 mt-2">
+        <Switch size="default" />
+        <Switch size="small" />
+        <Switch size="mini" />
+      </div>
+    </div>
+    <div>
+      <h4>选中状态</h4>
+      <div className="flex gap-4 mt-2">
+        <Switch size="default" defaultChecked />
+        <Switch size="small" defaultChecked />
+        <Switch size="mini" defaultChecked />
+      </div>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 受控模式
+
+通过 `checked` 和 `onChange` 实现受控模式。
+
+```tsx preview
+import { Switch } from '@coze-arch/coze-design';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [checked, setChecked] = useState(false);
+
+  return (
+    <div className="flex flex-col gap-2">
+      <Switch
+        checked={checked}
+        onChange={value => {
+          console.log('switch changed:', value);
+          setChecked(value);
+        }}
+      />
+      <div>当前状态：{checked ? '开启' : '关闭'}</div>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 特殊状态
+
+支持加载中和禁用状态。
+
+```tsx preview
+import { Switch } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>禁用状态</h4>
+      <div className="flex gap-4 mt-2">
+        <Switch disabled />
+        <Switch checked disabled />
+      </div>
+    </div>
+    <div>
+      <h4>加载状态</h4>
+      <div className="flex gap-4 mt-2">
+        <Switch loading />
+        <Switch checked loading />
+      </div>
+    </div>
+    <div>
+      <h4>禁用且加载</h4>
+      <div className="flex gap-4 mt-2">
+        <Switch disabled loading />
+        <Switch checked disabled loading />
+      </div>
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### Switch Props
+
+| 属性           | 说明             | 类型                                   | 默认值      |
+| -------------- | ---------------- | -------------------------------------- | ----------- |
+| size           | 开关大小         | `'default' \| 'small' \| 'mini'`       | `'default'` |
+| checked        | 是否选中（受控） | `boolean`                              | -           |
+| defaultChecked | 默认是否选中     | `boolean`                              | `false`     |
+| disabled       | 是否禁用         | `boolean`                              | `false`     |
+| loading        | 是否加载中       | `boolean`                              | `false`     |
+| onChange       | 变化时的回调     | `(checked: boolean, e: Event) => void` | -           |
+| className      | 自定义类名       | `string`                               | -           |
+| style          | 自定义样式       | `CSSProperties`                        | -           |
+
+除了以上属性，Switch 组件还支持原生 Semi Switch 组件的所有属性。 具体请参考 [Semi Switch 文档](https://semi.design/zh-CN/input/switch#API%20参考)。

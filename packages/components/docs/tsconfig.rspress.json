@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@coze-arch/ts-config/tsconfig.web.json",
+  "compilerOptions": {
+    "strict": true,
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowImportingTsExtensions": false,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "module": "ESNext",
+    "isolatedModules": true,
+    "composite": true,
+    "declaration": true,
+    "incremental": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "types": [],
+    "outDir": "./dist",
+    "tsBuildInfoFile": "dist/tsconfig.build.tsbuildinfo"
+  },
+  "exclude": ["**/*.test.*", "**/stories/", "node_modules"],
+  "include": ["src", "docs", "rspress.config.ts", "vitest.config.ts"]
+}

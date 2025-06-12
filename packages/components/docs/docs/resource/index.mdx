@@ -1,0 +1,101 @@
+# 快速开始
+
+## 关于 Coze Design
+
+Coze Design System 2.0 （CDS）是由Bot Web的产品、设计师和前端团队，结合当前Coze产品的产品风格和视觉规范联合开发的一整套视觉设计系统。CozeDesign 目前是基于 Semi Design 作为基础组件库，向前兼容bot-semi（1.0设计标准），提供了包括设计规范（色彩、尺寸、字体），图标统一管理方案 和 基础控件的完整设计资源，并且围绕组件站点预览、组件单测质量都做了大量优化工作，通过这些标准组件和配套的设计体系，CDS 旨在帮助设计师与研发高效地交付符合Bot视觉规范的产品应用。
+具体内容可以参考[Coze Design System 统一视觉规范宣讲](https://bytedance.larkoffice.com/wiki/W0vKw5HbkitU71kBvyjcbYAqnzf)。
+
+## 如何使用
+
+目前Coze Design的源代码在bot-studio-monorepo，采用源码引用的方式使用。
+
+### 已接入业务
+
+目前支持Coze、Fornax等业务已经引入coze design。在需要使用的包目录中运行以下命令，添加coze-design作为依赖：
+
+```bash
+rush add -p @coze-arch/coze-design --dev
+```
+
+在需要使用组件的文件中，引入组件和图标：
+
+```typescript
+// 引入组件
+import { Button, Input } from '@coze-arch/coze-design';
+
+// 引入图标
+import { IconCozAllFill } from '@coze-arch/coze-design/icons';
+```
+
+### 新业务接入
+
+**NOTE:** 新业务接入请先联系CDS团队，确认接入方案。
+
+接入步骤包括：
+
+1. 添加必要依赖：
+
+```bash
+rush add \
+-p @coze-arch/coze-design \
+-p @douyinfe/semi-rspack-plugin \
+-p @coze-arch/semi-theme-hand01 \
+-p @coze-arch/postcss-config \
+-p @coze-arch/tailwind-config \
+--dev
+```
+
+2. bundle配置，如`rsbuild.config.ts`配置，增加semi主题包：
+
+```typescript
+import { SemiRspackPlugin } from '@douyinfe/semi-rspack-plugin';
+export default defineConfig({
+  tools: {
+    rspack: (config, { appendPlugins }) => {
+      appendPlugins([
+        new SemiRspackPlugin({
+          theme: '@coze-arch/semi-theme-hand01',
+        }),
+      ]);
+    },
+  },
+});
+```
+
+3. postcss配置：
+
+```typescript
+module.exports = require('@coze-arch/postcss-config');
+```
+
+4. tailwind配置：
+
+```typescript
+module.exports = {
+  darkMode: 'class',
+  presets: [require('@coze-arch/tailwind-config')],
+  important: '',
+  content: [
+    './index.html',
+    './src/**/*.{js,ts,jsx,tsx}',
+    './docs/**/*.{js,ts,jsx,tsx}',
+  ],
+  corePlugins: {
+    preflight: false,
+  plugins: [
+    require('@coze-arch/tailwind-config/coze'),
+    require('@tailwindcss/forms'),
+  ],
+};
+```
+
+## 联系我们
+
+如有问题，可以加入[VIP 用户群](https://applink.larkoffice.com/client/chat/chatter/add_by_link?link_token=974p40fa-103c-4ceb-a6b1-7796d8cb5499)咨询。
+
+### 联系人
+
+| 角色       | 责任人 | 职责                                                                       |
+| ---------- | ------ | -------------------------------------------------------------------------- |
+| 设计 Owner | 赵瀚   | 负责组件设计、验收及质量把控；协调资源并解决业务需求问题                   |
+| Tech owner | 文明   | 负责组件开发、维护、修复、评审及规范制定；推进组件在业务中的落地并规范使用 |

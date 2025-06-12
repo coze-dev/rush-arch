@@ -1,0 +1,157 @@
+---
+name: Textarea
+description: 多行文本框组件：用于输入多行文本，适用于需要用户输入较长的描述、评论或反馈的场景，支持字数限制和自动调整高度。
+---
+
+# Textarea 多行文本框
+
+## 基本信息
+
+### 何时使用
+
+- 需要输入多行文本时
+- 需要用户输入较长的描述、评论或反馈时
+- 需要展示多行文本内容时
+
+### 如何引入
+
+```tsx
+import { TextArea } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Design 的 Input TextArea 组件封装，继承了其所有功能
+- 默认使用了 Coze Design 的主题变量
+- 支持字数限制和自动调整高度
+- 支持加载和错误状态
+- 支持前缀和后缀图标
+- 支持自定义样式和类名
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/textarea)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161810&m=dev)
+- [Semi TextArea 文档](https://semi.design/zh-CN/input/input)
+
+## 功能演示
+
+### 基础用法
+
+最基本的多行文本框用法。
+
+```tsx preview
+import { TextArea } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <TextArea placeholder="请输入内容" />
+    <TextArea defaultValue="这是默认内容" />
+    <TextArea placeholder="最多输入 100 个字符" maxCount={100} />
+  </div>
+);
+
+export default Demo;
+```
+
+### 自动调整高度
+
+支持根据内容自动调整高度。
+
+```tsx preview
+import { TextArea } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>自动调整高度</h4>
+      <TextArea autosize placeholder="输入内容会自动调整高度" />
+    </div>
+    <div>
+      <h4>限制最小/最大行数</h4>
+      <TextArea
+        autosize={{ minRows: 2, maxRows: 6 }}
+        placeholder="最小 2 行，最大 6 行"
+      />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 不同状态
+
+支持禁用、加载中和错误状态。
+
+```tsx preview
+import { TextArea } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>禁用状态</h4>
+      <TextArea disabled placeholder="禁用状态" />
+    </div>
+    <div>
+      <h4>加载状态</h4>
+      <TextArea loading placeholder="加载中..." />
+    </div>
+    <div>
+      <h4>错误状态</h4>
+      <TextArea error placeholder="错误状态" />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 前缀和后缀
+
+支持添加前缀和后缀图标。
+
+```tsx preview
+import { TextArea } from '@coze-arch/coze-design';
+import { IconCozLoading } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div className="flex flex-col gap-4">
+    <div>
+      <h4>前缀图标</h4>
+      <TextArea prefix={<IconCozLoading />} placeholder="带前缀图标" />
+    </div>
+    <div>
+      <h4>后缀图标</h4>
+      <TextArea suffix={<IconCozLoading />} placeholder="带后缀图标" />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+## API 参考
+
+### TextArea Props
+
+| 属性             | 说明                 | 类型                                                | 默认值  |
+| ---------------- | -------------------- | --------------------------------------------------- | ------- |
+| value            | 输入框的值           | `string`                                            | -       |
+| defaultValue     | 输入框的默认值       | `string`                                            | -       |
+| placeholder      | 提示文本             | `string`                                            | -       |
+| disabled         | 是否禁用             | `boolean`                                           | `false` |
+| loading          | 是否加载中           | `boolean`                                           | `false` |
+| error            | 是否错误状态         | `boolean`                                           | `false` |
+| maxCount         | 最大字符数           | `number`                                            | -       |
+| autosize         | 自动调整高度         | `boolean \| { minRows?: number; maxRows?: number }` | `false` |
+| prefix           | 前缀图标             | `ReactNode`                                         | -       |
+| suffix           | 后缀图标             | `ReactNode`                                         | -       |
+| onChange         | 输入时的回调         | `(value: string, e: Event) => void`                 | -       |
+| onFocus          | 获取焦点时的回调     | `(e: Event) => void`                                | -       |
+| onBlur           | 失去焦点时的回调     | `(e: Event) => void`                                | -       |
+| className        | 自定义类名           | `string`                                            | -       |
+| wrapperClassName | 外层容器的自定义类名 | `string`                                            | -       |
+| style            | 自定义样式           | `CSSProperties`                                     | -       |
+
+除了以上属性，TextArea 组件还支持原生 Semi Input TextArea 组件的所有属性，更多信息请参考 [Semi TextArea API](https://semi.design/zh-CN/input/input#TextArea)。

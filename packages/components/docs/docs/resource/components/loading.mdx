@@ -1,0 +1,157 @@
+---
+name: Loading
+description: 加载组件：用于在页面或区块加载过程中给予用户反馈，表明系统正在执行操作，适用于异步操作和数据加载场景。
+---
+
+# Loading 加载中
+
+## 基本信息
+
+### 何时使用
+
+Loading 加载组件用于在页面或区块加载过程中给予用户反馈，表明系统正在执行操作。适用于异步操作、数据加载、页面切换等需要等待的场景。
+
+### 如何引入
+
+```tsx
+import { Loading } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Spin 组件基础上进行定制
+- 提供四种尺寸规格：
+  - **mini** (14px)：适用于 button、input、textarea 等组件内部的加载态
+  - **small** (20px)：默认尺寸，用于一般加载提示场景，对应 semi 的 middle
+  - **middle** (24px)：中号尺寸，用于需要明显加载提示的场景
+  - **large** (32px)：大号尺寸，用于配置 mask 或加载内容浮层
+- 支持四种预设颜色：
+  - **default**：对应 token 为 `coz-fg-secondary`
+  - **blue**：对应 token 为 `coz-fg-hglt`
+  - **green**：对应 token 为 `coz-fg-hglt-green`
+  - **red**：对应 token 为 `coz-fg-hglt-red`
+- 可以自定义加载文案和文案大小
+- 支持包裹内容，在内容加载时显示加载状态
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/loading)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161050&m=dev)
+- [Semi Spin 文档](https://semi.design/zh-CN/feedback/spin)
+
+## 代码演示
+
+### 基础用法
+
+最基本的加载中组件用法。需要设置 `loading=true` 才会显示加载状态。
+
+```tsx preview
+import { Loading } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col space-y-4 p-20px gap-6">
+      <Loading loading />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 不同尺寸
+
+提供四种尺寸可选：mini (14px)、small (20px)、middle (24px)、large (32px)。
+
+```tsx preview
+import { Loading } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex space-x-8 p-20px gap-6">
+      <Loading loading size="mini" />
+      <Loading loading size="small" />
+      <Loading loading size="middle" />
+      <Loading loading size="large" />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 不同颜色
+
+提供四种预设颜色可选，每种颜色对应不同的设计 token。
+
+```tsx preview
+import { Loading } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex space-x-8 p-20px gap-6">
+      <Loading loading color="default" />
+      <Loading loading color="blue" />
+      <Loading loading color="green" />
+      <Loading loading color="red" />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 自定义文案
+
+可以通过 `label` 和 `labelSize` 自定义加载提示文案及其大小。
+
+> 注意：当 Loading 用作包裹元素时，需要传入 children 节点才能让文字布局正确撑开。
+
+```tsx preview
+import { Loading } from '@coze-arch/coze-design';
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col space-y-4 p-20px gap-6">
+      <Loading loading label={<span>加载中...</span>} className="flex">
+        <span />
+      </Loading>
+      <Loading
+        loading
+        label={<span>正在处理...</span>}
+        labelSize="large"
+        className="flex"
+      >
+        <span />
+      </Loading>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+## API 参考
+
+### CozLoading Props
+
+| 属性      | 说明             | 类型                                         | 默认值      |
+| --------- | ---------------- | -------------------------------------------- | ----------- |
+| loading   | 是否为加载中状态 | `boolean`                                    | `true`      |
+| size      | 加载图标大小     | `'mini' \| 'small' \| 'middle' \| 'large'`   | `'middle'`  |
+| color     | 加载图标颜色     | `'default' \| 'blue' \| 'red' \| 'green'`    | `'default'` |
+| label     | 加载提示文案     | `string \| ReactNode`                        | -           |
+| labelSize | 文案字体大小     | `'small' \| 'normal' \| 'middle' \| 'large'` | `'small'`   |
+| className | 容器类名         | `string`                                     | -           |
+
+除了以上 API，CozLoading 组件还支持原生 Semi Spin 组件的其他属性。 具体请参考 [Semi Spin 文档](https://semi.design/zh-CN/feedback/spin#API%20参考)。
+
+### Types
+
+```tsx
+export type LoadingSize = 'mini' | 'small' | 'middle' | 'large';
+
+export type LoadingLabelSize = 'small' | 'normal' | 'middle' | 'large';
+
+export type LoadingColor = 'default' | 'blue' | 'red' | 'green';
+```

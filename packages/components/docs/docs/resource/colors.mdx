@@ -1,0 +1,97 @@
+# Coze Design 色彩系统
+
+## 概述
+
+Coze Design 色彩系统是 Coze Design System 2.0 的核心部分，提供了一套完整的色彩规范和工具，帮助设计师和开发者在产品中保持一致的视觉体验。色彩系统基于场景化设计，将颜色分为前景色（Foreground）、中景色（Middleground）、背景色（Background）、描边色（Stroke）和阴影色（Shadow）五大类别。
+
+## 色彩分类
+
+### 前景色（Foreground）
+
+前景色主要用于文字和图标，对应 CSS 的 `color` 属性，前缀为 `coz-fg`。
+
+- **主题色系**：包含主要的品牌色和功能色
+- **功能色系**：用于表示不同状态和功能的颜色
+- **图表色系**：专为数据可视化设计的颜色
+- **代码高亮色系**：用于代码编辑器的语法高亮
+- **品牌色系**：Coze 品牌专用色彩
+
+### 中景色（Middleground）
+
+中景色主要用于元素的交互状态，如悬停、激活等，对应 CSS 的 `background` 属性，前缀为 `coz-mg`。
+
+- **主题色系**：与前景色对应的主题色
+- **功能色系**：与前景色对应的功能色
+- **卡片色系**：用于卡片组件的背景色
+
+### 背景色（Background）
+
+背景色主要用于页面和组件的背景，对应 CSS 的 `background` 属性，前缀为 `coz-bg`。
+
+- **主题色系**：包含不同层级的背景色
+
+### 描边色（Stroke）
+
+描边色主要用于边框和分割线，对应 CSS 的 `border` 属性，前缀为 `coz-stroke`。
+
+- **主题色系**：包含不同层级的边框色
+
+### 阴影色（Shadow）
+
+阴影色主要用于元素的阴影效果，对应 CSS 的 `box-shadow` 属性，前缀为 `coz-shadow`。
+
+## 使用方式
+
+Coze Design 色彩系统支持三种使用方式：
+
+### 1. 使用 CSS 类名
+
+```jsx
+<div className="coz-fg-primary-1">这是使用主题色的文本</div>
+<div className="coz-bg-primary-1">这是使用主题色的背景</div>
+<div className="coz-stroke-primary-1 border">这是使用主题色的边框</div>
+```
+
+### 2. 使用 CSS 变量
+
+```css
+.custom-element {
+  color: var(--coz-fg-primary-1);
+  background-color: var(--coz-bg-primary-1);
+  border-color: var(--coz-stroke-primary-1);
+}
+```
+
+### 3. 使用 Tailwind @apply 指令
+
+```css
+.custom-button {
+  @apply coz-fg-primary-1 coz-bg-primary-2 coz-stroke-primary-1;
+}
+```
+
+## 主题切换
+
+Coze Design 色彩系统支持亮色和暗色两种主题模式，可以通过添加 `dark` 类名到 HTML 元素上切换主题：
+
+```jsx
+// 切换到暗色主题
+document.documentElement.classList.add('dark');
+
+// 切换回亮色主题
+document.documentElement.classList.remove('dark');
+```
+
+## 最佳实践
+
+1. **保持一致性**：在整个应用中使用一致的色彩系统，避免自定义颜色
+2. **遵循语义化**：根据颜色的语义选择合适的颜色，如使用成功色表示成功状态
+3. **考虑可访问性**：确保文本和背景色之间有足够的对比度，提高可读性
+4. **使用预设变量**：优先使用预设的色彩变量，而不是硬编码的颜色值
+5. **适配主题切换**：设计时考虑亮色和暗色两种主题模式下的表现
+
+## 相关资源
+
+- [Coze Design System 统一视觉规范](https://bytedance.larkoffice.com/wiki/YT08wRAtbisNddkSOd8cF8K2nXe)
+- [Tailwind CSS 使用指南](https://bytetech.info/articles/7390631519334694950#TFBodg3SVoaqqdxWMcDcdB93nVg)
+- [Storybook 设计物料体系](https://bytetech.info/articles/7406235624744681526)

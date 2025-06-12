@@ -1,0 +1,213 @@
+---
+name: Popconfirm
+description: 气泡确认框组件：轻量级的确认对话框，用于需要用户进行二次确认的操作场景，以气泡形式展现，不打断操作流程。
+---
+
+# Popconfirm 气泡确认框
+
+## 基本信息
+
+### 何时使用
+
+Popconfirm 组件是一个轻量级的确认对话框，常用于需要用户进行二次确认的操作场景，如删除、提交、发布等重要操作。它以气泡的形式展现，不会打断用户的操作流程。
+
+### 如何引入
+
+```tsx
+import { Popconfirm } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Popconfirm 组件基础上定制
+- 提供了更丰富的按钮颜色选项
+- 支持自定义内容结构（SubTitle、Description、Content）
+- 支持异步操作的加载状态展示
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/popconfirm)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-160012&m=dev)
+- [Semi Popconfirm 文档](https://semi.design/zh-CN/feedback/popconfirm)
+
+## 功能演示
+
+### 基础用法
+
+最基础的用法，只包含确认按钮。
+
+```tsx preview
+import { Popconfirm, Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <Popconfirm title="确定是否要保存此修改？" content="此修改将不可逆">
+    <Button>点击确认</Button>
+  </Popconfirm>
+);
+
+export default Demo;
+```
+
+### 带取消按钮
+
+添加取消按钮，给用户更多的选择。
+
+```tsx preview
+import { Popconfirm, Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <Popconfirm
+    title="确定是否要保存此修改？"
+    content="此修改将不可逆"
+    cancelText="取消"
+  >
+    <Button>带取消按钮</Button>
+  </Popconfirm>
+);
+
+export default Demo;
+```
+
+### 不同按钮颜色
+
+支持自定义确认按钮的颜色，包括品牌色、警告色和危险色。
+
+```tsx preview
+import { Popconfirm, Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="space-x-4">
+    <Popconfirm
+      title="确定是否要保存此修改？"
+      content="此修改将不可逆"
+      okButtonColor="brand"
+    >
+      <Button color="brand">品牌色</Button>
+    </Popconfirm>
+
+    <Popconfirm
+      title="确定是否要删除此项？"
+      content="删除后将无法恢复"
+      okButtonColor="yellow"
+    >
+      <Button color="yellow">警告</Button>
+    </Popconfirm>
+
+    <Popconfirm
+      title="确定要执行此危险操作？"
+      content="此操作可能造成不可逆的影响"
+      okButtonColor="red"
+    >
+      <Button color="red">危险</Button>
+    </Popconfirm>
+  </div>
+);
+
+export default Demo;
+```
+
+### 自定义内容
+
+使用 SubTitle、Description 和 Content 组件来构建更丰富的内容结构。
+
+```tsx preview
+import { Popconfirm, Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <Popconfirm
+    title="确定要删除此文件？"
+    content={
+      <>
+        <Popconfirm.SubTitle>重要提示</Popconfirm.SubTitle>
+        <Popconfirm.Description>此操作将永久删除该文件</Popconfirm.Description>
+        <Popconfirm.SubTitle>影响范围</Popconfirm.SubTitle>
+        <Popconfirm.Description>删除后将无法恢复</Popconfirm.Description>
+      </>
+    }
+  >
+    <Button>自定义内容</Button>
+  </Popconfirm>
+);
+
+export default Demo;
+```
+
+### 异步操作
+
+支持异步操作，可以在操作完成后自动关闭。适用于需要等待服务器响应的场景。
+
+```tsx preview
+import { Popconfirm, Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="space-x-4">
+    <Popconfirm
+      title="确定要保存更改？"
+      content="此操作需要同步到服务器"
+      onConfirm={() =>
+        new Promise(resolve => {
+          setTimeout(() => {
+            resolve(true);
+          }, 2000);
+        })
+      }
+    >
+      <Button>异步保存 (2s)</Button>
+    </Popconfirm>
+
+    <Popconfirm
+      title="确定要取消操作？"
+      content="正在执行的任务将被终止"
+      cancelText="取消"
+      onCancel={() =>
+        new Promise(resolve => {
+          setTimeout(() => {
+            resolve(true);
+          }, 1000);
+        })
+      }
+    >
+      <Button>异步取消 (1s)</Button>
+    </Popconfirm>
+  </div>
+);
+
+export default Demo;
+```
+
+## API
+
+### Popconfirm Props
+
+| 属性              | 说明             | 类型                                             | 默认值    |
+| ----------------- | ---------------- | ------------------------------------------------ | --------- |
+| title             | 标题             | ReactNode                                        | -         |
+| content           | 内容             | ReactNode                                        | -         |
+| okText            | 确认按钮文字     | string                                           | 'ok'      |
+| okButtonColor     | 确认按钮颜色     | 'brand' \| 'yellow' \| 'red'                     | 'brand'   |
+| okButtonProps     | 确认按钮属性     | ButtonProps                                      | {}        |
+| cancelText        | 取消按钮文字     | string                                           | -         |
+| cancelButtonColor | 取消按钮颜色     | ButtonColor                                      | 'primary' |
+| cancelButtonProps | 取消按钮属性     | ButtonProps                                      | {}        |
+| defaultVisible    | 默认是否显示     | boolean                                          | false     |
+| visible           | 是否显示（受控） | boolean                                          | -         |
+| trigger           | 触发方式         | "click" \| "hover" \| "focus" \| "custom"        | 'click'   |
+| onVisibleChange   | 显示隐藏的回调   | (visible: boolean) =&gt; void                    | -         |
+| onConfirm         | 点击确认的回调   | (e: MouseEvent) =&gt; void \| Promise&lt;any&gt; | -         |
+| onCancel          | 点击取消的回调   | (e: MouseEvent) =&gt; void \| Promise&lt;any&gt; | -         |
+
+除了以上属性，Popconfirm 组件还支持原生 Semi Popconfirm 组件的所有属性。 具体请参考 [Semi Popconfirm 文档](https://semi.design/zh-CN/feedback/popconfirm#API%20参考)。
+
+### 子组件
+
+#### Popconfirm.SubTitle
+
+用于在 content 中添加副标题，可以帮助组织和分类内容。
+
+#### Popconfirm.Description
+
+用于在 content 中添加描述文本，提供详细的说明信息。
+
+#### Popconfirm.Content
+
+用于在 content 中添加普通内容，可以是任意的 React 节点。

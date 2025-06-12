@@ -1,0 +1,89 @@
+import { Table } from '@douyinfe/semi-ui';
+
+import {
+  fgColumns,
+  fgThemes,
+  fgFunctionals,
+  fgChart,
+  fgCode,
+  fgBranding,
+} from '@coze-arch/coze-design/colors';
+
+# 前景色 foreground
+
+前景色是用户界面中最常见的颜色类型，主要用于文本、图标和其他前景元素。合理使用前景色可以提高内容的可读性和界面的层次感。
+
+## 使用原则
+
+- **对比度**: 前景色应与背景色形成足够的对比度，确保文本内容清晰可读
+- **层次感**: 不同重要程度的内容应使用不同深浅的前景色，形成视觉层次
+- **一致性**: 在整个产品中保持前景色使用的一致性，提高用户体验
+
+## 应用场景
+
+- 文本内容（标题、正文、辅助文本等）
+- 图标和交互元素
+- 强调和突出显示的内容
+- 状态指示器（成功、警告、错误等）
+
+## 颜色分类
+
+### 主题色 (Theme)
+
+主题色是与产品品牌相关的前景色，用于品牌识别和关键交互元素。
+
+<Table
+  sticky={{ top: 70 }}
+  size="default"
+  columns={fgColumns}
+  dataSource={fgThemes}
+  pagination={false}
+/>
+
+### 功能色 (Functional)
+
+功能色用于表达不同状态和功能的颜色，如成功、警告、错误等状态。
+
+<Table
+  sticky={{ top: 70 }}
+  size="default"
+  columns={fgColumns}
+  dataSource={fgFunctionals}
+  pagination={false}
+/>
+
+### 图表色 (Chart)
+
+图表色专用于数据可视化场景，确保数据图表的清晰度和可读性。
+
+<Table
+  sticky={{ top: 70 }}
+  size="default"
+  columns={fgColumns}
+  dataSource={fgChart}
+  pagination={false}
+/>
+
+### 代码色 (Code)
+
+代码色用于代码编辑器和代码展示，提高代码的可读性和语法高亮。
+
+<Table
+  sticky={{ top: 70 }}
+  size="default"
+  columns={fgColumns}
+  dataSource={fgCode}
+  pagination={false}
+/>
+
+### 品牌色 (Branding)
+
+品牌色体现品牌特性的专用颜色，用于强化品牌识别。
+
+<Table
+  sticky={{ top: 70 }}
+  size="default"
+  columns={fgColumns}
+  dataSource={fgBranding}
+  pagination={false}
+/>

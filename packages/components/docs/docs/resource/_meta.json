@@ -1,0 +1,22 @@
+[
+  {
+    "type": "file",
+    "name": "index",
+    "label": "快速开始"
+  },
+  {
+    "type": "file",
+    "name": "CHANGELOG",
+    "label": "更新日志"
+  },
+  {
+    "type": "dir",
+    "name": "colors",
+    "label": "色彩系统"
+  },
+  {
+    "type": "dir",
+    "name": "components",
+    "label": "组件"
+  }
+]

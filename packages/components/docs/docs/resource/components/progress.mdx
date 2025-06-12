@@ -1,0 +1,172 @@
+---
+name: Progress
+description: 进度条组件：用于展示操作的当前进度和状态，适用于显示任务完成百分比、文件上传进度等场景。
+---
+
+# Progress 进度条
+
+## 基本信息
+
+### 何时使用
+
+Progress 组件用于展示操作的当前进度和状态，适用于以下场景：
+
+- 需要显示操作进度的场景
+- 需要显示任务完成百分比的场景
+- 需要展示文件上传进度的场景
+
+### 如何引入
+
+```tsx
+import { Progress } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Progress 组件基础上定制
+- 支持线形和圆形两种进度条样式
+- 提供了三种尺寸选项：small、default、large
+- 可以自定义进度条的高度和宽度
+- 支持通过 stroke 属性或 style.color 自定义进度条颜色
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/progress)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=11460-124294&m=dev)
+- [Semi Progress 文档](https://semi.design/zh-CN/feedback/progress)
+
+## 功能演示
+
+### 基础用法
+
+最基础的进度条用法。
+
+```tsx preview
+import { Progress } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="space-y-4">
+    <Progress percent={30} />
+    <Progress percent={50} />
+    <Progress percent={70} />
+  </div>
+);
+
+export default Demo;
+```
+
+### 进度条类型
+
+支持线形（line）和圆形（circle）两种类型。
+
+#### 线形进度条
+
+可以通过以下方式自定义线形进度条：
+
+- **height**：可以通过 height 属性设置高度
+- **stroke**：可以通过 stroke 属性自定义进度条颜色
+- **style**：可以通过 style.height 和 style.color 自定义样式
+
+```tsx preview
+import { Progress } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="space-y-4">
+    <Progress type="line" percent={70} />
+    <Progress type="line" percent={70} height={4} />
+    <Progress type="line" percent={70} stroke="var(--coz-fg-hglt-green)" />
+    <Progress
+      type="line"
+      percent={70}
+      stroke="var(--coz-fg-hglt-green)"
+      style={{ height: 10 }}
+    />
+  </div>
+);
+
+export default Demo;
+```
+
+#### 圆形进度条
+
+可以通过以下方式自定义圆形进度条：
+
+- **width**：可以通过 width 传入自定义宽度数值来控制进度条的外圆形直径
+- **strokeWidth**：可以通过 strokeWidth 传入自定义宽度数值来控制进度条的内圆环宽度
+- **stroke**：可以通过 stroke 属性自定义进度条颜色
+- **style**：可以通过 style.color 自定义颜色
+
+```tsx preview
+import { Progress } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex items-center space-x-8 gap-4">
+    <Progress type="circle" percent={70} />
+    <Progress type="circle" percent={70} width={50} strokeWidth={4} />
+    <Progress type="circle" percent={70} stroke="var(--coz-fg-hglt-green)" />
+  </div>
+);
+
+export default Demo;
+```
+
+### 不同尺寸
+
+Progress 组件支持三种预设尺寸：small、default 和 large。
+
+```tsx preview
+import { Progress } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="space-y-4">
+    <Progress size="small" percent={70} />
+    <Progress size="default" percent={70} />
+    <Progress size="large" percent={70} />
+    <Progress size="default" percent={70} height={2} />
+  </div>
+);
+
+export default Demo;
+```
+
+## API
+
+### Progress Props
+
+| 属性        | 说明             | 类型                            | 默认值               |
+| ----------- | ---------------- | ------------------------------- | -------------------- |
+| type        | 进度条类型       | 'line' \| 'circle'              | 'line'               |
+| size        | 进度条尺寸       | 'small' \| 'default' \| 'large' | 'default'            |
+| percent     | 进度值           | number                          | -                    |
+| stroke      | 进度条颜色       | string                          | 'var(--coz-fg-hglt)' |
+| strokeWidth | 进度条线宽       | number                          | -                    |
+| width       | 圆形进度条宽度   | number                          | -                    |
+| height      | 线形进度条高度   | number \| string                | -                    |
+| showInfo    | 是否显示进度数值 | boolean                         | true                 |
+| format      | 内容的模板函数   | (percent: number) => ReactNode  | -                    |
+| style       | 自定义样式       | CSSProperties                   | -                    |
+
+除了以上属性，Progress 组件还支持原生 Semi Progress 组件的所有属性。 具体请参考 [Semi Progress 文档](https://semi.design/zh-CN/feedback/progress#API%20参考)。
+
+### 类型定义
+
+```tsx
+export type ProgressSize = 'default' | 'small' | 'large';
+export type ProgressType = 'circle' | 'line';
+```
+
+### 尺寸说明
+
+#### 线形进度条（line）
+
+- small: 高度 3px
+- default: 高度 4px
+- large: 高度 6px
+- custom: 可通过 height 属性或 style.height 自定义高度
+
+#### 圆形进度条（circle）
+
+- small: 直径 26px，线宽 2px
+- default: 直径 28px，线宽 2px
+- large: 直径 32px，线宽 3px
+- custom: 可通过 width 和 strokeWidth 自定义尺寸

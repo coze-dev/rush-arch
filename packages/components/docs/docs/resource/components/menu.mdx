@@ -1,0 +1,308 @@
+---
+name: Menu
+description: 菜单组件：为用户提供一组操作或选项列表，适用于导航菜单、下拉菜单、上下文菜单等场景，支持多种选择模式。
+---
+
+# Menu 菜单
+
+## 基本信息
+
+### 何时使用
+
+Menu 菜单组件用于为用户提供一组操作或选项列表，适用于导航菜单、下拉菜单、上下文菜单等场景。支持单选、多选、分组等多种使用方式。
+
+### 如何引入
+
+```tsx
+import { Menu } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Dropdown 组件基础上进行定制
+- 提供两种菜单模式：
+  - **menu**：普通菜单模式，用于展示操作列表
+  - **selection**：选择模式，支持单选和多选
+- 支持五种预设类型：
+  - **primary**：主要选项
+  - **secondary**：次要选项
+  - **tertiary**：第三级选项
+  - **warning**：警告选项
+  - **danger**：危险选项
+- 可以通过 `icon` 和 `suffix` 自定义菜单项的图标和后缀
+- 支持使用 `Title` 和 `Divider` 进行菜单分组
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/menu)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161047&m=dev)
+- [Semi Dropdown 文档](https://semi.design/zh-CN/show/dropdown)
+
+## 代码演示
+
+### 基础用法
+
+最基础的下拉菜单用法。
+
+```tsx preview
+import { Menu, SplitButton } from '@coze-arch/coze-design';
+import { IconCozChatPeople } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <Menu
+    trigger="click"
+    position="bottomRight"
+    className="w-160px"
+    render={
+      <Menu.SubMenu mode="menu">
+        <Menu.Item type="danger" itemKey="测试文字1">
+          测试文字1
+        </Menu.Item>
+        <Menu.Item itemKey="disabled" disabled>
+          disabled
+        </Menu.Item>
+        <Menu.Item itemKey="测试文字2">测试文字2</Menu.Item>
+        <Menu.Item itemKey="测试文字3" type="danger" disabled={true}>
+          测试文字3
+        </Menu.Item>
+      </Menu.SubMenu>
+    }
+  >
+    <SplitButton color="highlight" icon={<IconCozChatPeople />}>
+      点击菜单
+    </SplitButton>
+  </Menu>
+);
+
+export default Demo;
+```
+
+### 配置式用法
+
+通过 `menu` 属性配置菜单项。
+
+```tsx preview
+// NOTE: 以下仅为文档演示，实际使用时请使用正确的引入方式
+// import { Menu, Button } from '@coze-arch/coze-design';
+import { Menu, Button } from '@coze-arch/coze-design';
+
+const data = [
+  { node: 'title', name: '分组1' },
+  {
+    node: 'item',
+    name: '分组内容',
+    type: 'primary',
+    onClick: () => console.log('click primary'),
+  },
+  { node: 'item', name: 'secondary', type: 'secondary' },
+  { node: 'divider' },
+  { node: 'title', name: '分组2' },
+  { node: 'item', name: 'tertiary', type: 'tertiary' },
+  { node: 'item', name: 'warning', type: 'warning', active: true },
+  { node: 'item', name: 'danger', type: 'danger' },
+];
+
+const Demo = () => (
+  <Menu
+    trigger="click"
+    showTick
+    position="bottomLeft"
+    menu={data}
+    className="w-160px"
+  >
+    <Button theme="outline" type="tertiary">
+      Click Me
+    </Button>
+  </Menu>
+);
+
+export default Demo;
+```
+
+### 单选菜单
+
+支持单选的菜单，可以通过 `selectedKeys` 和 `onSelectionChange` 控制选中状态。
+
+```tsx preview
+import { Menu, Button } from '@coze-arch/coze-design';
+import {
+  IconCozArrowDown,
+  IconCozCheckMarkFill,
+} from '@coze-arch/coze-design/icons';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [selectedKeys, setSelectedKeys] = useState([]);
+
+  return (
+    <div>
+      <Menu
+        className="w-160px"
+        trigger="click"
+        position="bottomLeft"
+        render={
+          <Menu.SubMenu
+            mode="selection"
+            selectedKeys={selectedKeys}
+            onSelectionChange={(value, values) => {
+              setSelectedKeys(values);
+            }}
+          >
+            <Menu.Item
+              itemKey="测试文字1"
+              icon={<IconCozCheckMarkFill className="fill-brand-5 text-lg" />}
+            >
+              测试文字1
+            </Menu.Item>
+            <Menu.Item
+              itemKey="测试文字2"
+              icon={<IconCozCheckMarkFill className="fill-brand-5 text-lg" />}
+            >
+              测试文字2
+            </Menu.Item>
+            <Menu.Item
+              itemKey="测试文字3"
+              icon={<IconCozCheckMarkFill className="fill-brand-5 text-lg" />}
+            >
+              测试文字3
+            </Menu.Item>
+          </Menu.SubMenu>
+        }
+      >
+        <Button
+          iconPosition="right"
+          icon={<IconCozArrowDown className="coz-fg-hglt-plus text-xxl" />}
+        >
+          单选菜单
+        </Button>
+      </Menu>
+      <div className="text-lg mt-2 text-foreground-4">
+        当前选中：{JSON.stringify(selectedKeys)}
+      </div>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 多选菜单
+
+支持多选的菜单，可以通过设置 `multiple` 属性启用多选模式。支持使用 `Title` 和 `Divider` 进行分组。
+
+```tsx preview
+import { Menu, Button } from '@coze-arch/coze-design';
+import {
+  IconCozArrowDown,
+  IconCozCheckMarkFill,
+  IconCozLoading,
+} from '@coze-arch/coze-design/icons';
+import { useState } from 'react';
+
+const Demo = () => {
+  const [selectedKeys, setSelectedKeys] = useState([]);
+
+  return (
+    <div>
+      <Menu
+        trigger="click"
+        position="bottomLeft"
+        className="w-[220px]"
+        render={
+          <Menu.SubMenu
+            mode="selection"
+            multiple={true}
+            selectedKeys={selectedKeys}
+            onSelectionChange={(value, values) => {
+              setSelectedKeys(values);
+            }}
+          >
+            <Menu.Title>分组1</Menu.Title>
+            <Menu.Divider />
+            <Menu.Item
+              itemKey="测试文字1"
+              icon={<IconCozCheckMarkFill className="fill-brand-5 text-lg" />}
+            >
+              测试文字1
+            </Menu.Item>
+            <Menu.Item
+              itemKey="测试文字2"
+              icon={<IconCozCheckMarkFill className="fill-brand-5 text-lg" />}
+            >
+              测试文字2
+            </Menu.Item>
+            <Menu.Item
+              itemKey="测试文字3"
+              icon={<IconCozCheckMarkFill className="fill-brand-5 text-lg" />}
+            >
+              测试文字3
+            </Menu.Item>
+            <Menu.Title>分组2</Menu.Title>
+            <Menu.Divider />
+            <Menu.Item
+              itemKey="测试文字4"
+              icon={<IconCozCheckMarkFill className="fill-brand-5 text-lg" />}
+              suffix={<span className="text-foreground-3">suffix</span>}
+            >
+              测试文字4
+            </Menu.Item>
+            <Menu.Item
+              onClick={value => {
+                console.log('current:', value);
+              }}
+              itemKey="测试文字5"
+              icon={<IconCozCheckMarkFill className="fill-brand-5 text-lg" />}
+              suffix={<IconCozLoading className="fill-red-5 text-lg" />}
+            >
+              测试文字5
+            </Menu.Item>
+          </Menu.SubMenu>
+        }
+      >
+        <Button
+          iconPosition="right"
+          icon={<IconCozArrowDown className="coz-fg-hglt-plus text-xxl" />}
+        >
+          多选菜单
+        </Button>
+      </Menu>
+      <div className="text-lg mt-2 text-foreground-4">
+        当前选中：{JSON.stringify(selectedKeys)}
+      </div>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+## API 参考
+
+### Menu Props
+
+| 属性      | 说明             | 类型                                            | 默认值         |
+| --------- | ---------------- | ----------------------------------------------- | -------------- |
+| trigger   | 触发方式         | `'hover'` \| `'click'`                          | `'hover'`      |
+| position  | 弹出位置         | `'bottom'` \| `'bottomLeft'` \| `'bottomRight'` | `'bottomLeft'` |
+| className | 自定义类名       | `string`                                        | -              |
+| visible   | 是否显示下拉菜单 | `boolean`                                       | -              |
+| render    | 菜单内容         | `ReactNode`                                     | -              |
+| children  | 触发元素         | `ReactNode`                                     | -              |
+
+除了以上 API，Menu 组件还支持原生 Semi Dropdown 组件的所有属性。 具体请参考 [Semi Dropdown 文档](https://semi.design/zh-CN/show/dropdown#API%20参考)。
+
+### Menu.SubMenu Props
+
+| 属性              | 说明                                  | 类型                                        | 默认值   |
+| ----------------- | ------------------------------------- | ------------------------------------------- | -------- |
+| mode              | 菜单模式                              | `'menu'` \| `'selection'`                   | `'menu'` |
+| multiple          | 是否多选（仅在 selection 模式下生效） | `boolean`                                   | `false`  |
+| selectedKeys      | 选中的菜单项 key 数组                 | `string[]`                                  | -        |
+| onSelectionChange | 选中菜单项改变时的回调                | `(value: string, values: string[]) => void` | -        |
+
+### Menu.Item Props
+
+| 属性     | 说明             | 类型      | 默认值  |
+| -------- | ---------------- | --------- | ------- |
+| itemKey  | 菜单项的唯一标识 | `string`  | -       |
+| disabled | 是否禁用         | `boolean` | `false` |

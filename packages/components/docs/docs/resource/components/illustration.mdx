@@ -1,0 +1,164 @@
+---
+name: Illustration
+description: 插画组件：提供丰富的视觉元素，用于表达复杂概念、增强用户体验或提供视觉引导，适用于空状态、引导页等场景。
+---
+
+# Illustration 插画
+
+## 基本信息
+
+### 何时使用
+
+插画是一种视觉元素，用于表达复杂概念、增强用户体验或提供视觉引导。插画可以在空状态、引导页、错误页等场景中使用，使界面更加生动友好，并帮助用户理解当前状态或操作。
+
+### 如何引入
+
+```tsx
+import {
+  IconCozIllusAdd,
+  IconCozIllusAddDark,
+  IconCozIllusDone,
+} from '@coze-arch/coze-design/illustrations';
+```
+
+### 注意事项
+
+- 插画组件基于 [iconBox](https://arco.bytedance.net/iconbox/lib/761) 统一托管
+- 插画默认尺寸可通过 width 和 height 属性控制
+- 对于需要适配暗黑模式的场景，建议同时提供两套设计，深色插图用 Dark 区分，尺寸需要保持一致
+- 如需新增插画，需要更新 `@arco-design/iconbox-react-coze-illustration` 包版本
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/illustration)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=478-37577&m=dev)
+- [使用规范](https://bytedance.larkoffice.com/wiki/CtEBwuwJuiq73fkXwYHcH6Honvd)
+- [iconBox 站点](https://arco.bytedance.net/iconbox/lib/761)
+
+## 功能演示
+
+### 基本用法
+
+最基础的插画用法。
+
+```tsx preview
+import { IconCozIllusDone } from '@coze-arch/coze-design/illustrations';
+
+const Demo = () => (
+  <div>
+    <IconCozIllusDone width="120" height="120" />
+  </div>
+);
+
+export default Demo;
+```
+
+### 插画尺寸
+
+插画支持通过 width 和 height 属性自定义尺寸。
+
+```tsx preview
+import {
+  IconCozIllusDone,
+  IconCozIllusAdd,
+  IconCozIllus404,
+} from '@coze-arch/coze-design/illustrations';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+    <IconCozIllusDone width="120" height="120" />
+    <IconCozIllusAdd width="96" height="96" />
+    <IconCozIllus404 width="64" height="64" />
+  </div>
+);
+
+export default Demo;
+```
+
+### 暗黑模式适配
+
+为了适配暗黑模式，可以同时提供两套设计，深色插图用 Dark 区分。
+
+```tsx preview
+import {
+  IconCozIllusDone,
+  IconCozIllusDoneDark,
+} from '@coze-arch/coze-design/illustrations';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+    <div>
+      <p>亮色模式</p>
+      <IconCozIllusDone width="120" height="120" />
+    </div>
+    <div>
+      <p>暗色模式</p>
+      <IconCozIllusDoneDark width="120" height="120" />
+    </div>
+  </div>
+);
+
+export default Demo;
+```
+
+### 空状态使用
+
+插画可以与 EmptyState 组件结合使用，提供更好的空状态展示。
+
+```tsx preview
+import { EmptyState } from '@coze-arch/coze-design';
+import {
+  IconCozIllusAdd,
+  IconCozIllusAddDark,
+} from '@coze-arch/coze-design/illustrations';
+
+const Demo = () => (
+  <EmptyState
+    size="full_screen"
+    icon={<IconCozIllusAdd />}
+    darkModeIcon={<IconCozIllusAddDark />}
+    title="出现了一个错误"
+    description="请稍后再试"
+  />
+);
+
+export default Demo;
+```
+
+### 自定义尺寸
+
+除了使用预设的尺寸，还可以通过 width 和 height 属性自定义插画的尺寸。
+
+```tsx preview
+import { IconCozIllusDone } from '@coze-arch/coze-design/illustrations';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+    <IconCozIllusDone width="64" height="64" />
+    <IconCozIllusDone width="120" height="120" />
+    <IconCozIllusDone width="180" height="180" />
+  </div>
+);
+
+export default Demo;
+```
+
+## API
+
+### Illustration Props
+
+| 属性      | 说明           | 类型               | 默认值 |
+| --------- | -------------- | ------------------ | ------ |
+| className | 设置插画的类名 | `string`           | -      |
+| style     | 设置插画的样式 | `CSSProperties`    | -      |
+| width     | 设置插画宽度   | `string \| number` | `1em`  |
+| height    | 设置插画高度   | `string \| number` | `1em`  |
+
+### 常用尺寸
+
+| 尺寸      | 推荐用途                       |
+| --------- | ------------------------------ |
+| 180 x 180 | 大型展示区域，如欢迎页、引导页 |
+| 120 x 120 | 中等展示区域，如空状态页       |
+| 96 x 96   | 小型展示区域                   |
+| 64 x 64   | 极小展示区域，如小型提示       |

@@ -1,0 +1,152 @@
+---
+name: Icon
+description: 图标组件：提供丰富的视觉符号，用于表示常见操作、状态或类别，增强用户界面的直观性。
+---
+
+# Icon 图标
+
+## 基本信息
+
+### 何时使用
+
+图标是一种视觉符号，用于表示常见操作、状态或类别，能够直观地传达信息，节省界面空间，并增强用户体验。
+
+### 如何引入
+
+```tsx
+import {
+  IconCozPlusFill,
+  IconCozPeopleFill,
+} from '@coze-arch/coze-design/icons';
+```
+
+### 注意事项
+
+- 图标组件基于 [iconBox](https://arco.bytedance.net/iconbox/lib/760) 统一托管
+- 图标默认继承父元素的字体大小和颜色
+- 图标可以通过 className 控制大小和颜色
+- 如需新增图标，需要更新 `@coze-arch/arco-icon` 包版本
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/icon)
+- [使用规范](https://bytedance.larkoffice.com/wiki/CtEBwuwJuiq73fkXwYHcH6Honvd)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=18-20247&m=dev)
+- [iconBox 站点](https://arco.bytedance.net/iconbox/lib/760)
+
+## 功能演示
+
+### 基本用法
+
+最基础的图标用法。
+
+```tsx preview
+import { IconCozPeopleFill } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div>
+    <IconCozPeopleFill />
+  </div>
+);
+
+export default Demo;
+```
+
+### 图标尺寸
+
+图标支持多种尺寸，通过 className 控制。
+
+```tsx preview
+import { IconCozPeopleFill } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+    <IconCozPeopleFill className="text-xxl" /> {/* 16px */}
+    <IconCozPeopleFill className="text-lg" /> {/* 14px */}
+    <IconCozPeopleFill className="text-base" /> {/* 12px */}
+  </div>
+);
+
+export default Demo;
+```
+
+### 图标颜色
+
+图标支持多种颜色，通过 className 控制。
+
+```tsx preview
+import { IconCozPeopleFill } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+    <IconCozPeopleFill className="text-xxl coz-fg-hglt" />
+    <IconCozPeopleFill className="text-xxl coz-fg-hglt-red" />
+    <IconCozPeopleFill className="text-xxl coz-fg-hglt-green" />
+  </div>
+);
+
+export default Demo;
+```
+
+### 图标按钮
+
+图标可以与 IconButton 组件结合使用，提供更好的交互体验。
+
+```tsx preview
+import { IconCozPeopleFill, IconCozEdit } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+    <IconButton icon={<IconCozPeopleFill className="text-xxl coz-fg-hglt" />} />
+    <IconButton icon={<IconCozEdit className="text-xxl coz-fg-hglt-red" />} />
+  </div>
+);
+
+export default Demo;
+```
+
+### 自定义尺寸和颜色
+
+除了使用预设的尺寸和颜色类，还可以通过内联样式自定义图标的尺寸和颜色。
+
+```tsx preview
+import { IconCozPeopleFill } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+    <IconCozPeopleFill style={{ fontSize: '24px', color: '#6001D3' }} />
+    <IconCozPeopleFill style={{ fontSize: '32px', color: '#FF5722' }} />
+    <IconCozPeopleFill style={{ fontSize: '40px', color: '#00B42A' }} />
+  </div>
+);
+
+export default Demo;
+```
+
+## API
+
+### Icon Props
+
+| 属性      | 说明           | 类型               | 默认值 |
+| --------- | -------------- | ------------------ | ------ |
+| className | 设置图标的类名 | `string`           | -      |
+| style     | 设置图标的样式 | `CSSProperties`    | -      |
+| width     | 设置图标宽度   | `string \| number` | `1em`  |
+| height    | 设置图标高度   | `string \| number` | `1em`  |
+
+### 常用尺寸类名
+
+| 类名      | 对应尺寸 |
+| --------- | -------- |
+| text-xxl  | 16px     |
+| text-lg   | 14px     |
+| text-base | 12px     |
+
+### 常用颜色类名
+
+| 类名              | 说明     |
+| ----------------- | -------- |
+| coz-fg-hglt       | 高亮色   |
+| coz-fg-hglt-red   | 红色高亮 |
+| coz-fg-hglt-green | 绿色高亮 |

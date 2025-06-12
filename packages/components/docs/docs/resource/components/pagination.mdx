@@ -1,0 +1,147 @@
+---
+name: Pagination
+description: 分页组件：用于在多页数据中进行导航，帮助用户快速切换到指定页面，适用于表格、列表等展示大量数据的场景。
+---
+
+# Pagination 分页
+
+## 基本信息
+
+### 何时使用
+
+分页组件用于在多页数据中进行导航，帮助用户快速切换到指定页面。常用于表格、列表等需要展示大量数据的场景。
+
+### 如何引入
+
+```tsx
+import { CozPagination } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Pagination 组件基础上进行定制
+- 内置了 Coze Design 风格的箭头图标
+- layout 属性控制默认展示还是简单展示（与 semi 的 size 为 small 时样式一致）
+- size 属性控制分页器大小（default/small）
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/pagination)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=17301-120066&m=dev)
+- [Semi Pagination 文档](https://semi.design/zh-CN/navigation/pagination)
+
+## 功能演示
+
+### 基本用法
+
+最基础的分页组件使用。
+
+```tsx preview
+import { CozPagination } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <CozPagination
+    total={100}
+    currentPage={1}
+    pageSize={10}
+    onChange={(page, pageSize) => console.log(page, pageSize)}
+  />
+);
+
+export default Demo;
+```
+
+### 不同布局
+
+提供默认和简洁两种布局模式。
+
+```tsx preview
+import { CozPagination } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex-col space-y-4">
+    <CozPagination total={100} layout="default" />
+    <CozPagination total={100} layout="simple" />
+  </div>
+);
+
+export default Demo;
+```
+
+### 不同尺寸
+
+提供 `default` 和 `small` 两种尺寸。
+
+```tsx preview
+import { CozPagination } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex-col space-y-4">
+    <CozPagination total={100} size="default" />
+    <CozPagination total={100} size="small" />
+  </div>
+);
+
+export default Demo;
+```
+
+### 显示总数和每页条数
+
+可以显示数据总数和切换每页显示条数。
+
+```tsx preview
+import { CozPagination } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex-col space-y-4">
+    <CozPagination
+      total={100}
+      showTotal
+      showSizeChanger
+      totalText={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
+    />
+  </div>
+);
+
+export default Demo;
+```
+
+### 快速跳转
+
+提供快速跳转到指定页码的功能。
+
+```tsx preview
+import { CozPagination } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div className="flex-col space-y-4">
+    <CozPagination total={100} showQuickJumper />
+    <CozPagination total={100} showQuickJumper showTotal />
+  </div>
+);
+
+export default Demo;
+```
+
+## API
+
+### Pagination Props
+
+| 属性名          | 说明                   | 类型                                                 | 默认值      |
+| --------------- | ---------------------- | ---------------------------------------------------- | ----------- |
+| size            | 分页组件尺寸           | `'default' \| 'small'`                               | `'default'` |
+| layout          | 分页组件布局           | `'default' \| 'simple'`                              | `'default'` |
+| total           | 总条目数               | `number`                                             | 0           |
+| currentPage     | 当前页码               | `number`                                             | 1           |
+| pageSize        | 每页条目数             | `number`                                             | 10          |
+| onChange        | 页码改变的回调         | `(page: number, pageSize: number) => void`           | -           |
+| showTotal       | 是否显示总数           | `boolean`                                            | false       |
+| totalText       | 自定义总数文本         | `(total: number, range: [number, number]) => string` | -           |
+| showQuickJumper | 是否可以快速跳转至某页 | `boolean`                                            | false       |
+| showSizeChanger | 是否可以改变 pageSize  | `boolean`                                            | false       |
+| pageSizeOpts    | 每页条数选项列表       | `number[]`                                           | -           |
+| disabled        | 是否禁用               | `boolean`                                            | false       |
+| className       | 自定义类名             | `string`                                             | -           |
+| style           | 自定义样式             | `CSSProperties`                                      | -           |
+
+除了以上属性，Pagination 组件还支持原生 Semi Pagination 组件的所有属性。 具体请参考 [Semi Pagination 文档](https://semi.design/zh-CN/navigation/pagination#API%20参考)。

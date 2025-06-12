@@ -1,0 +1,359 @@
+---
+name: Cascader
+description: 级联选择组件：用于从一组相关联的数据集合中进行多层级选择，适用于省市区、组织架构等场景。
+---
+
+# Cascader 级联选择
+
+## 基本信息
+
+### 何时使用
+
+级联选择器用于从一组相关联的数据集合中进行选择，例如省市区、组织架构、分类目录等。
+
+### 如何引入
+
+```tsx
+import { Cascader } from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于 Semi Cascader 组件基础上进行定制
+- 提供了错误状态展示功能
+- 支持自定义主题设置
+- 提供了多选模式下的标签展示优化
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/cascader)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161801&m=dev)
+- [Semi Cascader 文档](https://semi.design/zh-CN/input/cascader)
+
+## 功能演示
+
+### 基础用法
+
+最基础的级联选择器用法。
+
+```tsx preview
+import { Cascader } from '@coze-arch/coze-design';
+
+const treeData = [
+  {
+    label: '全部类型',
+    value: 'all_types',
+  },
+  {
+    label: '工作流',
+    value: 'workflow',
+  },
+  {
+    label: '知识库',
+    value: 'knowledge',
+    children: [
+      {
+        label: '全部类型',
+        value: 'knowledge_all_types',
+      },
+      {
+        label: '文本',
+        value: 'text',
+      },
+      {
+        label: '表格',
+        value: 'table',
+      },
+    ],
+  },
+];
+
+const Demo = () => {
+  return (
+    <Cascader
+      placeholder="请选择"
+      treeData={treeData}
+      style={{ width: '200px' }}
+      defaultValue={'workflow'}
+    />
+  );
+};
+
+export default Demo;
+```
+
+### 多选模式
+
+设置 `multiple` 属性可以开启多选模式，支持选择多个选项。
+
+```tsx preview
+import { Cascader } from '@coze-arch/coze-design';
+
+const treeData = [
+  {
+    label: '全部类型',
+    value: 'all_types',
+  },
+  {
+    label: '工作流',
+    value: 'workflow',
+  },
+  {
+    label: '知识库',
+    value: 'knowledge',
+    children: [
+      {
+        label: '全部类型',
+        value: 'knowledge_all_types',
+      },
+      {
+        label: '文本',
+        value: 'text',
+      },
+      {
+        label: '表格',
+        value: 'table',
+      },
+    ],
+  },
+];
+
+const Demo = () => {
+  return (
+    <Cascader
+      placeholder="请选择"
+      treeData={treeData}
+      multiple
+      maxTagCount={2}
+      showRestTagsPopover
+      defaultValue={[['workflow'], ['knowledge', 'table']]}
+      style={{ width: '300px' }}
+    />
+  );
+};
+
+export default Demo;
+```
+
+### 选择即改变
+
+设置 `changeOnSelect` 属性后，点选每级菜单选项值都会发生改变，而不是必须选择到最后一级。
+
+```tsx preview
+import { Cascader } from '@coze-arch/coze-design';
+
+const treeData = [
+  {
+    label: '全部类型',
+    value: 'all_types',
+  },
+  {
+    label: '工作流',
+    value: 'workflow',
+  },
+  {
+    label: '知识库',
+    value: 'knowledge',
+    children: [
+      {
+        label: '全部类型',
+        value: 'knowledge_all_types',
+      },
+      {
+        label: '文本',
+        value: 'text',
+      },
+      {
+        label: '表格',
+        value: 'table',
+      },
+    ],
+  },
+];
+
+const Demo = () => {
+  return (
+    <Cascader
+      placeholder="请选择"
+      treeData={treeData}
+      style={{ width: '200px' }}
+      changeOnSelect
+    />
+  );
+};
+
+export default Demo;
+```
+
+### 不同尺寸
+
+提供 `small` 和 `default` 两种尺寸，以适应不同场景。
+
+```tsx preview
+import { Cascader } from '@coze-arch/coze-design';
+
+const treeData = [
+  {
+    label: '全部类型',
+    value: 'all_types',
+  },
+  {
+    label: '工作流',
+    value: 'workflow',
+  },
+  {
+    label: '知识库',
+    value: 'knowledge',
+    children: [
+      {
+        label: '全部类型',
+        value: 'knowledge_all_types',
+      },
+      {
+        label: '文本',
+        value: 'text',
+      },
+      {
+        label: '表格',
+        value: 'table',
+      },
+    ],
+  },
+];
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <div>
+        <div className="mb-1">小号</div>
+        <Cascader
+          placeholder="请选择"
+          treeData={treeData}
+          style={{ width: '200px' }}
+          size="small"
+        />
+      </div>
+      <div>
+        <div className="mb-1">默认</div>
+        <Cascader
+          placeholder="请选择"
+          treeData={treeData}
+          style={{ width: '200px' }}
+          size="default"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+### 错误状态
+
+通过 `hasError` 属性可以显示错误状态，用于表单校验等场景。
+
+```tsx preview
+import { Cascader } from '@coze-arch/coze-design';
+
+const treeData = [
+  {
+    label: '全部类型',
+    value: 'all_types',
+  },
+  {
+    label: '工作流',
+    value: 'workflow',
+  },
+  {
+    label: '知识库',
+    value: 'knowledge',
+    children: [
+      {
+        label: '全部类型',
+        value: 'knowledge_all_types',
+      },
+      {
+        label: '文本',
+        value: 'text',
+      },
+      {
+        label: '表格',
+        value: 'table',
+      },
+    ],
+  },
+];
+
+const Demo = () => {
+  return (
+    <div className="flex flex-col gap-4">
+      <Cascader
+        placeholder="请选择"
+        treeData={treeData}
+        style={{ width: '200px' }}
+        hasError
+      />
+    </div>
+  );
+};
+
+export default Demo;
+```
+
+## API
+
+### Cascader Props
+
+| 属性                 | 说明                       | 类型                             | 默认值      |
+| -------------------- | -------------------------- | -------------------------------- | ----------- |
+| className            | 自定义类名                 | `string`                         | -           |
+| dataTheme            | 主题数据属性               | `string`                         | -           |
+| defaultValue         | 默认选中值                 | `CascaderValue`                  | -           |
+| disabled             | 是否禁用                   | `boolean`                        | `false`     |
+| dropdownClassName    | 下拉菜单的自定义类名       | `string`                         | -           |
+| hasError             | 是否显示错误状态           | `boolean`                        | `false`     |
+| multiple             | 是否支持多选               | `boolean`                        | `false`     |
+| placeholder          | 输入框占位文本             | `string`                         | -           |
+| restTagsPopoverProps | 多选时剩余标签弹出框的属性 | `object`                         | -           |
+| showRestTagsPopover  | 是否显示剩余标签的弹出框   | `boolean`                        | `false`     |
+| size                 | 选择器尺寸                 | `'default' \| 'small'`           | `'default'` |
+| style                | 自定义样式                 | `CSSProperties`                  | -           |
+| treeData             | 级联选择器的数据           | `CascaderData[]`                 | -           |
+| value                | 选中值                     | `CascaderValue`                  | -           |
+| onChange             | 选中值改变时的回调函数     | `(value: CascaderValue) => void` | -           |
+
+除了以上属性，Cascader 组件还支持原生 Semi Cascader 组件的所有属性。 具体请参考 [Semi Cascader 文档](https://semi.design/zh-CN/input/cascader#API%20参考)。
+
+### CascaderData
+
+```ts
+interface CascaderData {
+  label: string;
+  value: string | number;
+  disabled?: boolean;
+  children?: CascaderData[];
+}
+```
+
+## 特性说明
+
+1. 自定义主题：
+
+   - 支持通过 `dataTheme` 属性设置主题
+   - 提供了自定义的样式变体和状态样式
+
+2. 错误状态：
+
+   - 通过 `hasError` 属性可以显示错误状态
+   - 错误状态下会显示红色边框提示
+
+3. 尺寸规格：
+
+   - 提供 `small` 和 `default` 两种尺寸选择
+   - 包括对应的下拉箭头图标大小适配
+
+4. 多选增强：
+   - 支持通过 `maxTagCount` 限制显示的标签数量
+   - 提供 `showRestTagsPopover` 显示剩余标签的弹出框
+   - 自定义的标签弹出框样式

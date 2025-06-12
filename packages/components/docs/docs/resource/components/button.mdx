@@ -1,0 +1,278 @@
+---
+name: Button
+description: 按钮组件：用于触发即时操作的交互元素，支持多种样式和状态，适用于表单提交、确认操作等场景。
+---
+
+# Button 按钮
+
+## 基本信息
+
+### 何时使用
+
+按钮是一种命令组件，用于触发一个即时操作，如提交表单、确认操作、取消操作等。
+
+### 如何引入
+
+```tsx
+import {
+  Button,
+  IconButton,
+  AIButton,
+  SplitButton,
+  LoadingButton,
+} from '@coze-arch/coze-design';
+```
+
+### 注意事项
+
+- 组件基于semi Button组件基础上大量定制
+- 暂不支持按钮组（ButtonGroup）功能，如需使用请自行封装
+- 暂不支持按钮主题（theme）功能，统一使用实心按钮样式
+- 暂不支持图标位置调整，图标统一显示在文字左侧
+
+### 快速链接
+
+- [组件源码](https://code.byted.org/obric/bot-studio-monorepo/tree/master/packages/components/coze-design/src/components/button)
+- [组件Figma](https://www.figma.com/design/mbTx00rwR5YumfWuxAXAIH/CDS-2.0?node-id=10696-161044&m=dev)
+- [Semi Button 文档](https://semi.design/zh-CN/basic/button)
+
+## 功能演示
+
+### 基本用法
+
+最基础的按钮用法。
+
+```tsx preview
+import { Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 8 }}>
+    <Button>默认按钮</Button>
+    <Button color="brand">品牌按钮</Button>
+    <Button color="highlight">高亮按钮</Button>
+    <Button disabled>禁用按钮</Button>
+  </div>
+);
+
+export default Demo;
+```
+
+### 图标按钮
+
+可以只显示图标的按钮。
+
+```tsx preview
+import { IconButton } from '@coze-arch/coze-design';
+import { IconCozPeopleFill, IconCozEdit } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 8 }}>
+    <IconButton icon={<IconCozPeopleFill />} />
+    <IconButton icon={<IconCozEdit />} color="highlight" />
+    <IconButton icon={<IconCozPeopleFill />} disabled />
+  </div>
+);
+
+export default Demo;
+```
+
+### AI 按钮
+
+专门为 AI 相关功能设计的按钮，具有特殊的颜色和样式。
+
+```tsx preview
+import { AIButton } from '@coze-arch/coze-design';
+import { IconCozPeopleFill } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 8 }}>
+    <AIButton color="aihglt">aihglt</AIButton>
+    <AIButton color="aiplus">AI Plus</AIButton>
+    <AIButton color="aiprimary">AI Primary</AIButton>
+
+    <AIButton color="aiplus" icon={<IconCozPeopleFill />}>
+      AI Plus
+    </AIButton>
+
+    <AIButton color="aiplus" hideIcon={true}>
+      AI Plus
+    </AIButton>
+
+    <AIButton color="aiplus" loading>
+      AI Plus
+    </AIButton>
+  </div>
+);
+
+export default Demo;
+```
+
+### 分裂按钮
+
+带有下拉菜单的按钮。
+
+```tsx preview
+import { SplitButton } from '@coze-arch/coze-design';
+import { IconCozArrowDown } from '@coze-arch/coze-design/icons';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 8 }}>
+    <SplitButton icon={<IconCozArrowDown />}>分裂按钮</SplitButton>
+    <SplitButton color="highlight" icon={<IconCozArrowDown />}>
+      高亮分裂按钮
+    </SplitButton>
+  </div>
+);
+
+export default Demo;
+```
+
+### 加载按钮
+
+带有加载提示的按钮。
+
+```tsx preview
+import { LoadingButton } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 8 }}>
+    <LoadingButton loadingToast="正在加载...">加载按钮</LoadingButton>
+    <LoadingButton loadingToast={{ content: '自定义加载提示', duration: 0 }}>
+      自定义提示
+    </LoadingButton>
+  </div>
+);
+
+export default Demo;
+```
+
+### 按钮尺寸
+
+按钮支持四种尺寸：大号、默认、小号和迷你。
+
+```tsx preview
+import { Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+    <Button size="large">大号按钮</Button>
+    <Button size="default">默认按钮</Button>
+    <Button size="small">小号按钮</Button>
+    <Button size="mini">迷你按钮</Button>
+  </div>
+);
+
+export default Demo;
+```
+
+### 按钮颜色
+
+按钮支持多种颜色变体，包括品牌色、高亮色、主色、次要色等。
+
+```tsx preview
+import { Button, AIButton } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+    <Button color="brand">品牌色</Button>
+    <Button color="hgltplus">高亮增强</Button>
+    <Button color="highlight">高亮</Button>
+    <Button color="primary">主色</Button>
+    <Button color="secondary">次要</Button>
+    <Button color="red">红色</Button>
+    <Button color="redhglt">红色高亮</Button>
+    <Button color="green">绿色</Button>
+    <Button color="yellow">黄色</Button>
+    <AIButton color="aiplus">AI增强</AIButton>
+    <AIButton color="aihglt">AI高亮</AIButton>
+    <AIButton color="aiprimary">AI主色</AIButton>
+  </div>
+);
+
+export default Demo;
+```
+
+### 加载状态
+
+按钮可以显示加载状态，支持自定义加载图标。
+
+```tsx preview
+import { Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 8 }}>
+    <Button loading>加载中</Button>
+    <Button loading useSpinIcon={false}>
+      自定义加载图标
+    </Button>
+  </div>
+);
+
+export default Demo;
+```
+
+### 带徽标的按钮
+
+按钮可以配置显示徽标，这是我们在 Semi Button 基础上扩展的特性。
+
+```tsx preview
+import { Button } from '@coze-arch/coze-design';
+
+const Demo = () => (
+  <div style={{ display: 'flex', gap: 8 }}>
+    <Button showBadge>默认徽标</Button>
+    <Button showBadge badgeColor="unset">
+      自定义徽标颜色
+    </Button>
+  </div>
+);
+
+export default Demo;
+```
+
+## API
+
+### Button Props
+
+| 属性        | 说明                   | 类型                                                                                                                                                   | 默认值      |
+| ----------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------- |
+| color       | 按钮颜色               | `'brand' \| 'hgltplus' \| 'highlight' \| 'primary' \| 'secondary' \| 'red' \| 'redhglt' \| 'green' \| 'yellow' \| 'aiplus' \| 'aihglt' \| 'aiprimary'` | `'brand'`   |
+| size        | 按钮尺寸               | `'large' \| 'default' \| 'small' \| 'mini'`                                                                                                            | `'default'` |
+| disabled    | 是否禁用               | `boolean`                                                                                                                                              | `false`     |
+| loading     | 是否显示加载状态       | `boolean`                                                                                                                                              | `false`     |
+| useSpinIcon | 是否使用默认的加载图标 | `boolean`                                                                                                                                              | `true`      |
+| showBadge   | 是否显示徽标           | `boolean`                                                                                                                                              | `false`     |
+| badgeColor  | 徽标颜色               | `'default' \| 'unset'`                                                                                                                                 | `'default'` |
+| icon        | 按钮图标               | `ReactNode`                                                                                                                                            | -           |
+
+除了以上属性，Button 组件还支持原生Semi Button 组件的所有属性。 具体请参考 [Semi Button 文档](https://semi.design/zh-CN/basic/button#API%20参考)。
+
+### IconButton Props
+
+| 属性         | 说明         | 类型                              | 默认值      |
+| ------------ | ------------ | --------------------------------- | ----------- |
+| icon         | 按钮图标     | `ReactNode`                       | -           |
+| iconSize     | 图标大小     | `'small' \| 'default' \| 'large'` | `'default'` |
+| wrapperClass | 外层容器类名 | `string`                          | -           |
+
+### AIButton Props
+
+| 属性      | 说明           | 类型                              | 默认值      |
+| --------- | -------------- | --------------------------------- | ----------- |
+| iconClass | 图标类名       | `string`                          | -           |
+| iconSize  | 图标大小       | `'small' \| 'default' \| 'large'` | `'default'` |
+| onlyIcon  | 是否只显示图标 | `boolean`                         | `false`     |
+| hideIcon  | 是否隐藏图标   | `boolean`                         | `false`     |
+
+### SplitButton Props
+
+| 属性         | 说明         | 类型                      | 默认值 |
+| ------------ | ------------ | ------------------------- | ------ |
+| wrapperClass | 外层容器类名 | `string`                  | -      |
+| onIconClick  | 图标点击事件 | `(e: MouseEvent) => void` | -      |
+
+### LoadingButton Props
+
+| 属性         | 说明             | 类型                                 | 默认值 |
+| ------------ | ---------------- | ------------------------------------ | ------ |
+| loadingToast | 加载中的提示文案 | `string \| Omit<ToastProps, 'type'>` | -      |
