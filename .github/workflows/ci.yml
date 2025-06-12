@@ -4,16 +4,21 @@ on:
     branches: ['main']
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
 jobs:
-  build:
+  setup:
     strategy:
       matrix:
         include:
           - NodeVersion: 20.14.x
             NodeVersionDisplayName: 20
             OS: ubuntu-latest
-    name: Node.js v${{ matrix.NodeVersionDisplayName }} (${{ matrix.OS }})
+    name: Setup and Install Dependencies
     runs-on: ${{ matrix.OS }}
+    outputs:
+      cache_file: ${{ steps.process-files.outputs.cache_file }}
+      matrix_node_version: ${{ matrix.NodeVersion }}
+      matrix_os: ${{ matrix.OS }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -81,29 +86,78 @@ jobs:
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
           node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.cache_file }}"
 
+      - name: Upload changed files cache
+        uses: actions/upload-artifact@v4
+        with:
+          name: changed-files-cache
+          path: changed-files-cache.json
+          retention-days: 1
+
+  build:
+    needs: setup
+    runs-on: ${{ needs.setup.outputs.matrix_os }}
+    name: Increment Build
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ needs.setup.outputs.matrix_node_version }}
+
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            common/temp/pnpm-local
+            common/temp/pnpm-store
+            common/temp/install-run
+          key: ${{ runner.os }}-rush-store-${{ hashFiles('common/config/subspaces/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-rush-store-main
+            ${{ runner.os }}-rush-store
+
+      - name: Download changed files cache
+        uses: actions/download-artifact@v4
+        with:
+          name: changed-files-cache
+
       - name: Increment Build
-        run: node common/scripts/install-run-rush.js increment --action build -p "${{ steps.process-files.outputs.cache_file }}"
-        continue-on-error: true
+        run: node common/scripts/install-run-rush.js increment --action build -p "${{ needs.setup.outputs.cache_file }}"
+
+  test:
+    needs: setup
+    runs-on: ${{ needs.setup.outputs.matrix_os }}
+    name: Increment Test Coverage
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ needs.setup.outputs.matrix_node_version }}
+
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            common/temp/pnpm-local
+            common/temp/pnpm-store
+            common/temp/install-run
+          key: ${{ runner.os }}-rush-store-${{ hashFiles('common/config/subspaces/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-rush-store-main
+            ${{ runner.os }}-rush-store
+
+      - name: Download changed files cache
+        uses: actions/download-artifact@v4
+        with:
+          name: changed-files-cache
 
       - name: Increment Test:cov
-        run: node common/scripts/install-run-rush.js increment --action test:cov -p "${{ steps.process-files.outputs.cache_file }}"
-        continue-on-error: true
-
-      - name: Increment Lint
-        run: node common/scripts/install-run-rush.js increment --action lint -p "${{ steps.process-files.outputs.cache_file }}"
-        continue-on-error: true
-
-      - name: Increment TS Check
-        run: node common/scripts/install-run-rush.js increment --action ts-check -p "${{ steps.process-files.outputs.cache_file }}"
-        continue-on-error: true
-
-      - name: Increment Package Audit
-        run: node common/scripts/install-run-rush.js increment --action package-audit -p "${{ steps.process-files.outputs.cache_file }}"
-
-      - name: Fail if any report failed
-        # NOTICE: To show all reports from the previous steps, the last step should check if any jobs failed.
-        if: env.REPORT_RESULT == 'failed'
-        run: echo "::notice::Please check 「 Summary 」 for detail info" && exit 1
+        run: node common/scripts/install-run-rush.js increment --action test:cov -p "${{ needs.setup.outputs.cache_file }}"
 
       - name: Upload coverage reports
         uses: codecov/codecov-action@v4
@@ -111,3 +165,102 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true
           verbose: true
+
+  lint:
+    needs: setup
+    runs-on: ${{ needs.setup.outputs.matrix_os }}
+    name: Increment Lint
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ needs.setup.outputs.matrix_node_version }}
+
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            common/temp/pnpm-local
+            common/temp/pnpm-store
+            common/temp/install-run
+          key: ${{ runner.os }}-rush-store-${{ hashFiles('common/config/subspaces/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-rush-store-main
+            ${{ runner.os }}-rush-store
+
+      - name: Download changed files cache
+        uses: actions/download-artifact@v4
+        with:
+          name: changed-files-cache
+
+      - name: Increment Lint
+        run: node common/scripts/install-run-rush.js increment --action lint -p "${{ needs.setup.outputs.cache_file }}"
+
+  ts-check:
+    needs: setup
+    runs-on: ${{ needs.setup.outputs.matrix_os }}
+    name: Increment TS Check
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ needs.setup.outputs.matrix_node_version }}
+
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            common/temp/pnpm-local
+            common/temp/pnpm-store
+            common/temp/install-run
+          key: ${{ runner.os }}-rush-store-${{ hashFiles('common/config/subspaces/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-rush-store-main
+            ${{ runner.os }}-rush-store
+
+      - name: Download changed files cache
+        uses: actions/download-artifact@v4
+        with:
+          name: changed-files-cache
+
+      - name: Increment TS Check
+        run: node common/scripts/install-run-rush.js increment --action ts-check -p "${{ needs.setup.outputs.cache_file }}"
+
+  package-audit:
+    needs: setup
+    runs-on: ${{ needs.setup.outputs.matrix_os }}
+    name: Increment Package Audit
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ needs.setup.outputs.matrix_node_version }}
+
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            common/temp/pnpm-local
+            common/temp/pnpm-store
+            common/temp/install-run
+          key: ${{ runner.os }}-rush-store-${{ hashFiles('common/config/subspaces/**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-rush-store-main
+            ${{ runner.os }}-rush-store
+
+      - name: Download changed files cache
+        uses: actions/download-artifact@v4
+        with:
+          name: changed-files-cache
+
+      - name: Increment Package Audit
+        run: node common/scripts/install-run-rush.js increment --action package-audit -p "${{ needs.setup.outputs.cache_file }}"
