@@ -2,7 +2,7 @@
   "name": "@coze-arch/rush-clear-build-cache-plugin",
   "version": "0.0.1",
   "description": "@coze-arch/rush-clear-build-cache-plugin",
-  "license": "ISC",
+  "license": "MIT",
   "author": "tecvan.fe@qq.com",
   "maintainers": [],
   "bin": {

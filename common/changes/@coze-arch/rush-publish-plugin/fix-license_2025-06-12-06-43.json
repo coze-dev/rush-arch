@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/rush-publish-plugin",
+      "comment": "license mit",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/rush-publish-plugin",
+  "email": "289056872@qq.com"
+}

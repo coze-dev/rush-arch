@@ -2,7 +2,7 @@
   "name": "@coze-arch/build-lib-preset",
   "version": "0.0.1",
   "description": "build lib by rollup",
-  "license": "ISC",
+  "license": "MIT",
   "author": "tecvan.fe@gmail.com",
   "maintainers": [],
   "main": "src/index.ts",

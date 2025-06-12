@@ -2,7 +2,7 @@
   "name": "@coze-arch/rush-increment-run-plugin",
   "version": "0.0.2",
   "description": "incremently run commands for ci",
-  "license": "ISC",
+  "license": "MIT",
   "author": "tecvan.fe@gmail.com",
   "maintainers": [],
   "main": "src/index.ts",

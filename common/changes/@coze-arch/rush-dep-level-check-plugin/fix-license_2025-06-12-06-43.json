@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/rush-dep-level-check-plugin",
+      "comment": "license mit",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/rush-dep-level-check-plugin",
+  "email": "289056872@qq.com"
+}

@@ -2,7 +2,7 @@
   "name": "@coze-arch/logger",
   "version": "0.0.1",
   "description": "logger ",
-  "license": "ISC",
+  "license": "MIT",
   "author": "tecvan.fe@gmail.com",
   "maintainers": [],
   "main": "src/index.ts",

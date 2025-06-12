@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/arco-icon",
+      "comment": "license mit",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/arco-icon",
+  "email": "289056872@qq.com"
+}

@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "",
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "author": "tecvan.fe@gmail.com",
   "main": "src/index.js",
   "scripts": {

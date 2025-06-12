@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "",
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "author": "tecvan.fe@gmail.com",
   "bin": {
     "rtsc": "./scripts/rtsc.sh",

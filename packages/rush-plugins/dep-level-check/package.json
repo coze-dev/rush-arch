@@ -2,7 +2,7 @@
   "name": "@coze-arch/rush-dep-level-check-plugin",
   "version": "0.0.1",
   "description": "@coze-arch/rush-dep-level-check-plugin",
-  "license": "ISC",
+  "license": "MIT",
   "author": "tecvan.fe@gmail.com",
   "maintainers": [],
   "main": "index.js",
