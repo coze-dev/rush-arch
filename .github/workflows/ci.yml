@@ -98,6 +98,11 @@ jobs:
             ${{ runner.os }}-rush-store-main
             ${{ runner.os }}-rush-store
 
+      - name: Download changed files cache
+        uses: actions/download-artifact@v4
+        with:
+          name: changed-files-cache
+
       - name: Install Dependencies
         run: |
           sudo apt-get update
@@ -105,11 +110,6 @@ jobs:
           node common/scripts/install-run-rush.js install --to tag:core
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
           node common/scripts/install-run-rush.js increment --action install -p "${{ needs.setup.outputs.cache_file }}"
-
-      - name: Download changed files cache
-        uses: actions/download-artifact@v4
-        with:
-          name: changed-files-cache
 
       - name: Increment Build
         run: node common/scripts/install-run-rush.js increment --action build -p "${{ needs.setup.outputs.cache_file }}"
@@ -139,6 +139,11 @@ jobs:
             ${{ runner.os }}-rush-store-main
             ${{ runner.os }}-rush-store
 
+      - name: Download changed files cache
+        uses: actions/download-artifact@v4
+        with:
+          name: changed-files-cache
+
       - name: Install Dependencies
         run: |
           sudo apt-get update
@@ -146,11 +151,6 @@ jobs:
           node common/scripts/install-run-rush.js install --to tag:core
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
           node common/scripts/install-run-rush.js increment --action install -p "${{ needs.setup.outputs.cache_file }}"
-
-      - name: Download changed files cache
-        uses: actions/download-artifact@v4
-        with:
-          name: changed-files-cache
 
       - name: Increment Test:cov
         run: node common/scripts/install-run-rush.js increment --action test:cov -p "${{ needs.setup.outputs.cache_file }}"
@@ -187,6 +187,11 @@ jobs:
             ${{ runner.os }}-rush-store-main
             ${{ runner.os }}-rush-store
 
+      - name: Download changed files cache
+        uses: actions/download-artifact@v4
+        with:
+          name: changed-files-cache
+
       - name: Install Dependencies
         run: |
           sudo apt-get update
@@ -194,11 +199,6 @@ jobs:
           node common/scripts/install-run-rush.js install --to tag:core
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
           node common/scripts/install-run-rush.js increment --action install -p "${{ needs.setup.outputs.cache_file }}"
-
-      - name: Download changed files cache
-        uses: actions/download-artifact@v4
-        with:
-          name: changed-files-cache
 
       - name: Increment Lint
         run: node common/scripts/install-run-rush.js increment --action lint -p "${{ needs.setup.outputs.cache_file }}"
@@ -228,6 +228,11 @@ jobs:
             ${{ runner.os }}-rush-store-main
             ${{ runner.os }}-rush-store
 
+      - name: Download changed files cache
+        uses: actions/download-artifact@v4
+        with:
+          name: changed-files-cache
+
       - name: Install Dependencies
         run: |
           sudo apt-get update
@@ -235,11 +240,6 @@ jobs:
           node common/scripts/install-run-rush.js install --to tag:core
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
           node common/scripts/install-run-rush.js increment --action install -p "${{ needs.setup.outputs.cache_file }}"
-
-      - name: Download changed files cache
-        uses: actions/download-artifact@v4
-        with:
-          name: changed-files-cache
 
       - name: Increment TS Check
         run: node common/scripts/install-run-rush.js increment --action ts-check -p "${{ needs.setup.outputs.cache_file }}"
@@ -269,6 +269,11 @@ jobs:
             ${{ runner.os }}-rush-store-main
             ${{ runner.os }}-rush-store
 
+      - name: Download changed files cache
+        uses: actions/download-artifact@v4
+        with:
+          name: changed-files-cache
+
       - name: Install Dependencies
         run: |
           sudo apt-get update
@@ -276,11 +281,6 @@ jobs:
           node common/scripts/install-run-rush.js install --to tag:core
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
           node common/scripts/install-run-rush.js increment --action install -p "${{ needs.setup.outputs.cache_file }}"
-
-      - name: Download changed files cache
-        uses: actions/download-artifact@v4
-        with:
-          name: changed-files-cache
 
       - name: Increment Package Audit
         run: node common/scripts/install-run-rush.js increment --action package-audit -p "${{ needs.setup.outputs.cache_file }}"
