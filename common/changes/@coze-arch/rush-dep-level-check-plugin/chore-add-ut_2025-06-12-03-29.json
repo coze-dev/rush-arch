@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/rush-dep-level-check-plugin",
+      "comment": "add ut",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/rush-dep-level-check-plugin",
+  "email": "tecvan.fe@qq.com"
+}
