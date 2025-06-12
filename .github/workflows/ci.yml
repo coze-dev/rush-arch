@@ -104,7 +104,7 @@ jobs:
           sudo apt-get install -y libasound2-dev
           node common/scripts/install-run-rush.js install --to tag:core
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
-          node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.cache_file }}"
+          node common/scripts/install-run-rush.js increment --action install -p "${{ needs.setup.outputs.cache_file }}"
 
       - name: Download changed files cache
         uses: actions/download-artifact@v4
@@ -145,7 +145,7 @@ jobs:
           sudo apt-get install -y libasound2-dev
           node common/scripts/install-run-rush.js install --to tag:core
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
-          node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.cache_file }}"
+          node common/scripts/install-run-rush.js increment --action install -p "${{ needs.setup.outputs.cache_file }}"
 
       - name: Download changed files cache
         uses: actions/download-artifact@v4
@@ -193,7 +193,7 @@ jobs:
           sudo apt-get install -y libasound2-dev
           node common/scripts/install-run-rush.js install --to tag:core
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
-          node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.cache_file }}"
+          node common/scripts/install-run-rush.js increment --action install -p "${{ needs.setup.outputs.cache_file }}"
 
       - name: Download changed files cache
         uses: actions/download-artifact@v4
@@ -234,7 +234,7 @@ jobs:
           sudo apt-get install -y libasound2-dev
           node common/scripts/install-run-rush.js install --to tag:core
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
-          node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.cache_file }}"
+          node common/scripts/install-run-rush.js increment --action install -p "${{ needs.setup.outputs.cache_file }}"
 
       - name: Download changed files cache
         uses: actions/download-artifact@v4
@@ -275,7 +275,7 @@ jobs:
           sudo apt-get install -y libasound2-dev
           node common/scripts/install-run-rush.js install --to tag:core
           node common/scripts/install-run-rush.js update-autoinstaller --name plugins
-          node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.cache_file }}"
+          node common/scripts/install-run-rush.js increment --action install -p "${{ needs.setup.outputs.cache_file }}"
 
       - name: Download changed files cache
         uses: actions/download-artifact@v4
