@@ -66,26 +66,6 @@ jobs:
         with:
           node-version: ${{ matrix.NodeVersion }}
 
-      - name: Cache
-        uses: actions/cache@v4
-        with:
-          path: |
-            common/temp/pnpm-local
-            common/temp/pnpm-store
-            common/temp/install-run
-          key: ${{ runner.os }}-rush-store-${{ hashFiles('common/config/subspaces/**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-rush-store-main
-            ${{ runner.os }}-rush-store
-
-      - name: Install Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libasound2-dev
-          node common/scripts/install-run-rush.js install --to tag:core
-          node common/scripts/install-run-rush.js update-autoinstaller --name plugins
-          node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.cache_file }}"
-
       - name: Upload changed files cache
         uses: actions/upload-artifact@v4
         with:
@@ -117,6 +97,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-rush-store-main
             ${{ runner.os }}-rush-store
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev
+          node common/scripts/install-run-rush.js install --to tag:core
+          node common/scripts/install-run-rush.js update-autoinstaller --name plugins
+          node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.cache_file }}"
 
       - name: Download changed files cache
         uses: actions/download-artifact@v4
@@ -150,6 +138,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-rush-store-main
             ${{ runner.os }}-rush-store
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev
+          node common/scripts/install-run-rush.js install --to tag:core
+          node common/scripts/install-run-rush.js update-autoinstaller --name plugins
+          node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.cache_file }}"
 
       - name: Download changed files cache
         uses: actions/download-artifact@v4
@@ -191,6 +187,14 @@ jobs:
             ${{ runner.os }}-rush-store-main
             ${{ runner.os }}-rush-store
 
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev
+          node common/scripts/install-run-rush.js install --to tag:core
+          node common/scripts/install-run-rush.js update-autoinstaller --name plugins
+          node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.cache_file }}"
+
       - name: Download changed files cache
         uses: actions/download-artifact@v4
         with:
@@ -224,6 +228,14 @@ jobs:
             ${{ runner.os }}-rush-store-main
             ${{ runner.os }}-rush-store
 
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev
+          node common/scripts/install-run-rush.js install --to tag:core
+          node common/scripts/install-run-rush.js update-autoinstaller --name plugins
+          node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.cache_file }}"
+
       - name: Download changed files cache
         uses: actions/download-artifact@v4
         with:
@@ -256,6 +268,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-rush-store-main
             ${{ runner.os }}-rush-store
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libasound2-dev
+          node common/scripts/install-run-rush.js install --to tag:core
+          node common/scripts/install-run-rush.js update-autoinstaller --name plugins
+          node common/scripts/install-run-rush.js increment --action install -p "${{ steps.process-files.outputs.cache_file }}"
 
       - name: Download changed files cache
         uses: actions/download-artifact@v4
