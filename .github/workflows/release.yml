@@ -3,8 +3,7 @@ name: Release Pipeline
 on:
   push:
     tags:
-      - 'v/**'
-      - 'v/@*/**'
+      - v/**
 
 jobs:
   publish:
