@@ -108,7 +108,7 @@ const calBumpPolicy = (options: VersionOptions) => {
  * 生成发布清单
  */
 export const generatePublishManifest = async (
-  packages: Set<RushConfigurationProject>,
+  packages: RushConfigurationProject[],
   options: VersionOptions,
 ): Promise<{
   manifests: PublishManifest[];
