@@ -2,8 +2,8 @@ name: Release Pipeline
 
 on:
   push:
-    tags:
-      - v/**
+    branches:
+      - 'release/**'
 
 jobs:
   publish:
