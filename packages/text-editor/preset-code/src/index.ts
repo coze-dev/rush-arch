@@ -92,6 +92,9 @@ const preset = [
           minWidth: '200px',
           margin: '0 2px',
         },
+        '.cm-tooltip.cm-completionInfo': {
+          padding: '6px 9px',
+        },
         '.cm-completionInfo p:last-child': {
           display: 'inline-block',
         },
@@ -132,6 +135,9 @@ const preset = [
           overflowY: 'auto',
           maxHeight: '360px',
           wordBreak: 'break-word',
+        },
+        '.cm-tooltip-hover p': {
+          margin: 0,
         },
         '.cm-tooltip-section:not(:first-child)': {
           'border-top': 'solid 0.5px #666666ab',

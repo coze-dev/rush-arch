@@ -8,6 +8,7 @@ import {
   type CompletionItem,
 } from 'vscode-languageserver-types';
 import shiki from 'codemirror-shiki';
+import createFuzzySearch from '@nozbe/microfuzz';
 import { type Diagnostic, linter } from '@coze-editor/extension-lint';
 import { type Link, links } from '@coze-editor/extension-links';
 import {
@@ -57,6 +58,8 @@ function formatContents(contents: MarkupContent | string | string[]): string {
 
   return '';
 }
+
+const identRe = /^[\w$]+$/;
 
 class LanguagesRegistry {
   private languages: Record<string, LanguageConfig> = {};
@@ -301,6 +304,15 @@ class LanguagesRegistry {
 
     if (languageService?.doComplete) {
       langaugeExtensions.push(
+        EditorView.theme({
+          '.cm-completionInfo p': {
+            margin: 0,
+          },
+          '.cm-completionMatchedText': {
+            textDecoration: 'none',
+            color: '#4daafc',
+          },
+        }),
         autocompletion({
           override: [
             async function ({ state, pos, view }) {
@@ -326,16 +338,80 @@ class LanguagesRegistry {
                 return null;
               }
 
+              let { items } = completionResult;
+              const content = state.doc.toString();
+              const charBefore = content.slice(pos - 1, pos);
+              const triggerCharacters = languageService.triggerCharacters ?? [];
+              if (!triggerCharacters.includes(charBefore)) {
+                let i = pos - 1;
+                let query = '';
+
+                while (i >= 0) {
+                  const char = content.slice(i, i + 1);
+
+                  if (char === '\n') {
+                    break;
+                  }
+
+                  if (!identRe.test(char) && i + 1 <= pos) {
+                    break;
+                  }
+                  i--;
+                }
+
+                query = content.slice(i + 1, pos);
+
+                if (query) {
+                  const fuzzySearch = createFuzzySearch(items, {
+                    key: 'label',
+                  });
+                  items = fuzzySearch(query).map(v => ({
+                    ...v.item,
+                    textEdit: {
+                      range: {
+                        start: textDocument.positionAt(i + 1),
+                        end: textDocument.positionAt(pos),
+                      },
+                      newText: v.item.label,
+                    },
+                    data: {
+                      matches: v.matches.reduce<number[]>((memo, current) => {
+                        if (!current) {
+                          return memo;
+                        }
+
+                        return [
+                          ...memo,
+                          ...current.reduce<number[]>(
+                            (m, c) => [...m, c[0], c[1] + 1],
+                            [],
+                          ),
+                        ];
+                      }, []),
+                    },
+                  }));
+                } else if (Array.isArray(languageService.triggerCharacters)) {
+                  // empty items if query is empty
+                  // e.g. type whitespace in JSON editor
+                  items = [];
+                }
+              }
+
               const completionOptions: Completion[] = [];
 
               const mapping = new WeakMap();
-              const resolveCompletion = createResolveCompletion(
-                view,
-                languageService,
-                mapping,
-              );
+              let resolveCompletion: Completion['info'] = undefined;
+              if (typeof languageService.resolveCompletionItem === 'function') {
+                resolveCompletion = createResolveCompletion(
+                  view,
+                  languageService,
+                  mapping,
+                );
+              }
 
-              for (const item of completionResult.items) {
+              const matchesMapping = new WeakMap();
+
+              for (const item of items) {
                 const { kind, label, textEdit, textEditText } = item;
 
                 const completion: Completion = {
@@ -345,6 +421,7 @@ class LanguagesRegistry {
                 };
 
                 mapping.set(completion, item);
+                matchesMapping.set(completion, item.data?.matches);
 
                 if (textEdit) {
                   const range =
@@ -365,7 +442,6 @@ class LanguagesRegistry {
                   const { insertTextFormat } = item;
 
                   completion.apply = view => {
-                    // TODO: move to preset code
                     if (
                       insertTextFormat ===
                       (2 satisfies typeof InsertTextFormat.Snippet)
@@ -401,6 +477,9 @@ class LanguagesRegistry {
                 from: pos,
                 options: completionOptions,
                 filter: false,
+                getMatch(completion) {
+                  return matchesMapping.get(completion) ?? [];
+                },
               };
             },
           ],

@@ -70,6 +70,7 @@ interface DefinitionLocation {
 
 export interface LanguageService {
   options?: LanguageServiceOptions;
+  triggerCharacters?: string[];
   onTextDocumentDidChange?: (context: CommonContext) => void;
   doValidation?: (context: CommonContext) => Promise<Diagnostic[]>;
   doComplete?: (

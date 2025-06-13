@@ -196,6 +196,7 @@ const tooltipTheme = EditorView.theme({
   '.cm-type-tooltip-props-list': {
     listStyle: 'none',
     margin: '0',
+    paddingInlineStart: '20px',
   },
   '.cm-type-tooltip-prop-item': {
     marginBottom: '3px',

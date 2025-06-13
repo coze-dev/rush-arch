@@ -12,7 +12,6 @@ import {
   DiagnosticSeverity,
 } from 'vscode-json-languageservice';
 import { Text } from 'text-mapping';
-import Fuse from 'fuse.js';
 import { v4 as uuid } from '@lukeed/uuid';
 import { parse } from '@coze-editor/parser-json';
 import {
@@ -58,6 +57,7 @@ const urlReg = /^(https?:\/\/|www\.)[\w-\.]+\.[\w-\.]+(\/([\S]+)?)?$/i;
 class JSONLanguageService implements ILanguageService {
   protected languageService: LanguageService;
   private schemasConfigurations: SchemasConfiguration[] = [];
+  public triggerCharacters = [':', '"', "'"];
 
   constructor(public options: LanguageServiceOptions) {
     this.languageService = getLanguageService({});
@@ -245,21 +245,7 @@ class JSONLanguageService implements ILanguageService {
     context: Parameters<NonNullable<ILanguageService['doComplete']>>[0],
   ): Promise<CompletionList | null | undefined> {
     const { textDocument } = context;
-    const text = textDocument.getText();
     const { offset } = context;
-
-    const letterBefore = text.slice(
-      Math.max(0, offset - 1),
-      Math.min(text.length, offset),
-    );
-
-    const triggerCharacters = [':', '"', "'"];
-    if (
-      !triggerCharacters.includes(letterBefore) &&
-      !/^\w+$/.test(letterBefore)
-    ) {
-      return;
-    }
 
     const { line, character } = textDocument.positionAt(offset);
 
@@ -282,39 +268,10 @@ class JSONLanguageService implements ILanguageService {
       return;
     }
 
-    const fuse = new Fuse(completionResult.items, {
-      threshold: 0,
-      // allow matches appear in any place in target string
-      ignoreLocation: true,
-      keys: ['label'],
-    });
-
-    let i = context.offset - 1;
-    let query = '';
-
-    const content = context.textDocument.getText();
-
-    while (i >= 0) {
-      const char = content.slice(i, i + 1);
-
-      if (char === '\n') {
-        break;
-      }
-
-      if (triggerCharacters.includes(char) && i + 1 <= context.offset) {
-        query = content.slice(i + 1, context.offset);
-        break;
-      }
-      i--;
-    }
-
-    // cannot use validFor here as range changes during filtering
-    return query
-      ? {
-          isIncomplete: true,
-          items: fuse.search(query).map(v => v.item),
-        }
-      : completionResult;
+    return {
+      isIncomplete: true,
+      items: completionResult.items,
+    };
   }
 
   async findLinks(

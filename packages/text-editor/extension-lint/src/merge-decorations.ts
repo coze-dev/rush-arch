@@ -91,7 +91,7 @@ export const mergeDecorations = (decorations: DecorationSet): DecorationSet => {
         ) {
           return;
         }
-        if (diagnostic.from <= diagnostic.to) {
+        if (diagnostic.from < diagnostic.to) {
           merge.push(
             createDecoration(
               diagnostic.from,
@@ -114,7 +114,7 @@ export const mergeDecorations = (decorations: DecorationSet): DecorationSet => {
 
     return Decoration.set(merge);
   } catch (e) {
-    console.error('FlowLangSDK: linter mergeDecorations error', e);
+    console.error('linter mergeDecorations error', e);
     return decorations;
   }
 };

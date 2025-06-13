@@ -28,7 +28,6 @@
     "@coze-editor/parser-json": "workspace:*",
     "@lezer/json": "^1.0.2",
     "@lukeed/uuid": "^2.0.1",
-    "fuse.js": "^7.0.0",
     "text-mapping": "^1.0.1",
     "vscode-json-languageservice": "^5.4.2",
     "vscode-uri": "^3.0.8"

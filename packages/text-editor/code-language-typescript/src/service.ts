@@ -17,7 +17,6 @@ import {
 } from 'typescript';
 import mitt from 'mitt';
 import { type Remote, wrap } from 'comlink';
-import createFuzzySearch from '@nozbe/microfuzz';
 import {
   type Diagnostic,
   type LanguageService as ILanguageService,
@@ -33,8 +32,6 @@ import type {
 import { tagToString } from './utils';
 import type { InitializeOptions, ITypeScriptWorker } from './types';
 import { asCompletionItemKind } from './as';
-
-const identRe = /^[\w$]+$/;
 
 function isDiagnostic(v: unknown): v is Diagnostic {
   return Boolean(v);
@@ -64,6 +61,7 @@ class TypeScriptLanguageService implements ILanguageService {
   private starting: Promise<unknown> | null = null;
   private _cachedFiles: Record<string, string> = Object.create(null);
   public events = mitt<Events>();
+  public triggerCharacters: string[] = ['.', "'", '"'];
 
   private async synchronize(paths: string[]) {
     await this.starting;
@@ -195,7 +193,6 @@ class TypeScriptLanguageService implements ILanguageService {
   doComplete: ILanguageService['doComplete'] = async ctx => {
     const uri = URI.parse(ctx.textDocument.uri);
     const path = uri.fsPath;
-    const content = ctx.textDocument.getText();
 
     const worker = await this.synchronize([path]);
 
@@ -210,57 +207,10 @@ class TypeScriptLanguageService implements ILanguageService {
       kind: asCompletionItemKind(entry.kind),
     }));
 
-    const fuzzySearch = createFuzzySearch(items, {
-      key: 'label',
-    });
-
-    let i = ctx.offset - 1;
-    let query = '';
-
-    while (i >= 0) {
-      const char = content.slice(i, i + 1);
-
-      if (char === '\n') {
-        break;
-      }
-
-      if (!identRe.test(char) && i + 1 <= ctx.offset) {
-        break;
-      }
-      i--;
-    }
-
-    query = content.slice(i + 1, ctx.offset);
-
-    const charBefore = content.slice(ctx.offset - 1, ctx.offset);
-
-    const triggerCharacters = ['.', "'", '"'];
-    if (triggerCharacters.includes(charBefore)) {
-      return {
-        isIncomplete: true,
-        items,
-      };
-    }
-
-    // cannot use validFor here as range changes during filtering
-    return query
-      ? {
-          isIncomplete: true,
-          items: fuzzySearch(query).map(v => ({
-            ...v.item,
-            textEdit: {
-              range: {
-                start: ctx.textDocument.positionAt(i + 1),
-                end: ctx.textDocument.positionAt(ctx.offset),
-              },
-              newText: v.item.label,
-            },
-          })),
-        }
-      : {
-          isIncomplete: true,
-          items: [],
-        };
+    return {
+      isIncomplete: result.isIncomplete ?? true,
+      items,
+    };
   };
 
   public async resolveCompletionItem(
