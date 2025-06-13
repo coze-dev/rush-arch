@@ -3,7 +3,7 @@
 
 import { forwardRef } from 'react';
 
-import { type CascaderProps as SemiCascaderProps } from '@douyinfe/semi-ui/lib/es/cascader';
+import { type CascaderProps as SemiCascaderProps } from '@douyinfe/semi-ui/lib/es/cascader/index.js';
 import { Cascader as SemiCascader } from '@douyinfe/semi-ui';
 
 import { cn } from '@/utils';

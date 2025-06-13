@@ -1,7 +1,7 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-import { type SwitchProps as SemiSwitchProps } from '@douyinfe/semi-ui/lib/es/switch';
+import { type SwitchProps as SemiSwitchProps } from '@douyinfe/semi-ui/lib/es/switch/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

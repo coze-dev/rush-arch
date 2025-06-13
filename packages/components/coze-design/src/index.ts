@@ -186,7 +186,7 @@ export type LayoutProps = CozLayoutProps;
 
 export { DatePicker } from './components/date-picker';
 export type DatePickerProps = CozDatePickerProps;
-export { type BaseDatePicker } from '@douyinfe/semi-ui/lib/es/datePicker';
+export { type BaseDatePicker } from '@douyinfe/semi-ui/lib/es/datePicker/index.js';
 
 export { TreeSelect } from './components/tree-select';
 export type TreeSelectProps = COZTreeSelectProps;

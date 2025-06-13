@@ -5,7 +5,7 @@ import {
   type CascaderProps as SemiCascaderProps,
   type Value as SemiCascaderValue,
   type CascaderData as SemiCascaderData,
-} from '@douyinfe/semi-ui/lib/es/cascader';
+} from '@douyinfe/semi-ui/lib/es/cascader/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

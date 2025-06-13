@@ -3,7 +3,7 @@
 
 import { type FC, useRef } from 'react';
 
-import { type CommonFieldProps } from '@douyinfe/semi-ui/lib/es/form';
+import { type CommonFieldProps } from '@douyinfe/semi-ui/lib/es/form/index.js';
 import { withField } from '@douyinfe/semi-ui';
 
 import { cn } from '@/utils';

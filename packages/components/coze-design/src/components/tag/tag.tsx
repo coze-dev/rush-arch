@@ -4,11 +4,11 @@
 /* eslint-disable complexity */
 import React, { useMemo, forwardRef } from 'react';
 
-import { type TagProps as SemiTagProps } from '@douyinfe/semi-ui/lib/es/tag/interface';
+import { type TagProps as SemiTagProps } from '@douyinfe/semi-ui/lib/es/tag/interface.js';
 import {
   type TagColor as SemiTagColor,
   type TagSize as SemiTagSize,
-} from '@douyinfe/semi-ui/lib/es/tag';
+} from '@douyinfe/semi-ui/lib/es/tag/index';
 import { Tag as SemiTag } from '@douyinfe/semi-ui';
 
 import { cn } from '@/utils';

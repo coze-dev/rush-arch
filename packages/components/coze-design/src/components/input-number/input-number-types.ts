@@ -1,7 +1,7 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-import { type InputNumberProps as SemiInputNumberProps } from '@douyinfe/semi-ui/lib/es/inputNumber';
+import { type InputNumberProps as SemiInputNumberProps } from '@douyinfe/semi-ui/lib/es/inputNumber/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

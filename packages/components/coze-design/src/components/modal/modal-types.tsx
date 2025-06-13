@@ -3,7 +3,7 @@
 
 import { type RefObject } from 'react';
 
-import { type ModalReactProps as SemiModalReactProps } from '@douyinfe/semi-ui/lib/es/modal';
+import { type ModalReactProps as SemiModalReactProps } from '@douyinfe/semi-ui/lib/es/modal/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 import { type ButtonProps } from '@/components/button';

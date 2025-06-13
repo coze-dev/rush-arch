@@ -3,7 +3,7 @@
 
 import { forwardRef, useEffect, useMemo, useState, useCallback } from 'react';
 
-import { type ModalReactProps as SemiModalReactProps } from '@douyinfe/semi-ui/lib/es/modal';
+import { type ModalReactProps as SemiModalReactProps } from '@douyinfe/semi-ui/lib/es/modal/index.js';
 import { Modal as SemiModal } from '@douyinfe/semi-ui';
 
 import { cn } from '@/utils';

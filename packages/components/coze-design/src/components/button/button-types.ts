@@ -3,7 +3,7 @@
 
 import type { ReactNode } from 'react';
 
-import type { ButtonProps as SemiButtonProps } from '@douyinfe/semi-ui/lib/es/button';
+import type { ButtonProps as SemiButtonProps } from '@douyinfe/semi-ui/lib/es/button/index.js';
 
 import type {
   IComponentBaseProps,

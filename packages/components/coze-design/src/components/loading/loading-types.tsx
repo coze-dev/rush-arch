@@ -3,7 +3,7 @@
 
 import { type ReactNode } from 'react';
 
-import type { SpinProps as SemiSpinProps } from '@douyinfe/semi-ui/lib/es/spin';
+import type { SpinProps as SemiSpinProps } from '@douyinfe/semi-ui/lib/es/spin/index.js';
 
 import type { IComponentBaseProps } from '@/typings';
 

@@ -3,7 +3,7 @@
 
 import { forwardRef, useMemo, useState } from 'react';
 
-import { type SelectProps as SemiSelectProps } from '@douyinfe/semi-ui/lib/es/select';
+import { type SelectProps as SemiSelectProps } from '@douyinfe/semi-ui/lib/es/select/index.js';
 import { Highlight, Select as SemiSelect } from '@douyinfe/semi-ui';
 
 import { cn } from '@/utils';

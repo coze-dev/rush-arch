@@ -1,7 +1,7 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-import type { TreeSelectProps as SemiTreeSelectProps } from '@douyinfe/semi-ui/lib/es/treeSelect';
+import type { TreeSelectProps as SemiTreeSelectProps } from '@douyinfe/semi-ui/lib/es/treeSelect/index.js';
 
 import type { IComponentBaseProps } from '@/typings';
 

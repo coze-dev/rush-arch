@@ -3,7 +3,7 @@
 
 import { type ReactNode } from 'react';
 
-import { type RadioGroupProps } from '@douyinfe/semi-ui/lib/es/radio';
+import { type RadioGroupProps } from '@douyinfe/semi-ui/lib/es/radio/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

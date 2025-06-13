@@ -6,7 +6,7 @@ import { forwardRef, useEffect, useMemo, useState } from 'react';
 import {
   type BaseDatePicker,
   type DatePickerProps as SemiDatePickerProps,
-} from '@douyinfe/semi-ui/lib/es/datePicker';
+} from '@douyinfe/semi-ui/lib/es/datePicker/index.js';
 import { DatePicker as SemiDatePicker } from '@douyinfe/semi-ui';
 
 import { cn } from '@/utils';

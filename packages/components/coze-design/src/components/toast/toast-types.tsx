@@ -4,7 +4,7 @@
 import type {
   ToastReactProps,
   ToastFactory,
-} from '@douyinfe/semi-ui/lib/es/toast';
+} from '@douyinfe/semi-ui/lib/es/toast/index.js';
 
 export type ToastProps = ToastReactProps;
 

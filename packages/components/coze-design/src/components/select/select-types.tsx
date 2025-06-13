@@ -1,7 +1,7 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-import { type SelectProps as SemiSelectProps } from '@douyinfe/semi-ui/lib/es/select';
+import { type SelectProps as SemiSelectProps } from '@douyinfe/semi-ui/lib/es/select/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

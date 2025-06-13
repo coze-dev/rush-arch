@@ -1,7 +1,7 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-import { type PaginationProps as SemiPaginationProps } from '@douyinfe/semi-ui/lib/es/pagination';
+import { type PaginationProps as SemiPaginationProps } from '@douyinfe/semi-ui/lib/es/pagination/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

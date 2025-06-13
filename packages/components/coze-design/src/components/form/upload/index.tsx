@@ -3,8 +3,8 @@
 
 import { type FC, useRef } from 'react';
 
-import { type UploadProps } from '@douyinfe/semi-ui/lib/es/upload';
-import { type CommonFieldProps } from '@douyinfe/semi-ui/lib/es/form';
+import { type UploadProps } from '@douyinfe/semi-ui/lib/es/upload/index.js';
+import { type CommonFieldProps } from '@douyinfe/semi-ui/lib/es/form/index.js';
 import { withField } from '@douyinfe/semi-ui';
 
 import { cn } from '@/utils';

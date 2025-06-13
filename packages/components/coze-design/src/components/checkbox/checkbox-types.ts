@@ -4,7 +4,7 @@
 import {
   type CheckboxProps as SemiCheckboxProps,
   type CheckboxGroupProps as SemiCheckboxGroupProps,
-} from '@douyinfe/semi-ui/lib/es/checkbox';
+} from '@douyinfe/semi-ui/lib/es/checkbox/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

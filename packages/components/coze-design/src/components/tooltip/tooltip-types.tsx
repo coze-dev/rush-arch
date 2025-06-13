@@ -3,7 +3,7 @@
 
 import type { ReactNode } from 'react';
 
-import type { TooltipProps as SemiTooltipProps } from '@douyinfe/semi-ui/lib/es/tooltip';
+import type { TooltipProps as SemiTooltipProps } from '@douyinfe/semi-ui/lib/es/tooltip/index.js';
 
 import type {
   IComponentBaseProps,

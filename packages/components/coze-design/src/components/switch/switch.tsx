@@ -3,7 +3,7 @@
 
 import React, { useState, forwardRef } from 'react';
 
-import { type SwitchProps as SemiSwitchProps } from '@douyinfe/semi-ui/lib/es/switch';
+import { type SwitchProps as SemiSwitchProps } from '@douyinfe/semi-ui/lib/es/switch/index.js';
 import { Switch as SemiSwitch } from '@douyinfe/semi-ui';
 
 import { cn } from '@/utils';

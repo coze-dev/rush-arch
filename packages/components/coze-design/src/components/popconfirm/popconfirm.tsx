@@ -3,7 +3,7 @@
 
 import { forwardRef, useMemo, useState } from 'react';
 
-import { type PopoverProps as SemiPopoverProps } from '@douyinfe/semi-ui/lib/es/popover';
+import { type PopoverProps as SemiPopoverProps } from '@douyinfe/semi-ui/lib/es/popover/index.js';
 import { Popover as SemiPopover } from '@douyinfe/semi-ui';
 
 import { cn } from '@/utils';

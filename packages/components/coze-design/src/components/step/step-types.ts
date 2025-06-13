@@ -4,7 +4,7 @@
 import {
   type StepsProps as SemiStepsProps,
   type StepProps as SemiStepProps,
-} from '@douyinfe/semi-ui/lib/es/steps';
+} from '@douyinfe/semi-ui/lib/es/steps/index.js';
 
 export type StepProps = SemiStepProps;
 

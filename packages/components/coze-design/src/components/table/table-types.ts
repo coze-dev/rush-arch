@@ -9,9 +9,9 @@ import type {
 } from 'react';
 
 import type { ReactElement } from 'react-markdown/lib/react-markdown';
-import { type TooltipProps } from '@douyinfe/semi-ui/lib/es/tooltip';
-import { type TableProps as SemiTableProps } from '@douyinfe/semi-ui/lib/es/table';
-import { type PopconfirmProps } from '@douyinfe/semi-ui/lib/es/popconfirm';
+import { type TooltipProps } from '@douyinfe/semi-ui/lib/es/tooltip/index.js';
+import { type TableProps as SemiTableProps } from '@douyinfe/semi-ui/lib/es/table/index.js';
+import { type PopconfirmProps } from '@douyinfe/semi-ui/lib/es/popconfirm/index.js';
 
 export interface IndicatorState {
   done: boolean;

@@ -9,7 +9,7 @@ import {
   type DropdownMenuProps as SemiDropdownMenuProps,
   type DropdownProps as SemiDropdownProps,
   type DropDownMenuItem as SemiDropDownMenuItem,
-} from '@douyinfe/semi-ui/lib/es/dropdown';
+} from '@douyinfe/semi-ui/lib/es/dropdown/index.js';
 
 import type { IComponentBaseProps } from '@/typings';
 

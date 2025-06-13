@@ -4,7 +4,7 @@
 import {
   type DatePickerProps as SemiDatePickerProps,
   type DayStatusType as SemiDayStatusType,
-} from '@douyinfe/semi-ui/lib/es/datePicker';
+} from '@douyinfe/semi-ui/lib/es/datePicker/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

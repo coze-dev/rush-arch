@@ -5,7 +5,7 @@ import { format as dateFormat } from 'date-fns';
 import {
   type BaseValueType,
   type ValueType,
-} from '@douyinfe/semi-ui/lib/es/datePicker';
+} from '@douyinfe/semi-ui/lib/es/datePicker/index.js';
 
 export const formatValueItem = (value: BaseValueType, formatToken: string) => {
   if (!value) {

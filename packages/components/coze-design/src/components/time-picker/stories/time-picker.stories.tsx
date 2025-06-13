@@ -2,7 +2,7 @@
 //  SPDX-License-Identifier: MIT
 
 import { type StoryFn, type Meta } from '@storybook/react';
-import { type Type } from '@douyinfe/semi-ui/lib/es/timePicker/TimePicker';
+import { type Type } from '@douyinfe/semi-ui/lib/es/timePicker/TimePicker.js';
 
 import { TimePicker, type TimePickerProps } from '..';
 

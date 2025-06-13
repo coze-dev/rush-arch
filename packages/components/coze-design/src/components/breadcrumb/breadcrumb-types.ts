@@ -1,7 +1,7 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-import { type BreadcrumbProps as SemiBreadcrumbProps } from '@douyinfe/semi-ui/lib/es/breadcrumb';
+import { type BreadcrumbProps as SemiBreadcrumbProps } from '@douyinfe/semi-ui/lib/es/breadcrumb/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

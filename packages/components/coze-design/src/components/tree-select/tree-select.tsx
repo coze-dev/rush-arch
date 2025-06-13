@@ -3,7 +3,7 @@
 
 import { forwardRef, type JSX } from 'react';
 
-import { type RenderFullLabelProps } from '@douyinfe/semi-ui/lib/es/tree/interface';
+import { type RenderFullLabelProps } from '@douyinfe/semi-ui/lib/es/tree/interface.js';
 import { TreeSelect as SemiTreeSelect } from '@douyinfe/semi-ui';
 
 import { cn } from '@/utils';

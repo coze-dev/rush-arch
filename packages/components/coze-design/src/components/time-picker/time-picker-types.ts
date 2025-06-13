@@ -1,7 +1,7 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-import { type TimePickerProps as SemiTimePickerProps } from '@douyinfe/semi-ui/lib/es/timePicker';
+import { type TimePickerProps as SemiTimePickerProps } from '@douyinfe/semi-ui/lib/es/timePicker/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

@@ -1,7 +1,7 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-import { type NumeralProps as SemiNumeralProps } from '@douyinfe/semi-ui/lib/es/typography/numeral';
+import { type NumeralProps as SemiNumeralProps } from '@douyinfe/semi-ui/lib/es/typography/numeral.js';
 import {
   type ShowTooltip as SemiShowTooltip,
   type Ellipsis as SemiEllipsis,
@@ -9,7 +9,7 @@ import {
   type TextProps as SemiTextProps,
   type ParagraphProps as SemiParagraphProps,
   type TitleProps as SemiTitleProps,
-} from '@douyinfe/semi-ui/lib/es/typography';
+} from '@douyinfe/semi-ui/lib/es/typography/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 import { type TooltipProps } from '@/components/tooltip';

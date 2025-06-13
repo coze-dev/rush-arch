@@ -98,4 +98,4 @@ export {
   withFormApi,
   withField,
   ArrayField,
-} from '@douyinfe/semi-ui/lib/es/form';
+} from '@douyinfe/semi-ui/lib/es/form/index.js';

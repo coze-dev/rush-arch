@@ -3,7 +3,7 @@
 
 import type { ReactNode } from 'react';
 
-import { type EmptyProps as SemiEmptyProps } from '@douyinfe/semi-ui/lib/es/empty';
+import { type EmptyProps as SemiEmptyProps } from '@douyinfe/semi-ui/lib/es/empty/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

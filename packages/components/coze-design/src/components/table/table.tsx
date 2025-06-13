@@ -14,7 +14,7 @@ import { type Root, createRoot } from 'react-dom/client';
 import { assign, omit } from 'lodash-es';
 import clsx from 'clsx';
 import { useSize } from 'ahooks';
-import { type RowSelectionRenderCell } from '@douyinfe/semi-ui/lib/es/table';
+import { type RowSelectionRenderCell } from '@douyinfe/semi-ui/lib/es/table/index.js';
 
 import { cn } from '@/utils';
 import { useCDLocale } from '@/locales';

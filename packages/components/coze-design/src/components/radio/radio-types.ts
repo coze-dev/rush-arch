@@ -4,7 +4,7 @@
 import {
   type RadioGroupProps as SemiRadioGroupProps,
   type RadioProps as SemiRadioProps,
-} from '@douyinfe/semi-ui/lib/es/radio';
+} from '@douyinfe/semi-ui/lib/es/radio/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

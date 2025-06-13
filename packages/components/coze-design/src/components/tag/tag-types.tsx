@@ -3,7 +3,7 @@
 
 import type React from 'react';
 
-import { type TagProps as SemiTagProps } from '@douyinfe/semi-ui/lib/es/tag/interface';
+import { type TagProps as SemiTagProps } from '@douyinfe/semi-ui/lib/es/tag/interface.js';
 
 import { type IComponentBaseProps } from '@/typings';
 

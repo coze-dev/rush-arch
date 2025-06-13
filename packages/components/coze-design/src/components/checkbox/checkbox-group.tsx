@@ -3,7 +3,7 @@
 
 import { forwardRef } from 'react';
 
-import { type CheckboxGroupProps } from '@douyinfe/semi-ui/lib/es/checkbox';
+import { type CheckboxGroupProps } from '@douyinfe/semi-ui/lib/es/checkbox/index.js';
 import { CheckboxGroup as SemiCheckboxGroup } from '@douyinfe/semi-ui';
 
 export const CheckboxGroup = forwardRef<SemiCheckboxGroup, CheckboxGroupProps>(

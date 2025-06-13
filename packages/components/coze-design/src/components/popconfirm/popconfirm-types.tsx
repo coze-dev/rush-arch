@@ -3,7 +3,7 @@
 
 import type React from 'react';
 
-import { type PopoverProps as SemiPopoverProps } from '@douyinfe/semi-ui/lib/es/popover';
+import { type PopoverProps as SemiPopoverProps } from '@douyinfe/semi-ui/lib/es/popover/index.js';
 
 import { type IComponentBaseProps } from '@/typings';
 import { type ButtonColor, type ButtonProps } from '@/components/button';
