@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/code-language-shared",
+      "comment": "display matches in completion item",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/code-language-shared",
+  "email": "stream-pipe@users.noreply.github.com"
+}

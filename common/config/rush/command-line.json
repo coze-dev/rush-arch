@@ -239,6 +239,13 @@
       "safeForSimultaneousRushProcesses": true,
       "autoinstallerName": "license-header",
       "shellCommand": "node common/autoinstallers/license-header/index.js"
+    },
+    {
+      "name": "dev:editor",
+      "commandKind": "global",
+      "summary": "⭐️️ Run dev:editor",
+      "safeForSimultaneousRushProcesses": true,
+      "shellCommand": "cd packages/text-editor/dev && npm run dev:editor"
     }
   ],
 

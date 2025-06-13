@@ -791,6 +791,17 @@
       "tags": ["level-3"]
     },
     {
+      "packageName": "@coze-editor/dev",
+      "projectFolder": "packages/text-editor/dev",
+      "tags": ["level-3"]
+    },
+    // {
+    //   "packageName": "@coze-editor/parser-jinja2",
+    //   "projectFolder": "packages/text-editor/parser-jinja2",
+    //   "tags": ["level-3"]
+    // }
+    // ------- text editor end -------
+    {
       "packageName": "@coze-arch/rush-clear-build-cache-plugin",
       "projectFolder": "packages/rush-plugins/clear-build-cache",
       "tags": ["level-3"],
@@ -813,11 +824,5 @@
       "shouldPublish": true,
       "tags": ["level-1"]
     }
-    // {
-    //   "packageName": "@coze-editor/parser-jinja2",
-    //   "projectFolder": "packages/text-editor/parser-jinja2",
-    //   "tags": ["level-3"]
-    // }
-    // ------- text editor end -------
   ]
 }
