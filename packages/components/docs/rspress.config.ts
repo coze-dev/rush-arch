@@ -9,6 +9,7 @@ import PkgRootWebpackPlugin from '@coze-arch/pkg-root-webpack-plugin';
 const config: UserConfig = defineConfig({
   root: 'docs',
   globalStyles: path.join(__dirname, 'docs/styles/global.css'),
+  ssg: false,
   builderConfig: {
     output: {
       sourceMap: {
