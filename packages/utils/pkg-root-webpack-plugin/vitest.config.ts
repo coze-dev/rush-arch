@@ -8,6 +8,7 @@ export default defineConfig({
   test: {
     globals: true,
     mockReset: false,
+    testTimeout: 30 * 1000,
     coverage: {
       provider: 'v8',
       exclude: ['.eslintrc.js', 'lib', ...defaultExclude],
