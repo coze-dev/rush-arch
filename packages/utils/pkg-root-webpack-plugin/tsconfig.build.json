@@ -5,6 +5,8 @@
     "sourceMap": false,
     "types": ["vitest/globals", "node"],
     "strictNullChecks": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
     "outDir": "lib",
     "rootDir": "src",
     "tsBuildInfoFile": "lib/tsconfig.build.tsbuildinfo"
