@@ -6,16 +6,20 @@
   "license": "ISC",
   "author": "fanwenjie.fe@bytedance.com",
   "main": "src/index.ts",
+  "files": [
+    "lib",
+    "!**/*.tsbuildinfo",
+    "!**/*.map"
+  ],
   "scripts": {
     "build": "tsc -b ./tsconfig.build.json --force",
     "dev": "tsc -w",
     "lint": "eslint ./ --cache",
     "test": "vitest --run",
     "test:cov": "vitest run --coverage",
-    "test:force": "vitest run --updateSnapshot"
+    "test:update": "vitest run --updateSnapshot"
   },
   "dependencies": {
-    "json5": "^2.2.3",
     "micromatch": "^4.0.2"
   },
   "devDependencies": {
@@ -31,5 +35,12 @@
     "pkg-install": "~1.0.0",
     "vitest": "^3.0.9",
     "webpack": "~5.89.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "cozePublishConfig": {
+    "main": "./lib/index.js",
+    "types": "lib/index.d.ts"
   }
 }

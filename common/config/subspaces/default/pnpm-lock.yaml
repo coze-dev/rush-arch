@@ -666,6 +666,9 @@ importers:
       '@coze-arch/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@coze-arch/monorepo-kits':
+        specifier: workspace:*
+        version: link:../../utils/monorepo-kits
       '@coze-arch/pkg-root-webpack-plugin':
         specifier: workspace:*
         version: link:../../utils/pkg-root-webpack-plugin
@@ -2963,9 +2966,6 @@ importers:
 
   ../../../packages/utils/pkg-root-webpack-plugin:
     dependencies:
-      json5:
-        specifier: ^2.2.3
-        version: 2.2.3
       micromatch:
         specifier: ^4.0.2
         version: 4.0.8
@@ -24145,7 +24145,7 @@ snapshots:
       '@babel/core': 7.26.10
       find-cache-dir: 4.0.0
       schema-utils: 4.3.2
-      webpack: 5.89.0
+      webpack: 5.89.0(@swc/core@1.11.29(@swc/helpers@0.5.17))(webpack-cli@5.1.4)
 
   babel-plugin-add-react-displayname@0.0.5: {}
 

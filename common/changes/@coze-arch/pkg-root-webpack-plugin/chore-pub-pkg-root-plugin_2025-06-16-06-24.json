@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/pkg-root-webpack-plugin",
+      "comment": "setup publish env for @coze-arch/pkg-root-webpack-plugin",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/pkg-root-webpack-plugin",
+  "email": "tecvan.fe@qq.com"
+}

@@ -5,9 +5,9 @@ import type { Configuration } from 'webpack';
 import PkgRootWebpackPlugin from '../../src';
 
 const rootPlugin = new PkgRootWebpackPlugin({
+  packagesDirs: ['cross-pkgs/bar', 'fixtures/basic'],
   excludeFolders: ['infra/plugins/pkg-root-webpack-plugin'],
 });
-rootPlugin.rootFolders = ['cross-pkgs/bar', 'fixtures/basic'];
 
 const getWebpackConfig = (target: string): Partial<Configuration> => {
   const context = path.resolve(__dirname, '../fixtures');

@@ -5,6 +5,9 @@ import { pluginPreview } from '@rspress/plugin-preview';
 import { pluginSass } from '@rsbuild/plugin-sass';
 import { SemiRspackPlugin } from '@douyinfe/semi-rspack-plugin';
 import PkgRootWebpackPlugin from '@coze-arch/pkg-root-webpack-plugin';
+import { getRushConfiguration } from '@coze-arch/monorepo-kits';
+
+const packageDirs = getRushConfiguration().projects.map(p => p.projectFolder);
 
 const config: UserConfig = defineConfig({
   root: 'docs',
@@ -31,7 +34,9 @@ const config: UserConfig = defineConfig({
         ];
 
         appendPlugins([
-          new PkgRootWebpackPlugin({}),
+          new PkgRootWebpackPlugin({
+            packagesDirs: packageDirs,
+          }),
           new SemiRspackPlugin({
             theme: '@coze-arch/semi-theme-hand01',
           }),

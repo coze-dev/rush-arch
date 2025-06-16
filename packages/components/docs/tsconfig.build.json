@@ -34,6 +34,9 @@
       "path": "../semi-theme-hand01/tsconfig.build.json"
     },
     {
+      "path": "../../utils/monorepo-kits/tsconfig.build.json"
+    },
+    {
       "path": "../../utils/pkg-root-webpack-plugin/tsconfig.build.json"
     }
   ]

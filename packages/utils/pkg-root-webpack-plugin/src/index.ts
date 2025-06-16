@@ -2,7 +2,6 @@ import path from 'path';
 import fs from 'fs';
 
 import { type Compiler } from 'webpack';
-import json5 from 'json5';
 
 const toAbsolute = (root: string, file: string) => {
   if (fs.existsSync(path.join(root, 'src'))) {
@@ -13,27 +12,22 @@ const toAbsolute = (root: string, file: string) => {
 
 interface PkgRootWebpackPluginOptions {
   // 根目录符号，默认为 `@`
-  root?: string;
+  root: string;
   // 需要排除的packages根目录
-  excludeFolders?: string[];
+  excludeFolders: string[];
+  packagesDirs: string[];
 }
 
 class PkgRootWebpackPlugin {
   private options: PkgRootWebpackPluginOptions;
-  rootFolders: string[];
 
   constructor(options?: Partial<PkgRootWebpackPluginOptions>) {
-    const rootDir = path.resolve(__dirname, '../../../../');
+    if (!options?.packagesDirs) {
+      throw new Error('packagesDir is required');
+    }
 
-    const rushJsonPath = path.resolve(rootDir, 'rush.json');
-    const rushJsonStr = fs.readFileSync(rushJsonPath, 'utf-8');
-    const rushJson = json5.parse(rushJsonStr);
-    const rushJsonPackagesDir = rushJson.projects.map(
-      item => item.projectFolder,
-    );
-
-    this.rootFolders = rushJsonPackagesDir;
     this.options = {
+      packagesDirs: options.packagesDirs,
       root: options?.root || '@',
       excludeFolders: options?.excludeFolders || [],
     };
@@ -50,10 +44,27 @@ class PkgRootWebpackPlugin {
           if (!innerRequest) {
             return callback();
           }
-          const { root, excludeFolders = [] } = this.options;
+          const { root, excludeFolders = [], packagesDirs } = this.options;
           const { context } = request;
           if (innerRequest.startsWith(`${root}/`)) {
-            const folder = this.rootFolders.find(
+            // 首先检查 rootFolders 中是否有匹配的路径
+            for (const rootFolder of packagesDirs) {
+              if (context.includes(rootFolder)) {
+                const rootPath = context.slice(
+                  0,
+                  context.indexOf(rootFolder) + rootFolder.length,
+                );
+                const absolutePath = toAbsolute(
+                  rootPath,
+                  innerRequest.slice(root.length + 1), // +1 to remove the leading slash
+                );
+                request.request = absolutePath;
+                return callback();
+              }
+            }
+
+            // 回退到原有的 packagesDir 逻辑
+            const folder = packagesDirs.find(
               fold =>
                 context.indexOf(fold) !== -1 && !excludeFolders.includes(fold),
             );
@@ -62,7 +73,6 @@ class PkgRootWebpackPlugin {
             }
             const absolutePath = toAbsolute(
               context.slice(0, context.indexOf(folder) + folder.length),
-              // @ts-expect-error -- linter-disable-autofix
               innerRequest.slice(root.length),
             );
             request.request = absolutePath;
