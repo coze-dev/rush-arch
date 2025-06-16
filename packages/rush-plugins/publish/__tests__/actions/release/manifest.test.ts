@@ -26,10 +26,12 @@ describe('manifest', () => {
         'package-a': {
           packageName: 'package-a',
           packageJson: { version: '1.0.0' },
+          shouldPublish: true,
         },
         'package-b': {
           packageName: 'package-b',
           packageJson: { version: '2.0.0' },
+          shouldPublish: true,
         },
       };
 
@@ -81,6 +83,7 @@ describe('manifest', () => {
         '@scope/package-a': {
           packageName: '@scope/package-a',
           packageJson: { version: '1.0.0' },
+          shouldPublish: true,
         },
       } as const;
 

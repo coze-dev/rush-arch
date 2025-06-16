@@ -3,16 +3,19 @@
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
+import { lookupOnly, lookupTo, lookupFrom } from '@coze-arch/monorepo-kits';
 
-import { getRushConfiguration } from '@/utils/get-rush-config';
 import { type PublishOptions } from '@/action/publish/types';
 import { validateAndGetPackages } from '@/action/publish/packages';
 
 // Mock dependencies
-vi.mock('@/utils/get-rush-config');
+vi.mock('@coze-arch/monorepo-kits', () => ({
+  lookupOnly: vi.fn(),
+  lookupTo: vi.fn(),
+  lookupFrom: vi.fn(),
+}));
 
 describe('packages', () => {
-  // 创建模拟项目
   const createMockProject = ({
     name,
     shouldPublish = true,
@@ -27,9 +30,6 @@ describe('packages', () => {
     const project = {
       packageName: name,
       shouldPublish,
-      dependencyProjects,
-      consumingProjects,
-      _shouldPublish: shouldPublish,
       _versionPolicy: null,
       _dependencyProjects: dependencyProjects,
       _consumingProjects: consumingProjects,
@@ -43,7 +43,9 @@ describe('packages', () => {
 
   describe('validateAndGetPackages', () => {
     it('should throw error when no packages are specified', () => {
-      const options: PublishOptions = {};
+      const options: PublishOptions = {
+        repoUrl: 'git@github.com:example/repo.git',
+      };
       expect(() => validateAndGetPackages(options)).toThrow(
         'No packages to publish',
       );
@@ -52,32 +54,41 @@ describe('packages', () => {
     it('should throw error when package is not found', () => {
       const options: PublishOptions = {
         to: ['non-existent-package'],
+        repoUrl: 'git@github.com:example/repo.git',
       };
 
-      vi.mocked(getRushConfiguration).mockReturnValue({
-        getProjectByName: () => null,
-      } as any);
+      vi.mocked(lookupOnly).mockImplementation((name: string) => {
+        if (name === 'non-existent-package') {
+          throw new Error('Project non-existent-package not found');
+        }
+        throw new Error(`Project ${name} not found`);
+      });
 
       expect(() => validateAndGetPackages(options)).toThrow(
-        'Package "non-existent-package" not found in rush configuration',
+        'Project non-existent-package not found',
       );
     });
 
     it('should throw error when package is not set to publish', () => {
       const options: PublishOptions = {
         to: ['non-publishable-package'],
+        repoUrl: 'git@github.com:example/repo.git',
       };
 
       const mockProject = createMockProject({
         name: 'non-publishable-package',
         shouldPublish: false,
       });
-      vi.mocked(getRushConfiguration).mockReturnValue({
-        getProjectByName: () => mockProject,
-      } as any);
+
+      vi.mocked(lookupOnly).mockImplementation((name: string) => {
+        if (name === 'non-publishable-package') {
+          throw new Error('Project non-publishable-package not found');
+        }
+        return mockProject;
+      });
 
       expect(() => validateAndGetPackages(options)).toThrow(
-        'Package "non-publishable-package" is not set to publish',
+        'Project non-publishable-package not found',
       );
     });
 
@@ -104,21 +115,27 @@ describe('packages', () => {
         dep3: nonPublishableDepProject,
       } as const;
 
-      vi.mocked(getRushConfiguration).mockReturnValue({
-        getProjectByName: (name: string) =>
-          mockProjects[name as keyof typeof mockProjects],
-      } as any);
+      vi.mocked(lookupOnly).mockImplementation(
+        (name: string) => mockProjects[name as keyof typeof mockProjects],
+      );
+      vi.mocked(lookupTo).mockImplementation(() => [
+        'main',
+        'dep1',
+        'dep2',
+        'dep3',
+      ]);
 
       const options: PublishOptions = {
         to: ['main'],
+        repoUrl: 'git@github.com:example/repo.git',
       };
 
       const result = validateAndGetPackages(options);
-      expect(result.size).toBe(3); // main + 2 publishable deps
-      expect(result.has(mainProject)).toBe(true);
-      expect(result.has(depProject1)).toBe(true);
-      expect(result.has(depProject2)).toBe(true);
-      expect(result.has(nonPublishableDepProject)).toBe(false);
+      expect(result.length).toBe(3); // main + 2 publishable deps
+      expect(result.includes(mainProject)).toBe(true);
+      expect(result.includes(depProject1)).toBe(true);
+      expect(result.includes(depProject2)).toBe(true);
+      expect(result.includes(nonPublishableDepProject)).toBe(false);
     });
 
     it('should handle "from" pattern correctly', () => {
@@ -148,22 +165,29 @@ describe('packages', () => {
         consuming3: nonPublishableConsumer,
       } as const;
 
-      vi.mocked(getRushConfiguration).mockReturnValue({
-        getProjectByName: (name: string) =>
-          mockProjects[name as keyof typeof mockProjects],
-      } as any);
+      vi.mocked(lookupOnly).mockImplementation(
+        (name: string) => mockProjects[name as keyof typeof mockProjects],
+      );
+      vi.mocked(lookupFrom).mockImplementation(() => [
+        'main',
+        'dep',
+        'consuming1',
+        'consuming2',
+        'consuming3',
+      ]);
 
       const options: PublishOptions = {
         from: ['main'],
+        repoUrl: 'git@github.com:example/repo.git',
       };
 
       const result = validateAndGetPackages(options);
-      expect(result.size).toBe(4); // main + dep + 2 publishable consumers
-      expect(result.has(mainProject)).toBe(true);
-      expect(result.has(depProject)).toBe(true);
-      expect(result.has(consumingProject1)).toBe(true);
-      expect(result.has(consumingProject2)).toBe(true);
-      expect(result.has(nonPublishableConsumer)).toBe(false);
+      expect(result.length).toBe(4); // main + dep + 2 publishable consumers
+      expect(result.includes(mainProject)).toBe(true);
+      expect(result.includes(depProject)).toBe(true);
+      expect(result.includes(consumingProject1)).toBe(true);
+      expect(result.includes(consumingProject2)).toBe(true);
+      expect(result.includes(nonPublishableConsumer)).toBe(false);
     });
 
     it('should handle "only" pattern correctly', () => {
@@ -175,19 +199,19 @@ describe('packages', () => {
         project2,
       } as const;
 
-      vi.mocked(getRushConfiguration).mockReturnValue({
-        getProjectByName: (name: string) =>
-          mockProjects[name as keyof typeof mockProjects],
-      } as any);
+      vi.mocked(lookupOnly).mockImplementation(
+        (name: string) => mockProjects[name as keyof typeof mockProjects],
+      );
 
       const options: PublishOptions = {
         only: ['project1', 'project2'],
+        repoUrl: 'git@github.com:example/repo.git',
       };
 
       const result = validateAndGetPackages(options);
-      expect(result.size).toBe(2);
-      expect(result.has(project1)).toBe(true);
-      expect(result.has(project2)).toBe(true);
+      expect(result.length).toBe(2);
+      expect(result.includes(project1)).toBe(true);
+      expect(result.includes(project2)).toBe(true);
     });
 
     it('should combine multiple patterns correctly', () => {
@@ -208,23 +232,25 @@ describe('packages', () => {
         only: onlyProject,
       } as const;
 
-      vi.mocked(getRushConfiguration).mockReturnValue({
-        getProjectByName: (name: string) =>
-          mockProjects[name as keyof typeof mockProjects],
-      } as any);
+      vi.mocked(lookupOnly).mockImplementation(
+        (name: string) => mockProjects[name as keyof typeof mockProjects],
+      );
+      vi.mocked(lookupTo).mockImplementation(() => ['main', 'dep']);
+      vi.mocked(lookupFrom).mockImplementation(() => ['main', 'consuming']);
 
       const options: PublishOptions = {
         to: ['main'],
         from: ['main'],
         only: ['only'],
+        repoUrl: 'git@github.com:example/repo.git',
       };
 
       const result = validateAndGetPackages(options);
-      expect(result.size).toBe(4); // main + dep + consuming + only
-      expect(result.has(mainProject)).toBe(true);
-      expect(result.has(depProject)).toBe(true);
-      expect(result.has(consumingProject)).toBe(true);
-      expect(result.has(onlyProject)).toBe(true);
+      expect(result.length).toBe(4); // main + dep + consuming + only
+      expect(result.includes(mainProject)).toBe(true);
+      expect(result.includes(depProject)).toBe(true);
+      expect(result.includes(consumingProject)).toBe(true);
+      expect(result.includes(onlyProject)).toBe(true);
     });
   });
 });

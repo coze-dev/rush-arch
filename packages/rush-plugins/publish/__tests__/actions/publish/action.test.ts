@@ -71,7 +71,7 @@ describe('publish action', () => {
   const mockProject1 = createMockProject('package-1');
   const mockProject2 = createMockProject('package-2');
 
-  const mockPackages = new Set([mockProject1, mockProject2]);
+  const mockPackages = [mockProject1, mockProject2];
   const mockPublishManifests = [
     {
       project: mockProject1,
@@ -109,6 +109,7 @@ describe('publish action', () => {
   it('should publish packages successfully', async () => {
     const options: PublishOptions = {
       to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
     };
 
     await publish(options);
@@ -130,34 +131,49 @@ describe('publish action', () => {
       cwd: mockRushFolder,
       skipCommit: false,
       skipPush: false,
+      repoUrl: 'git@github.com:example/repo.git',
     });
     expect(logger.success).toHaveBeenCalledWith('Publish success.');
   });
 
   it('should skip uncommitted changes check when SKIP_UNCOMMITTED_CHECK is true', async () => {
     process.env.SKIP_UNCOMMITTED_CHECK = 'true';
-    await publish({ to: ['package-1'] });
+    await publish({
+      to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
+    });
     expect(ensureNotUncommittedChanges).not.toHaveBeenCalled();
   });
 
   it('should perform uncommitted changes check by default', async () => {
     process.env.SKIP_UNCOMMITTED_CHECK = 'false';
-    await publish({ to: ['package-1'] });
+    await publish({
+      to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
+    });
     expect(ensureNotUncommittedChanges).toHaveBeenCalled();
   });
 
   it('should stop if no packages to publish', async () => {
-    vi.mocked(validateAndGetPackages).mockReturnValue(new Set());
-    await publish({ to: ['package-1'] });
-    expect(logger.error).toHaveBeenCalledWith(
-      'No packages to publish, should specify some package by `--to` or `--from` or `--only`',
-    );
+    vi.mocked(validateAndGetPackages).mockImplementation(() => {
+      throw new Error('No packages to publish');
+    });
+
+    await expect(
+      publish({
+        to: ['package-1'],
+        repoUrl: 'git@github.com:example/repo.git',
+      }),
+    ).rejects.toThrow('No packages to publish');
     expect(generatePublishManifest).not.toHaveBeenCalled();
   });
 
   it('should stop if not in main branch for production release', async () => {
     vi.mocked(isMainBranch).mockResolvedValue(false);
-    await publish({ to: ['package-1'] });
+    await publish({
+      to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
+    });
     expect(logger.error).toHaveBeenCalledWith(
       'You are not in main branch, please switch to main branch and try again.',
     );
@@ -171,7 +187,10 @@ describe('publish action', () => {
       bumpPolicy: BumpType.BETA,
     });
 
-    await publish({ to: ['package-1'] });
+    await publish({
+      to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
+    });
 
     expect(logger.error).not.toHaveBeenCalled();
     expect(applyPublishManifest).toHaveBeenCalled();
@@ -184,7 +203,10 @@ describe('publish action', () => {
       bumpPolicy: BumpType.ALPHA,
     });
 
-    await publish({ to: ['package-1'] });
+    await publish({
+      to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
+    });
 
     expect(logger.error).not.toHaveBeenCalled();
     expect(applyPublishManifest).toHaveBeenCalled();
@@ -192,7 +214,10 @@ describe('publish action', () => {
 
   it('should stop if user does not confirm', async () => {
     vi.mocked(confirmForPublish).mockResolvedValue(false);
-    await publish({ to: ['package-1'] });
+    await publish({
+      to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
+    });
     expect(applyPublishManifest).not.toHaveBeenCalled();
     expect(generateChangelog).not.toHaveBeenCalled();
     expect(pushToRemote).not.toHaveBeenCalled();
@@ -204,7 +229,10 @@ describe('publish action', () => {
       bumpPolicy: BumpType.BETA,
     });
 
-    await publish({ to: ['package-1'] });
+    await publish({
+      to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
+    });
 
     expect(applyPublishManifest).toHaveBeenCalled();
     expect(generateChangelog).not.toHaveBeenCalled();
@@ -222,7 +250,10 @@ describe('publish action', () => {
       bumpPolicy: BumpType.ALPHA,
     });
 
-    await publish({ to: ['package-1'] });
+    await publish({
+      to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
+    });
 
     expect(applyPublishManifest).toHaveBeenCalled();
     expect(generateChangelog).not.toHaveBeenCalled();
@@ -235,7 +266,11 @@ describe('publish action', () => {
   });
 
   it('should respect skipCommit option', async () => {
-    await publish({ to: ['package-1'], skipCommit: true });
+    await publish({
+      to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
+      skipCommit: true,
+    });
     expect(pushToRemote).toHaveBeenCalledWith(
       expect.objectContaining({
         skipCommit: true,
@@ -244,7 +279,11 @@ describe('publish action', () => {
   });
 
   it('should respect skipPush option', async () => {
-    await publish({ to: ['package-1'], skipPush: true });
+    await publish({
+      to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
+      skipPush: true,
+    });
     expect(pushToRemote).toHaveBeenCalledWith(
       expect.objectContaining({
         skipPush: true,
@@ -253,7 +292,11 @@ describe('publish action', () => {
   });
 
   it('should respect dryRun option', async () => {
-    await publish({ to: ['package-1'], dryRun: true });
+    await publish({
+      to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
+      dryRun: true,
+    });
     expect(confirmForPublish).toHaveBeenCalledWith(mockPublishManifests, true);
   });
 });
