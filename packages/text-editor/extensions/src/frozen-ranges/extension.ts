@@ -34,9 +34,7 @@ const extension = [
 
     const providers = tr.startState.facet(frozenRanges);
     const specs: Range[] = providers
-      .reduce<
-        Range[]
-      >((memo, provider) => [...memo, ...provider(tr.startState)], [])
+      .reduce<Range[]>((memo, provider) => [...memo, ...provider(tr.state)], [])
       .filter(
         spec =>
           spec.from >= 0 && spec.from < len && spec.to >= 0 && spec.to < len,

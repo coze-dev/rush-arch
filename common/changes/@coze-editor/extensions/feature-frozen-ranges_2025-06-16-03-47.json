@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extensions",
+      "comment": "export frozenRanges",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/extensions",
+  "email": "stream-pipe@users.noreply.github.com"
+}

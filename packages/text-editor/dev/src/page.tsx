@@ -1,5 +1,6 @@
 import preset, { type EditorAPI, themes } from '@coze-editor/editor/preset-code'
 import { createRenderer, EditorProvider } from '@coze-editor/editor/react'
+import { frozenRanges } from '@coze-editor/editor'
 import { EditorView } from '@codemirror/view'
 import { useRef } from 'react'
 import { darkTheme } from './theme'
@@ -27,6 +28,26 @@ async function main({ params }: Args): Promise<Output> {
 }
 `.trim()
 
+function findFrozenRanges(text: string) {
+  const regex = /function/g;
+  const matches = text.matchAll(regex);
+  const results = [];
+  for (const match of matches) {
+    results.push({
+      from: match.index,
+      to: match.index + match[0].length
+    });
+  }
+  return results;
+}
+
+const extensions = [
+  frozenRanges.of(state => {
+    const text = state.doc.toString();
+    return findFrozenRanges(text);
+  }),
+];
+
 function Page() {
   const editorRef = useRef<EditorAPI | null>(null)
 
@@ -39,6 +60,7 @@ function Page() {
         theme: 'coze-dark',
         height: 300,
       }}
+      extensions={extensions}
       didMount={(editor: EditorAPI) => {
         editorRef.current = editor
       }}

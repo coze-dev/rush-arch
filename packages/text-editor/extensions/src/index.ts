@@ -46,3 +46,5 @@ export {
 export { backgroundDecorations } from './background-decorations';
 
 export { mergeableMarkers } from './mergeable-markers';
+
+export { frozenRanges } from './frozen-ranges';
