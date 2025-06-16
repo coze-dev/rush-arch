@@ -47,26 +47,10 @@ class PkgRootWebpackPlugin {
           const { root, excludeFolders = [], packagesDirs } = this.options;
           const { context } = request;
           if (innerRequest.startsWith(`${root}/`)) {
-            // 首先检查 rootFolders 中是否有匹配的路径
-            for (const rootFolder of packagesDirs) {
-              if (context.includes(rootFolder)) {
-                const rootPath = context.slice(
-                  0,
-                  context.indexOf(rootFolder) + rootFolder.length,
-                );
-                const absolutePath = toAbsolute(
-                  rootPath,
-                  innerRequest.slice(root.length + 1), // +1 to remove the leading slash
-                );
-                request.request = absolutePath;
-                return callback();
-              }
-            }
-
-            // 回退到原有的 packagesDir 逻辑
             const folder = packagesDirs.find(
               fold =>
-                context.indexOf(fold) !== -1 && !excludeFolders.includes(fold),
+                context.indexOf(`${fold}/`) !== -1 &&
+                !excludeFolders.includes(`${fold}/`),
             );
             if (!folder) {
               return callback();
