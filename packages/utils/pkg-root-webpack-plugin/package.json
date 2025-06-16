@@ -1,6 +1,6 @@
 {
   "name": "@coze-arch/pkg-root-webpack-plugin",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha.8dcca0",
   "description": "> 用于支持 `@` 根目录引用的插件",
   "keywords": [],
   "license": "ISC",
