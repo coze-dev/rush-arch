@@ -3,20 +3,20 @@
   "version": "0.0.1",
   "description": "@coze-arch/rush-clear-build-cache-plugin",
   "license": "MIT",
-  "author": "tecvan.fe@qq.com",
+  "author": "tecvan.fe@gmail.com",
   "maintainers": [],
   "bin": {
     "rush-clear-build-cache": "src/debug.js"
   },
   "files": [
-    "dist",
+    "lib",
     "!**/*.tsbuildinfo",
     "!**/*.map",
     "command-line.json",
     "rush-plugin-manifest.json"
   ],
   "scripts": {
-    "build": "tsc -b tsconfig.build.json",
+    "build": "rollup -c",
     "lint": "eslint ./ --cache",
     "test": "vitest --run --passWithNoTests",
     "test:cov": "npm run test -- --coverage"
@@ -25,12 +25,14 @@
     "json5": "^2.2.3"
   },
   "devDependencies": {
+    "@coze-arch/build-lib-preset": "workspace:*",
     "@coze-arch/eslint-config": "workspace:*",
     "@coze-arch/monorepo-kits": "workspace:*",
     "@coze-arch/ts-config": "workspace:*",
     "@coze-arch/vitest-config": "workspace:*",
     "@types/node": "^22",
     "@vitest/coverage-v8": "^3.0.9",
+    "rollup": "^4.41.1",
     "sucrase": "^3.32.0",
     "vitest": "^3.0.9"
   },
@@ -39,7 +41,7 @@
   },
   "cozePublishConfig": {
     "bin": {
-      "rush-clear-build-cache": "./dist/index.js"
+      "rush-clear-build-cache": "./lib/index.js"
     }
   }
 }
