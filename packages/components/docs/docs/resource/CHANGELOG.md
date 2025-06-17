@@ -6,7 +6,7 @@
 - 组件依赖版本管理 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [2025-03-03] - 组件样式修复与功能增强 [#13390](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/13390)
+## [2025-03-03] - 组件样式修复与功能增强
 
 ### Added
 - COZInputNumber 支持鼠标横向滑动调整数值
@@ -30,7 +30,7 @@
 - 修复 文档站样式问题
 
 
-## [2025-01-27] - 组件样式修复与功能增强 [#13390](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/13390)
+## [2025-01-27] - 组件样式修复与功能增强
 
 ### Fixed
 - 修复 Cascader 图标间距问题
@@ -38,26 +38,25 @@
 - 修复 Cascader size 为 small 的圆角问题
 
 ### Added
-- 支持 PopConfirm 异步状态关闭 [#13746](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/13746)
+- 支持 PopConfirm 异步状态关闭
 
 
 ## [2025-01-15] - 依赖升级与问题修复
 
 ### Changed
-- 升级 semi-design 到最新版本 [#13412](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/13412)
+- 升级 semi-design 到最新版本
 
 ### Fixed
-- 修复升级后导致的 IconButton 问题 [#13541](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/13541)
+- 修复升级后导致的 IconButton 问题
 
-
-## [2025-01-08] - 组件功能增强 [#13269](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/13269)
+## [2025-01-08] - 组件功能增强
 
 ### Added
 - 新增 COZPagination 翻页器
 - table 序号与 checkbox 切换的能力
 
 
-## [2025-01-02] - 组件问题修复与功能增强 [#13269](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/13269)
+## [2025-01-02] - 组件问题修复与功能增强
 
 ### Fixed
 - 修复 COZSwitch 组件 disable 和 loading token 问题
@@ -67,20 +66,20 @@
 - COZSingleSelect 支持 small size
 
 
-## [2024-12-25] - 组件问题修复 [#12976](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/12976)
+## [2024-12-25] - 组件问题修复
 
 ### Fixed
 - 修复 switch 状态为 loading + disabled 状态下，背景色还原不准确的问题
 
 
-## [2024-12-16] - 开发任务合入 [#12812](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/12812)
+## [2024-12-16] - 开发任务合入
 
 ### Changed
 - 图标库版本升级至`0.0.66`;
 - 增加`mg-plus`色彩token;
 
 
-## [2024-11-19] - 开发任务合入 [#11610](https://bits.bytedance.net/code/obric/bot-studio-monorepo/merge_requests/11610)
+## [2024-11-19] - 开发任务合入
 
 ### Changed
 - 图标库版本升级至`0.0.62`;
@@ -88,7 +87,7 @@
 ### Fixed
 - 修复`Input`中输入小尺寸左边距不生效
 
-## [2024-11-06] - 图标库升级 [#10715](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/11139)
+## [2024-11-06] - 图标库升级
 
 ### Changed
 - 图标库版本升级至`0.0.59`;
@@ -99,20 +98,19 @@
 - 修复`npm run dev`环境下ts类型检测问题
 - `tsconfig.js` 支持 references
 
-## [2024-10-21] - 图标库升级 [#10715](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/10763)
-
+## [2024-10-21] - 图标库升级
 ### Changed
 - 图标库版本升级至`0.0.56`;
 
 ### Fixed
 - 修复`Table`组件fixed样式异常
 
-## [2024-10-16] - 图标库升级 [#10715](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/10715)
+## [2024-10-16] - 图标库升级
 
 ### Changed
 - 图标库版本升级至`0.0.54`;
 
-## [2024-10-08] - 修复select组件兼容inputGroup样式问题 [#10326](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/10326)
+## [2024-10-08] - 修复select组件兼容inputGroup样式问题
 
 ### Changed
 - `Select`兼容`InputGroup`下使用的样式问题
@@ -123,7 +121,7 @@
 
 
 
-## [2024-08-28] - 补充组件文档，完善组件功能 [#9559](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/9559)
+## [2024-08-28] - 补充组件文档，完善组件功能
 
 ### Changed
 - 补充`progress`,`color`的使用说明;
@@ -134,7 +132,7 @@
 - 微调`progress`组件的`height`传参。
 
 
-## [2024-08-20] - 补充组件文档和修复部分组件样式 [#9305](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/9305)
+## [2024-08-20] - 补充组件文档和修复部分组件样式
 
 ### Changed
 - 补充`badge`,`banner`,`avatar`, `icons`, `illustrations` 的使用说明;
@@ -146,7 +144,7 @@
 - 修复input在group下的组合disabled下的样式;
 
 
-## [2024-08-15] - 增加文档暗黑模式预览和组件样式微调 [#9128](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/9128)
+## [2024-08-15] - 增加文档暗黑模式预览和组件样式微调
 
 ### Changed
 - 重写COZLoading组件;
@@ -158,7 +156,7 @@
 - 脚手架支持自动生成index.mdx;
 
 
-## [2024-08-13] - 增加MDX预览和组件样式微调 [#9084](https://code.byted.org/obric/bot-studio-monorepo/merge_requests/9084)
+## [2024-08-13] - 增加MDX预览和组件样式微调
 
 ### Changed
 - 增加站点MDX预览能力，支持和storybook组件引用；

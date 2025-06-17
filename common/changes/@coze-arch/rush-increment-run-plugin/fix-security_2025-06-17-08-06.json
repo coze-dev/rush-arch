@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/rush-increment-run-plugin",
+      "comment": "sensitive",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/rush-increment-run-plugin",
+  "email": "289056982@qq.com"
+}

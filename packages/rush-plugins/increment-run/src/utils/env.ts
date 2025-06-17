@@ -14,7 +14,6 @@ export const setOutputAvailable = process.env.CI || process.env.BUILD_VERSION;
 // 因此根据是否在 CI 内做个简单区分
 export const getCPUSize = (): number => {
   // 下面的 32 根据 .codebase/pipelines/ci.yaml 文件  jobs.run_all.runs-on.spec 字段值 m1.8xlarge 推算而来
-  // reference: https://bytedance.feishu.cn/wiki/wikcnrU4rRBZ3WMYNVxwdCp4Mhd
   const PRESET_CI_POD_OS_CORE = 32;
   const osCpuSize = os.cpus().length;
   return isCI() ? Math.min(osCpuSize, PRESET_CI_POD_OS_CORE) : osCpuSize;
