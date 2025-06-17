@@ -1,6 +1,6 @@
 {
   "name": "@coze-arch/rush-clear-build-cache-plugin",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.a8d5b5",
   "description": "@coze-arch/rush-clear-build-cache-plugin",
   "license": "MIT",
   "author": "tecvan.fe@gmail.com",
