@@ -2,6 +2,53 @@
   "name": "@coze-arch/rush-publish-plugin",
   "entries": [
     {
+      "version": "0.0.5",
+      "tag": "HEAD",
+      "date": "2025-06-17T03:37:04.699Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "tmp"
+          },
+          {
+            "comment": "fix ci"
+          },
+          {
+            "comment": "fix publish logic"
+          },
+          {
+            "comment": "fix ts error"
+          },
+          {
+            "comment": "allow publish mutil packages"
+          },
+          {
+            "comment": "build script for fix-ts-refers"
+          },
+          {
+            "comment": "setup publish for coze design"
+          },
+          {
+            "comment": "incremently run rush command for ci env"
+          },
+          {
+            "comment": "fix test"
+          },
+          {
+            "comment": "license mit"
+          },
+          {
+            "comment": "adapter github and  gitlab ci"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "support auto fix ts references"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.4",
       "tag": "HEAD",
       "date": "2025-05-19T04:33:30.047Z",

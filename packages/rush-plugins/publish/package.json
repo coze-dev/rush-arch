@@ -1,6 +1,6 @@
 {
   "name": "@coze-arch/rush-publish-plugin",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "rush plugin to generate change log and publish packages",
   "keywords": [
     "rush",

@@ -1,5 +1,26 @@
 # @coze-arch/rush-publish-plugin
 
+## 0.0.5 - 2025-06-17
+
+### New Features
+
+- support auto fix ts references
+
+### Bug Fixes
+
+- tmp
+- fix ci
+- fix publish logic
+- fix ts error
+- allow publish mutil packages
+- build script for fix-ts-refers
+- setup publish for coze design
+- incremently run rush command for ci env
+- fix test
+- license mit
+- adapter github and  gitlab ci
+
+
 ## 0.0.4 - 2025-05-19
 
 ### Bug Fixes
@@ -27,3 +48,4 @@
 - update lock
 - use outside infra
 - fix test error
+
