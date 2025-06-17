@@ -9,7 +9,10 @@
     "module": "ESNext",
     "rootDir": "./src",
     "outDir": "./dist",
-    "tsBuildInfoFile": "./dist/tsconfig.build.tsbuildinfo"
+    "tsBuildInfoFile": "./dist/tsconfig.build.tsbuildinfo",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src"],
   "references": [

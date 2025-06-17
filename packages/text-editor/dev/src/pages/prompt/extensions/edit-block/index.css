@@ -1,0 +1,27 @@
+.slot-content {
+  color: #4E40E5;
+  background-color: #BAC0FF33;
+  word-break: break-all;
+  padding: 2px 0;
+}
+
+.slot-side-left {
+  background-color: #BAC0FF33;
+  border-radius: 5px 0 0 5px;
+  margin-left: 3px;
+  padding: 2px 0 2px 5px;
+}
+
+.slot-side-right {
+  background-color: #BAC0FF33;
+  border-radius: 0 5px 5px 0;
+  margin-right: 3px;
+  padding: 2px 5px 2px 0;
+}
+
+.placeholder {
+  color: #9498F7CC;
+  background-color: #BAC0FF33;
+  word-break: break-all;
+  padding: 2px 0;
+}
