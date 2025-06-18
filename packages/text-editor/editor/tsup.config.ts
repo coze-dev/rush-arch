@@ -7,6 +7,7 @@ export default defineConfig({
   entry: [
     'src/index.ts',
     'src/react.ts',
+    'src/react-merge.ts',
     'src/preset-universal.ts',
     'src/preset-none.ts',
     'src/preset-expression.ts',
