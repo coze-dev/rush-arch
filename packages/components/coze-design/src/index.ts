@@ -41,7 +41,10 @@ import { type EmptyStateProps as CozEmptyStateProps } from './components/empty-s
 import { type DatePickerProps as CozDatePickerProps } from './components/date-picker';
 import { type CollapsibleProps as CozCollapsibleProps } from './components/collapsible';
 import { type CollapseProps as CozCollapseProps } from './components/collapse';
-import { type CheckboxProps as CozCheckboxProps } from './components/checkbox';
+import {
+  type CheckboxProps as CozCheckboxProps,
+  type CheckboxGroupProps as CozCheckboxGroupProps,
+} from './components/checkbox';
 import {
   type CascaderProps as CozCascaderProps,
   type CascaderValue as CozCascaderValue,
@@ -104,6 +107,7 @@ export type DropdownProps = CozMenuProps;
 
 export { Checkbox } from './components/checkbox';
 export type CheckboxProps = CozCheckboxProps;
+export type CheckboxGroupProps = CozCheckboxGroupProps;
 
 export { Banner } from './components/banner';
 export type BannerProps = CozBannerProps;
@@ -111,7 +115,7 @@ export type BannerProps = CozBannerProps;
 export { Toast } from './components/toast';
 export type ToastProps = CozToastProps;
 
-export { Tag } from './components/tag';
+export { Tag, type TagGroupProps } from './components/tag';
 export type TagProps = CozTagProps;
 export type TagColor = CozTagColor;
 
@@ -362,6 +366,19 @@ export type {
   RenderSelectedItemFn,
   SideSheetReactProps,
   SliderProps,
+  SpinProps,
+  PresetType,
+  CascaderSimpleValueType,
+  CascaderEntity,
+  Virtualized,
+  Filter,
+  OnFilter,
+  AfterUploadProps,
+  RowSelection,
+  AvatarColor,
+  FileItemStatus,
+  OverflowItem,
+  RenderFullLabelProps,
 } from './components/semi/types';
 
 /*原生semi locale*/

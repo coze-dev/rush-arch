@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/coze-design",
+      "comment": "同步coze-design类型导出",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/coze-design",
+  "email": "774070165@qq.com"
+}

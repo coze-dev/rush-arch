@@ -4,6 +4,7 @@
 export type {
   AvatarProps,
   AvatarGroupProps,
+  AvatarColor,
 } from '@douyinfe/semi-ui/lib/es/avatar/index.js';
 export type { ButtonProps } from '@douyinfe/semi-ui/lib/es/button/index.js';
 export type { BackTopProps } from '@douyinfe/semi-ui/lib/es/backtop/index.js';
@@ -22,7 +23,13 @@ export type {
   DescriptionsProps,
   DescriptionsItemProps,
 } from '@douyinfe/semi-ui/lib/es/descriptions/index.js';
-export type { ColumnProps } from '@douyinfe/semi-ui/lib/es/table/index.js';
+export type {
+  ColumnProps,
+  Virtualized,
+  Filter,
+  OnFilter,
+  RowSelection,
+} from '@douyinfe/semi-ui/lib/es/table/index.js';
 export type { CollapsibleProps } from '@douyinfe/semi-ui/lib/es/collapsible/index.js';
 export type { CollapseReactProps } from '@douyinfe/semi-ui/lib/es/collapse/index.js';
 export type { DividerProps } from '@douyinfe/semi-ui/lib/es/divider/index.js';
@@ -33,7 +40,10 @@ export type {
 } from '@douyinfe/semi-ui/lib/es/list/index.js';
 export type { SpaceProps } from '@douyinfe/semi-ui/lib/es/space/index.js';
 export type { NoticeReactProps } from '@douyinfe/semi-ui/lib/es/notification/index.js';
-export type { OverflowListProps } from '@douyinfe/semi-ui/lib/es/overflowList/index.js';
+export type {
+  OverflowListProps,
+  OverflowItem,
+} from '@douyinfe/semi-ui/lib/es/overflowList/index.js';
 export type {
   TabsProps,
   TabPaneProps,
@@ -52,9 +62,13 @@ export type {
 export type {
   TreeProps,
   TreeNodeData,
+  RenderFullLabelProps,
 } from '@douyinfe/semi-ui/lib/es/tree/index.js';
 export type { TreeSelectProps } from '@douyinfe/semi-ui/lib/es/treeSelect/index.js';
-export type { BaseTypographyProps } from '@douyinfe/semi-ui/lib/es/typography/index.js';
+export type {
+  BaseTypographyProps,
+  TextProps,
+} from '@douyinfe/semi-ui/lib/es/typography/index.js';
 export type { TransferProps } from '@douyinfe/semi-ui/lib/es/transfer/index.js';
 export type { InputProps } from '@douyinfe/semi-ui/lib/es/input/index.js';
 export type {
@@ -62,6 +76,7 @@ export type {
   OptionProps,
   optionRenderProps,
   RenderSelectedItemFn,
+  OptionGroupProps,
 } from '@douyinfe/semi-ui/lib/es/select/index.js';
 export type { HighlightProps } from '@douyinfe/semi-ui/lib/es/highlight/index.js';
 export type { ImageProps } from '@douyinfe/semi-ui/lib/es/image/index.js';
@@ -115,9 +130,19 @@ export type {
   customRequestArgs,
   RenderFileItemProps,
   FileItem,
+  AfterUploadProps,
+  FileItemStatus,
 } from '@douyinfe/semi-ui/lib/es/upload/index.js';
 
 export type {
   CascaderData,
   FilterRenderProps,
+  CascaderProps,
+  Value as CascaderValue,
+  SimpleValueType as CascaderSimpleValueType,
+  Entity as CascaderEntity,
 } from '@douyinfe/semi-ui/lib/es/cascader/index.js';
+
+export type { SpinProps } from '@douyinfe/semi-ui/lib/es/spin/index.js';
+
+export type { PresetType } from '@douyinfe/semi-ui/lib/es/datePicker/index.js';

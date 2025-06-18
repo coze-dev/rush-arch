@@ -31,3 +31,5 @@ export interface TagProps
   loading?: boolean;
   disabled?: boolean;
 }
+
+export type { TagGroupProps } from '@douyinfe/semi-ui/lib/es/tag/index.js';

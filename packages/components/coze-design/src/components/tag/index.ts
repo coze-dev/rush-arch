@@ -3,4 +3,4 @@
 
 export { Tag } from './tag';
 
-export { type TagProps, type TagColor } from './tag-types';
+export { type TagProps, type TagColor, type TagGroupProps } from './tag-types';
