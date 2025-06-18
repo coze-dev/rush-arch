@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react-merge",
+      "comment": "export goToPreviousChunk and goToNextChunk",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/react-merge",
+  "email": "stream-pipe@users.noreply.github.com"
+}

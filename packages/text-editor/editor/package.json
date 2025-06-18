@@ -22,6 +22,11 @@
       "require": "./dist/react.js",
       "import": "./dist/esm/react.js"
     },
+    "./react-merge": {
+      "types": "./dist/react-merge.d.ts",
+      "require": "./dist/react-merge.js",
+      "import": "./dist/esm/react-merge.js"
+    },
     "./vscode": {
       "types": "./dist/vscode.d.ts",
       "require": "./dist/vscode.js",

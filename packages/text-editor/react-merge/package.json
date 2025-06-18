@@ -22,10 +22,9 @@
     "dev": "vite --force",
     "lint": "eslint && tsc --noEmit"
   },
-  "dependencies": {
-    "@codemirror/merge": "^6.10.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "@codemirror/merge": "^6.10.0",
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1",
     "@coze-arch/ts-config": "workspace:*",
@@ -41,6 +40,7 @@
     "typescript": "^5.8.2"
   },
   "peerDependencies": {
+    "@codemirror/merge": "^6.10.0",
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1",
     "@coze-editor/react": "workspace:*",
