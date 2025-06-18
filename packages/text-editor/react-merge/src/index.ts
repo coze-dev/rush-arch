@@ -2,3 +2,4 @@
 //  SPDX-License-Identifier: MIT
 
 export { MergeViewRenderer } from './renderer';
+export { goToPreviousChunk, goToNextChunk } from '@codemirror/merge';
