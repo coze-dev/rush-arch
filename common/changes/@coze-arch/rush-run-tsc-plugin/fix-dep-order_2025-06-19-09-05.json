@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/rush-run-tsc-plugin",
+      "comment": "do not ignore dep order when runing ts check",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/rush-run-tsc-plugin",
+  "email": "tecvan.fe@qq.com"
+}
