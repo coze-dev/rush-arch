@@ -1458,6 +1458,9 @@ importers:
       '@codemirror/language':
         specifier: ^6.10.1
         version: 6.11.1
+      '@codemirror/merge':
+        specifier: ^6.10.0
+        version: 6.10.1
       '@codemirror/state':
         specifier: ^6.4.1
         version: 6.5.2
@@ -2722,11 +2725,10 @@ importers:
         version: 5.8.2
 
   ../../../packages/text-editor/react-merge:
-    dependencies:
+    devDependencies:
       '@codemirror/merge':
         specifier: ^6.10.0
         version: 6.10.1
-    devDependencies:
       '@codemirror/state':
         specifier: ^6.4.1
         version: 6.5.2
