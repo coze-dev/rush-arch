@@ -1,6 +1,3 @@
-//  Copyright (c) 2025 coze-dev
-//  SPDX-License-Identifier: MIT
-
 import React, { ForwardedRef, useContext } from 'react';
 
 import { OriginIconProps } from '../type';

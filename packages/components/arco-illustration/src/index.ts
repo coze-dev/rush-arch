@@ -1,6 +1,3 @@
-//  Copyright (c) 2025 coze-dev
-//  SPDX-License-Identifier: MIT
-
 export { default as IconCozIllusAddDark } from './IconCozIllusAddDark';
 export { default as IconCozIllusAdd } from './IconCozIllusAdd';
 export { default as IconCozIllus404Dark } from './IconCozIllus404Dark';
@@ -29,5 +26,7 @@ export { default as IconCozFileCode } from './IconCozFileCode';
 export { default as IconCozFileOther } from './IconCozFileOther';
 export { default as IconCozFileCsv } from './IconCozFileCsv';
 export { default as IconCozFilePdf } from './IconCozFilePdf';
+export { default as IconCozeLogo } from './IconCozeLogo';
+export { default as IconVolcanoLogo } from './IconVolcanoLogo';
 
 export * from './type';

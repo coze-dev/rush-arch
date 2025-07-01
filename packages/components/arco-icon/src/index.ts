@@ -1,6 +1,3 @@
-//  Copyright (c) 2025 coze-dev
-//  SPDX-License-Identifier: MIT
-
 export { default as IconCozLoading } from './IconCozLoading';
 export { default as IconCozTeamFill } from './IconCozTeamFill';
 export { default as IconCozTeam } from './IconCozTeam';
@@ -508,5 +505,7 @@ export { default as IconCozVideoCameraFill } from './IconCozVideoCameraFill';
 export { default as IconCozDesktopSlashFill } from './IconCozDesktopSlashFill';
 export { default as IconCozVideoCameraSlashFill } from './IconCozVideoCameraSlashFill';
 export { default as IconCozVideoCamera } from './IconCozVideoCamera';
+export { default as IconCozSingleOperate } from './IconCozSingleOperate';
+export { default as IconCozTagFill } from './IconCozTagFill';
 
 export * from './type';
