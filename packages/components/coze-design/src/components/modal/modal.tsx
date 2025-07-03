@@ -228,8 +228,8 @@ const ModalComponent = forwardRef<SemiModal, ModalProps>(
 
     const scrollMaxHeight = useMemo(
       () =>
-        // 8 * 4 = modal.pt + modal.pb + gap * 2
-        maxHeight - titleHeight - footerHeight - 8 * 4,
+        // 16 * 4 = modal.pt + modal.pb + gap * 2
+        maxHeight - titleHeight - footerHeight - 16 * 4,
       [maxHeight, titleHeight, footerHeight],
     );
 
