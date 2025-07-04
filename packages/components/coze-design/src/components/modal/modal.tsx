@@ -206,6 +206,9 @@ const ModalComponent = forwardRef<SemiModal, ModalProps>(
 
     const [titleHeight, setTitleHeight] = useState(0);
     useEffect(() => {
+      if (!visible) {
+        return;
+      }
       const _titleHeight =
         document
           ?.querySelector(`.${modalId}`)
@@ -213,10 +216,13 @@ const ModalComponent = forwardRef<SemiModal, ModalProps>(
           ?.getBoundingClientRect()?.height ?? 0;
 
       setTitleHeight(_titleHeight);
-    }, [title, modalId]);
+    }, [title, modalId, visible]);
 
     const [footerHeight, setFooterHeight] = useState(0);
     useEffect(() => {
+      if (!visible) {
+        return;
+      }
       const _footerHeight =
         document
           ?.querySelector(`.${modalId}`)
@@ -224,7 +230,7 @@ const ModalComponent = forwardRef<SemiModal, ModalProps>(
           ?.getBoundingClientRect()?.height ?? 0;
 
       setFooterHeight(_footerHeight);
-    }, [_footer, modalId]);
+    }, [_footer, modalId, visible]);
 
     const scrollMaxHeight = useMemo(
       () =>
