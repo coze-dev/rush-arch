@@ -29,6 +29,7 @@ disableEditContext();
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface EditorOptions<T, U> {
   parent: HTMLElement;
+  root?: Document | ShadowRoot;
   defaultValue?: string;
   options: T;
   extensions?: Extension[];
@@ -223,7 +224,7 @@ function create<T extends EditorPluginSpec<string, any, any>[]>({
   }
 
   function render(opts: EditorOptions<Values, Events>): API {
-    const { parent, defaultValue } = opts;
+    const { parent, root, defaultValue } = opts;
     let { extensions: userExtensions } = opts;
 
     if (!Array.isArray(userExtensions)) {
@@ -240,6 +241,7 @@ function create<T extends EditorPluginSpec<string, any, any>[]>({
 
     const view = new EditorView({
       parent,
+      root,
       state: EditorState.create({
         doc: defaultValue ?? '',
         extensions: [...extensions, ...userExtensions],
