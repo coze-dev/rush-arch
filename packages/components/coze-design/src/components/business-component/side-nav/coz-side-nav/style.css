@@ -1,0 +1,94 @@
+.coz-side-nav {
+  .semi-collapse-content {
+    padding: 0;
+  }
+
+  .semi-collapse-header {
+    height: 28px;
+    margin: 0;
+    padding: 6px 8px;
+
+    font-weight: 500;
+    color: var(--coz-fg-secondary);
+
+    border-radius: 4px;
+
+    &:hover {
+      background-color: var(--coz-mg-secondary-hovered);
+    }
+
+    &:active {
+      background-color: var(--coz-mg-secondary-pressed);
+    }
+
+    .semi-collapse-header-icon {
+      margin-right: 4px;
+    }
+  }
+
+  .semi-collapse-item {
+    border-bottom: none;
+  }
+
+  /* item 元素项 */
+  .coz-side-nav-list {
+    position: relative;
+    width: 100%;
+
+    &::before {
+      content: '';
+
+      position: absolute;
+      left: 15px;
+
+      width: 1px;
+      height: 100%;
+
+      background-color: var(--coz-stroke-primary);
+    }
+  }
+
+  .coz-side-nav-list-item {
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 28px;
+    margin: 2px 0 0 26px;
+    padding: 4px 6px;
+
+    color: var(--coz-fg-primary);
+
+    border-radius: 4px;
+
+    .close-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--coz-fg-secondary);
+    }
+
+    &:hover {
+      background-color: var(--coz-mg-secondary-hovered);
+    }
+
+    &:active {
+      background-color: var(--coz-mg-secondary-pressed);
+    }
+  }
+
+  .coz-side-nav-list-item.selected {
+    font-weight: 500;
+    color: var(--coz-fg-plus);
+    background-color: var(--coz-mg-primary);
+
+    &:hover {
+      background-color: var(--coz-mg-primary-hovered);
+    }
+
+    &:active {
+      background-color: var(--coz-mg-primary-pressed);
+    }
+  }
+}

@@ -13,6 +13,7 @@ import { BotCard } from '../top-nav/bot-card';
 import { TopNav } from '../top-nav';
 import { SideNavInModal } from '../side-nav/side-nav-in-modal';
 import { SideNav } from '../side-nav/side-nav';
+import { CozSideNav } from '../side-nav/coz-side-nav';
 const meta: Meta = {
   title: 'Business/Component',
   tags: ['autodocs'],
@@ -26,6 +27,97 @@ export const Default = args => (
     一些 coze design 组件的使用示例
   </View>
 );
+
+const mockSideNavDemoItems = [
+  {
+    key: 'language',
+    text: 'Language',
+    items: [
+      {
+        key: 'Chinese',
+        text: 'Chinese',
+      },
+      {
+        key: 'English',
+        text: 'English',
+      },
+      {
+        key: 'Spanish',
+        text: 'Spanish',
+      },
+      {
+        key: 'Portuguese',
+        text: 'Portuguese',
+      },
+      {
+        key: 'French',
+        text: 'French',
+      },
+    ],
+  },
+  {
+    key: 'country',
+    text: 'Country',
+    items: [
+      {
+        key: 'China',
+        text: 'China',
+      },
+      {
+        key: 'America',
+        text: 'America',
+      },
+    ],
+  },
+];
+
+export const CozSideNavDemo = args => {
+  const [selectedItems, setSelectedItems] = useState<string[][]>([]);
+  const onItemClick = (_i, path) => {
+    const idx = selectedItems.findIndex(
+      item => item[0] === path[0] && item[1] === path[1],
+    );
+    if (idx === -1) {
+      setSelectedItems(prev => {
+        const newArr = [...prev, path];
+        return newArr;
+      });
+    } else {
+      return;
+    }
+  };
+  const onDeleteClick = (_i, path) => {
+    const idx = selectedItems.findIndex(
+      item => item[0] === path[0] && item[1] === path[1],
+    );
+    if (idx === -1) {
+      return;
+    } else {
+      setSelectedItems(prev => {
+        const newArr = [...prev];
+        newArr.splice(idx, 1);
+        return newArr;
+      });
+    }
+  };
+  return (
+    <View prop="variant" value="default">
+      <div className="w-full !h-[600px] flex flex-row border">
+        <CozSideNav
+          {...args}
+          width={188}
+          items={mockSideNavDemoItems}
+          selectedItems={selectedItems}
+          onItemClick={onItemClick}
+          onDeleteClick={onDeleteClick}
+        />
+        <div className="h-full flex-1 flex justify-center items-center text-[56px] font-extrabold">
+          <div> 当前元素默认支持嵌套一层，不考虑多层情况</div>
+        </div>
+      </div>
+    </View>
+  );
+};
 
 export const SideNavDemo = args => (
   <View prop="variant" value="default">
