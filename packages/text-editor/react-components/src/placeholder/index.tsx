@@ -2,7 +2,7 @@
 //  SPDX-License-Identifier: MIT
 
 import { createPortal } from 'react-dom';
-import { type ReactNode } from 'react';
+import { type ReactPortal, type ReactNode } from 'react';
 
 import { useHTMLElement, useInjectorEffect } from '@coze-editor/react-hooks';
 import {
@@ -10,7 +10,7 @@ import {
   activeLinePlaceholder,
 } from '@coze-editor/extension-placeholder';
 
-function Placeholder({ children }: { children?: ReactNode }): ReactNode {
+function Placeholder({ children }: { children?: ReactNode }): ReactPortal {
   const element = useHTMLElement('span');
 
   useInjectorEffect(
@@ -27,7 +27,7 @@ interface ActiveLinePlaceholderProps {
 
 function ActiveLinePlaceholder({
   children,
-}: ActiveLinePlaceholderProps): ReactNode {
+}: ActiveLinePlaceholderProps): ReactPortal {
   const element = useHTMLElement('span');
 
   useInjectorEffect(
