@@ -1,6 +1,6 @@
 {
   "name": "@coze-editor/lezer-parser-jinja2",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.879fbb",
   "description": "lezer-parser-jinja2",
   "license": "MIT",
   "author": "fengzilong",
