@@ -1,6 +1,3 @@
-//  Copyright (c) 2025 coze-dev
-//  SPDX-License-Identifier: MIT
-
 import { describe, it } from 'vitest';
 import { fireEvent, render } from '@testing-library/react';
 
@@ -16,8 +13,9 @@ describe('Search', () => {
     it('calls when the input changes', () => {
       const onChange = vi.fn();
       const onSearch = vi.fn();
+      const onBlur = vi.fn();
       const { container } = render(
-        <Search onChange={onChange} onSearch={onSearch} />,
+        <Search onChange={onChange} onSearch={onSearch} onBlur={onBlur} />,
       );
 
       const input = container.querySelector('[data-testid="ui.search-input"]');
@@ -32,6 +30,10 @@ describe('Search', () => {
       // @ts-expect-error -- linter-disable-autofix
       fireEvent.keyPress(input, { key: 'Enter', code: 'Enter' });
       expect(onSearch).toHaveBeenCalled();
+
+      //模拟失焦点
+      fireEvent.blur(input as Element);
+      expect(onBlur).toBeCalled();
     });
   });
 
@@ -46,13 +48,22 @@ describe('Search', () => {
   });
 
   it('test searchInput blur', () => {
+    const onBlur = vi.fn();
     const setFocusStatus = vi.fn();
-    render(<SearchInput onBlur={() => setFocusStatus(false)} />);
+    render(
+      <SearchInput
+        onBlur={() => {
+          setFocusStatus(false);
+          onBlur();
+        }}
+      />,
+    );
     const input = document.querySelector('[data-testid="ui.search-input"]');
     // 模拟失去焦点
     // @ts-expect-error -- linter-disable-autofix
     fireEvent.blur(input);
     expect(setFocusStatus).toHaveBeenCalledWith(false);
+    expect(onBlur).toBeCalled();
   });
 
   it('test searchInput onChange', () => {

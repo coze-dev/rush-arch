@@ -1,6 +1,3 @@
-//  Copyright (c) 2025 coze-dev
-//  SPDX-License-Identifier: MIT
-
 import React, { forwardRef, useEffect, useState } from 'react';
 
 import { cn } from '@/utils';
@@ -18,6 +15,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       loading,
       onSearch,
       onChange,
+      onBlur,
       style,
       showClear = true,
       value,
@@ -44,7 +42,8 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
           setValue(changedValue);
           onChange?.(changedValue, e);
         }}
-        onBlur={() => {
+        onBlur={e => {
+          onBlur?.(e);
           setFocusStatus(false);
         }}
         onFocus={() => {
