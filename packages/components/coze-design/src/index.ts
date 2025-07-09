@@ -363,6 +363,7 @@ export type {
   FormState,
   FileItem,
   TreeNodeData,
+  TreeProps,
   RenderSelectedItemFn,
   SideSheetReactProps,
   SliderProps,
