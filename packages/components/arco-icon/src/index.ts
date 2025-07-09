@@ -507,5 +507,6 @@ export { default as IconCozVideoCameraSlashFill } from './IconCozVideoCameraSlas
 export { default as IconCozVideoCamera } from './IconCozVideoCamera';
 export { default as IconCozSingleOperate } from './IconCozSingleOperate';
 export { default as IconCozTagFill } from './IconCozTagFill';
+export { default as IconCozArrowEnter } from './IconCozArrowEnter';
 
 export * from './type';
