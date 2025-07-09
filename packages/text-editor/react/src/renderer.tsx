@@ -41,6 +41,7 @@ type InferRendererProps<T extends EditorPluginSpec<string, any, any>[]> = {
     className?: string;
   };
   defaultValue?: string;
+  root?: Document | ShadowRoot;
   options?: Partial<InferValues<T[number]>>;
   extensions?: Extension[];
   didMount?: (api: InferEditorAPIFromPlugins<T>) => void;
@@ -55,6 +56,7 @@ function Renderer<T extends EditorPluginSpec<string, any, any>[]>(
   const {
     plugins,
     defaultValue,
+    root,
     options,
     domProps = {},
     extensions,
@@ -79,6 +81,7 @@ function Renderer<T extends EditorPluginSpec<string, any, any>[]>(
 
     const exported = render({
       parent: ref.current!,
+      root,
       defaultValue,
       options: options ?? {},
       extensions,
