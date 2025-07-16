@@ -135,6 +135,14 @@
       "shortName": "-c",
       "description": "Git commit hash",
       "associatedCommands": ["release"]
+    },
+    {
+      "parameterKind": "string",
+      "argumentName": "REGISTRY",
+      "longName": "--registry",
+      "shortName": "-r",
+      "description": "Registry",
+      "associatedCommands": ["release"]
     }
   ]
 }
