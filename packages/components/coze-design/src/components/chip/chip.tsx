@@ -64,15 +64,17 @@ export const Chip: FC<ChipProps> = forwardRef<HTMLDivElement, ChipProps>(
       <div ref={ref} className={cls} {...restProps}>
         {loading ? <IconCozLoading className="mr-2px animate-spin" /> : null}
         {children}
-        <span className="ml-4px flex items-center">
-          {chipStyle === 'remove' && (
-            <IconCozCross
-              className={crossIconCls}
-              onClick={handleRemoveClick}
-            />
-          )}
-          {chipStyle === 'select' && <IconCozArrowDown />}
-        </span>
+        {chipStyle === 'readonly' ? null : (
+          <span className="ml-4px flex items-center">
+            {chipStyle === 'remove' && (
+              <IconCozCross
+                className={crossIconCls}
+                onClick={handleRemoveClick}
+              />
+            )}
+            {chipStyle === 'select' && <IconCozArrowDown />}
+          </span>
+        )}
       </div>
     );
   },
