@@ -23,6 +23,11 @@ function Mention(props: MentionOptions) {
           return propsRef.current.onSearch(...args);
         }
       },
+      onTrigger(...args) {
+        if (typeof propsRef.current.onTrigger === 'function') {
+          return propsRef.current.onTrigger(...args);
+        }
+      },
     };
     return injector.inject([
       mention(
