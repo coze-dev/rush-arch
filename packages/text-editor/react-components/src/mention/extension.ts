@@ -40,7 +40,7 @@ function mention(options: MentionOptions): Extension {
     },
     update(value, tr) {
       const options = tr.startState.facet(mentionConfig);
-      const { search = true, onOpenChange, onSearch } = options;
+      const { search = true, onOpenChange, onSearch, onTrigger } = options;
 
       let { show } = value;
 
@@ -64,6 +64,16 @@ function mention(options: MentionOptions): Extension {
           });
         } else if (hasTrigger(options)) {
           triggerContext = options.trigger(tr);
+        }
+
+        if (triggerContext && typeof onTrigger === 'function') {
+          onTrigger({
+            triggerContext: {
+              from: triggerContext.from,
+              to: triggerContext.to,
+              triggerCharacter: triggerContext.triggerCharacter,
+            },
+          });
         }
       }
 

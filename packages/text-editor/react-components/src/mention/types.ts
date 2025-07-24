@@ -15,6 +15,10 @@ interface MentionSearchEvent {
   value: string;
 }
 
+interface MentionTriggerEvent {
+  triggerContext: Pick<TriggerContext, 'from' | 'to' | 'triggerCharacter'>;
+}
+
 interface SharedMentionOptions {
   search?:
     | {
@@ -28,6 +32,7 @@ interface SharedMentionOptions {
     | boolean;
   onOpenChange?: (e: MentionOpenChangeEvent) => void;
   onSearch?: (e: MentionSearchEvent) => void;
+  onTrigger?: (e: MentionTriggerEvent) => void;
 }
 
 type TriggerCharactersMentionOptions = SharedMentionOptions & {
