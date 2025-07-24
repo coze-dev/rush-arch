@@ -22,6 +22,7 @@ import {
 import { Prec } from '@codemirror/state';
 
 import { languageSupport, markdownLanguage, promptLanguage } from './language';
+import { fixSougouInput } from './fix-sougou-input';
 
 // const forEachFocusableWidget = ({ view }: { view: EditorView }) => {
 //   return (callback: (from, to, widget) => void) => {
@@ -52,7 +53,7 @@ const preset = [
   api('undo', undo),
   api('redo', redo),
   api('transformTextInSelection', transformTextInSelection),
-  extension([Prec.high(focusableKeymap)]),
+  extension([Prec.high(focusableKeymap), fixSougouInput]),
 ];
 
 type EditorAPI = InferEditorAPIFromPlugins<typeof preset>;
