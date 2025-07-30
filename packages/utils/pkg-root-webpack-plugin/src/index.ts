@@ -1,4 +1,5 @@
 import path from 'path';
+import os from 'os';
 import fs from 'fs';
 
 import { type Compiler } from 'webpack';
@@ -34,6 +35,7 @@ class PkgRootWebpackPlugin {
   }
 
   apply(compiler: Compiler) {
+    const SEP = os.platform() === 'win32' ? '\\' : '/';
     const target = compiler.hooks.normalModuleFactory;
     target.tap('PkgRootWebpackPlugin', nmf => {
       nmf.hooks.beforeResolve.tapAsync(
@@ -49,8 +51,8 @@ class PkgRootWebpackPlugin {
           if (innerRequest.startsWith(`${root}/`)) {
             const folder = packagesDirs.find(
               fold =>
-                context.indexOf(`${fold}/`) !== -1 &&
-                !excludeFolders.includes(`${fold}/`),
+                context.indexOf(`${fold}${SEP}`) !== -1 &&
+                !excludeFolders.includes(`${fold}${SEP}`),
             );
             if (!folder) {
               return callback();
