@@ -34,6 +34,7 @@ class PkgRootWebpackPlugin {
   }
 
   apply(compiler: Compiler) {
+    const SEP = path.sep;
     const target = compiler.hooks.normalModuleFactory;
     target.tap('PkgRootWebpackPlugin', nmf => {
       nmf.hooks.beforeResolve.tapAsync(
@@ -46,11 +47,11 @@ class PkgRootWebpackPlugin {
           }
           const { root, excludeFolders = [], packagesDirs } = this.options;
           const { context } = request;
-          if (innerRequest.startsWith(`${root}/`)) {
+          if (innerRequest.startsWith(`${root}${SEP}`)) {
             const folder = packagesDirs.find(
               fold =>
-                context.indexOf(`${fold}/`) !== -1 &&
-                !excludeFolders.includes(`${fold}/`),
+                context.indexOf(`${fold}${SEP}`) !== -1 &&
+                !excludeFolders.includes(`${fold}${SEP}`),
             );
             if (!folder) {
               return callback();

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/pkg-root-webpack-plugin",
+      "comment": "adapter for window sep style",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/pkg-root-webpack-plugin",
+  "email": "tecvan.fe@qq.com"
+}
