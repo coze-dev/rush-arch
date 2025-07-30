@@ -1,4 +1,5 @@
 import path from 'path';
+import os from 'os';
 import fs from 'fs';
 
 import { type Compiler } from 'webpack';
@@ -34,7 +35,7 @@ class PkgRootWebpackPlugin {
   }
 
   apply(compiler: Compiler) {
-    const SEP = path.sep;
+    const SEP = os.platform() === 'win32' ? '\\' : '/';
     const target = compiler.hooks.normalModuleFactory;
     target.tap('PkgRootWebpackPlugin', nmf => {
       nmf.hooks.beforeResolve.tapAsync(
