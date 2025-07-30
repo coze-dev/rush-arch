@@ -48,7 +48,7 @@ class PkgRootWebpackPlugin {
           }
           const { root, excludeFolders = [], packagesDirs } = this.options;
           const { context } = request;
-          if (innerRequest.startsWith(`${root}${SEP}`)) {
+          if (innerRequest.startsWith(`${root}/`)) {
             const folder = packagesDirs.find(
               fold =>
                 context.indexOf(`${fold}${SEP}`) !== -1 &&
