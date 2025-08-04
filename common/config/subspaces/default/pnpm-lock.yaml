@@ -352,10 +352,6 @@ importers:
         version: 3.0.9(@edge-runtime/vm@3.2.0)(@types/debug@4.1.12)(@types/node@22.13.13)(happy-dom@17.4.4)(jiti@2.4.2)(less@4.3.0)(sass-embedded@1.89.2)(sass@1.89.0)(sugarss@2.0.0)(terser@5.39.2)(tsx@4.19.3)(yaml@2.8.0)
 
   ../../../packages/components/arco-icon:
-    dependencies:
-      react:
-        specifier: ~18.2.0
-        version: 18.2.0
     devDependencies:
       '@coze-arch/eslint-config':
         specifier: workspace:*
@@ -372,15 +368,14 @@ importers:
       '@types/react':
         specifier: 18.2.37
         version: 18.2.37
+      react:
+        specifier: ~18.2.0
+        version: 18.2.0
       typescript:
         specifier: ^5.8.2
         version: 5.8.2
 
   ../../../packages/components/arco-illustration:
-    dependencies:
-      react:
-        specifier: ~18.2.0
-        version: 18.2.0
     devDependencies:
       '@coze-arch/eslint-config':
         specifier: workspace:*
@@ -400,6 +395,9 @@ importers:
       '@types/react':
         specifier: 18.2.37
         version: 18.2.37
+      react:
+        specifier: ~18.2.0
+        version: 18.2.0
       typescript:
         specifier: ^5.8.2
         version: 5.8.2

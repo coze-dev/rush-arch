@@ -11,16 +11,18 @@
     "lint": "eslint ./",
     "test": "exit 0"
   },
-  "dependencies": {
-    "react": "~18.2.0"
-  },
   "devDependencies": {
     "@coze-arch/eslint-config": "workspace:*",
     "@coze-arch/ts-config": "workspace:*",
     "@rsbuild/plugin-react": "^1.1.1",
     "@rslib/core": "^0.5.5",
     "@types/react": "18.2.37",
+    "react": "~18.2.0",
     "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "publishConfig": {
     "access": "public",
