@@ -29,7 +29,12 @@ export const Tooltip = forwardRef<SemiToolTip, TooltipProps>(
       className,
       theme === 'light' ? 'light' : 'dark',
     );
-    return <SemiToolTip ref={ref} className={cls} {...restProps} />;
+    const { content, disabled } = restProps || {};
+    return !content || disabled ? (
+      <>{restProps.children}</>
+    ) : (
+      <SemiToolTip ref={ref} className={cls} {...restProps} />
+    );
   },
 );
 

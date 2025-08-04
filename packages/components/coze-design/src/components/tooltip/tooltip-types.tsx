@@ -28,4 +28,5 @@ export interface TooltipProps extends IComponentBaseProps, SemiTooltipProps {
   theme?: Theme;
   visible?: boolean;
   clickToHide?: boolean;
+  disabled?: boolean;
 }
