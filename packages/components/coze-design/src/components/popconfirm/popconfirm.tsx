@@ -30,6 +30,7 @@ const PopconfirmComponent = forwardRef<SemiPopover, PopconfirmProps>(
       children,
       content,
       title,
+      disabled,
       defaultVisible,
       visible,
       trigger = defaultProps.trigger,
@@ -127,6 +128,10 @@ const PopconfirmComponent = forwardRef<SemiPopover, PopconfirmProps>(
         confirmLoading,
       ],
     );
+
+    if (disabled) {
+      return <>{children}</>;
+    }
 
     return (
       <SemiPopover

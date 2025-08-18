@@ -15,6 +15,7 @@ export interface PopconfirmProps
   content?: React.ReactNode;
   defaultVisible?: boolean;
   okText?: string;
+  disabled?: boolean;
   okButtonColor?: ButtonColor;
   okButtonProps?: ButtonProps;
   cancelText?: string;
