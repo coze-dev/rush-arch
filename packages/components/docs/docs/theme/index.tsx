@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 
 import Theme from 'rspress/theme';
 import { useDark, useLocation } from 'rspress/runtime';
-import { Button } from '@douyinfe/semi-ui';
+import { Button, LocaleProvider } from '@douyinfe/semi-ui';
+import { zh_CN, en_US } from '@coze-arch/coze-design/locales';
+import { CDLocaleProvider, zhCN, enUS } from '@coze-arch/coze-design';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars -- 保证css样式顺序和bot一致
 const a = Button;
 
@@ -10,6 +12,9 @@ const a = Button;
 const Layout = () => {
   // for semi dark mode
   const dark = useDark();
+
+  const currentLocale = navigator.language ?? 'en-US';
+
   useEffect(() => {
     if (dark) {
       document.body.setAttribute('theme-mode', 'dark');
@@ -21,15 +26,19 @@ const Layout = () => {
   const { pathname } = useLocation();
 
   return (
-    <Theme.Layout
-      bottom={
-        pathname.startsWith('/resource/') ? (
-          <div className="text-xs text-gray-500 text-center p-1">
-            部分内容为AI自动生成，注意甄别，如有错误请及时反馈
-          </div>
-        ) : null
-      }
-    />
+    <CDLocaleProvider locale={currentLocale === 'en-US' ? en_US : zh_CN}>
+      <LocaleProvider locale={currentLocale === 'en-US' ? enUS : zhCN}>
+        <Theme.Layout
+          bottom={
+            pathname.startsWith('/resource/') ? (
+              <div className="text-xs text-gray-500 text-center p-1">
+                部分内容为AI自动生成，注意甄别，如有错误请及时反馈
+              </div>
+            ) : null
+          }
+        />
+      </LocaleProvider>
+    </CDLocaleProvider>
   );
 };
 
