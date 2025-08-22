@@ -508,5 +508,9 @@ export { default as IconCozVideoCamera } from './IconCozVideoCamera';
 export { default as IconCozSingleOperate } from './IconCozSingleOperate';
 export { default as IconCozTagFill } from './IconCozTagFill';
 export { default as IconCozArrowEnter } from './IconCozArrowEnter';
+export { default as IconCozBatchTaskFill } from './IconCozBatchTaskFill';
+export { default as IconCozBatchTask } from './IconCozBatchTask';
+export { default as IconCozCoze } from './IconCozCoze';
+export { default as IconCozVolcengine } from './IconCozVolcengine';
 
 export * from './type';
