@@ -149,8 +149,8 @@
   },
   "cozePublishConfig": {
     "sideEffects": [
-      "./dist/esm/index.css",
-      "./dist/cjs/index.css"
+      "**/*.less",
+      "**/*.css"
     ],
     "exports": {
       ".": {
