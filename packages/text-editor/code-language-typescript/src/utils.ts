@@ -27,11 +27,4 @@ function displayPartsToString(displayParts?: SymbolDisplayPart[]) {
   return '';
 }
 
-enum DiagnosticCategory {
-  Warning = 0,
-  Error = 1,
-  Suggestion = 2,
-  Message = 3,
-}
-
-export { tagToString, displayPartsToString, DiagnosticCategory };
+export { tagToString, displayPartsToString };
