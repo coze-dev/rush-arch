@@ -11,8 +11,6 @@ import {
 } from 'vscode-languageserver-types';
 import {
   type CompletionEntryDetails,
-  DiagnosticCategory,
-  displayPartsToString,
   type FormatCodeSettings,
 } from 'typescript';
 import mitt from 'mitt';
@@ -29,7 +27,7 @@ import type {
   TransactionSpec,
 } from '@codemirror/state';
 
-import { tagToString } from './utils';
+import { DiagnosticCategory, displayPartsToString, tagToString } from './utils';
 import type { InitializeOptions, ITypeScriptWorker } from './types';
 import { asCompletionItemKind } from './as';
 

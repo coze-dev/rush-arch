@@ -2,6 +2,7 @@
 //  SPDX-License-Identifier: MIT
 
 import type ts from 'typescript';
+import { type SymbolDisplayPart } from 'typescript';
 
 function tagToString(tag: ts.JSDocTagInfo): string {
   let tagLabel = `*@${tag.name}*`;
@@ -19,4 +20,18 @@ function tagToString(tag: ts.JSDocTagInfo): string {
   return tagLabel;
 }
 
-export { tagToString };
+function displayPartsToString(displayParts?: SymbolDisplayPart[]) {
+  if (displayParts) {
+    return displayParts.map(displayPart2 => displayPart2.text).join('');
+  }
+  return '';
+}
+
+enum DiagnosticCategory {
+  Warning = 0,
+  Error = 1,
+  Suggestion = 2,
+  Message = 3,
+}
+
+export { tagToString, displayPartsToString, DiagnosticCategory };

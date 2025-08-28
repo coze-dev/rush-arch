@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/code-language-typescript",
+      "comment": "remote ts dependency",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/code-language-typescript",
+  "email": "maoyiwei.ebay@bytedance.com"
+}
