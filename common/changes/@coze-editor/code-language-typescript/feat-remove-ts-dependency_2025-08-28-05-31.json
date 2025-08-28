@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/code-language-typescript",
+      "comment": "remove ts dependencies",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/code-language-typescript",
+  "email": "maoyiwei.ebay@bytedance.com"
+}
