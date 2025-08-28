@@ -1568,6 +1568,9 @@ importers:
       vite:
         specifier: ^6.3.5
         version: 6.3.5(@types/node@22.13.13)(jiti@2.4.2)(less@4.3.0)(sass-embedded@1.89.2)(sass@1.89.0)(sugarss@2.0.0)(terser@5.39.2)(tsx@4.19.3)(yaml@2.8.0)
+      vite-bundle-analyzer:
+        specifier: ~1.2.1
+        version: 1.2.1
 
   ../../../packages/text-editor/editor:
     dependencies:
@@ -16893,6 +16896,10 @@ packages:
 
   victory-vendor@36.9.2:
     resolution: {integrity: sha512-PnpQQMuxlwYdocC8fIJqVXvkeViHYzotI+NJrCuav0ZYFoq912ZHBk3mCeuj+5/VpodOjPe1z0Fk2ihgzlXqjQ==}
+
+  vite-bundle-analyzer@1.2.1:
+    resolution: {integrity: sha512-dpJMQBnVjieMirpHILmgGsZAWU8fGyqK3ckj6O48wdy3fARlH7Mnz7BfYFUsd3ZdbuXjsYe7t5I/q2zsMOd5ig==}
+    hasBin: true
 
   vite-node@3.0.9:
     resolution: {integrity: sha512-w3Gdx7jDcuT9cNn9jExXgOyKmf5UOTb6WMHz8LGAm54eS1Elf5OuBhCxl6zJxGhEeIkgsE1WbHuoL0mj/UXqXg==}
@@ -34380,6 +34387,8 @@ snapshots:
       d3-shape: 3.2.0
       d3-time: 3.1.0
       d3-timer: 3.0.1
+
+  vite-bundle-analyzer@1.2.1: {}
 
   vite-node@3.0.9(@types/node@22.13.13)(jiti@2.4.2)(less@4.3.0)(sass-embedded@1.89.2)(sass@1.89.0)(sugarss@2.0.0)(terser@5.39.2)(tsx@4.19.3)(yaml@2.8.0):
     dependencies:
