@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-code",
+      "comment": "update shiki to fine-grained bundle",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/preset-code",
+  "email": "446472854@qq.com"
+}

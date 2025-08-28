@@ -2266,6 +2266,12 @@ importers:
       '@nozbe/microfuzz':
         specifier: ^1.0.0
         version: 1.0.0
+      '@shikijs/langs':
+        specifier: 3.6.0
+        version: 3.6.0
+      '@shikijs/themes':
+        specifier: 3.6.0
+        version: 3.6.0
       codemirror-shiki:
         specifier: ^0.2.2
         version: 0.2.2(@codemirror/state@6.5.2)(@codemirror/view@6.37.1)(shiki@3.6.0)
