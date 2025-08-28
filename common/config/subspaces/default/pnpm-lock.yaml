@@ -2266,6 +2266,12 @@ importers:
       '@nozbe/microfuzz':
         specifier: ^1.0.0
         version: 1.0.0
+      '@shikijs/langs':
+        specifier: ~3.12.0
+        version: 3.12.0
+      '@shikijs/themes':
+        specifier: ~3.12.0
+        version: 3.12.0
       codemirror-shiki:
         specifier: ^0.2.2
         version: 0.2.2(@codemirror/state@6.5.2)(@codemirror/view@6.37.1)(shiki@3.6.0)
@@ -7406,11 +7412,20 @@ packages:
   '@shikijs/engine-oniguruma@3.6.0':
     resolution: {integrity: sha512-nmOhIZ9yT3Grd+2plmW/d8+vZ2pcQmo/UnVwXMUXAKTXdi+LK0S08Ancrz5tQQPkxvjBalpMW2aKvwXfelauvA==}
 
+  '@shikijs/langs@3.12.0':
+    resolution: {integrity: sha512-HIca0daEySJ8zuy9bdrtcBPhcYBo8wR1dyHk1vKrOuwDsITtZuQeGhEkcEfWc6IDyTcom7LRFCH6P7ljGSCEiQ==}
+
   '@shikijs/langs@3.6.0':
     resolution: {integrity: sha512-IdZkQJaLBu1LCYCwkr30hNuSDfllOT8RWYVZK1tD2J03DkiagYKRxj/pDSl8Didml3xxuyzUjgtioInwEQM/TA==}
 
+  '@shikijs/themes@3.12.0':
+    resolution: {integrity: sha512-/lxvQxSI5s4qZLV/AuFaA4Wt61t/0Oka/P9Lmpr1UV+HydNCczO3DMHOC/CsXCCpbv4Zq8sMD0cDa7mvaVoj0Q==}
+
   '@shikijs/themes@3.6.0':
     resolution: {integrity: sha512-Fq2j4nWr1DF4drvmhqKq8x5vVQ27VncF8XZMBuHuQMZvUSS3NBgpqfwz/FoGe36+W6PvniZ1yDlg2d4kmYDU6w==}
+
+  '@shikijs/types@3.12.0':
+    resolution: {integrity: sha512-jsFzm8hCeTINC3OCmTZdhR9DOl/foJWplH2Px0bTi4m8z59fnsueLsweX82oGcjRQ7mfQAluQYKGoH2VzsWY4A==}
 
   '@shikijs/types@3.6.0':
     resolution: {integrity: sha512-cLWFiToxYu0aAzJqhXTQsFiJRTFDAGl93IrMSBNaGSzs7ixkLfdG6pH11HipuWFGW5vyx4X47W8HDQ7eSrmBUg==}
@@ -22320,13 +22335,26 @@ snapshots:
       '@shikijs/types': 3.6.0
       '@shikijs/vscode-textmate': 10.0.2
 
+  '@shikijs/langs@3.12.0':
+    dependencies:
+      '@shikijs/types': 3.12.0
+
   '@shikijs/langs@3.6.0':
     dependencies:
       '@shikijs/types': 3.6.0
 
+  '@shikijs/themes@3.12.0':
+    dependencies:
+      '@shikijs/types': 3.12.0
+
   '@shikijs/themes@3.6.0':
     dependencies:
       '@shikijs/types': 3.6.0
+
+  '@shikijs/types@3.12.0':
+    dependencies:
+      '@shikijs/vscode-textmate': 10.0.2
+      '@types/hast': 3.0.4
 
   '@shikijs/types@3.6.0':
     dependencies:

@@ -36,6 +36,8 @@
     "@coze-editor/vscode": "workspace:*",
     "@lezer/highlight": "~1.2.0",
     "@nozbe/microfuzz": "^1.0.0",
+    "@shikijs/langs": "~3.12.0",
+    "@shikijs/themes": "~3.12.0",
     "codemirror-shiki": "^0.2.2",
     "marked": "^15.0.7",
     "marked-shiki": "^1.2.0",
