@@ -9,6 +9,7 @@
   .coz-tab-bar-button {
     .semi-tabs-bar-button {
       .semi-tabs-tab-button.semi-tabs-tab {
+        @apply flex-shrink-0;
         @apply h-normal font-medium text-lg px-15px py-6px coz-fg-secondary;
 
         &:hover {

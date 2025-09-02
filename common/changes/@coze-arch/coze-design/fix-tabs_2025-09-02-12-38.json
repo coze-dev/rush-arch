@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/coze-design",
+      "comment": "collapsible 场景按钮折叠问题修复",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/coze-design",
+  "email": "289056872@qq.com"
+}
