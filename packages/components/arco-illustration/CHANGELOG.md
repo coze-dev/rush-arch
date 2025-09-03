@@ -1,5 +1,14 @@
 # @coze-arch/arco-illustration
 
+## 0.0.12 - 2025-09-03
+
+### Bug Fixes
+
+- update pkg
+- license mit
+- change react to peerDep
+
+
 ## 0.0.6 - 2025-06-10
 
 ### Other Changes

@@ -2,6 +2,24 @@
   "name": "@coze-arch/arco-illustration",
   "entries": [
     {
+      "version": "0.0.12",
+      "tag": "HEAD",
+      "date": "2025-09-03T07:01:48.028Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update pkg"
+          },
+          {
+            "comment": "license mit"
+          },
+          {
+            "comment": "change react to peerDep"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.6",
       "tag": "HEAD",
       "date": "2025-06-10T12:28:52.992Z",
