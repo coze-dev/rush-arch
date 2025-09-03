@@ -2,6 +2,71 @@
   "name": "@coze-arch/coze-design",
   "entries": [
     {
+      "version": "0.0.7",
+      "tag": "HEAD",
+      "date": "2025-09-03T06:43:14.207Z",
+      "comments": {
+        "patch": [
+          {
+            "comment": "同步coze-design类型导出"
+          },
+          {
+            "comment": "support custom tabbar props"
+          },
+          {
+            "comment": "support Tooltip no content & disabled"
+          },
+          {
+            "comment": "setup side effects for coze-design"
+          },
+          {
+            "comment": "sync"
+          },
+          {
+            "comment": "publish scripts"
+          },
+          {
+            "comment": "sync master"
+          },
+          {
+            "comment": "cascader"
+          },
+          {
+            "comment": "chip readonly margin"
+          },
+          {
+            "comment": "iconbutton"
+          },
+          {
+            "comment": "modal style padding gap"
+          },
+          {
+            "comment": "license mit"
+          },
+          {
+            "comment": "locale"
+          },
+          {
+            "comment": "popconfirm support disabled"
+          },
+          {
+            "comment": "Radio in pureCard mode"
+          },
+          {
+            "comment": "mjs import"
+          },
+          {
+            "comment": "sync search"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "side nav new component"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.6",
       "tag": "HEAD",
       "date": "2025-06-10T12:28:52.993Z",
