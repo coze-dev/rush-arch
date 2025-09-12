@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react-components",
+      "comment": "peer react version",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/react-components",
+  "email": "maoyiwei.ebay@bytedance.com"
+}

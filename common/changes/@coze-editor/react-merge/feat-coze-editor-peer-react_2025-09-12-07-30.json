@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react-merge",
+      "comment": "peer react version",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/react-merge",
+  "email": "maoyiwei.ebay@bytedance.com"
+}

@@ -44,8 +44,8 @@
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1",
     "@coze-editor/react": "workspace:*",
-    "react": "~18.2.0",
-    "react-dom": "~18.2.0"
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
   },
   "packageManager": "pnpm@9.15.0",
   "publishConfig": {
