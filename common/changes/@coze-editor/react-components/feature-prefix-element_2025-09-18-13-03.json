@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react-components",
+      "comment": "add PrefixElement",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/react-components",
+  "email": "stream-pipe@users.noreply.github.com"
+}
