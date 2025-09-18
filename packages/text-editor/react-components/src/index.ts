@@ -45,3 +45,5 @@ export {
   EmbededLineViewSide,
   type EmbededLineViewRefProps,
 } from './embeded-line-view';
+
+export { PrefixElement } from './prefix-element';
