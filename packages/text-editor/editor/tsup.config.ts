@@ -19,7 +19,8 @@ export default defineConfig({
     'src/language-json.ts',
     'src/language-shell.ts',
     'src/language-python.ts',
-    'src/vscode.ts'
+    'src/language-sql.ts',
+    'src/vscode.ts',
   ],
   format: ['cjs', 'esm'],
   sourcemap: true,

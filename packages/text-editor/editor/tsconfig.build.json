@@ -26,6 +26,9 @@
       "path": "../code-language-shell/tsconfig.build.json"
     },
     {
+      "path": "../code-language-sql/tsconfig.build.json"
+    },
+    {
       "path": "../code-language-typescript/tsconfig.build.json"
     },
     {

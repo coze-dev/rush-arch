@@ -725,6 +725,12 @@
       "tags": ["level-3"]
     },
     {
+      "packageName": "@coze-editor/code-language-sql",
+      "projectFolder": "packages/text-editor/code-language-sql",
+      "shouldPublish": true,
+      "tags": ["level-3"]
+    },
+    {
       "packageName": "@coze-editor/lezer-parser-json",
       "projectFolder": "packages/text-editor/lezer-parser-json",
       "shouldPublish": true,

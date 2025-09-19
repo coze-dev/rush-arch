@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-code",
+      "comment": "code language sql",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/preset-code",
+  "email": "maoyiwei.ebay@bytedance.com"
+}

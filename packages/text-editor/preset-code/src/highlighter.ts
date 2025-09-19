@@ -15,6 +15,7 @@ const highlighterPromise = createHighlighterCore({
     () => import('@shikijs/langs/javascript'),
     () => import('@shikijs/langs/typescript'),
     () => import('@shikijs/langs/python'),
+    () => import('@shikijs/langs/sql'),
   ],
   themes: [
     () => import('@shikijs/themes/github-dark'),

@@ -90,8 +90,8 @@ class LanguagesRegistry {
     langaugeExtensions.push(new LanguageSupport(language));
 
     // TODO: use shiki for all languages
-    // Only use shiki for TypeScript and Python temporarily
-    if (id === 'typescript' || id === 'python') {
+    // Only use shiki for TypeScript, Python, SQL temporarily
+    if (id === 'typescript' || id === 'python' || id === 'sql') {
       langaugeExtensions.push(
         shiki({
           highlighter: highlighterPromise,

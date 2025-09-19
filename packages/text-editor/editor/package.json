@@ -57,6 +57,11 @@
       "require": "./dist/language-python.js",
       "import": "./dist/esm/language-python.js"
     },
+    "./language-sql": {
+      "types": "./dist/language-sql.d.ts",
+      "require": "./dist/language-sql.js",
+      "import": "./dist/esm/language-sql.js"
+    },
     "./preset-universal": {
       "types": "./dist/preset-universal.d.ts",
       "require": "./dist/preset-universal.js",
@@ -104,6 +109,7 @@
     "@coze-editor/code-language-python": "workspace:*",
     "@coze-editor/code-language-shared": "workspace:*",
     "@coze-editor/code-language-shell": "workspace:*",
+    "@coze-editor/code-language-sql": "workspace:*",
     "@coze-editor/code-language-typescript": "workspace:*",
     "@coze-editor/core": "workspace:*",
     "@coze-editor/extension-json-ast": "workspace:*",
