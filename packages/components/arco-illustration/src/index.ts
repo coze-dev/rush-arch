@@ -28,5 +28,7 @@ export { default as IconCozFileCsv } from './IconCozFileCsv';
 export { default as IconCozFilePdf } from './IconCozFilePdf';
 export { default as IconCozeLogo } from './IconCozeLogo';
 export { default as IconVolcanoLogo } from './IconVolcanoLogo';
+export { default as IconCozIllusNull } from './IconCozIllusNull';
+export { default as IconCozIllusNullDark } from './IconCozIllusNullDark';
 
 export * from './type';
