@@ -44,6 +44,15 @@
     },
     {
       "parameterKind": "stringList",
+      "shortName": "-v",
+      "longName": "--version",
+      "description": "Specify publish version",
+      "argumentName": "VERSION",
+      "associatedCommands": ["pub"],
+      "required": false
+    },
+    {
+      "parameterKind": "stringList",
       "shortName": "-f",
       "longName": "--from",
       "description": "Publish specified packages and their upstream/downstream dependencies",
