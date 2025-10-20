@@ -512,5 +512,7 @@ export { default as IconCozBatchTaskFill } from './IconCozBatchTaskFill';
 export { default as IconCozBatchTask } from './IconCozBatchTask';
 export { default as IconCozCoze } from './IconCozCoze';
 export { default as IconCozVolcengine } from './IconCozVolcengine';
+export { default as IconCozBoxShadow } from './IconCozBoxShadow';
+export { default as IconCozOpen } from './IconCozOpen';
 
 export * from './type';

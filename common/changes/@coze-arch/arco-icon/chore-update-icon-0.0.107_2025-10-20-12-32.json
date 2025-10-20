@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/arco-icon",
+      "comment": "sync icon 0.0.107",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/arco-icon",
+  "email": "289056872@qq.com"
+}
