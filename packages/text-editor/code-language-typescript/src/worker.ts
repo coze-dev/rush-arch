@@ -175,6 +175,10 @@ class TypeScriptWorker implements ITypeScriptWorker {
       return null;
     }
 
+    if (node === sourceFile) {
+      return null;
+    }
+
     const type = checker.getTypeAtLocation(node);
 
     if (!type.isClassOrInterface()) {

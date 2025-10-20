@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/code-language-typescript",
+      "comment": "hover ts comment Object error",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/code-language-typescript",
+  "email": "zhangyi.hanchayi@bytedance.com"
+}
