@@ -410,9 +410,6 @@ importers:
       '@coze-arch/arco-illustration':
         specifier: workspace:*
         version: link:../arco-illustration
-      '@coze-arch/semi-theme-hand01':
-        specifier: workspace:*
-        version: link:../semi-theme-hand01
       '@douyinfe/semi-ui':
         specifier: ~2.72.3
         version: 2.72.3(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
@@ -450,6 +447,9 @@ importers:
       '@coze-arch/postcss-config':
         specifier: workspace:*
         version: link:../../../config/postcss-config
+      '@coze-arch/semi-theme-hand01':
+        specifier: workspace:*
+        version: link:../semi-theme-hand01
       '@coze-arch/stylelint-config':
         specifier: workspace:*
         version: link:../../../config/stylelint-config
