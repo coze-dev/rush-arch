@@ -15,7 +15,7 @@
     "@coze-arch/eslint-config": "workspace:*",
     "@coze-arch/ts-config": "workspace:*",
     "@rsbuild/plugin-react": "^1.1.1",
-    "@rslib/core": "^0.5.5",
+    "@rslib/core": "^0.16.0",
     "@types/node": "^22",
     "@types/react": "18.2.37",
     "react": "~18.2.0",

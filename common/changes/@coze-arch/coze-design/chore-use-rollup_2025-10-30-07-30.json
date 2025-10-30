@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/coze-design",
+      "comment": "upgrade rslib version",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/coze-design",
+  "email": "tecvan.fe@qq.com"
+}

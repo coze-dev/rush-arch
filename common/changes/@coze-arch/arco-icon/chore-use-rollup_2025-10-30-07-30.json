@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/arco-icon",
+      "comment": "upgrade rslib version",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/arco-icon",
+  "email": "tecvan.fe@qq.com"
+}

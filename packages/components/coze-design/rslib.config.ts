@@ -3,6 +3,7 @@
 
 import path from 'path';
 
+import tailwindNesting from 'tailwindcss/nesting';
 import tailwindcss from 'tailwindcss';
 import postcssNesting from 'postcss-nesting';
 import postcssImport from 'postcss-import';
@@ -39,8 +40,7 @@ const commonConfig: Partial<RsbuildConfig> = {
       postcssOptions: {
         plugins: [
           postcssImport(),
-          // tailwindNesting({ implementation: postcssNesting }),
-          postcssNesting(),
+          tailwindNesting(postcssNesting),
           tailwindcss({
             config: path.resolve(__dirname, 'tailwind.config.js'),
           }),
