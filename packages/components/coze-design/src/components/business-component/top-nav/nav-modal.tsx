@@ -4,7 +4,6 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import React, { useMemo, type FC } from 'react';
 
-import { Tooltip, type TooltipProps } from '@/components/tooltip';
 import {
   IconCozPlug,
   IconCozChatHashtag,
@@ -13,7 +12,9 @@ import {
   IconCozHouse,
   IconCozTeam,
   IconCozTelegramFill,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
+import { Tooltip, type TooltipProps } from '@/components/tooltip';
 import { Avatar } from '@/components/avatar';
 
 import { Nav } from '../side-nav/components/nav';

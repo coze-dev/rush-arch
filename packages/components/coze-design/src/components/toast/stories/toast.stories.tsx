@@ -4,9 +4,9 @@
 import { useState, type FC } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
+import { IconCozClockFill } from '@coze-arch/arco-icon';
 
 import { EnhancedView, View } from '@/components/view';
-import { IconCozClockFill } from '@/components/icon';
 import { Button } from '@/components/button';
 
 import type { ToastProps } from '..';

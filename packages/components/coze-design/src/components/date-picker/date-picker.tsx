@@ -8,13 +8,13 @@ import {
   type DatePickerProps as SemiDatePickerProps,
 } from '@douyinfe/semi-ui/lib/es/datePicker/index.js';
 import { DatePicker as SemiDatePicker } from '@douyinfe/semi-ui';
-
-import { cn } from '@/utils';
 import {
   IconCozArrowDown,
   IconCozCalendar,
   IconCozCross,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
+import { cn } from '@/utils';
 
 import { Select } from '../select';
 import { IconButton } from '../button';

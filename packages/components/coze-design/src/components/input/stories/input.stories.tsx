@@ -3,8 +3,8 @@
 
 import { type StoryFn as Story, type Meta } from '@storybook/react';
 import { Form as SemiForm } from '@douyinfe/semi-ui';
+import { IconCozLoading } from '@coze-arch/arco-icon';
 
-import { IconCozLoading } from '@/components/icon';
 import { FormInput } from '@/components/form';
 import { Button } from '@/components/button';
 

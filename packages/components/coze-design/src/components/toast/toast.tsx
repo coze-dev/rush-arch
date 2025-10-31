@@ -5,12 +5,12 @@ import { type ReactNode } from 'react';
 
 import { isUndefined, omitBy } from 'lodash-es';
 import { Toast as SemiToast, ToastFactory } from '@douyinfe/semi-ui';
-
-import { cn } from '@/utils/cn';
 import {
   IconCozCheckMarkCircleFill,
   IconCozWarningCircleFill,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
+import { cn } from '@/utils/cn';
 
 import { toastVariant } from './toast-variant';
 import type {

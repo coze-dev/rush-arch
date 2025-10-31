@@ -3,7 +3,7 @@
 
 import React from 'react';
 
-import { IconCozMoon, IconCozSun } from '@/components/icon';
+import { IconCozMoon, IconCozSun } from '@coze-arch/arco-icon';
 
 import { Button } from '../button';
 import { useTheme, type Theme } from './theme-provider';

@@ -4,9 +4,9 @@
 import { forwardRef } from 'react';
 
 import { Avatar as SemiAvatar } from '@douyinfe/semi-ui';
+import { IconCozEdit } from '@coze-arch/arco-icon';
 
 import { cn, mergeProps } from '@/utils';
-import { IconCozEdit } from '@/components/icon';
 
 import { avatarVariant } from './avatar-variant';
 import { type AvatarProps, type AvatarType, type Shape } from './avatar-types';

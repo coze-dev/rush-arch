@@ -4,14 +4,14 @@
 import React, { useState } from 'react';
 
 import type { Meta, StoryFn } from '@storybook/react';
-
-import { EnhancedView, View } from '@/components/view';
 import {
   IconCozCheckMarkFill,
   IconCozLoading,
   IconCozArrowDown,
   IconCozChatPeople,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
+import { EnhancedView, View } from '@/components/view';
 import { Button, SplitButton } from '@/components/button';
 
 import { type MenuProps, Menu, type MenuItem } from '..';

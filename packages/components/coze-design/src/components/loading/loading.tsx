@@ -4,9 +4,9 @@
 import { forwardRef, type JSX } from 'react';
 
 import { Spin as SemiLoading } from '@douyinfe/semi-ui';
+import { IconCozLoading } from '@coze-arch/arco-icon';
 
 import { cn, mergeProps } from '@/utils';
-import { IconCozLoading } from '@/components/icon';
 
 import { loadingVariants } from './loading-variant';
 import { type LoadingProps, type SizeMapping } from './loading-types';

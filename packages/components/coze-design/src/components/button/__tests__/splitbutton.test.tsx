@@ -6,8 +6,7 @@ import React from 'react';
 
 import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-
-import { IconCozPeopleFill } from '@/components/icon';
+import { IconCozPeopleFill } from '@coze-arch/arco-icon';
 
 import { SplitButton } from '..';
 

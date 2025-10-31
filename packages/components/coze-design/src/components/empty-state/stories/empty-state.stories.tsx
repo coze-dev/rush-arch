@@ -2,6 +2,7 @@
 //  SPDX-License-Identifier: MIT
 
 import { type StoryFn as Story, type Meta } from '@storybook/react';
+import { IconCozWarningCircle } from '@coze-arch/arco-icon';
 
 import { Toast } from '@/components/toast';
 import {
@@ -10,7 +11,6 @@ import {
   IconCozIllus404,
   IconCozIllus404Dark,
 } from '@/components/illustration';
-import { IconCozWarningCircle } from '@/components/icon';
 
 import { EmptyState, type EmptyStateProps } from '..';
 

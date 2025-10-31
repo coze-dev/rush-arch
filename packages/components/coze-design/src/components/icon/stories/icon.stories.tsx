@@ -5,11 +5,11 @@
 import { useState } from 'react';
 
 import { type StoryFn as Story, type Meta } from '@storybook/react';
+import * as icons from '@coze-arch/arco-icon';
 
 import { EnhancedView, View, ViewGroup } from '@/components/view';
 import { Switch } from '@/components/switch';
 import { InputNumber } from '@/components/input-number';
-import * as icons from '@/components/icon';
 import { Button, IconButton } from '@/components/button';
 import { Banner } from '@/components/banner';
 

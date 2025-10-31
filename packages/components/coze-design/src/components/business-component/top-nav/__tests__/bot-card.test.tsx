@@ -13,7 +13,7 @@ import { vi } from 'vitest';
 
 // 模拟 icon 组件
 
-vi.mock('@/components/icon', () => ({
+vi.mock('@coze-arch/arco-icon', () => ({
   IconCozEdit: () => <span data-testid="edit-icon" />,
 }));
 

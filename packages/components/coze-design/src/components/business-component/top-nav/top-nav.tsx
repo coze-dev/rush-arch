@@ -3,8 +3,9 @@
 
 import React, { useMemo, type FC } from 'react';
 
+import { IconCozArrowLeft, IconCozLoading } from '@coze-arch/arco-icon';
+
 import { Tag } from '@/components/tag';
-import { IconCozArrowLeft, IconCozLoading } from '@/components/icon';
 import { Button } from '@/components/button';
 
 import { SideNavModal } from './nav-modal';

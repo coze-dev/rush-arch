@@ -4,9 +4,9 @@
 import { forwardRef } from 'react';
 
 import { type Button as SemiButton } from '@douyinfe/semi-ui';
+import { IconCozAiFill } from '@coze-arch/arco-icon';
 
 import { cn } from '@/utils';
-import { IconCozAiFill } from '@/components/icon';
 
 import { buttonIconVariants } from '../button-variant';
 import { type AIButtonProps } from '../button-types';

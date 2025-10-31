@@ -4,13 +4,14 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import { type FC } from 'react';
 
-import { Input } from '@/components/input';
 import {
   IconCozLoading,
   IconCozHouse,
   IconCozMagnifier,
   IconCozPlusFill,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
+import { Input } from '@/components/input';
 import { Button } from '@/components/button';
 
 import { Scroll } from '../../common';

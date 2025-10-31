@@ -11,7 +11,7 @@ import { SideNav } from '../side-nav';
 
 // 模拟依赖
 /* eslint-disable @typescript-eslint/naming-convention */
-vi.mock('@/components/icon', () => ({
+vi.mock('@coze-arch/arco-icon', () => ({
   IconCozBotFill: () => <span data-testid="bot-fill-icon" />,
   IconCozBot: () => <span data-testid="bot-icon" />,
   IconCozHouseFill: () => <span data-testid="house-fill-icon" />,

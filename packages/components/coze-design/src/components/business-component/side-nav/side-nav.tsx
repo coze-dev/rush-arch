@@ -14,7 +14,8 @@ import {
   IconCozPlusFill,
   IconCozTeamFill,
   IconCozTeam,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
 import { Button } from '@/components/button';
 
 import { Scroll } from '../../common';

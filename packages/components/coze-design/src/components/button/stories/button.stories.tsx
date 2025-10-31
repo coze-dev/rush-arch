@@ -5,14 +5,14 @@ import { useState } from 'react';
 
 import Box from 'ui-box';
 import { type StoryFn, type Meta } from '@storybook/react';
-
-import { EnhancedView, ViewGroup, View } from '@/components/view';
 import {
   IconCozArrowDown,
   IconCozArrowUp,
   IconCozEdit,
   IconCozPeopleFill,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
+import { EnhancedView, ViewGroup, View } from '@/components/view';
 
 import type {
   ButtonProps,

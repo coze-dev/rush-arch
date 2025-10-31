@@ -4,9 +4,9 @@
 import { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
 
 import { InputNumber as SemiInputNumber } from '@douyinfe/semi-ui';
+import { IconCozPlusFill, IconCozMinusFill } from '@coze-arch/arco-icon';
 
 import { cn } from '@/utils';
-import { IconCozPlusFill, IconCozMinusFill } from '@/components/icon';
 
 import { IconButton, type ButtonProps } from '../button';
 import {

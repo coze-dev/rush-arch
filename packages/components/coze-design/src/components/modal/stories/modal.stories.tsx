@@ -5,8 +5,8 @@
 import React, { useState } from 'react';
 
 import { type StoryFn, type Meta } from '@storybook/react';
+import { IconCozLoading } from '@coze-arch/arco-icon';
 
-import { IconCozLoading } from '@/components/icon';
 import {
   Button,
   type ButtonProps,

@@ -8,14 +8,14 @@ import {
   type StoryFn,
   type StoryFn as Story,
 } from '@storybook/react';
-
-import { EnhancedView, View, ViewGroup } from '@/components/view';
 import {
   IconCozThumbdown,
   IconCozThumbdownFill,
   IconCozThumbsup,
   IconCozThumbsupFill,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
+import { EnhancedView, View, ViewGroup } from '@/components/view';
 
 import { SingleSelect, type SingleSelectProps } from '..';
 

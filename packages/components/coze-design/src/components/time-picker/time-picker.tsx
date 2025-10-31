@@ -4,9 +4,9 @@
 import { forwardRef, useMemo } from 'react';
 
 import { Input, TimePicker as SemiTimePicker } from '@douyinfe/semi-ui';
+import { IconCozClock, IconCozArrowDown } from '@coze-arch/arco-icon';
 
 import { cn } from '@/utils';
-import { IconCozClock, IconCozArrowDown } from '@/components/icon';
 
 import {
   timePickerInputIconVariants,

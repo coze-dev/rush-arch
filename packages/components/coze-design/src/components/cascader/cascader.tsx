@@ -5,9 +5,9 @@ import { forwardRef } from 'react';
 
 import { type CascaderProps as SemiCascaderProps } from '@douyinfe/semi-ui/lib/es/cascader/index.js';
 import { Cascader as SemiCascader } from '@douyinfe/semi-ui';
+import { IconCozArrowDown } from '@coze-arch/arco-icon';
 
 import { cn } from '@/utils';
-import { IconCozArrowDown } from '@/components/icon';
 
 import './cascader.css';
 

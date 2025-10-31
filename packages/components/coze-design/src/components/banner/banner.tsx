@@ -4,9 +4,9 @@
 import { forwardRef, type JSX, isValidElement, useMemo } from 'react';
 
 import { Banner as SemiBanner } from '@douyinfe/semi-ui';
+import { IconCozCross } from '@coze-arch/arco-icon';
 
 import { cn, mergeProps } from '@/utils';
-import { IconCozCross } from '@/components/icon';
 
 import { bannerVariant } from './banner-variant';
 import { type BannerProps } from './banner-types';

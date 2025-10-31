@@ -4,12 +4,12 @@
 import { type FC, useState } from 'react';
 
 import { Space } from '@douyinfe/semi-ui';
+import { IconCozMore } from '@coze-arch/arco-icon';
 
 import { cn } from '@/utils/cn';
 import { useCDLocale } from '@/locales';
 import { Modal } from '@/components/modal';
 import { Menu } from '@/components/menu';
-import { IconCozMore } from '@/components/icon';
 import { IconButton } from '@/components/button';
 
 import { type TableActionProps } from './table-types';

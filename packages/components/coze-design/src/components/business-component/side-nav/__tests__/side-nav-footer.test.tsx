@@ -11,7 +11,7 @@ import { SideNavFooter } from '../side-nav-footer';
 
 // 模拟所有依赖
 /* eslint-disable @typescript-eslint/naming-convention */
-vi.mock('@/components/icon', () => ({
+vi.mock('@coze-arch/arco-icon', () => ({
   IconCozPlugFill: () => <div data-testid="plug-fill-icon" />,
   IconCozPlug: () => <div data-testid="plug-icon" />,
   IconCozChatHashtag: () => <div data-testid="chat-hashtag-icon" />,

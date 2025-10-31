@@ -4,9 +4,9 @@
 import { forwardRef } from 'react';
 
 import { type Button as SemiButton, SplitButtonGroup } from '@douyinfe/semi-ui';
+import { IconCozArrowDown } from '@coze-arch/arco-icon';
 
 import { cn } from '@/utils';
-import { IconCozArrowDown } from '@/components/icon';
 
 import { type SplitButtonProps } from '../button-types';
 import { IconButton } from '../button-icon';

@@ -1,7 +1,8 @@
 import React, { forwardRef, useEffect, useState } from 'react';
 
+import { IconCozMagnifier } from '@coze-arch/arco-icon';
+
 import { cn } from '@/utils';
-import { IconCozMagnifier } from '@/components/icon';
 
 import { type SearchProps } from './search-types';
 import { SearchInput } from './search-input';

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/coze-design",
+      "comment": "import from @coze-arch/arco-icon when need",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/coze-design",
+  "email": "tecvan.fe@qq.com"
+}

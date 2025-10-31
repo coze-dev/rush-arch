@@ -5,8 +5,8 @@ import '@testing-library/jest-dom';
 
 import { afterEach, beforeEach, describe, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { IconCozClockFill } from '@coze-arch/arco-icon';
 
-import { IconCozClockFill } from '@/components/icon';
 import { Button } from '@/components/button';
 import { LocaleProviderContainer } from '@/__tests__/locale-provider-containner';
 

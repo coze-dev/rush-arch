@@ -10,15 +10,15 @@ import {
   type TagSize as SemiTagSize,
 } from '@douyinfe/semi-ui/lib/es/tag/index';
 import { Tag as SemiTag } from '@douyinfe/semi-ui';
-
-import { cn } from '@/utils';
 import {
   IconCozInfoCircle,
   IconCozCross,
   IconCozClock,
   IconCozLoading,
   IconCozCheckMarkCircle,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
+import { cn } from '@/utils';
 
 import { tagVariants, type TagVariantProps } from './tag-variant';
 import { type TagSize, type TagProps, type TagColor } from './tag-types';

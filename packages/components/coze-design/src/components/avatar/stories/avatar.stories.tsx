@@ -2,13 +2,13 @@
 //  SPDX-License-Identifier: MIT
 
 import { type Meta, type StoryFn } from '@storybook/react';
-
-import { EnhancedView, View, ViewGroup } from '@/components/view';
 import {
   IconCozPeopleFill,
   IconCozAnalytics,
   IconCozMore,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
+import { EnhancedView, View, ViewGroup } from '@/components/view';
 
 import {
   Avatar,

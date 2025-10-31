@@ -4,9 +4,9 @@
 import { forwardRef, useMemo, type JSX } from 'react';
 
 import { Button as SemiButton } from '@douyinfe/semi-ui';
+import { IconCozLoading } from '@coze-arch/arco-icon';
 
 import { cn } from '@/utils';
-import { IconCozLoading } from '@/components/icon';
 
 import { buttonVariants } from './button-variant';
 import { type ButtonProps } from './button-types';

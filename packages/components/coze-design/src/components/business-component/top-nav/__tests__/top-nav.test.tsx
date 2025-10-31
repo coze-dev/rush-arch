@@ -12,7 +12,7 @@ import { TopNav } from '../top-nav';
 import { vi } from 'vitest';
 
 // 模拟 icon 组件
-vi.mock('@/components/icon', () => ({
+vi.mock('@coze-arch/arco-icon', () => ({
   IconCozArrowLeft: () => <span data-testid="arrow-left-icon" />,
   IconCozLoading: () => <span data-testid="loading-icon" />,
 }));

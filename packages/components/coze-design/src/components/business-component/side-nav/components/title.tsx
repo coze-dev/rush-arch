@@ -3,7 +3,8 @@
 
 import { type FC } from 'react';
 
-import { IconCozPlus } from '@/components/icon';
+import { IconCozPlus } from '@coze-arch/arco-icon';
+
 import { Button } from '@/components/button';
 
 export interface TitleProps extends React.HtmlHTMLAttributes<HTMLDivElement> {

@@ -2,15 +2,15 @@
 //  SPDX-License-Identifier: MIT
 
 import { type StoryFn as Story, type Meta } from '@storybook/react';
-
-import { EnhancedView, View, ViewGroup } from '@/components/view';
-import { TabBar } from '@/components/tab-bar';
-import { SegmentTab } from '@/components/segment-tab';
 import {
   IconCozFireFill,
   IconCozMicrophone,
   IconCozPeopleFill,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
+import { EnhancedView, View, ViewGroup } from '@/components/view';
+import { TabBar } from '@/components/tab-bar';
+import { SegmentTab } from '@/components/segment-tab';
 import { AIButton, Button, IconButton } from '@/components/button';
 import { Avatar } from '@/components/avatar';
 

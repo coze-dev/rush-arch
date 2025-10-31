@@ -3,7 +3,6 @@
 
 import { type FC } from 'react';
 
-import { Tooltip } from '@/components/tooltip';
 import {
   IconCozPlugFill,
   IconCozPlug,
@@ -17,7 +16,9 @@ import {
   IconCozTelegramFill,
   IconCozXTwitterFill,
   IconCozYoutubeFill,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
+import { Tooltip } from '@/components/tooltip';
 import { Button } from '@/components/button';
 import { Avatar } from '@/components/avatar';
 

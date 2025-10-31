@@ -5,13 +5,13 @@ import { forwardRef, useMemo, useState } from 'react';
 
 import { type SelectProps as SemiSelectProps } from '@douyinfe/semi-ui/lib/es/select/index.js';
 import { Highlight, Select as SemiSelect } from '@douyinfe/semi-ui';
-
-import { cn } from '@/utils';
 import {
   IconCozArrowDown,
   IconCozCheckMarkFill,
   IconCozCross,
-} from '@/components/icon';
+} from '@coze-arch/arco-icon';
+
+import { cn } from '@/utils';
 
 import { selectVariants, type SelectVariantProps } from './select-variant';
 import { type SelectProps } from './select-types';

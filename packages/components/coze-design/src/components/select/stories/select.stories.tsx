@@ -5,8 +5,7 @@
 
 import { type Meta, type StoryFn } from '@storybook/react';
 import { InputGroup } from '@douyinfe/semi-ui';
-
-import { IconCozLoading } from '@/components/icon';
+import { IconCozLoading } from '@coze-arch/arco-icon';
 
 import { Select, type SelectProps } from '..';
 

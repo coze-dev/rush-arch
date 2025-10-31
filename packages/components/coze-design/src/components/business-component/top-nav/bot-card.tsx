@@ -3,7 +3,8 @@
 
 import { useMemo, type FC } from 'react';
 
-import { IconCozEdit } from '@/components/icon';
+import { IconCozEdit } from '@coze-arch/arco-icon';
+
 import { Button } from '@/components/button';
 import { Avatar } from '@/components/avatar';
 

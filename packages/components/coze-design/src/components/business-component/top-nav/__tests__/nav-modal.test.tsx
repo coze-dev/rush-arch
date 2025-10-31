@@ -37,7 +37,7 @@ vi.mock('@/components/tooltip', () => ({
 }));
 
 // 简化的模拟，避免复杂的嵌套结构
-vi.mock('@/components/icon', () => ({
+vi.mock('@coze-arch/arco-icon', () => ({
   IconCozHouse: () => <span data-testid="house-icon" />,
   IconCozChatHashtag: () => <span data-testid="chat-hashtag-icon" />,
   IconCozPlug: () => <span data-testid="plug-icon" />,

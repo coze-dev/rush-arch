@@ -4,10 +4,10 @@
 import { useState } from 'react';
 
 import { type Meta } from '@storybook/react';
+import { IconCozLoading } from '@coze-arch/arco-icon';
 
 import { View } from '@/components/view';
 import { Tag } from '@/components/tag';
-import { IconCozLoading } from '@/components/icon';
 
 import { BotCard } from '../top-nav/bot-card';
 import { TopNav } from '../top-nav';

@@ -2,9 +2,9 @@
 //  SPDX-License-Identifier: MIT
 
 import { type Meta, type StoryFn } from '@storybook/react';
+import { IconCozFace, IconCozInfoCircle } from '@coze-arch/arco-icon';
 
 import { Tooltip } from '@/components/tooltip';
-import { IconCozFace, IconCozInfoCircle } from '@/components/icon';
 
 import { Tag, type TagProps } from '..';
 

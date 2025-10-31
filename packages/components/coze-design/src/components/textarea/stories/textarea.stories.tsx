@@ -4,8 +4,7 @@
 import React from 'react';
 
 import { type StoryFn as Story, type Meta } from '@storybook/react';
-
-import { IconCozLoading } from '@/components/icon';
+import { IconCozLoading } from '@coze-arch/arco-icon';
 
 import { TextArea, type TextAreaProps } from '..';
 
