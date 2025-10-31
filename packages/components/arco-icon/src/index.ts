@@ -514,5 +514,9 @@ export { default as IconCozCoze } from './IconCozCoze';
 export { default as IconCozVolcengine } from './IconCozVolcengine';
 export { default as IconCozBoxShadow } from './IconCozBoxShadow';
 export { default as IconCozOpen } from './IconCozOpen';
+export { default as IconCozCertification } from './IconCozCertification';
+export { default as IconCozCommunityFill } from './IconCozCommunityFill';
+export { default as IconCozCommunity } from './IconCozCommunity';
+export { default as IconCozIsolation } from './IconCozIsolation';
 
 export * from './type';
