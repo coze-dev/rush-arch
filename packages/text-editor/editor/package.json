@@ -67,6 +67,11 @@
       "require": "./dist/preset-universal.js",
       "import": "./dist/esm/preset-universal.js"
     },
+    "./preset-chat": {
+      "types": "./dist/preset-chat.d.ts",
+      "require": "./dist/preset-chat.js",
+      "import": "./dist/esm/preset-chat.js"
+    },
     "./preset-none": {
       "types": "./dist/preset-none.d.ts",
       "require": "./dist/preset-none.js",
@@ -118,6 +123,7 @@
     "@coze-editor/extension-json-unnecessary-properties": "workspace:*",
     "@coze-editor/extension-regexp-decorator": "workspace:*",
     "@coze-editor/extensions": "workspace:*",
+    "@coze-editor/preset-chat": "workspace:*",
     "@coze-editor/preset-code": "workspace:*",
     "@coze-editor/preset-expression": "workspace:*",
     "@coze-editor/preset-none": "workspace:*",
