@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 

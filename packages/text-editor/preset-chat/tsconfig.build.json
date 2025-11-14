@@ -17,10 +17,22 @@
       "path": "../../../config/ts-config/tsconfig.build.json"
     },
     {
+      "path": "../core-plugins/tsconfig.build.json"
+    },
+    {
       "path": "../core/tsconfig.build.json"
     },
     {
       "path": "../eslint-config/tsconfig.build.json"
+    },
+    {
+      "path": "../extensions/tsconfig.build.json"
+    },
+    {
+      "path": "../preset-universal/tsconfig.build.json"
+    },
+    {
+      "path": "../react/tsconfig.build.json"
     },
     {
       "path": "../utils/tsconfig.build.json"
