@@ -14,6 +14,7 @@ export default defineConfig({
     'src/preset-prompt.ts',
     'src/preset-variable.ts',
     'src/preset-code.ts',
+    'src/preset-chat.ts',
     'src/language-typescript.ts',
     'src/language-typescript-worker.ts',
     'src/language-json.ts',

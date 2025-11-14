@@ -59,6 +59,9 @@
       "path": "../extensions/tsconfig.build.json"
     },
     {
+      "path": "../preset-chat/tsconfig.build.json"
+    },
+    {
       "path": "../preset-code/tsconfig.build.json"
     },
     {

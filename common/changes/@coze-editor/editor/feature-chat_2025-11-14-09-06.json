@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/editor",
+      "comment": "add chat preset",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/editor",
+  "email": "stream-pipe@users.noreply.github.com"
+}
