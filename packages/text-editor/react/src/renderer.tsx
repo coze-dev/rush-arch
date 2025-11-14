@@ -8,8 +8,10 @@ import React, {
   useRef,
   useState,
   type ReactNode,
+  useMemo,
 } from 'react';
 
+import { FacetCombineStrategy } from '@coze-editor/utils';
 import {
   type EditorPluginSpec,
   type InferEditorAPIFromPlugins,
@@ -17,9 +19,10 @@ import {
   type InferValues,
   create,
 } from '@coze-editor/core';
-import { type Extension } from '@codemirror/state';
+import { Facet, type Extension } from '@codemirror/state';
 
 import { useInjector, useSetEditor } from './provider';
+import { type Connector, createPortalConnector } from './connector';
 
 type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
   k: infer I,
@@ -50,6 +53,10 @@ type InferRendererProps<T extends EditorPluginSpec<string, any, any>[]> = {
   ? InferReactEvents<InferEvents<T[number]>>
   : unknown);
 
+const connector = Facet.define<Connector, Connector>({
+  combine: FacetCombineStrategy.First,
+});
+
 function Renderer<T extends EditorPluginSpec<string, any, any>[]>(
   props: { plugins: T } & InferRendererProps<T>,
 ) {
@@ -71,6 +78,11 @@ function Renderer<T extends EditorPluginSpec<string, any, any>[]>(
   const setEditor = useSetEditor();
   const injector = useInjector();
 
+  const pc = useMemo(() => createPortalConnector(), []);
+  const connectorRef = useRef<Connector>(pc);
+  connectorRef.current = pc;
+  const { Portal } = pc;
+
   propsRef.current = props;
 
   useEffect(() => {
@@ -84,7 +96,7 @@ function Renderer<T extends EditorPluginSpec<string, any, any>[]>(
       root,
       defaultValue,
       options: options ?? {},
-      extensions,
+      extensions: [connector.of(connectorRef.current), ...(extensions ?? [])],
     });
 
     apiRef.current = exported;
@@ -127,10 +139,11 @@ function Renderer<T extends EditorPluginSpec<string, any, any>[]>(
     <>
       <div {...domProps} ref={ref} />
       {children}
+      <Portal />
     </>
   );
 }
 
-export { Renderer };
+export { Renderer, connector };
 
 export type { InferRendererProps };

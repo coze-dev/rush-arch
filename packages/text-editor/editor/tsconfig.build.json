@@ -62,6 +62,9 @@
       "path": "../preset-code-languages/tsconfig.build.json"
     },
     {
+      "path": "../preset-chat/tsconfig.build.json"
+    },
+    {
       "path": "../preset-code/tsconfig.build.json"
     },
     {

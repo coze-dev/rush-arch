@@ -16,6 +16,7 @@ export default defineConfig({
     'src/preset-variable.ts',
     'src/preset-code.ts',
     'src/preset-code-languages.ts',
+    'src/preset-chat.ts',
     'src/language-typescript.ts',
     'src/language-typescript-worker.ts',
     'src/language-json.ts',

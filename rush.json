@@ -642,6 +642,12 @@
       "tags": ["level-3"]
     },
     {
+      "packageName": "@coze-editor/preset-chat",
+      "projectFolder": "packages/text-editor/preset-chat",
+      "shouldPublish": true,
+      "tags": ["level-3"]
+    },
+    {
       "packageName": "@coze-editor/core-plugins",
       "projectFolder": "packages/text-editor/core-plugins",
       "shouldPublish": true,

@@ -1,7 +1,7 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-export { Renderer, type InferRendererProps } from './renderer';
+export { Renderer, connector, type InferRendererProps } from './renderer';
 
 export { createRenderer, type CreateRendererOptions } from './create-renderer';
 

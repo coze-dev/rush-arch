@@ -68,4 +68,8 @@ function Page() {
   </EditorProvider>
 }
 
+export {
+  CodeEditor
+}
+
 export default Page
