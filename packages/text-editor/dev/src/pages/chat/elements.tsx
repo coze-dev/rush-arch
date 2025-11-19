@@ -1,7 +1,8 @@
 import { EditorAPI, useCurrentElement } from '@coze-editor/editor/preset-chat';
 import { useEditor } from '@coze-editor/editor/react';
 import { Popover } from '@douyinfe/semi-ui';
-import { SVGProps } from 'react';
+import { SVGProps, useContext } from 'react';
+import { UploadingContext } from './upload';
 
 function GravityUiCode(props: SVGProps<SVGSVGElement>) {
   return (
@@ -101,6 +102,33 @@ function AIReference() {
   )
 }
 
+function FluentDocumentPdf32Regular(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" {...props}>{/* Icon from Fluent UI System Icons by Microsoft Corporation - https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE */}<path fill="currentColor" d="M9 16a1 1 0 0 0-1 1v5a1 1 0 1 0 2 0v-1h.5a2.5 2.5 0 0 0 0-5zm1.5 3H10v-1h.5a.5.5 0 0 1 0 1m3.5-2a1 1 0 0 1 1-1h.5a3.5 3.5 0 1 1 0 7H15a1 1 0 0 1-1-1zm2 3.915a1.5 1.5 0 0 0 0-2.83zM20 22v-5a1 1 0 0 1 1-1h3a1 1 0 1 1 0 2h-2v1h2a1 1 0 1 1 0 2h-2v1a1 1 0 1 1-2 0M6 5v8H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h1v1a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-1h1a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V9.828a3 3 0 0 0-.879-2.12l-4.828-4.83A3 3 0 0 0 18.172 2H9a3 3 0 0 0-3 3m3-1h7v5a3 3 0 0 0 3 3h5v1H8V5a1 1 0 0 1 1-1M8 27v-1h16v1a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1M24 9.828V10h-5a1 1 0 0 1-1-1V4h.172a1 1 0 0 1 .707.293l4.828 4.828a1 1 0 0 1 .293.707M5 15h22v9H5z" /></svg>
+  )
+}
+
+function LineMdUploadingLoop(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" {...props}>{/* Icon from Material Line Icons by Vjacheslav Trushkin - https://github.com/cyberalien/line-md/blob/master/license.txt */}<g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><path strokeDasharray="2 4" strokeDashoffset="6" d="M12 21c-4.97 0 -9 -4.03 -9 -9c0 -4.97 4.03 -9 9 -9"><animate attributeName="stroke-dashoffset" dur="0.6s" repeatCount="indefinite" values="6;0" /></path><path strokeDasharray="32" strokeDashoffset="32" d="M12 3c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.1s" dur="0.4s" values="32;0" /></path><path strokeDasharray="10" strokeDashoffset="10" d="M12 16v-7.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.5s" dur="0.2s" values="10;0" /></path><path strokeDasharray="6" strokeDashoffset="6" d="M12 8.5l3.5 3.5M12 8.5l-3.5 3.5"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.7s" dur="0.2s" values="6;0" /></path></g></svg>
+  )
+}
+
+function UploadFile({ filename }: { filename: string }) {
+  const uploading = useContext(UploadingContext)
+  return <span
+    className="inline-block items-center border border-solid border-gray-200 rounded-[3px] px-[5px] py-0 mx-[3px] select-none text-xs"
+  >
+    {uploading ?
+      <><LineMdUploadingLoop className="inline-block mr-[3px] text-[13px]" />上传中...</> :
+      <>
+        <FluentDocumentPdf32Regular className="inline-block mr-[3px] text-[#fb6b6b] text-[13px]" />
+      {filename}
+    </>}
+
+  </span>
+}
+
 const elements = {
   file: {
     render: FileReference,
@@ -108,6 +136,9 @@ const elements = {
   ai: {
     render: AIReference,
   },
+  upload: {
+    render: UploadFile,
+  }
 }
 
 export default elements

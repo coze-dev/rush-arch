@@ -10,6 +10,7 @@ import { CodeEditor } from '../code';
 import code from './code'
 import elements from './elements'
 import MentionImpl from './mention'
+import { UploadContext, UploadFile } from './upload'
 
 const extensions: Extension[] = [
   astDebugger,
@@ -44,27 +45,30 @@ function Page() {
 
   return <div className="my-0 mx-auto flex gap-[20px] w-fit">
     <div className="w-[400px] shrink-0 mt-[100px] border-[#f2f2f2] border-[1px] border-solid">
-      <EditorProvider>
-        <Renderer
-          plugins={preset}
-          extensions={[
-            ...extensions,
-          ]}
-          defaultValue={defaultValue}
-          options={{
-            elements,
-            minHeight: 200,
-          }}
-          didMount={(api) => {
-            editorRef.current = api
-          }}
-          onChange={(e) => {
-            console.log('schema', schemaUtils.toJSON(e.value))
-          }}
-        />
+      <UploadContext>
+        <EditorProvider>
+          <Renderer
+            plugins={preset}
+            extensions={[
+              ...extensions,
+            ]}
+            defaultValue={defaultValue}
+            options={{
+              elements,
+              minHeight: 200,
+            }}
+            didMount={(api) => {
+              editorRef.current = api
+            }}
+            onChange={(e) => {
+              console.log('schema', schemaUtils.toJSON(e.value))
+            }}
+          />
 
-        <MentionImpl />
-      </EditorProvider>
+          <MentionImpl />
+          <UploadFile />
+        </EditorProvider>
+      </UploadContext>
     </div>
     <div className="w-[400px] mt-[100px] border-[#f2f2f2] border-[1px] border-solid">
       <EditorProvider>
