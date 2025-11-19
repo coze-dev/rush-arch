@@ -32,6 +32,15 @@ export const getCurrentBranchName = async () => {
   return stdout.trim();
 };
 
+/**
+ * 获取当前 commit hash
+ * @returns commit hash
+ */
+export const getCurrentCommitHash = async (): Promise<string> => {
+  const { stdout } = await exec('git rev-parse HEAD');
+  return stdout.trim();
+};
+
 export const isMainBranch = async () => {
   const currentBranchName = await getCurrentBranchName();
   return currentBranchName === 'main';

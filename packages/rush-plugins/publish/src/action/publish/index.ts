@@ -6,6 +6,7 @@ import { logger } from '@coze-arch/logger';
 
 import { getCurrentOrigin } from '../../utils/git';
 import { type InstallAction } from '../../types';
+import { DEFAULT_BRANCH_PREFIX, DEFAULT_NPM_REGISTRY } from '../../const';
 import { type PublishOptions } from './types';
 import { GIT_REPO_URL_REGEX } from './const';
 import { publish } from './action';
@@ -37,6 +38,21 @@ export const installAction: InstallAction = (program: Command) => {
       'Git repository URL (e.g. git@github.com:coze-dev/coze-js.git)',
       undefined,
     )
+    .option(
+      '--branch-prefix <prefix>',
+      `Git branch name prefix (default: ${DEFAULT_BRANCH_PREFIX})`,
+      DEFAULT_BRANCH_PREFIX,
+    )
+    .option(
+      '-l, --release',
+      'Directly publish packages (only for alpha/beta versions)',
+      false,
+    )
+    .option(
+      '--registry <url>',
+      `NPM registry URL (default: ${DEFAULT_NPM_REGISTRY})`,
+      DEFAULT_NPM_REGISTRY,
+    )
     .action(async (options: PublishOptions) => {
       try {
         const repoUrl = options.repoUrl || (await getCurrentOrigin());
@@ -44,8 +60,9 @@ export const installAction: InstallAction = (program: Command) => {
           throw new Error('Git repository URL is required');
         }
         if (!GIT_REPO_URL_REGEX.test(repoUrl)) {
+          const expectedFormat = 'git@github.com:${org}/${repo}.git';
           throw new Error(
-            `Invalid git repository URL: ${repoUrl}, it should be follow the format: git@github.com:\${org}/\${repo}.git`,
+            `Invalid git repository URL: ${repoUrl}, it should follow the format: ${expectedFormat}`,
           );
         }
         const normalizeOptions = {

@@ -44,15 +44,6 @@
     },
     {
       "parameterKind": "stringList",
-      "shortName": "-v",
-      "longName": "--version",
-      "description": "Specify publish version",
-      "argumentName": "VERSION",
-      "associatedCommands": ["pub"],
-      "required": false
-    },
-    {
-      "parameterKind": "stringList",
       "shortName": "-f",
       "longName": "--from",
       "description": "Publish specified packages and their upstream/downstream dependencies",
@@ -116,6 +107,22 @@
       "required": false
     },
     {
+      "parameterKind": "string",
+      "longName": "--branch-prefix",
+      "description": "Git branch name prefix (default: 'release')",
+      "argumentName": "BRANCH_PREFIX",
+      "associatedCommands": ["pub"],
+      "required": false
+    },
+    {
+      "parameterKind": "flag",
+      "longName": "--release",
+      "shortName": "-l",
+      "description": "Directly publish packages (only for alpha/beta versions)",
+      "associatedCommands": ["pub"],
+      "required": false
+    },
+    {
       "parameterKind": "flag",
       "longName": "--amend-commit",
       "shortName": "-a",
@@ -150,8 +157,8 @@
       "argumentName": "REGISTRY",
       "longName": "--registry",
       "shortName": "-r",
-      "description": "Registry",
-      "associatedCommands": ["release"]
+      "description": "NPM registry URL (default: https://registry.npmjs.org)",
+      "associatedCommands": ["release", "pub"]
     }
   ]
 }

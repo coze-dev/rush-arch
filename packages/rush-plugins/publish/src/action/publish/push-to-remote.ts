@@ -19,6 +19,7 @@ interface PushToRemoteOptions {
   skipCommit: boolean;
   skipPush: boolean;
   repoUrl: string;
+  branchPrefix?: string;
 }
 
 export const pushToRemote = async (options: PushToRemoteOptions) => {
@@ -31,6 +32,7 @@ export const pushToRemote = async (options: PushToRemoteOptions) => {
     skipCommit,
     skipPush,
     repoUrl,
+    branchPrefix = 'release',
   } = options;
   if (skipCommit) {
     return;
@@ -44,7 +46,7 @@ export const pushToRemote = async (options: PushToRemoteOptions) => {
     branchName = await getCurrentBranchName();
   } else {
     const date = dayjs().format('YYYYMMDD');
-    branchName = `release/${date}-${sessionId}`;
+    branchName = `${branchPrefix}/${date}-${sessionId}`;
     await exec(`git checkout -b ${branchName}`, { cwd });
   }
   const isTestPublish = [BumpType.ALPHA, BumpType.BETA].includes(

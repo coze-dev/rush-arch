@@ -23,7 +23,12 @@ const publishPackage = async (
     : version.includes('beta')
       ? 'beta'
       : 'latest';
-  const args = [`NPM_AUTH_TOKEN=${token}`, 'npm', 'publish', `--tag ${tag}`];
+  const setToken = `npm config set //bnpm.byted.org/:_authToken ${token}`;
+  await exec(setToken, {
+    cwd: project.projectFolder,
+  });
+
+  const args = [`NODE_AUTH_TOKEN=${token}`, 'npm', 'publish', `--tag ${tag}`];
   if (dryRun) {
     args.push('--dry-run');
   }
