@@ -4,7 +4,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
 
-import { getCurrentBranchName } from '@/utils/git';
+import { getCurrentBranchName, getCurrentCommitHash } from '@/utils/git';
 import { exec } from '@/utils/exec';
 import {
   type ReleaseOptions,
@@ -96,17 +96,20 @@ describe('release action', () => {
     // Setup default mocks
     vi.mocked(exec).mockResolvedValue({ stdout: '', stderr: '', code: 0 });
     vi.mocked(getCurrentBranchName).mockResolvedValue(mockBranchName);
+    vi.mocked(getCurrentCommitHash).mockResolvedValue(mockCommit);
     vi.mocked(getPackagesToPublish).mockResolvedValue(mockPackagesToPublish);
     vi.mocked(buildReleaseManifest).mockReturnValue(mockReleaseManifests);
     vi.mocked(checkReleasePlan).mockReturnValue(undefined);
     vi.mocked(releasePackages).mockResolvedValue(undefined);
   });
 
-  it('should release packages successfully', async () => {
+  it('should release packages successfully with commit specified', async () => {
     const options: ReleaseOptions = {
       commit: mockCommit,
       registry: mockRegistry,
     };
+    const currentHead = 'different-commit';
+    vi.mocked(getCurrentCommitHash).mockResolvedValue(currentHead);
 
     await release(options);
 
@@ -173,5 +176,102 @@ describe('release action', () => {
     await expect(
       release({ commit: mockCommit, registry: mockRegistry }),
     ).rejects.toThrow('Release failed');
+  });
+
+  describe('optional commit parameter', () => {
+    it('should use current HEAD when commit is not provided', async () => {
+      await release({ registry: mockRegistry });
+
+      expect(getCurrentCommitHash).toHaveBeenCalled();
+      expect(getPackagesToPublish).toHaveBeenCalledWith(mockCommit);
+      expect(exec).not.toHaveBeenCalledWith(`git checkout ${mockCommit}`);
+    });
+
+    it('should not checkout when commit matches current HEAD', async () => {
+      vi.mocked(getCurrentCommitHash).mockResolvedValue(mockCommit);
+
+      await release({ commit: mockCommit, registry: mockRegistry });
+
+      expect(getCurrentCommitHash).toHaveBeenCalled();
+      expect(exec).not.toHaveBeenCalledWith(`git checkout ${mockCommit}`);
+    });
+
+    it('should checkout when commit differs from current HEAD', async () => {
+      const currentHead = 'different-commit';
+      vi.mocked(getCurrentCommitHash).mockResolvedValue(currentHead);
+
+      await release({ commit: mockCommit, registry: mockRegistry });
+
+      expect(getCurrentCommitHash).toHaveBeenCalled();
+      expect(exec).toHaveBeenCalledWith(`git checkout ${mockCommit}`);
+    });
+  });
+
+  describe('packages parameter', () => {
+    it('should use provided packages instead of fetching from git tags', async () => {
+      const customPackages: PackageToPublish[] = [
+        { packageName: 'custom-pkg-1', version: '3.0.0' },
+        { packageName: 'custom-pkg-2', version: '4.0.0' },
+      ];
+
+      const customManifests = [
+        { project: mockProject1, version: '3.0.0' },
+        { project: mockProject2, version: '4.0.0' },
+      ];
+      vi.mocked(buildReleaseManifest).mockReturnValue(customManifests);
+
+      await release({
+        registry: mockRegistry,
+        packages: customPackages,
+      });
+
+      expect(getPackagesToPublish).not.toHaveBeenCalled();
+      expect(buildReleaseManifest).toHaveBeenCalledWith(customPackages);
+      expect(releasePackages).toHaveBeenCalledWith(customManifests, {
+        commit: undefined,
+        dryRun: false,
+        registry: mockRegistry,
+      });
+    });
+
+    it('should handle empty provided packages list', async () => {
+      await release({
+        registry: mockRegistry,
+        packages: [],
+      });
+
+      expect(getPackagesToPublish).not.toHaveBeenCalled();
+      expect(buildReleaseManifest).not.toHaveBeenCalled();
+      expect(releasePackages).not.toHaveBeenCalled();
+    });
+
+    it('should prioritize packages parameter over commit-based lookup', async () => {
+      const customPackages: PackageToPublish[] = [
+        { packageName: 'custom-pkg', version: '5.0.0' },
+      ];
+
+      await release({
+        commit: mockCommit,
+        registry: mockRegistry,
+        packages: customPackages,
+      });
+
+      expect(getPackagesToPublish).not.toHaveBeenCalled();
+      expect(buildReleaseManifest).toHaveBeenCalledWith(customPackages);
+    });
+
+    it('should not call getCurrentCommitHash when packages are provided', async () => {
+      const customPackages: PackageToPublish[] = [
+        { packageName: 'custom-pkg', version: '5.0.0' },
+      ];
+
+      await release({
+        registry: mockRegistry,
+        packages: customPackages,
+      });
+
+      expect(getCurrentCommitHash).not.toHaveBeenCalled();
+      expect(getPackagesToPublish).not.toHaveBeenCalled();
+    });
   });
 });
