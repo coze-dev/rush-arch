@@ -109,7 +109,7 @@ describe('plan', () => {
       expect(() => checkReleasePlan(releaseManifests, 'develop')).not.toThrow();
     });
 
-    it('should only allow latest releases on main branch', () => {
+    it('should only allow latest releases on main branch (default)', () => {
       const releaseManifests: ReleaseManifest[] = [
         {
           project: mockProject1,
@@ -122,11 +122,14 @@ describe('plan', () => {
       ];
 
       expect(() => checkReleasePlan(releaseManifests, 'main')).not.toThrow();
+      expect(() =>
+        checkReleasePlan(releaseManifests, 'feat/auto-publish'),
+      ).not.toThrow();
       expect(() => checkReleasePlan(releaseManifests, 'feature/test')).toThrow(
-        'For LATEST release, should be on main branch only.',
+        'For LATEST release, should be on one of these branches: main, feat/auto-publish.',
       );
       expect(() => checkReleasePlan(releaseManifests, 'develop')).toThrow(
-        'For LATEST release, should be on main branch only.',
+        'For LATEST release, should be on one of these branches: main, feat/auto-publish.',
       );
     });
 
@@ -144,7 +147,7 @@ describe('plan', () => {
 
       expect(() => checkReleasePlan(releaseManifests, 'main')).not.toThrow();
       expect(() => checkReleasePlan(releaseManifests, 'feature/test')).toThrow(
-        'For LATEST release, should be on main branch only.',
+        'For LATEST release, should be on one of these branches: main, feat/auto-publish.',
       );
     });
 
@@ -182,8 +185,49 @@ describe('plan', () => {
 
       expect(() => checkReleasePlan(releaseManifests, 'main')).not.toThrow();
       expect(() => checkReleasePlan(releaseManifests, 'feature/test')).toThrow(
-        'For LATEST release, should be on main branch only.',
+        'For LATEST release, should be on one of these branches: main, feat/auto-publish.',
       );
+    });
+
+    it('should respect custom allowBranches parameter', () => {
+      const releaseManifests: ReleaseManifest[] = [
+        {
+          project: mockProject1,
+          version: '1.0.0',
+        },
+      ];
+
+      const customBranches = ['production', 'release'];
+
+      expect(() =>
+        checkReleasePlan(releaseManifests, 'production', customBranches),
+      ).not.toThrow();
+      expect(() =>
+        checkReleasePlan(releaseManifests, 'release', customBranches),
+      ).not.toThrow();
+      expect(() =>
+        checkReleasePlan(releaseManifests, 'main', customBranches),
+      ).toThrow(
+        'For LATEST release, should be on one of these branches: production, release.',
+      );
+      expect(() =>
+        checkReleasePlan(releaseManifests, 'feature/test', customBranches),
+      ).toThrow(
+        'For LATEST release, should be on one of these branches: production, release.',
+      );
+    });
+
+    it('should allow empty allowBranches array (no restrictions)', () => {
+      const releaseManifests: ReleaseManifest[] = [
+        {
+          project: mockProject1,
+          version: '1.0.0',
+        },
+      ];
+
+      expect(() =>
+        checkReleasePlan(releaseManifests, 'any-branch', []),
+      ).toThrow('For LATEST release, should be on one of these branches: .');
     });
   });
 });

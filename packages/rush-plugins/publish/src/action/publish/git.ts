@@ -4,7 +4,6 @@
 import { logger } from '@coze-arch/logger';
 
 import { exec } from '../../utils/exec';
-import { type PublishManifest } from './types';
 
 export async function createAndPushBranch(
   branchName: string,
@@ -24,35 +23,19 @@ export async function createAndPushBranch(
 }
 
 interface CommitChangesOptions {
-  sessionId: string;
   files: string[];
   cwd: string;
-  publishManifests: PublishManifest[];
   branchName: string;
-  createTags: boolean;
 }
 export async function commitChanges({
-  sessionId,
   files,
   cwd,
-  publishManifests,
   branchName,
-  createTags,
 }: CommitChangesOptions): Promise<{ effects: string[]; branchName: string }> {
   await exec(`git add ${files.join(' ')}`, { cwd });
   await exec(`git commit -m "chore: Publish ${branchName}" -n`, { cwd });
 
-  let tags: string[] = [];
-  if (createTags) {
-    tags = publishManifests.map(
-      m => `v/${m.project.packageName}@${m.newVersion}`,
-    );
-    await exec(
-      tags.map(tag => `git tag -a ${tag} -m "Bump type ${tag}"`).join(' && '),
-      { cwd },
-    );
-  }
-  return { effects: [...tags, branchName], branchName };
+  return { effects: [branchName], branchName };
 }
 
 export interface PushOptions {

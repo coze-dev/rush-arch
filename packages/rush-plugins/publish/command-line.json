@@ -159,6 +159,14 @@
       "shortName": "-r",
       "description": "NPM registry URL (default: https://registry.npmjs.org)",
       "associatedCommands": ["release", "pub"]
+    },
+    {
+      "parameterKind": "stringList",
+      "argumentName": "ALLOW_BRANCHES",
+      "longName": "--allow-branches",
+      "description": "Branches allowed for LATEST release (default: main, feat/auto-publish)",
+      "associatedCommands": ["release"],
+      "required": false
     }
   ]
 }

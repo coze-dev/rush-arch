@@ -10,6 +10,7 @@ import { getRushConfiguration } from '../../utils/get-rush-config';
 
 type PackageJson = Record<string, unknown> & {
   cozePublishConfig?: Record<string, unknown>;
+  botPublishConfig?: Record<string, unknown>;
   dependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
 };
@@ -36,14 +37,21 @@ const updateDependencyVersions: PrehandleJob = async (
   return Promise.resolve(packageJson);
 };
 
-const applyCozePublishConfig: PrehandleJob = async (
+/**
+ * 应用发布配置
+ * 优先使用 botPublishConfig，如果不存在则使用 cozePublishConfig
+ */
+const applyPublishConfigSettings: PrehandleJob = async (
   packageJson: PackageJson,
 ) => {
-  const { cozePublishConfig } = packageJson;
-  if (cozePublishConfig) {
-    const keys = Object.keys(cozePublishConfig);
+  // 优先使用 botPublishConfig，如果不存在则回退到 cozePublishConfig
+  const publishConfig =
+    packageJson.botPublishConfig ?? packageJson.cozePublishConfig;
+
+  if (publishConfig) {
+    const keys = Object.keys(publishConfig);
     for (const key of keys) {
-      packageJson[key] = cozePublishConfig[key];
+      packageJson[key] = publishConfig[key];
     }
   }
   return Promise.resolve(packageJson);
@@ -52,7 +60,7 @@ const applyCozePublishConfig: PrehandleJob = async (
 export const applyPublishConfig = async (project: RushConfigurationProject) => {
   const jobs: PrehandleJob[] = [
     updateDependencyVersions,
-    applyCozePublishConfig,
+    applyPublishConfigSettings,
   ];
   const packageJsonPath = path.join(project.projectFolder, 'package.json');
   let packageJson = await readJsonFile<PackageJson>(packageJsonPath);

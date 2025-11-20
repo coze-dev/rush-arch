@@ -121,6 +121,7 @@ describe('release action', () => {
     expect(checkReleasePlan).toHaveBeenCalledWith(
       mockReleaseManifests,
       mockBranchName,
+      ['main', 'feat/auto-publish'],
     );
     expect(releasePackages).toHaveBeenCalledWith(mockReleaseManifests, {
       commit: mockCommit,

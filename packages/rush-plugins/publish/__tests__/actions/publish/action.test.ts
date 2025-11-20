@@ -179,6 +179,7 @@ describe('publish action', () => {
 
   it('should stop if not in main branch for production release', async () => {
     vi.mocked(isMainBranch).mockResolvedValue(false);
+    delete process.env.SKIP_BRANCH_CHECK;
     await publish({
       to: ['package-1'],
       repoUrl: 'git@github.com:example/repo.git',
@@ -187,6 +188,23 @@ describe('publish action', () => {
       'You are not in main branch, please switch to main branch and try again.',
     );
     expect(applyPublishManifest).not.toHaveBeenCalled();
+  });
+
+  it('should skip branch check when SKIP_BRANCH_CHECK is true', async () => {
+    vi.mocked(isMainBranch).mockResolvedValue(false);
+    process.env.SKIP_BRANCH_CHECK = 'true';
+
+    await publish({
+      to: ['package-1'],
+      repoUrl: 'git@github.com:example/repo.git',
+    });
+
+    expect(logger.error).not.toHaveBeenCalledWith(
+      'You are not in main branch, please switch to main branch and try again.',
+    );
+    expect(applyPublishManifest).toHaveBeenCalled();
+
+    delete process.env.SKIP_BRANCH_CHECK;
   });
 
   it('should allow non-main branch for beta releases', async () => {

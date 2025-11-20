@@ -5,6 +5,7 @@ import { logger } from '@coze-arch/logger';
 
 import { getCurrentBranchName, getCurrentCommitHash } from '../../utils/git';
 import { exec } from '../../utils/exec';
+import { DEFAULT_ALLOW_BRANCHES } from '../../const';
 import { type PackageToPublish, type ReleaseOptions } from './types';
 import { releasePackages } from './release';
 import { checkReleasePlan } from './plan';
@@ -12,7 +13,12 @@ import { buildReleaseManifest } from './manifest';
 import { getPackagesToPublish } from './git';
 
 export async function release(options: ReleaseOptions): Promise<void> {
-  const { dryRun = false, registry, packages } = options;
+  const {
+    dryRun = false,
+    registry,
+    packages,
+    allowBranches = DEFAULT_ALLOW_BRANCHES,
+  } = options;
   let { commit } = options;
   const hasPassedCommit = !!options.commit;
 
@@ -48,7 +54,7 @@ export async function release(options: ReleaseOptions): Promise<void> {
     false,
   );
   const branchName = await getCurrentBranchName();
-  checkReleasePlan(releaseManifests, branchName);
+  checkReleasePlan(releaseManifests, branchName, allowBranches);
 
   // 只有在指定了 commit 且与当前 HEAD 不同时才切换
   if (hasPassedCommit) {

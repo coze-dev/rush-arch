@@ -8,6 +8,7 @@ export interface ReleaseOptions {
   dryRun?: boolean;
   registry: string;
   packages?: PackageToPublish[]; // 可选，直接传入需要发布的包列表
+  allowBranches?: string[]; // 可选，允许发布正式版本的分支列表
 }
 
 export interface PackageToPublish {

@@ -132,5 +132,71 @@ describe('package', () => {
         mockPackageJson,
       );
     });
+
+    it('should apply botPublishConfig', async () => {
+      const mockPackageJson = {
+        name: 'test-package',
+        version: '1.0.0',
+        botPublishConfig: {
+          main: './dist/index.js',
+          types: './dist/index.d.ts',
+          files: ['dist'],
+        },
+      };
+
+      vi.mocked(readJsonFile).mockResolvedValue(mockPackageJson);
+
+      await applyPublishConfig(mockProject);
+
+      expect(writeJsonFile).toHaveBeenCalledWith(mockPackageJsonPath, {
+        name: 'test-package',
+        version: '1.0.0',
+        main: './dist/index.js',
+        types: './dist/index.d.ts',
+        files: ['dist'],
+        botPublishConfig: {
+          main: './dist/index.js',
+          types: './dist/index.d.ts',
+          files: ['dist'],
+        },
+      });
+    });
+
+    it('should prioritize botPublishConfig over cozePublishConfig', async () => {
+      const mockPackageJson = {
+        name: 'test-package',
+        version: '1.0.0',
+        cozePublishConfig: {
+          main: './dist/coze.js',
+          types: './dist/coze.d.ts',
+        },
+        botPublishConfig: {
+          main: './dist/bot.js',
+          types: './dist/bot.d.ts',
+          files: ['dist'],
+        },
+      };
+
+      vi.mocked(readJsonFile).mockResolvedValue(mockPackageJson);
+
+      await applyPublishConfig(mockProject);
+
+      expect(writeJsonFile).toHaveBeenCalledWith(mockPackageJsonPath, {
+        name: 'test-package',
+        version: '1.0.0',
+        main: './dist/bot.js',
+        types: './dist/bot.d.ts',
+        files: ['dist'],
+        cozePublishConfig: {
+          main: './dist/coze.js',
+          types: './dist/coze.d.ts',
+        },
+        botPublishConfig: {
+          main: './dist/bot.js',
+          types: './dist/bot.d.ts',
+          files: ['dist'],
+        },
+      });
+    });
   });
 });

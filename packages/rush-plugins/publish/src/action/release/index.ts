@@ -5,7 +5,7 @@ import { type Command } from 'commander';
 import { logger } from '@coze-arch/logger';
 
 import { type InstallAction } from '../../types';
-import { DEFAULT_NPM_REGISTRY } from '../../const';
+import { DEFAULT_NPM_REGISTRY, DEFAULT_ALLOW_BRANCHES } from '../../const';
 import { type ReleaseOptions } from './types';
 import { release } from './action';
 
@@ -19,6 +19,10 @@ export const installAction: InstallAction = (program: Command) => {
       '-r, --registry <string>',
       `发布到的 registry (默认: ${DEFAULT_NPM_REGISTRY})`,
       DEFAULT_NPM_REGISTRY,
+    )
+    .option(
+      '--allow-branches <branches...>',
+      `允许发布正式版本的分支列表 (默认: ${DEFAULT_ALLOW_BRANCHES.join(', ')})`,
     )
     .action(async (options: ReleaseOptions) => {
       try {

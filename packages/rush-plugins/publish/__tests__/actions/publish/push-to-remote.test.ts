@@ -3,9 +3,10 @@
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import dayjs from 'dayjs';
+import { confirm } from '@inquirer/prompts';
 import { logger } from '@coze-arch/logger';
 
-import { getCurrentBranchName } from '@/utils/git';
+import { getCurrentBranchName, getCurrentOrigin } from '@/utils/git';
 import { exec } from '@/utils/exec';
 import { BumpType } from '@/action/publish/types';
 import { pushToRemote } from '@/action/publish/push-to-remote';
@@ -14,7 +15,17 @@ import { commitChanges, push } from '@/action/publish/git';
 // Mock dependencies
 vi.mock('dayjs');
 vi.mock('@coze-arch/logger');
-vi.mock('@/utils/git');
+vi.mock('@inquirer/prompts', () => ({
+  confirm: vi.fn(),
+}));
+vi.mock('@/utils/git', async () => {
+  const actual = await vi.importActual('@/utils/git');
+  return {
+    ...actual,
+    getCurrentBranchName: vi.fn(),
+    getCurrentOrigin: vi.fn(),
+  };
+});
 vi.mock('@/utils/exec');
 vi.mock('@/action/publish/git');
 vi.mock('open', () => ({
@@ -67,7 +78,9 @@ describe('push-to-remote', () => {
       expect(push).not.toHaveBeenCalled();
     });
 
-    it('should use existing branch for beta releases', async () => {
+    it('should use existing branch for beta releases and push when user confirms', async () => {
+      vi.mocked(confirm).mockResolvedValue(true);
+
       await pushToRemote({
         sessionId: mockSessionId,
         changedFiles: mockChangedFiles,
@@ -80,13 +93,9 @@ describe('push-to-remote', () => {
       });
 
       expect(getCurrentBranchName).toHaveBeenCalled();
-      expect(exec).not.toHaveBeenCalled(); // 不应该创建新分支
       expect(commitChanges).toHaveBeenCalledWith({
-        sessionId: mockSessionId,
         files: mockChangedFiles,
         cwd: mockCwd,
-        createTags: true,
-        publishManifests: mockPublishManifests,
         branchName: mockBranchName,
       });
       expect(push).toHaveBeenCalledWith({
@@ -94,6 +103,55 @@ describe('push-to-remote', () => {
         cwd: mockCwd,
         repoUrl: REPO_URL,
       });
+      expect(logger.success).toHaveBeenCalledWith(
+        `Changes have been committed to branch "${mockBranchName}".`,
+      );
+      expect(confirm).toHaveBeenCalledWith({
+        message: 'Do you want to push the changes now?',
+        default: true,
+      });
+      expect(exec).toHaveBeenCalledWith('git push', { cwd: mockCwd });
+      expect(logger.success).toHaveBeenCalledWith(
+        'Changes pushed successfully!',
+      );
+    });
+
+    it('should use existing branch for beta releases and show manual message when user declines', async () => {
+      vi.mocked(confirm).mockResolvedValue(false);
+
+      await pushToRemote({
+        sessionId: mockSessionId,
+        changedFiles: mockChangedFiles,
+        cwd: mockCwd,
+        publishManifests: mockPublishManifests,
+        bumpPolicy: BumpType.BETA,
+        skipCommit: false,
+        repoUrl: REPO_URL,
+        skipPush: false,
+      });
+
+      expect(getCurrentBranchName).toHaveBeenCalled();
+      expect(commitChanges).toHaveBeenCalledWith({
+        files: mockChangedFiles,
+        cwd: mockCwd,
+        branchName: mockBranchName,
+      });
+      expect(push).toHaveBeenCalledWith({
+        refs: ['tag1', 'branch1'],
+        cwd: mockCwd,
+        repoUrl: REPO_URL,
+      });
+      expect(logger.success).toHaveBeenCalledWith(
+        `Changes have been committed to branch "${mockBranchName}".`,
+      );
+      expect(confirm).toHaveBeenCalledWith({
+        message: 'Do you want to push the changes now?',
+        default: true,
+      });
+      expect(exec).not.toHaveBeenCalledWith('git push', expect.anything());
+      expect(logger.info).toHaveBeenCalledWith(
+        'Please run "git push" manually when you are ready.',
+      );
     });
 
     it('should create new branch for non-beta releases', async () => {
@@ -116,11 +174,8 @@ describe('push-to-remote', () => {
         },
       );
       expect(commitChanges).toHaveBeenCalledWith({
-        sessionId: mockSessionId,
         files: mockChangedFiles,
         cwd: mockCwd,
-        createTags: false,
-        publishManifests: mockPublishManifests,
         branchName: expectedBranchName,
       });
       expect(push).toHaveBeenCalledWith({
@@ -145,7 +200,7 @@ describe('push-to-remote', () => {
       expect(push).not.toHaveBeenCalled();
     });
 
-    it('should show GitHub Actions link for test releases', async () => {
+    it('should not show any message for alpha releases', async () => {
       await pushToRemote({
         sessionId: mockSessionId,
         changedFiles: mockChangedFiles,
@@ -157,15 +212,13 @@ describe('push-to-remote', () => {
         repoUrl: REPO_URL,
       });
 
-      expect(logger.success).toHaveBeenCalledWith(
-        'Please refer to https://github.com/test-owner/test-repo/actions/workflows/release.yml for the release progress.',
-      );
+      expect(push).toHaveBeenCalled();
+      expect(logger.success).not.toHaveBeenCalled();
+      expect(getCurrentOrigin).not.toHaveBeenCalled();
     });
 
-    it('should show PR link and open browser for production releases', async () => {
-      const open = await import('open');
-      const expectedBranchName = `release/${mockDate}-${mockSessionId}`;
-      const expectedPrUrl = `https://github.com/test-owner/test-repo/compare/${expectedBranchName}?expand=1`;
+    it('should show simple message when no origin is found for production releases', async () => {
+      vi.mocked(getCurrentOrigin).mockResolvedValue(undefined);
 
       await pushToRemote({
         sessionId: mockSessionId,
@@ -178,8 +231,46 @@ describe('push-to-remote', () => {
         repoUrl: REPO_URL,
       });
 
+      const expectedBranchName = `release/${mockDate}-${mockSessionId}`;
+      expect(logger.success).toHaveBeenCalledWith(
+        expect.stringContaining(
+          `Please create a merge request from branch "${expectedBranchName}" to the main branch in your repository.`,
+        ),
+      );
+      expect(logger.success).toHaveBeenCalledWith(
+        expect.stringContaining(
+          'The release will be triggered after the merge request is merged.',
+        ),
+      );
+    });
+
+    it('should show PR link and open browser for GitHub repositories with release trigger message', async () => {
+      const open = await import('open');
+      const expectedBranchName = `release/${mockDate}-${mockSessionId}`;
+      const expectedPrUrl = `https://github.com/test-owner/test-repo/compare/${expectedBranchName}?expand=1`;
+
+      vi.mocked(getCurrentOrigin).mockResolvedValue(REPO_URL);
+
+      await pushToRemote({
+        sessionId: mockSessionId,
+        changedFiles: mockChangedFiles,
+        cwd: mockCwd,
+        publishManifests: mockPublishManifests,
+        bumpPolicy: BumpType.PATCH,
+        skipCommit: false,
+        skipPush: false,
+        repoUrl: REPO_URL,
+      });
+
+      expect(getCurrentOrigin).toHaveBeenCalledWith(mockCwd);
       expect(logger.success).toHaveBeenCalledWith(
         expect.stringContaining(expectedPrUrl),
+        false,
+      );
+      expect(logger.success).toHaveBeenCalledWith(
+        expect.stringContaining(
+          'The release will be triggered after the MR is merged.',
+        ),
         false,
       );
       expect(open.default).toHaveBeenCalledWith(expectedPrUrl);

@@ -5,7 +5,6 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { logger } from '@coze-arch/logger';
 
 import { exec } from '@/utils/exec';
-import { type PublishManifest } from '@/action/publish/types';
 import { createAndPushBranch, commitChanges, push } from '@/action/publish/git';
 
 // Mock dependencies
@@ -57,64 +56,11 @@ describe('git operations', () => {
   });
 
   describe('commitChanges', () => {
-    const mockPublishManifests: PublishManifest[] = [
-      {
-        project: {
-          packageName: 'test-package',
-        } as any,
-        currentVersion: '1.0.0',
-        newVersion: '1.1.0',
-      },
-    ];
-
-    it('should commit changes and create tags', async () => {
+    it('should commit changes', async () => {
       const options = {
-        sessionId: 'test-session',
         files: ['package.json', 'CHANGELOG.md'],
         cwd: mockCwd,
-        publishManifests: mockPublishManifests,
         branchName: 'release/test',
-        createTags: true,
-      };
-
-      const result = await commitChanges(options);
-
-      expect(exec).toHaveBeenCalledTimes(3);
-      // 验证 git add
-      expect(exec).toHaveBeenNthCalledWith(
-        1,
-        'git add package.json CHANGELOG.md',
-        {
-          cwd: mockCwd,
-        },
-      );
-      // 验证 git commit
-      expect(exec).toHaveBeenNthCalledWith(
-        2,
-        'git commit -m "chore: Publish release/test" -n',
-        { cwd: mockCwd },
-      );
-      // 验证 git tag
-      expect(exec).toHaveBeenNthCalledWith(
-        3,
-        'git tag -a v/test-package@1.1.0 -m "Bump type v/test-package@1.1.0"',
-        { cwd: mockCwd },
-      );
-
-      expect(result).toEqual({
-        effects: ['v/test-package@1.1.0', 'release/test'],
-        branchName: 'release/test',
-      });
-    });
-
-    it('should commit changes but do not create tags', async () => {
-      const options = {
-        sessionId: 'test-session',
-        files: ['package.json', 'CHANGELOG.md'],
-        cwd: mockCwd,
-        publishManifests: mockPublishManifests,
-        branchName: 'release/test',
-        createTags: false,
       };
 
       const result = await commitChanges(options);

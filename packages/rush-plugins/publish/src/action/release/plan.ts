@@ -32,13 +32,16 @@ const calReleasePlan = (releaseManifests: ReleaseManifest[]) => {
 export const checkReleasePlan = (
   releaseManifests: ReleaseManifest[],
   branchName: string,
+  allowBranches: string[] = ['main', 'feat/auto-publish'],
 ) => {
   const releasePlan = calReleasePlan(releaseManifests);
   if (
     releasePlan === ReleaseType.LATEST &&
-    !['main', 'feat/auto-publish'].includes(branchName)
+    !allowBranches.includes(branchName)
   ) {
-    throw new Error('For LATEST release, should be on main branch only.');
+    throw new Error(
+      `For LATEST release, should be on one of these branches: ${allowBranches.join(', ')}. Current Branch: ${branchName}`,
+    );
   }
   return true;
 };

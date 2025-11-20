@@ -53,7 +53,11 @@ export const publish = async (options: PublishOptions) => {
   const isBetaPublish = [BumpType.BETA, BumpType.ALPHA].includes(
     bumpPolicy as BumpType,
   );
-  if (isBetaPublish === false && (await isMainBranch()) === false) {
+  if (
+    process.env.SKIP_BRANCH_CHECK !== 'true' &&
+    isBetaPublish === false &&
+    (await isMainBranch()) === false
+  ) {
     // 只允许在主分支发布
     logger.error(
       'You are not in main branch, please switch to main branch and try again.',
