@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-chat",
+      "comment": "remove unmount",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/preset-chat",
+  "email": "stream-pipe@users.noreply.github.com"
+}

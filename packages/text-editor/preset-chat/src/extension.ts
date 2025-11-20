@@ -82,7 +82,6 @@ class ElementWidget extends WidgetType {
       const c = this.view.state.facet(connector);
       c.disconnect(this.elementId);
     }
-    this.root.unmount();
   }
 
   ignoreEvent(event: Event): boolean {
