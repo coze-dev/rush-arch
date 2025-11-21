@@ -12,6 +12,7 @@ import {
 import plugins from './plugins';
 import { htmlLanguage } from './language';
 import { useCurrentElement } from './hooks';
+import { CUSTOM_CLIPBOARD_MIMETYPE, type ElementDefinition } from './extension';
 
 const preset = [
   ...universalPreset,
@@ -32,6 +33,12 @@ type EditorAPI = InferEditorAPIFromPlugins<typeof preset>;
 
 export default preset;
 
-export { schemaUtils, useCurrentElement };
+export { schemaUtils, useCurrentElement, CUSTOM_CLIPBOARD_MIMETYPE };
 
-export type { EditorAPI, EditorNode, EditorElement, EditorText };
+export type {
+  EditorAPI,
+  ElementDefinition,
+  EditorNode,
+  EditorElement,
+  EditorText,
+};

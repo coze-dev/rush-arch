@@ -12,6 +12,7 @@ import {
   WidgetType,
 } from '@codemirror/view';
 import {
+  EditorSelection,
   type EditorState,
   Facet,
   RangeSetBuilder,
@@ -20,11 +21,17 @@ import {
 import { syntaxTree } from '@codemirror/language';
 
 import { extractElementData } from './utils';
-import { INTERNAL_ID } from './schema';
+import {
+  type EditorElement,
+  type EditorNode,
+  INTERNAL_ID,
+  schemaUtils,
+} from './schema';
 import { ElementProvider } from './context';
 
-interface ElementDefinition {
-  render: (props: any) => ReactNode;
+interface ElementDefinition<Attrs = any> {
+  render: (props: Attrs) => ReactNode;
+  toString?: (element: EditorElement<Attrs>) => string;
 }
 
 interface ElementsDefinition {
@@ -93,7 +100,10 @@ class ElementWidget extends WidgetType {
 //   return (widget as any)?.$$type === 'element';
 // }
 
-const elementsFacet = Facet.define<ElementsDefinition, ElementsDefinition>({
+const elementsFacet = Facet.define<
+  ElementsDefinition | undefined,
+  ElementsDefinition | undefined
+>({
   combine: FacetCombineStrategy.Last,
 });
 
@@ -116,21 +126,32 @@ const field = StateField.define({
 });
 
 function build(state: EditorState): DecorationSet {
+  const allElements = state.facet(elementsFacet);
+
+  if (!allElements) {
+    return Decoration.none;
+  }
+
   const tree = syntaxTree(state);
   const builder = new RangeSetBuilder<Decoration>();
   tree.iterate({
     enter(node) {
       const data = extract(node.node, state);
       if (data) {
-        const allElements = state.facet(elementsFacet);
         const definition = allElements[data.tagName];
-        builder.add(
-          node.from,
-          node.to,
-          Decoration.replace({
-            widget: new ElementWidget(definition, data.internalId, data.props),
-          }),
-        );
+        if (definition) {
+          builder.add(
+            node.from,
+            node.to,
+            Decoration.replace({
+              widget: new ElementWidget(
+                definition,
+                data.internalId,
+                data.props,
+              ),
+            }),
+          );
+        }
       }
 
       if (node.matchContext(['Document'])) {
@@ -163,9 +184,110 @@ function extract(node: SyntaxNode, state: EditorState) {
   }
 }
 
+const CUSTOM_CLIPBOARD_MIMETYPE = 'application/x-with-elements';
+
+const copyPasteHandler = EditorView.domEventHandlers({
+  paste(event, view) {
+    try {
+      const xText = event.clipboardData?.getData(CUSTOM_CLIPBOARD_MIMETYPE);
+      const plainText = event.clipboardData?.getData('text/plain');
+
+      const text = xText ?? plainText ?? '';
+
+      const nodes = schemaUtils.toJSON(text);
+      const newText = schemaUtils.fromJSON(
+        nodes
+          .map(node => {
+            if (node.type === 'text') {
+              return node;
+            }
+
+            if (node.type === 'element') {
+              return {
+                ...node,
+                attributes: {
+                  ...(node.attributes ?? {}),
+                  cmid: `e${Math.random()}`,
+                },
+              } satisfies EditorElement;
+            }
+          })
+          .filter(v => isEditorNode(v)),
+      );
+
+      view.dispatch({
+        changes: {
+          from: view.state.selection.main.from,
+          to: view.state.selection.main.to,
+          insert: newText,
+        },
+        selection: EditorSelection.cursor(
+          view.state.selection.main.from + newText.length,
+        ),
+      });
+      return true;
+    } catch (e) {
+      return false;
+    }
+  },
+  copy(event, view) {
+    const definitions = view.state.facet(elementsFacet);
+
+    if (!definitions) {
+      return false;
+    }
+
+    try {
+      const { from, to } = view.state.selection.main;
+      const slice = view.state.doc.sliceString(from, to);
+      const nodes = schemaUtils.toJSON(slice);
+
+      const plainText = nodes
+        .map(node => {
+          if (node.type === 'text') {
+            return node.value;
+          }
+
+          if (node.type === 'element') {
+            const definition = definitions[node.tagName];
+            const toString = definition?.toString;
+
+            if (!definition) {
+              return node.raw ?? '';
+            }
+
+            if (
+              Object.prototype.hasOwnProperty.call(definition, 'toString') &&
+              typeof toString === 'function'
+            ) {
+              return toString(node);
+            }
+
+            return `[${node.tagName}]`;
+          }
+
+          return '';
+        })
+        .join('');
+
+      event.clipboardData?.setData('text/plain', plainText);
+      event.clipboardData?.setData(CUSTOM_CLIPBOARD_MIMETYPE, slice);
+
+      return true;
+    } catch (e) {
+      return false;
+    }
+  },
+});
+
+function isEditorNode(v: unknown): v is EditorNode {
+  return Boolean(v);
+}
+
 function chatExtension() {
   return [
     field,
+    copyPasteHandler,
     // selectionEnlarger.of(state => {
     //   const decorations = state.field(field);
     //   const cursor = decorations.iter();
@@ -189,6 +311,6 @@ function chatExtension() {
   ];
 }
 
-export { field, chatExtension, elementsFacet };
+export { field, chatExtension, elementsFacet, CUSTOM_CLIPBOARD_MIMETYPE };
 
-export type { ElementsDefinition };
+export type { ElementsDefinition, ElementDefinition };
