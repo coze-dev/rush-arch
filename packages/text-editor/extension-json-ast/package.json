@@ -1,6 +1,6 @@
 {
   "name": "@coze-editor/extension-json-ast",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.1e5e87",
   "description": "extension-json-ast",
   "license": "MIT",
   "author": "fengzilong",
