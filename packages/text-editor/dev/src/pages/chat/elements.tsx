@@ -132,6 +132,9 @@ function UploadFile({ filename }: { filename: string }) {
 const elements = {
   file: {
     render: FileReference,
+    toString(el) {
+      return `[custom string from file - ${el.attributes.name}]`
+    },
   },
   ai: {
     render: AIReference,
