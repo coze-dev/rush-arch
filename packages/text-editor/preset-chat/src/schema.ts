@@ -5,6 +5,7 @@ interface EditorElement<Attrs = Record<string, any>> {
   type: 'element';
   tagName: string;
   attributes: Attrs;
+  raw?: string;
 }
 
 interface EditorText {
@@ -22,6 +23,7 @@ const schemaUtils = {
       to: number;
       tagName: string;
       attributes: Record<string, any>;
+      raw: string;
     }[] = [];
     tree.iterate({
       enter(node) {
@@ -31,6 +33,7 @@ const schemaUtils = {
             tags.push({
               from: node.from,
               to: node.to,
+              raw: text.slice(node.from, node.to),
               ...data,
             });
           }
@@ -41,7 +44,8 @@ const schemaUtils = {
     let pos = 0;
     const elements: EditorNode[] = [];
     for (const tag of tags) {
-      const { from, to, tagName, attributes } = tag;
+      const { from, to, tagName, attributes, raw } = tag;
+      const { cmid, ...restAttributes } = attributes ?? {};
 
       // overlap, skip this element
       if (from < pos) {
@@ -58,7 +62,8 @@ const schemaUtils = {
       elements.push({
         type: 'element',
         tagName,
-        attributes,
+        attributes: restAttributes,
+        raw,
       });
 
       pos = to;
