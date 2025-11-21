@@ -2,7 +2,7 @@ import preset, { schemaUtils, type EditorAPI } from '@coze-editor/editor/preset-
 import { type EditorAPI as CodeEditorAPI } from '@coze-editor/editor/preset-code'
 import { EditorProvider, PositionMirror, Renderer, useEditor, useMouseSelectionPopup } from '@coze-editor/editor/react'
 import { EditorView } from '@codemirror/view'
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Extension } from '@codemirror/state';
 import { astDebugger } from '@coze-editor/editor';
 import { Popover } from '@douyinfe/semi-ui';
