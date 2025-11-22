@@ -114,13 +114,15 @@ function attributesToString(attributes: EditorElement['attributes']) {
     const value = attributes[key];
     if (value === true) {
       array.push(key);
-    } else {
-      array.push(`${key}=${JSON.stringify(encodeURIComponent(value))}`);
+    } else if (typeof value !== 'undefined') {
+      array.push(`${key}="${encodeURIComponent(JSON.stringify(value))}"`);
     }
   });
 
   if (!hasId) {
-    array.unshift(`${INTERNAL_ID}="${uniqueId()}"`);
+    array.unshift(
+      `${INTERNAL_ID}="${encodeURIComponent(JSON.stringify(uniqueId()))}"`,
+    );
   }
 
   return array.join(' ');
