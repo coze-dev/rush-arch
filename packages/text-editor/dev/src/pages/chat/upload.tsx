@@ -20,7 +20,12 @@ function UploadFile() {
     editor.insertElement({
       tagName: 'upload',
       attributes: {
-        filename: 'my.pdf'
+        filename: 'my.pdf',
+        array: [
+          { foo: 1 },
+          true,
+          'bar',
+        ],
       },
     })
 
