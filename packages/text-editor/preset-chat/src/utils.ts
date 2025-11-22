@@ -29,16 +29,17 @@ function extractElementData(node: SyntaxNode, text: string) {
             valueNode?.name === 'UnquotedAttributeValue')
         ) {
           const name = text.slice(nameNode.from, nameNode.to);
-          const value = text.slice(valueNode.from, valueNode.to);
+          const fullValue = text.slice(valueNode.from, valueNode.to);
 
+          let value = fullValue;
           if (valueNode.name === 'AttributeValue') {
-            attributes[name] = decodeURIComponent(value.slice(1, -1));
-          } else {
-            try {
-              attributes[name] = JSON.parse(decodeURIComponent(value));
-            } catch (e) {
-              /* empty */
-            }
+            value = fullValue.slice(1, -1);
+          }
+
+          try {
+            attributes[name] = JSON.parse(decodeURIComponent(value));
+          } catch (e) {
+            /* empty */
           }
         } else if (
           nameNode?.name === 'AttributeName' &&

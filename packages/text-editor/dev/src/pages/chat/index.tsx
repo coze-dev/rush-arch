@@ -25,6 +25,7 @@ const defaultValue = schemaUtils.fromJSON([
       name: 'index.ts"[100-110]',
       num: 1.1,
       bool: true,
+      path: 'path',
     }
   },
   {

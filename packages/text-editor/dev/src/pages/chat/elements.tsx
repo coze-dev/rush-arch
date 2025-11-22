@@ -114,8 +114,10 @@ function LineMdUploadingLoop(props: SVGProps<SVGSVGElement>) {
   )
 }
 
-function UploadFile({ filename }: { filename: string }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function UploadFile({ filename, array }: { filename: string; array: any[] }) {
   const uploading = useContext(UploadingContext)
+  console.log('array', array)
   return <span
     className="inline-block items-center border border-solid border-gray-200 rounded-[3px] px-[5px] py-0 mx-[3px] select-none text-xs"
   >
