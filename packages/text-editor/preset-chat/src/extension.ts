@@ -18,7 +18,7 @@ import {
   RangeSetBuilder,
   StateField,
 } from '@codemirror/state';
-import { syntaxTree } from '@codemirror/language';
+import { ensureSyntaxTree, syntaxTree } from '@codemirror/language';
 
 import { extractElementData } from './utils';
 import {
@@ -132,7 +132,7 @@ function build(state: EditorState): DecorationSet {
     return Decoration.none;
   }
 
-  const tree = syntaxTree(state);
+  const tree = ensureSyntaxTree(state, state.doc.length) ?? syntaxTree(state);
   const builder = new RangeSetBuilder<Decoration>();
   tree.iterate({
     enter(node) {
