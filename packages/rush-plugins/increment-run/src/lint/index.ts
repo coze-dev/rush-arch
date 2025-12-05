@@ -19,7 +19,7 @@ const LINT_BATCH_SIZE = 30;
 const PARALLEL_SIZE = Math.max(getCPUSize() - 1, 1);
 
 const isNeedLint = (file: string) =>
-  file?.length > 0 && /\.(js|ts|jsx|tsx|json|cjs|mjs)$/.test(file);
+  file?.length > 0 && /\.(js|ts|jsx|tsx|json|cjs|mjs|svg)$/.test(file);
 
 const DISABLED_RULES = [];
 const DISABLED_PACKAGES = ['@coze-arch/eslint-config'];
