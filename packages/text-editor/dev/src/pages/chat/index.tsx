@@ -62,7 +62,9 @@ function Page() {
               editorRef.current = api
             }}
             onChange={(e) => {
-              console.log('schema', schemaUtils.toJSON(e.value))
+              console.log('schema', schemaUtils.toJSON(e.value, {
+                validTagNames: Object.keys(elements),
+              }))
             }}
           />
 

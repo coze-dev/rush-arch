@@ -154,9 +154,9 @@ function build(state: EditorState): DecorationSet {
         }
       }
 
-      if (node.matchContext(['Document'])) {
-        return false;
-      }
+      // if (node.matchContext(['Document'])) {
+      //   return false;
+      // }
 
       return true;
     },
@@ -189,12 +189,15 @@ const CUSTOM_CLIPBOARD_MIMETYPE = 'application/x-with-elements';
 const copyPasteHandler = EditorView.domEventHandlers({
   paste(event, view) {
     try {
+      const definitions = view.state.facet(elementsFacet);
       const xText = event.clipboardData?.getData(CUSTOM_CLIPBOARD_MIMETYPE);
       const plainText = event.clipboardData?.getData('text/plain');
 
-      const text = xText ?? plainText ?? '';
+      const text = xText || plainText || '';
 
-      const nodes = schemaUtils.toJSON(text);
+      const nodes = schemaUtils.toJSON(text, {
+        validTagNames: definitions ? Object.keys(definitions) : undefined,
+      });
       const newText = schemaUtils.fromJSON(
         nodes
           .map(node => {
@@ -240,7 +243,9 @@ const copyPasteHandler = EditorView.domEventHandlers({
     try {
       const { from, to } = view.state.selection.main;
       const slice = view.state.doc.sliceString(from, to);
-      const nodes = schemaUtils.toJSON(slice);
+      const nodes = schemaUtils.toJSON(slice, {
+        validTagNames: definitions ? Object.keys(definitions) : undefined,
+      });
 
       const plainText = nodes
         .map(node => {
