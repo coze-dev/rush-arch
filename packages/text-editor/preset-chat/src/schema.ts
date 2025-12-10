@@ -15,8 +15,27 @@ interface EditorText {
 
 type EditorNode = EditorElement | EditorText;
 
+function isElementRegistered(
+  tagName: string,
+  validTagNames: string[] | undefined,
+) {
+  if (!Array.isArray(validTagNames)) {
+    return false;
+  }
+
+  if (validTagNames.includes(tagName)) {
+    return true;
+  }
+
+  return false;
+}
+
 const schemaUtils = {
-  toJSON(text: string): EditorNode[] {
+  toJSON(text: string, options?: { validTagNames?: string[] }): EditorNode[] {
+    if (text === '') {
+      return [];
+    }
+
     const tree = parse(text);
     const tags: {
       from: number;
@@ -27,9 +46,12 @@ const schemaUtils = {
     }[] = [];
     tree.iterate({
       enter(node) {
-        if (node.name === 'Element' && node.matchContext(['Document'])) {
+        if (node.name === 'Element') {
           const data = extractElementData(node.node, text);
-          if (data) {
+          if (
+            data &&
+            isElementRegistered(data.tagName, options?.validTagNames)
+          ) {
             tags.push({
               from: node.from,
               to: node.to,
