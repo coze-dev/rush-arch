@@ -45,6 +45,7 @@ type TriggerMentionOptions = SharedMentionOptions & {
 
 type MentionOptions = TriggerCharactersMentionOptions | TriggerMentionOptions;
 
+// TriggerContext
 interface TriggerContext {
   from: number;
   to: number;
