@@ -89,6 +89,7 @@ export const publish = async (options: PublishOptions) => {
 
   // 4. 创建并推送发布分支 或 直接发布
   let shouldRelease = false;
+  console.log('debugger options', JSON.stringify(options), isBetaPublish);
   if (options.release) {
     // 验证 release 模式的前置条件
     if (isBetaPublish === false) {
