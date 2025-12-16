@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+/* eslint-disable max-lines-per-function */
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
@@ -40,6 +42,11 @@ function mention(options: MentionOptions): Extension {
     },
     update(value, tr) {
       const options = tr.startState.facet(mentionConfig);
+
+      if (!options) {
+        return value;
+      }
+
       const { search = true, onOpenChange, onSearch, onTrigger } = options;
 
       let { show } = value;
