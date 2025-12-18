@@ -801,6 +801,21 @@
       "projectFolder": "packages/text-editor/dev",
       "tags": ["level-3"]
     },
+    {
+      "packageName": "@coze-editor/preset-universal-code",
+      "projectFolder": "packages/text-editor/preset-universal-code",
+      "tags": ["level-3"]
+    },
+    {
+      "packageName": "@coze-editor/vscode-search",
+      "projectFolder": "packages/text-editor/vscode-search",
+      "tags": ["level-3"]
+    },
+    {
+      "packageName": "@coze-editor/vscode-themes",
+      "projectFolder": "packages/text-editor/vscode-themes",
+      "tags": ["level-3"]
+    },
     // {
     //   "packageName": "@coze-editor/parser-jinja2",
     //   "projectFolder": "packages/text-editor/parser-jinja2",
