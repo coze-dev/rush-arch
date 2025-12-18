@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/vscode",
+      "comment": "add preset-universal-code, vscode-search and vscode-themes",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/vscode",
+  "email": "stream-pipe@users.noreply.github.com"
+}

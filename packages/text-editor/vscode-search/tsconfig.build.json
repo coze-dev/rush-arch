@@ -18,12 +18,6 @@
     },
     {
       "path": "../eslint-config/tsconfig.build.json"
-    },
-    {
-      "path": "../vscode-search/tsconfig.build.json"
-    },
-    {
-      "path": "../vscode-themes/tsconfig.build.json"
     }
   ]
 }

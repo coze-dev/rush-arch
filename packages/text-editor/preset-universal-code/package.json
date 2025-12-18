@@ -1,7 +1,7 @@
 {
-  "name": "@coze-editor/vscode",
+  "name": "@coze-editor/preset-universal-code",
   "version": "0.1.0",
-  "description": "vscode",
+  "description": "preset-universal-code",
   "license": "MIT",
   "author": "fengzilong",
   "maintainers": [],
@@ -19,14 +19,19 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "vite --force",
     "lint": "eslint && tsc --noEmit"
   },
   "dependencies": {
-    "@coze-editor/vscode-search": "workspace:*",
-    "@coze-editor/vscode-themes": "workspace:*"
+    "@codemirror/autocomplete": "^6.18.0",
+    "@codemirror/language": "^6.10.1",
+    "@coze-editor/core": "workspace:*",
+    "@coze-editor/core-plugins": "workspace:*",
+    "@coze-editor/extension-scrollbar": "workspace:*",
+    "@coze-editor/extensions": "workspace:*",
+    "@coze-editor/preset-universal": "workspace:*"
   },
   "devDependencies": {
+    "@codemirror/commands": "^6.3.3",
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1",
     "@coze-arch/ts-config": "workspace:*",
@@ -37,9 +42,11 @@
     "typescript": "^5.8.2"
   },
   "peerDependencies": {
+    "@codemirror/commands": "^6.3.3",
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1"
   },
+  "packageManager": "pnpm@9.15.0",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"

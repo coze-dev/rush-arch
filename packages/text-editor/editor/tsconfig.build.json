@@ -71,6 +71,9 @@
       "path": "../preset-prompt/tsconfig.build.json"
     },
     {
+      "path": "../preset-universal-code/tsconfig.build.json"
+    },
+    {
       "path": "../preset-universal/tsconfig.build.json"
     },
     {
@@ -90,6 +93,12 @@
     },
     {
       "path": "../utils/tsconfig.build.json"
+    },
+    {
+      "path": "../vscode-search/tsconfig.build.json"
+    },
+    {
+      "path": "../vscode-themes/tsconfig.build.json"
     },
     {
       "path": "../vscode/tsconfig.build.json"
