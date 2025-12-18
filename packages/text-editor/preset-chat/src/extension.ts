@@ -189,11 +189,16 @@ const CUSTOM_CLIPBOARD_MIMETYPE = 'application/x-with-elements';
 const copyPasteHandler = EditorView.domEventHandlers({
   paste(event, view) {
     try {
-      const definitions = view.state.facet(elementsFacet);
-      const xText = event.clipboardData?.getData(CUSTOM_CLIPBOARD_MIMETYPE);
-      const plainText = event.clipboardData?.getData('text/plain');
+      let text = event.clipboardData?.getData(CUSTOM_CLIPBOARD_MIMETYPE);
 
-      const text = xText || plainText || '';
+      if (!text) {
+        return false;
+      }
+
+      // normalize \r\n to \n for Windows (if user copies rich text)
+      text = text.replace(/\r\n/g, '\n');
+
+      const definitions = view.state.facet(elementsFacet);
 
       const nodes = schemaUtils.toJSON(text, {
         validTagNames: definitions ? Object.keys(definitions) : undefined,

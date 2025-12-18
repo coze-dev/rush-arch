@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-chat",
+      "comment": "skip if custom text is not in clipboard",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/preset-chat",
+  "email": "stream-pipe@users.noreply.github.com"
+}
