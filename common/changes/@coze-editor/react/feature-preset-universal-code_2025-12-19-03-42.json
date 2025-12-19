@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react",
+      "comment": "add createEditor",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/react",
+  "email": "stream-pipe@users.noreply.github.com"
+}
