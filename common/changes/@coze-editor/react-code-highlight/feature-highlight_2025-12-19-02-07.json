@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react-code-highlight",
+      "comment": "rm undefined check",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/react-code-highlight",
+  "email": "hanchayi@163.com"
+}

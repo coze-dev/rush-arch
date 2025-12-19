@@ -41,7 +41,7 @@ export const CodeHighlight: React.FC<CodeHighlightProps> = ({
 
   useEffect(() => {
     const editor = editorRef.current;
-    if (!editor || typeof code === 'undefined') {
+    if (!editor) {
       return;
     }
 
