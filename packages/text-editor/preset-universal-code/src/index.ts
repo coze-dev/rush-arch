@@ -1,7 +1,6 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-import universal from '@coze-editor/preset-universal';
 import {
   scrollBeyondLastLine,
   colorizationBrackets,
@@ -33,8 +32,6 @@ const tabSize = (value?: number) => [
 ];
 
 const preset = [
-  ...universal,
-
   extension([
     basicSetup,
     matchingBrackets,

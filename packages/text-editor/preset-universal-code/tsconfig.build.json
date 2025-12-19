@@ -30,9 +30,6 @@
     },
     {
       "path": "../extensions/tsconfig.build.json"
-    },
-    {
-      "path": "../preset-universal/tsconfig.build.json"
     }
   ]
 }

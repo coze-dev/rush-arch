@@ -606,8 +606,8 @@
       "tags": ["level-3"]
     },
     {
-      "packageName": "@coze-editor/preset-code-highlight",
-      "projectFolder": "packages/text-editor/preset-code-highlight",
+      "packageName": "@coze-editor/preset-code-languages",
+      "projectFolder": "packages/text-editor/preset-code-languages",
       "shouldPublish": true,
       "tags": ["level-3"]
     },
@@ -745,12 +745,6 @@
     {
       "packageName": "@coze-editor/react-merge",
       "projectFolder": "packages/text-editor/react-merge",
-      "shouldPublish": true,
-      "tags": ["level-3"]
-    },
-    {
-      "packageName": "@coze-editor/react-code-highlight",
-      "projectFolder": "packages/text-editor/react-code-highlight",
       "shouldPublish": true,
       "tags": ["level-3"]
     },

@@ -27,8 +27,7 @@
     "@coze-editor/core": "workspace:*",
     "@coze-editor/core-plugins": "workspace:*",
     "@coze-editor/extension-scrollbar": "workspace:*",
-    "@coze-editor/extensions": "workspace:*",
-    "@coze-editor/preset-universal": "workspace:*"
+    "@coze-editor/extensions": "workspace:*"
   },
   "devDependencies": {
     "@codemirror/commands": "^6.3.3",

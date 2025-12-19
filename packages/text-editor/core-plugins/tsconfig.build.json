@@ -24,6 +24,9 @@
     },
     {
       "path": "../extension-placeholder/tsconfig.build.json"
+    },
+    {
+      "path": "../utils/tsconfig.build.json"
     }
   ]
 }

@@ -1,18 +1,23 @@
-import { CodeHighlight } from '@coze-editor/editor/react-code-highlight';
-import { useEffect, useState } from 'react';
+import universal from '@coze-editor/editor/preset-universal';
+import universalCode from '@coze-editor/editor/preset-universal-code';
+import autoLanguage from '@coze-editor/editor/preset-code-languages';
+import { useState } from 'react';
 import { examples } from './examples';
-import { EditorView } from '@codemirror/view';
+import { createEditor } from '@coze-editor/editor/react';
+
+const CodeHighlight = createEditor([
+  ...universal,
+  ...universalCode,
+  ...autoLanguage,
+], {
+  defaultOptions: {
+    fontSize: 15
+  }
+})
 
 const HighlightPage = () => {
   const [code, setCode] = useState('const a = 1;');
   const [path, setPath] = useState('a.js');
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCode(prevCode => prevCode + '\n');
-    }, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div>
@@ -24,7 +29,7 @@ const HighlightPage = () => {
             }}
             key={path}
             onClick={() => {
-              setCode(code);
+              setCode(code.trim());
               setPath(path);
             }}
           >
@@ -33,24 +38,19 @@ const HighlightPage = () => {
         ))}
       </div>
       <CodeHighlight
-        code={code}
-        path={path}
         domProps={{
           style: {
-            width: '200px',
+            width: '500px',
             border: '1px solid #000',
           },
+        }}
+        options={{
+          value: code,
+          path: path,
         }}
         didMount={api => {
           console.log('didMount', api);
         }}
-        extensions={[
-          EditorView.theme({
-            '& .cm-content': {
-              fontSize: '16px',
-            },
-          }),
-        ]}
       />
     </div>
   );

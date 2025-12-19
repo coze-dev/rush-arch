@@ -1,5 +1,5 @@
+import { type Extension } from '@codemirror/state';
 import { LanguageDescription, LanguageSupport } from '@codemirror/language';
-import { javascript } from '@codemirror/lang-javascript';
 
 export const supportedLanguages = [
   LanguageDescription.of({
@@ -136,9 +136,9 @@ export const supportedLanguages = [
 ];
 
 // 添加缓存机制
-const languageCache = new Map<string, Promise<unknown>>();
+const languageCache = new Map<string, Promise<Extension>>();
 
-export async function getLanguage(fileName: string) {
+export async function getLanguage(fileName: string): Promise<Extension> {
   const cacheKey = fileName.split('.').pop() || 'default';
 
   const cachedLanguage = languageCache.get(cacheKey);
@@ -152,12 +152,10 @@ export async function getLanguage(fileName: string) {
         supportedLanguages,
         fileName,
       );
-      return languageDescription
-        ? await languageDescription.load()
-        : javascript();
+      return languageDescription ? await languageDescription.load() : [];
     } catch (e) {
       console.error('Language load failed:', e);
-      return javascript();
+      return [];
     }
   })();
 

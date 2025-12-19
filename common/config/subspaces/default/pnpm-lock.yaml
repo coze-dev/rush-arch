@@ -1477,6 +1477,9 @@ importers:
       '@coze-editor/extension-placeholder':
         specifier: workspace:*
         version: link:../extension-placeholder
+      '@coze-editor/utils':
+        specifier: workspace:*
+        version: link:../utils
       es-toolkit:
         specifier: ^1.25.2
         version: 1.39.3
@@ -1677,9 +1680,9 @@ importers:
       '@coze-editor/preset-code':
         specifier: workspace:*
         version: link:../preset-code
-      '@coze-editor/preset-code-highlight':
+      '@coze-editor/preset-code-languages':
         specifier: workspace:*
-        version: link:../preset-code-highlight
+        version: link:../preset-code-languages
       '@coze-editor/preset-expression':
         specifier: workspace:*
         version: link:../preset-expression
@@ -1701,9 +1704,6 @@ importers:
       '@coze-editor/react':
         specifier: workspace:*
         version: link:../react
-      '@coze-editor/react-code-highlight':
-        specifier: workspace:*
-        version: link:../react-code-highlight
       '@coze-editor/react-components':
         specifier: workspace:*
         version: link:../react-components
@@ -2404,7 +2404,7 @@ importers:
         specifier: ^5.8.2
         version: 5.8.2
 
-  ../../../packages/text-editor/preset-code-highlight:
+  ../../../packages/text-editor/preset-code-languages:
     dependencies:
       '@codemirror/lang-cpp':
         specifier: ^6.0.2
@@ -2445,6 +2445,12 @@ importers:
       '@coze-editor/core':
         specifier: workspace:*
         version: link:../core
+      '@coze-editor/core-plugins':
+        specifier: workspace:*
+        version: link:../core-plugins
+      '@coze-editor/utils':
+        specifier: workspace:*
+        version: link:../utils
     devDependencies:
       '@codemirror/language':
         specifier: ^6.10.1
@@ -2802,55 +2808,6 @@ importers:
         specifier: ^5.8.2
         version: 5.8.2
 
-  ../../../packages/text-editor/react-code-highlight:
-    dependencies:
-      '@coze-editor/preset-code-highlight':
-        specifier: workspace:*
-        version: link:../preset-code-highlight
-      '@coze-editor/preset-universal-code':
-        specifier: workspace:*
-        version: link:../preset-universal-code
-    devDependencies:
-      '@codemirror/state':
-        specifier: ^6.4.1
-        version: 6.5.2
-      '@codemirror/view':
-        specifier: ^6.26.1
-        version: 6.37.1
-      '@coze-arch/ts-config':
-        specifier: workspace:*
-        version: link:../../../config/ts-config
-      '@coze-editor/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@coze-editor/react':
-        specifier: workspace:*
-        version: link:../react
-      '@types/node':
-        specifier: ^22
-        version: 22.13.13
-      '@types/react':
-        specifier: 18.2.37
-        version: 18.2.37
-      '@types/react-dom':
-        specifier: 18.2.15
-        version: 18.2.15
-      eslint:
-        specifier: 9.14.0
-        version: 9.14.0(jiti@2.6.1)
-      react:
-        specifier: ~18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ~18.2.0
-        version: 18.2.0(react@18.2.0)
-      tsup:
-        specifier: ^8.0.1
-        version: 8.5.0(@swc/core@1.11.29(@swc/helpers@0.5.17))(jiti@2.6.1)(postcss@8.5.5)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.8.0)
-      typescript:
-        specifier: ^5.8.2
-        version: 5.8.2
-
   ../../../packages/text-editor/react-components:
     dependencies:
       '@codemirror/language':
@@ -3034,6 +2991,9 @@ importers:
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
+      '@coze-editor/core':
+        specifier: workspace:*
+        version: link:../core
       '@coze-editor/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config

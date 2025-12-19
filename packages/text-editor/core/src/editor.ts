@@ -1,7 +1,10 @@
+/* eslint-disable default-case */
+/* eslint-disable max-lines-per-function */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import mitt, { type EventType, type Emitter } from 'mitt';
 import { EditorView } from '@codemirror/view';
 import { EditorState, type Extension } from '@codemirror/state';

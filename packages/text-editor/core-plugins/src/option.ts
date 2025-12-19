@@ -1,9 +1,15 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
+import { FacetCombineStrategy } from '@coze-editor/utils';
 import { placeholder as cmPlaceholder } from '@coze-editor/extension-placeholder';
-import { EditorView, lineNumbers as cmLineNumbers } from '@codemirror/view';
-import { EditorState, Prec } from '@codemirror/state';
+import {
+  EditorView,
+  ViewPlugin,
+  type ViewUpdate,
+  lineNumbers as cmLineNumbers,
+} from '@codemirror/view';
+import { EditorState, Facet, Prec } from '@codemirror/state';
 
 export const fontSize = (value?: number) => {
   if (typeof value === 'undefined') {
@@ -140,3 +146,32 @@ export const lineNumbers = (enable?: boolean) =>
 
 export const lineWrapping = (enable: boolean) =>
   enable ? EditorView.lineWrapping : [];
+
+const valueFacet = Facet.define<string, string>({
+  combine: FacetCombineStrategy.Last,
+});
+export const valueExtension = ViewPlugin.fromClass(
+  class {
+    update(update: ViewUpdate) {
+      const currentValue = update.state.doc.toString();
+      const newValue = update.state.facet(valueFacet);
+
+      if (
+        typeof newValue === 'string' &&
+        newValue &&
+        newValue !== currentValue
+      ) {
+        queueMicrotask(() => {
+          update.view.dispatch({
+            changes: {
+              from: 0,
+              to: currentValue.length,
+              insert: newValue,
+            },
+          });
+        });
+      }
+    }
+  },
+);
+export const value = (v: string) => valueFacet.of(v);

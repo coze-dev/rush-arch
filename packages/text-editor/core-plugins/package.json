@@ -24,6 +24,7 @@
   "dependencies": {
     "@coze-editor/core": "workspace:*",
     "@coze-editor/extension-placeholder": "workspace:*",
+    "@coze-editor/utils": "workspace:*",
     "es-toolkit": "^1.25.2"
   },
   "devDependencies": {

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-universal",
+      "comment": "add asyncOption",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/preset-universal",
+  "email": "stream-pipe@users.noreply.github.com"
+}
