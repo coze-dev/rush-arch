@@ -2445,9 +2445,6 @@ importers:
       '@coze-editor/core':
         specifier: workspace:*
         version: link:../core
-      '@coze-editor/core-plugins':
-        specifier: workspace:*
-        version: link:../core-plugins
     devDependencies:
       '@codemirror/language':
         specifier: ^6.10.1
