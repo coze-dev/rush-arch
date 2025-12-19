@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { type EditorPluginSpec } from '@coze-editor/core';
 
 import { type InferRendererProps, Renderer } from './renderer';

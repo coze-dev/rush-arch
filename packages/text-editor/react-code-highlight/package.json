@@ -1,9 +1,9 @@
 {
-  "name": "@coze-editor/code-language-python",
+  "name": "@coze-editor/react-code-highlight",
   "version": "0.1.0",
-  "description": "code-language-python",
+  "description": "react code highlight",
   "license": "MIT",
-  "author": "fengzilong",
+  "author": "zhangyi",
   "maintainers": [],
   "sideEffects": [
     "**/*.css",
@@ -19,27 +19,36 @@
   ],
   "scripts": {
     "build": "tsup",
+    "dev": "vite --force",
     "lint": "eslint && tsc --noEmit"
   },
   "dependencies": {
-    "@codemirror/lang-python": "^6.1.7"
+    "@coze-editor/preset-code-highlight": "workspace:*",
+    "@coze-editor/preset-universal-code": "workspace:*"
   },
   "devDependencies": {
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1",
     "@coze-arch/ts-config": "workspace:*",
-    "@coze-editor/code-language-shared": "workspace:*",
     "@coze-editor/eslint-config": "workspace:*",
+    "@coze-editor/react": "workspace:*",
     "@types/node": "^22",
+    "@types/react": "18.2.37",
+    "@types/react-dom": "18.2.15",
     "eslint": "9.14.0",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0",
     "tsup": "^8.0.1",
     "typescript": "^5.8.2"
   },
   "peerDependencies": {
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1",
-    "@coze-editor/code-language-shared": "workspace:*"
+    "@coze-editor/react": "workspace:*",
+    "react": ">=16.8",
+    "react-dom": ">=16.8"
   },
+  "packageManager": "pnpm@9.15.0",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"

@@ -27,6 +27,11 @@
       "require": "./dist/react-merge.js",
       "import": "./dist/esm/react-merge.js"
     },
+    "./react-code-highlight": {
+      "types": "./dist/react-code-highlight.d.ts",
+      "require": "./dist/react-code-highlight.js",
+      "import": "./dist/esm/react-code-highlight.js"
+    },
     "./vscode": {
       "types": "./dist/vscode.d.ts",
       "require": "./dist/vscode.js",
@@ -129,6 +134,7 @@
     "@coze-editor/extension-regexp-decorator": "workspace:*",
     "@coze-editor/extensions": "workspace:*",
     "@coze-editor/preset-code": "workspace:*",
+    "@coze-editor/preset-code-highlight": "workspace:*",
     "@coze-editor/preset-expression": "workspace:*",
     "@coze-editor/preset-none": "workspace:*",
     "@coze-editor/preset-prompt": "workspace:*",
@@ -136,6 +142,7 @@
     "@coze-editor/preset-universal-code": "workspace:*",
     "@coze-editor/preset-variable": "workspace:*",
     "@coze-editor/react": "workspace:*",
+    "@coze-editor/react-code-highlight": "workspace:*",
     "@coze-editor/react-components": "workspace:*",
     "@coze-editor/react-hooks": "workspace:*",
     "@coze-editor/react-merge": "workspace:*",
