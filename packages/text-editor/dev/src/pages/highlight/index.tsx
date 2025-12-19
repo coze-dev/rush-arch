@@ -11,7 +11,9 @@ const CodeHighlight = createEditor([
   ...autoLanguage,
 ], {
   defaultOptions: {
-    fontSize: 15
+    fontSize: 15,
+    readOnly: true,
+    editable: false,
   }
 })
 
