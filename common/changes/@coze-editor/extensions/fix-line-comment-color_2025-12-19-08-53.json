@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extensions",
+      "comment": "async sytax colorization",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/extensions",
+  "email": "zhangyi.hanchayi@bytedance.com"
+}

@@ -8,7 +8,7 @@ import {
   type ViewUpdate,
   type DecorationSet,
 } from '@codemirror/view';
-import { syntaxTree } from '@codemirror/language';
+import { syntaxTree, syntaxTreeAvailable } from '@codemirror/language';
 
 const DEFAULT_COLORS = ['#ffd700', '#da70d6', '#179fff'];
 
@@ -21,9 +21,21 @@ const ColorizationBracketsPlugin = ViewPlugin.fromClass(
     }
 
     update(update: ViewUpdate) {
-      if (update.docChanged || update.selectionSet || update.viewportChanged) {
+      if (
+        update.docChanged ||
+        update.selectionSet ||
+        update.viewportChanged ||
+        this.syntaxTreeAvailableChanged(update)
+      ) {
         this.decorations = this.getBracketDecorations(update.view);
       }
+    }
+
+    syntaxTreeAvailableChanged(update: ViewUpdate) {
+      return (
+        !syntaxTreeAvailable(update.startState) &&
+        syntaxTreeAvailable(update.state)
+      );
     }
 
     getBracketDecorations(view: EditorView) {
