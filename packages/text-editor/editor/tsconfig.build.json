@@ -59,6 +59,9 @@
       "path": "../extensions/tsconfig.build.json"
     },
     {
+      "path": "../preset-code-highlight/tsconfig.build.json"
+    },
+    {
       "path": "../preset-code/tsconfig.build.json"
     },
     {
@@ -78,6 +81,9 @@
     },
     {
       "path": "../preset-variable/tsconfig.build.json"
+    },
+    {
+      "path": "../react-code-highlight/tsconfig.build.json"
     },
     {
       "path": "../react-components/tsconfig.build.json"

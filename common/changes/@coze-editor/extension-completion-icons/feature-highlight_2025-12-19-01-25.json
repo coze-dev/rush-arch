@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extension-completion-icons",
+      "comment": "highlight preset",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/extension-completion-icons",
+  "email": "hanchayi@163.com"
+}

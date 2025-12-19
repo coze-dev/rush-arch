@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/code-language-python",
+      "comment": "highlight preset",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/code-language-python",
+  "email": "hanchayi@163.com"
+}

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-code-highlight",
+      "comment": "highlight preset",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/preset-code-highlight",
+  "email": "hanchayi@163.com"
+}

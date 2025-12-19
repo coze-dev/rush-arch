@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-code-highlight",
+      "comment": "update tsconfig",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/preset-code-highlight",
+  "email": "hanchayi@163.com"
+}

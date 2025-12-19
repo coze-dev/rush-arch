@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react",
+      "comment": "highlight preset",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/react",
+  "email": "hanchayi@163.com"
+}
