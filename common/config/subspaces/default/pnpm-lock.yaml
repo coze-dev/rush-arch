@@ -1677,6 +1677,9 @@ importers:
       '@coze-editor/extensions':
         specifier: workspace:*
         version: link:../extensions
+      '@coze-editor/preset-chat':
+        specifier: workspace:*
+        version: link:../preset-chat
       '@coze-editor/preset-code':
         specifier: workspace:*
         version: link:../preset-code
@@ -2301,6 +2304,70 @@ importers:
         specifier: ^5.8.2
         version: 5.8.2
 
+  ../../../packages/text-editor/preset-chat:
+    dependencies:
+      '@codemirror/language':
+        specifier: ^6.10.1
+        version: 6.11.1
+      '@coze-editor/core':
+        specifier: workspace:*
+        version: link:../core
+      '@coze-editor/core-plugins':
+        specifier: workspace:*
+        version: link:../core-plugins
+      '@coze-editor/extensions':
+        specifier: workspace:*
+        version: link:../extensions
+      '@coze-editor/preset-universal':
+        specifier: workspace:*
+        version: link:../preset-universal
+      '@coze-editor/utils':
+        specifier: workspace:*
+        version: link:../utils
+      '@lezer/common':
+        specifier: ^1.2.2
+        version: 1.2.3
+      '@lezer/html':
+        specifier: ^1.3.10
+        version: 1.3.12
+    devDependencies:
+      '@codemirror/commands':
+        specifier: ^6.3.3
+        version: 6.8.1
+      '@codemirror/state':
+        specifier: ^6.4.1
+        version: 6.5.2
+      '@codemirror/view':
+        specifier: ^6.26.1
+        version: 6.37.1
+      '@coze-arch/ts-config':
+        specifier: workspace:*
+        version: link:../../../config/ts-config
+      '@coze-editor/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@coze-editor/react':
+        specifier: workspace:*
+        version: link:../react
+      '@types/node':
+        specifier: ^22
+        version: 22.13.13
+      '@types/react':
+        specifier: 18.2.37
+        version: 18.2.37
+      '@types/react-dom':
+        specifier: 18.2.15
+        version: 18.2.15
+      eslint:
+        specifier: 9.14.0
+        version: 9.14.0(jiti@2.6.1)
+      tsup:
+        specifier: ^8.0.1
+        version: 8.5.0(@swc/core@1.11.29(@swc/helpers@0.5.17))(jiti@2.6.1)(postcss@8.5.5)(tsx@4.19.3)(typescript@5.8.2)(yaml@2.8.0)
+      typescript:
+        specifier: ^5.8.2
+        version: 5.8.2
+
   ../../../packages/text-editor/preset-code:
     dependencies:
       '@codemirror/autocomplete':
@@ -2761,6 +2828,9 @@ importers:
       '@coze-editor/core':
         specifier: workspace:*
         version: link:../core
+      '@coze-editor/utils':
+        specifier: workspace:*
+        version: link:../utils
     devDependencies:
       '@codemirror/state':
         specifier: ^6.4.1
