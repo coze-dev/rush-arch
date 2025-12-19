@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react-code-highlight",
+      "comment": "highlight export other props",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/react-code-highlight",
+  "email": "hanchayi@163.com"
+}
