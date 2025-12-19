@@ -39,7 +39,12 @@ const ColorizationBracketsPlugin = ViewPlugin.fromClass(
       const { doc } = view.state;
       const decorations: any[] = [];
       const stack: { type: string; from: number }[] = [];
-      const limitNodeType = ['Comment', 'String', 'LineComment'];
+      const limitNodeType = [
+        'Comment',
+        'String',
+        'LineComment',
+        'BlockComment',
+      ];
 
       const tree = syntaxTree(view.state);
 

@@ -17,6 +17,7 @@ function App() {
   return (
     <div>
       <h1>Hello World</h1>
+      {/* hello() */}
     </div>
   );
 }
@@ -31,6 +32,7 @@ export default App;
 function App() {
   return (
     <div>
+      {/* hello() */}
       <h1>Hello World</h1>
     </div>
   );
@@ -51,6 +53,7 @@ export default App;
 </head>
 <body>
   <h1>Hello World</h1>
+  <!-- hello() -->
 </body>
 </html>
 `,
@@ -83,7 +86,7 @@ This is a markdown example.
     path: 'a.md',
   },
   {
-    code: 'const a = 1;',
+    code: 'const a = (1);',
     path: 'a.js',
   },
   {

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/react-components",
+      "comment": "remove value option and add ValueSync, add options.reset for asyncOption",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/react-components",
+  "email": "stream-pipe@users.noreply.github.com"
+}

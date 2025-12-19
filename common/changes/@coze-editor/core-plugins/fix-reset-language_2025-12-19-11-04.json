@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/core-plugins",
+      "comment": "remove value option and add ValueSync, add options.reset for asyncOption",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/core-plugins",
+  "email": "stream-pipe@users.noreply.github.com"
+}

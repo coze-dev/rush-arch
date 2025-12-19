@@ -15,6 +15,7 @@ function last<T>(values: readonly T[]): T {
 function asyncOption<Name extends string, Value>(
   name: Name,
   handler: (value: Value) => Promise<Extension>,
+  options?: { reset?: boolean },
 ): [ExtensionPluginSpec, OptionPluginSpec<Name, Value>] {
   const facet = Facet.define<Value, Value>({
     combine: last,
@@ -36,10 +37,20 @@ function asyncOption<Name extends string, Value>(
 
       apply(view: EditorView) {
         const value = view.state.facet(facet);
+        if (options?.reset === true) {
+          queueMicrotask(() => {
+            view.dispatch({
+              effects: compartment.reconfigure([]),
+            });
+          });
+        }
+
         handler(value).then(ext => {
           if (view.state.facet(facet) === value) {
-            view.dispatch({
-              effects: compartment.reconfigure(ext),
+            queueMicrotask(() => {
+              view.dispatch({
+                effects: compartment.reconfigure(ext),
+              });
             });
           }
         });

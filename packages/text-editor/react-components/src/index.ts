@@ -47,3 +47,5 @@ export {
 } from './embeded-line-view';
 
 export { PrefixElement } from './prefix-element';
+
+export { ValueSync } from './value-sync';

@@ -30,8 +30,6 @@ import {
   transformTextInSelection,
   getLineInfoAtPosition,
   getSelection,
-  valueExtension,
-  value,
 } from '@coze-editor/core-plugins';
 import {
   option,
@@ -53,8 +51,6 @@ const preset = [
   option('height', height),
   option('minHeight', minHeight),
   option('maxHeight', maxHeight),
-  extension(valueExtension),
-  option('value', value),
 
   api('getValue', getValue),
   api('setValue', setValue),
