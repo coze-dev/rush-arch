@@ -2448,9 +2448,6 @@ importers:
       '@coze-editor/core-plugins':
         specifier: workspace:*
         version: link:../core-plugins
-      '@coze-editor/utils':
-        specifier: workspace:*
-        version: link:../utils
     devDependencies:
       '@codemirror/language':
         specifier: ^6.10.1
@@ -2988,9 +2985,6 @@ importers:
       '@coze-arch/ts-config':
         specifier: workspace:*
         version: link:../../../config/ts-config
-      '@coze-editor/core':
-        specifier: workspace:*
-        version: link:../core
       '@coze-editor/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config

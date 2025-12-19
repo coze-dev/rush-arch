@@ -12,6 +12,8 @@ export {
   EVENT_SILENT,
 } from './spec';
 
+export { asyncOption } from './async-option';
+
 export type {
   EditorOptions,
   BuiltinEditorAPI,

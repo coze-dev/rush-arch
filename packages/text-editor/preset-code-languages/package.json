@@ -35,8 +35,7 @@
     "@codemirror/lang-wast": "^6.0.2",
     "@coze-editor/code-language-shell": "workspace:*",
     "@coze-editor/core": "workspace:*",
-    "@coze-editor/core-plugins": "workspace:*",
-    "@coze-editor/utils": "workspace:*"
+    "@coze-editor/core-plugins": "workspace:*"
   },
   "devDependencies": {
     "@codemirror/language": "^6.10.1",

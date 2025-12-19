@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-code-languages",
+      "comment": "move asyncOption to core",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/preset-code-languages",
+  "email": "stream-pipe@users.noreply.github.com"
+}

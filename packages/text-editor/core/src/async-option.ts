@@ -1,20 +1,23 @@
+import { type EditorView, ViewPlugin, type ViewUpdate } from '@codemirror/view';
+import { Compartment, Facet, type Extension } from '@codemirror/state';
+
 import {
   extension,
   type ExtensionPluginSpec,
   option,
   type OptionPluginSpec,
-} from '@coze-editor/core';
-import { type EditorView, ViewPlugin, type ViewUpdate } from '@codemirror/view';
-import { Compartment, Facet, type Extension } from '@codemirror/state';
+} from './spec';
 
-import { FacetCombineStrategy } from './facet';
+function last<T>(values: readonly T[]): T {
+  return values[values.length - 1];
+}
 
 function asyncOption<Name extends string, Value>(
   name: Name,
   handler: (value: Value) => Promise<Extension>,
 ): [ExtensionPluginSpec, OptionPluginSpec<Name, Value>] {
   const facet = Facet.define<Value, Value>({
-    combine: FacetCombineStrategy.Last,
+    combine: last,
   });
 
   const compartment = new Compartment();

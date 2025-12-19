@@ -25,7 +25,6 @@
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1",
     "@coze-arch/ts-config": "workspace:*",
-    "@coze-editor/core": "workspace:*",
     "@coze-editor/eslint-config": "workspace:*",
     "@lezer/common": "^1.2.2",
     "@types/node": "^22",
@@ -36,7 +35,6 @@
   "peerDependencies": {
     "@codemirror/state": "^6.4.1",
     "@codemirror/view": "^6.26.1",
-    "@coze-editor/core": "workspace:*",
     "@lezer/common": "^1.2.2"
   },
   "publishConfig": {

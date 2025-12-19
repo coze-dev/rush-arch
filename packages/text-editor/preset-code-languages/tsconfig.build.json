@@ -27,9 +27,6 @@
     },
     {
       "path": "../eslint-config/tsconfig.build.json"
-    },
-    {
-      "path": "../utils/tsconfig.build.json"
     }
   ]
 }

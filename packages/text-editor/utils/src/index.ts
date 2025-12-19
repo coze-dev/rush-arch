@@ -16,5 +16,3 @@ export { FacetCombineStrategy } from './facet';
 export { withDefaultValue } from './field';
 
 export { singleton } from './singleton';
-
-export { asyncOption } from './async-option';
