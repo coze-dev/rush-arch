@@ -1,6 +1,10 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 
-import { Editor, type InferEditorAPIFromPlugins } from '@coze-editor/react';
+import {
+  Editor,
+  type InferRendererProps,
+  type InferEditorAPIFromPlugins,
+} from '@coze-editor/react';
 import presetUniversalCode from '@coze-editor/preset-universal-code';
 import presetCodeHighlight from '@coze-editor/preset-code-highlight';
 
@@ -8,17 +12,26 @@ const preset = [...presetUniversalCode, ...presetCodeHighlight];
 
 type EditorAPI = InferEditorAPIFromPlugins<typeof preset>;
 
-export interface CodeHighlightProps {
+export interface CodeHighlightProps extends InferRendererProps<typeof preset> {
   code: string;
   path: string;
 }
 
-export const CodeHighlight: React.FC<CodeHighlightProps> = ({ code, path }) => {
+export const CodeHighlight: React.FC<CodeHighlightProps> = ({
+  code,
+  path,
+  didMount,
+  ...props
+}) => {
   const editorRef = useRef<EditorAPI>();
 
-  const didMount = useCallback((api: EditorAPI) => {
-    editorRef.current = api;
-  }, []);
+  const handleMount = useCallback(
+    (api: EditorAPI) => {
+      editorRef.current = api;
+      didMount?.(api);
+    },
+    [didMount],
+  );
 
   useEffect(() => {
     if (editorRef.current) {
@@ -50,6 +63,11 @@ export const CodeHighlight: React.FC<CodeHighlightProps> = ({ code, path }) => {
   }, [code]);
 
   return (
-    <Editor plugins={preset} didMount={didMount} defaultValue={code}></Editor>
+    <Editor
+      plugins={preset}
+      didMount={handleMount}
+      defaultValue={code}
+      {...props}
+    ></Editor>
   );
 };
