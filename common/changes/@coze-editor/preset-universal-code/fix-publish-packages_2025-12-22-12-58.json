@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-universal-code",
+      "comment": "支持关闭activeLine",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/preset-universal-code",
+  "email": "zhangyi.hanchayi@bytedance.com"
+}

@@ -5,17 +5,16 @@ import { useState } from 'react';
 import { examples } from './examples';
 import { createEditor } from '@coze-editor/editor/react';
 
-const CodeHighlight = createEditor([
-  ...universal,
-  ...universalCode,
-  ...autoLanguage,
-], {
-  defaultOptions: {
-    fontSize: 15,
-    readOnly: true,
-    editable: false,
-  }
-})
+const CodeHighlight = createEditor(
+  [...universal, ...universalCode, ...autoLanguage],
+  {
+    defaultOptions: {
+      fontSize: 15,
+      readOnly: true,
+      editable: false,
+    },
+  },
+);
 
 const HighlightPage = () => {
   const [code, setCode] = useState('const a = 1;');
@@ -49,6 +48,7 @@ const HighlightPage = () => {
         options={{
           value: code,
           path: path,
+          activeLine: false,
         }}
         didMount={api => {
           console.log('didMount', api);
