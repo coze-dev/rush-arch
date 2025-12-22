@@ -810,16 +810,19 @@
     {
       "packageName": "@coze-editor/preset-universal-code",
       "projectFolder": "packages/text-editor/preset-universal-code",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/vscode-search",
       "projectFolder": "packages/text-editor/vscode-search",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     {
       "packageName": "@coze-editor/vscode-themes",
       "projectFolder": "packages/text-editor/vscode-themes",
+      "shouldPublish": true,
       "tags": ["level-3"]
     },
     // {
