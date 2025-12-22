@@ -518,5 +518,6 @@ export { default as IconCozCertification } from './IconCozCertification';
 export { default as IconCozCommunityFill } from './IconCozCommunityFill';
 export { default as IconCozCommunity } from './IconCozCommunity';
 export { default as IconCozIsolation } from './IconCozIsolation';
+export { default as IconCozCredit } from './IconCozCredit';
 
 export * from './type';
