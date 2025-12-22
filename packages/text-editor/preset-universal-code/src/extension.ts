@@ -6,8 +6,6 @@ import {
   drawSelection,
   dropCursor,
   EditorView,
-  highlightActiveLine,
-  highlightActiveLineGutter,
   highlightSpecialChars,
   keymap,
   rectangularSelection,
@@ -34,7 +32,6 @@ import {
 } from '@codemirror/autocomplete';
 
 export const basicSetup = (() => [
-  highlightActiveLineGutter(),
   highlightSpecialChars(),
   history(),
   drawSelection(),
@@ -47,7 +44,6 @@ export const basicSetup = (() => [
   autocompletion(),
   rectangularSelection(),
   crosshairCursor(),
-  highlightActiveLine(),
   keymap.of([
     ...defaultKeymap,
     ...closeBracketsKeymap,

@@ -13,7 +13,12 @@ import {
   type InferEditorAPIFromPlugins,
   option,
 } from '@coze-editor/core';
-import { EditorView, lineNumbers } from '@codemirror/view';
+import {
+  EditorView,
+  highlightActiveLine,
+  highlightActiveLineGutter,
+  lineNumbers,
+} from '@codemirror/view';
 import { EditorState, Prec } from '@codemirror/state';
 import { foldGutter, indentUnit } from '@codemirror/language';
 
@@ -47,6 +52,9 @@ const preset = [
     ),
   ]),
 
+  option('activeLine', (enable = true) =>
+    enable ? [highlightActiveLineGutter(), highlightActiveLine()] : [],
+  ),
   option('tabSize', tabSize),
   option('height', height),
   option('minHeight', minHeight),
