@@ -51,6 +51,7 @@
     "stylelint": "^15.11.0"
   },
   "cozePublishConfig": {
+    "main": "./lib/index.js",
     "bin": {
       "rush-increment-run": "./lib/index.js"
     }
