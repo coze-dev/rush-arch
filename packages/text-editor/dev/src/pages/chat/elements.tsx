@@ -134,7 +134,8 @@ function UploadFile({ filename, array }: { filename: string; array: any[] }) {
 const elements = {
   file: {
     render: FileReference,
-    toString(el) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    toString(el: any) {
       return `[custom string from file - ${el.attributes.name}]`
     },
   },
