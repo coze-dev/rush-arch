@@ -109,9 +109,9 @@ export const runLint = async (
       path.relative(projectFolder, path.resolve(root, file)),
     );
 
-    const command = `eslint --quiet ${files.join(
-      ' ',
-    )} --no-error-on-unmatched-pattern ${DISABLED_RULES.map(
+    const command = `eslint --quiet ${files
+      .map(f => `${f}`)
+      .join(' ')} --no-error-on-unmatched-pattern ${DISABLED_RULES.map(
       r => `--rule '${r}: 0'`,
     )}`;
     logger.info(`cd ${projectFolder}`);
