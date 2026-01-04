@@ -41,9 +41,10 @@ interface InferRendererProps<T extends EditorPluginSpec<string, any, any>[]> {
 }
 
 function MergeViewRenderer<T extends EditorPluginSpec<string, any, any>[]>(
-  props: { plugins: T } & InferRendererProps<T>,
+  props: { plugins: T; CustomMergeView?: any } & InferRendererProps<T>,
 ) {
   const {
+    CustomMergeView,
     plugins,
     mergeConfig,
     a,
@@ -65,6 +66,9 @@ function MergeViewRenderer<T extends EditorPluginSpec<string, any, any>[]>(
   bRef.current = b;
   propsRef.current = props;
 
+  const CustomMergeViewRef = useRef(CustomMergeView);
+  CustomMergeViewRef.current = CustomMergeView;
+
   useEffect(() => {
     const a = aRef.current;
     const b = bRef.current;
@@ -81,7 +85,9 @@ function MergeViewRenderer<T extends EditorPluginSpec<string, any, any>[]>(
     const bOptions = createOptions();
     const bEvents = createEvents();
 
-    const mergeView = new MergeView({
+    const View = CustomMergeViewRef.current ?? MergeView;
+
+    const mergeView = new View({
       ...config,
       a: {
         doc: a.defaultValue ?? '',

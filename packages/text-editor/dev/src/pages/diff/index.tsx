@@ -2,13 +2,23 @@ import preset, { type EditorAPI } from '@coze-editor/editor/preset-universal'
 import { EditorProvider } from '@coze-editor/editor/react'
 import { MergeViewRenderer } from '@coze-editor/editor/react-merge'
 import { goToNextChunk, goToPreviousChunk } from '@codemirror/merge'
-import { EditorView } from '@codemirror/view'
+import { EditorView, lineNumbers } from '@codemirror/view'
 import { useRef } from 'react'
 import { Extension } from '@codemirror/state';
 import { Button } from '@/components/ui/button';
 
+import { CustomMergeView } from './custom-merge-view'
+
+import './index.css';
+
 const extensions: Extension[] = [
   EditorView.lineWrapping,
+  lineNumbers(),
+  // EditorView.theme({
+  //   '.cm-mergeSpacer': {
+  //     backgroundColor: 'blue',
+  //   }
+  // })
 ];
 
 const oldValue = `A janitor cleans offices. He sweeps floors. He empties trash. He wipes windows. He keeps everything tidy.
@@ -52,9 +62,12 @@ An electrician wires homes. He installs lights. He repairs circuits. He keeps po
 A carpenter builds furniture. She cuts wood. She hammers nails. She sands surfaces.
 A painter colors walls. He brushes carefully. He chooses shades. He makes rooms beautiful.
 A roofer repairs roofs. She climbs high. She replaces shingles. She keeps homes dry.
+
+
+
 A landscaper plants trees. He mows lawns. He trims bushes. He creates green spaces.
 A delivery driver brings packages. She follows routes. She rings doorbells. She delivers smiles.
-A postal worker sorts mail. He carries letters. He walks many miles. He connects people.
+postal worker sorts mail. He carries letters. He walks many miles. He connects people.
 A garbage collector picks up trash. She lifts bins. She empties cans. She keeps streets clean.
 A recycling worker sorts materials. He separates paper. He collects bottles. He helps the environment.
 A factory worker assembles products. She checks quality. She packs boxes. She works on a team.
@@ -152,7 +165,8 @@ An electrician wires homes. He installs lights. He repairs circuits. He keeps po
 A carpenter builds furniture. She cuts wood. She hammers nails. She sands surfaces.
 A painter colors walls. He brushes carefully. He chooses shades. He makes rooms beautiful.
 A roofer repairs roofs. She climbs high. She replaces shingles. She keeps homes dry.
-Diff 1: A landscaper plants trees. He mows lawns. He trims bushes. He creates green spaces.
+A landscaper plants trees. He mows lawns. He trims bushes. He creates green spaces.
+
 A delivery driver brings packages. She follows routes. She rings doorbells. She delivers smiles.
 A postal worker sorts mail. He carries letters. He walks many miles. He connects people.
 A garbage collector picks up trash. She lifts bins. She empties cans. She keeps streets clean.
@@ -210,6 +224,9 @@ A pharmacist dispenses medicine. She explains usage. She answers questions. She 
 A dentist cleans teeth. He checks gums. He fixes cavities. He promotes health.
 A veterinarian treats animals. She performs surgery. She gives advice. She loves pets.`
 
+const fixture = [oldValue, newValue]
+// const fixture = deleteEmptyLines
+
 function Page() {
   const editorRef = useRef<EditorAPI | null>(null)
 
@@ -234,6 +251,7 @@ function Page() {
     <div style={{ height: 200, overflow: 'scroll' }}>
       <EditorProvider>
         <MergeViewRenderer
+          CustomMergeView={CustomMergeView}
           plugins={preset}
           domProps={{
             style: {
@@ -241,22 +259,26 @@ function Page() {
             }
           }}
           mergeConfig={{
-            gutter: false,
+            diffConfig: {
+              scanLimit: 2000
+            },
+            gutter: true,
+            revertControls: 'a-to-b',
           }}
           a={{
-            defaultValue: oldValue,
+            defaultValue: fixture[0],
             extensions,
             options: {
-              editable: false,
-              readOnly: true,
+              // editable: true,
+              // readOnly: false,
             },
           }}
           b={{
-            defaultValue: newValue,
+            defaultValue: fixture[1],
             extensions,
             options: {
-              editable: false,
-              readOnly: true,
+              // editable: false,
+              // readOnly: true,
             },
           }}
           didMount={({ a }) => {

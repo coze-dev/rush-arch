@@ -1,0 +1,9 @@
+.cm-merge-connectors {
+  width: 5em;
+  background-color: #f2f2f2;
+}
+
+.cm-connector {
+  fill: #2195f331;
+  stroke: #2195f36c;
+}
