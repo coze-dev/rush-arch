@@ -7,7 +7,6 @@ import { release } from '../release/action';
 import { randomHash } from '../../utils/random';
 import { ensureNotUncommittedChanges, isMainBranch } from '../../utils/git';
 import { getRushConfiguration } from '../../utils/get-rush-config';
-import { DEFAULT_NPM_REGISTRY } from '../../const';
 import { generatePublishManifest } from './version';
 import { BumpType, type PublishOptions } from './types';
 import { pushToRemote } from './push-to-remote';
@@ -21,8 +20,10 @@ import { applyPublishManifest } from './apply-new-version';
 // 2. beta: 本分支直接切换版本号，并发布
 // 3. 正式版本：发起MR，MR 合入 main 后，触发发布
 
+const SESSION_ID_LENGTH = 6;
+
 export const publish = async (options: PublishOptions) => {
-  const sessionId = randomHash(6);
+  const sessionId = randomHash(SESSION_ID_LENGTH);
   const rushConfiguration = getRushConfiguration();
   const rushFolder = rushConfiguration.rushJsonFolder;
   if (
@@ -70,7 +71,7 @@ export const publish = async (options: PublishOptions) => {
     !!options.dryRun,
     {
       isReleaseMode: !!options.release,
-      registry: options.registry || DEFAULT_NPM_REGISTRY,
+      registry: options.registry,
     },
   );
 
@@ -106,13 +107,16 @@ export const publish = async (options: PublishOptions) => {
     // Release 模式：直接发布
     logger.info('Running in direct release mode...');
     logger.info('Starting package release...');
-    const registry = options.registry || DEFAULT_NPM_REGISTRY;
     // 将 PublishManifest[] 转换为 PackageToPublish[]
     const packages = publishManifests.map(manifest => ({
       packageName: manifest.project.packageName,
       version: manifest.newVersion,
     }));
-    await release({ dryRun: !!options.dryRun, registry, packages });
+    await release({
+      dryRun: !!options.dryRun,
+      registry: options.registry,
+      packages,
+    });
   } else {
     // 普通模式：创建并推送发布分支
     await pushToRemote({

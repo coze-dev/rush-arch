@@ -192,13 +192,13 @@ describe('confirm', () => {
       });
     });
 
-    it('should show default registry when registry is not provided in release mode', async () => {
+    it('should show npm configured registry when registry is not provided in release mode', async () => {
       await confirmForPublish(mockPublishManifests, false, {
         isReleaseMode: true,
       });
 
       expect(logger.warn).toHaveBeenCalledWith(
-        expect.stringContaining('default registry'),
+        expect.stringContaining('npm configured registry'),
         false,
       );
     });

@@ -53,6 +53,8 @@ jobs:
           node common/scripts/install-run-rush.js install
 
       - name: Run Release
-        run: node common/scripts/install-run-rush.js release --commit ${{ github.event.head_commit.id }}
+        run: |
+          npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_AUTH_TOKEN }}
+          node common/scripts/install-run-rush.js release --commit ${{ github.event.head_commit.id }}
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

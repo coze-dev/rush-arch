@@ -127,7 +127,7 @@ describe('publish action', () => {
       false,
       {
         isReleaseMode: false,
-        registry: 'https://registry.npmjs.org',
+        registry: undefined,
       },
     );
     expect(applyPublishManifest).toHaveBeenCalledWith(mockPublishManifests);
@@ -326,7 +326,7 @@ describe('publish action', () => {
     });
     expect(confirmForPublish).toHaveBeenCalledWith(mockPublishManifests, true, {
       isReleaseMode: false,
-      registry: 'https://registry.npmjs.org',
+      registry: undefined,
     });
   });
 
@@ -416,7 +416,7 @@ describe('publish action', () => {
       expect(pushToRemote).toHaveBeenCalled();
     });
 
-    it('should use default registry when registry is not provided', async () => {
+    it('should use undefined registry when registry is not provided (use npm config)', async () => {
       vi.mocked(generatePublishManifest).mockResolvedValue({
         manifests: mockPublishManifests,
         bumpPolicy: BumpType.BETA,
@@ -430,7 +430,7 @@ describe('publish action', () => {
 
       expect(release).toHaveBeenCalledWith({
         dryRun: false,
-        registry: 'https://registry.npmjs.org',
+        registry: undefined,
         packages: expect.any(Array),
       });
     });
@@ -473,7 +473,7 @@ describe('publish action', () => {
 
       expect(release).toHaveBeenCalledWith({
         dryRun: true,
-        registry: 'https://registry.npmjs.org',
+        registry: undefined,
         packages: expect.any(Array),
       });
     });

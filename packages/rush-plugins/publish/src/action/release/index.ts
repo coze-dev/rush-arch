@@ -5,7 +5,7 @@ import { type Command } from 'commander';
 import { logger } from '@coze-arch/logger';
 
 import { type InstallAction } from '../../types';
-import { DEFAULT_NPM_REGISTRY, DEFAULT_ALLOW_BRANCHES } from '../../const';
+import { DEFAULT_ALLOW_BRANCHES } from '../../const';
 import { type ReleaseOptions } from './types';
 import { release } from './action';
 
@@ -17,8 +17,7 @@ export const installAction: InstallAction = (program: Command) => {
     .option('--dry-run', '是否只执行不真实发布', false)
     .option(
       '-r, --registry <string>',
-      `发布到的 registry (默认: ${DEFAULT_NPM_REGISTRY})`,
-      DEFAULT_NPM_REGISTRY,
+      '发布到的 registry (优先级: CLI参数 > package.json publishConfig.registry > npm config)',
     )
     .option(
       '--allow-branches <branches...>',

@@ -120,6 +120,7 @@ jobs:
       - name: Run Release
         if: steps.check_version.outputs.has_changes == 'true'
         run: |
+          npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_AUTH_TOKEN }}
           git tag --points-at ${{ github.event.head_commit.id }}
           node common/scripts/install-run-rush.js release --commit ${{ github.event.head_commit.id }}
         env:
