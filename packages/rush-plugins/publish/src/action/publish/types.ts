@@ -23,7 +23,7 @@ export interface PublishOptions {
   repoUrl: string; // Git 仓库 URL，例如：git@github.com:coze-dev/coze-js.git
   branchPrefix?: string; // Git 分支名前缀，默认见 DEFAULT_BRANCH_PREFIX
   release?: boolean; // 是否直接发布(仅支持 alpha/beta 版本)
-  registry?: string; // NPM registry 地址，默认见 DEFAULT_NPM_REGISTRY
+  registry?: string; // NPM registry 地址，优先级：CLI > package.json publishConfig > npm config
 }
 
 export interface PublishManifest {

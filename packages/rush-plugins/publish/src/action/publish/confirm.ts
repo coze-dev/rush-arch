@@ -28,7 +28,7 @@ export const confirmForPublish = async (
   if (options?.isReleaseMode) {
     logger.info('', false);
     logger.warn(chalk.yellow.bold('⚠️  Release Mode Enabled:'), false);
-    const registryMsg = `   Packages will be published directly to: ${chalk.bold(options.registry || 'default registry')}`;
+    const registryMsg = `   Packages will be published directly to: ${chalk.bold(options.registry || 'npm configured registry')}`;
     logger.warn(chalk.yellow(registryMsg), false);
   }
 

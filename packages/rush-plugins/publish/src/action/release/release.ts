@@ -4,8 +4,9 @@
 import { type RushConfigurationProject } from '@rushstack/rush-sdk';
 import { logger } from '@coze-arch/logger';
 
+import { resolveRegistry } from '../../utils/resolve-registry';
 import { exec } from '../../utils/exec';
-import { type ReleaseOptions, type ReleaseManifest } from './types';
+import { type ReleaseManifest, type ReleaseOptions } from './types';
 import { applyPublishConfig } from './package';
 
 /**
@@ -15,7 +16,7 @@ const publishPackage = async (
   project: RushConfigurationProject,
   releaseOptions: ReleaseOptions,
 ): Promise<void> => {
-  const { dryRun, registry } = releaseOptions;
+  const { dryRun } = releaseOptions;
   const token = process.env.NPM_AUTH_TOKEN;
   const { version } = project.packageJson;
   const tag = version.includes('alpha')
@@ -23,15 +24,16 @@ const publishPackage = async (
     : version.includes('beta')
       ? 'beta'
       : 'latest';
-  const setToken = `npm config set //bnpm.byted.org/:_authToken ${token}`;
-  await exec(setToken, {
-    cwd: project.projectFolder,
-  });
 
+  // 解析 registry：CLI 参数 > package.json publishConfig > npm 配置
+  const registry = resolveRegistry(project, releaseOptions.registry);
+
+  // 使用环境变量传递 authToken，npm 会自动应用到任何 registry
   const args = [`NODE_AUTH_TOKEN=${token}`, 'npm', 'publish', `--tag ${tag}`];
   if (dryRun) {
     args.push('--dry-run');
   }
+  // 只有明确指定了 registry 才传递参数，否则使用 npm 配置的默认值
   if (registry) {
     args.push(`--registry=${registry}`);
   }

@@ -6,7 +6,7 @@ import { logger } from '@coze-arch/logger';
 
 import { getCurrentOrigin } from '../../utils/git';
 import { type InstallAction } from '../../types';
-import { DEFAULT_BRANCH_PREFIX, DEFAULT_NPM_REGISTRY } from '../../const';
+import { DEFAULT_BRANCH_PREFIX } from '../../const';
 import { type PublishOptions } from './types';
 import { GIT_REPO_URL_REGEX } from './const';
 import { publish } from './action';
@@ -50,8 +50,7 @@ export const installAction: InstallAction = (program: Command) => {
     )
     .option(
       '--registry <url>',
-      `NPM registry URL (default: ${DEFAULT_NPM_REGISTRY})`,
-      DEFAULT_NPM_REGISTRY,
+      'NPM registry URL (优先级: CLI参数 > package.json publishConfig.registry > npm config)',
     )
     .action(async (options: PublishOptions) => {
       try {
