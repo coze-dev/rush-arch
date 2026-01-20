@@ -50,7 +50,7 @@ export const supportedLanguages = [
   }),
   LanguageDescription.of({
     name: 'HTML',
-    extensions: ['html'],
+    extensions: ['html', 'svg'],
     async load() {
       return import('@codemirror/lang-html').then(module => module.html());
     },

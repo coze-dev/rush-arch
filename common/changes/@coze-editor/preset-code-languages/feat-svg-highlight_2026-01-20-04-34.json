@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-code-languages",
+      "comment": "支持SVG文件语法高亮并优化路径处理",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/preset-code-languages",
+  "email": "hanchayi@163.com"
+}
