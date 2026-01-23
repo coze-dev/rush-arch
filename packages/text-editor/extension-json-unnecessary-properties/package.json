@@ -1,6 +1,6 @@
 {
   "name": "@coze-editor/extension-json-unnecessary-properties",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.00ce19",
   "description": "extension-json-unnecessary-properties",
   "license": "MIT",
   "author": "fengzilong",
