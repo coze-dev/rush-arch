@@ -27,11 +27,13 @@
     "@lezer/javascript": "^1.4.19"
   },
   "devDependencies": {
+    "@coze-arch/ts-config": "workspace:*",
     "@coze-arch/vitest-config": "workspace:*",
     "@coze-editor/eslint-config": "workspace:*",
     "@lezer/lr": "^1.4.0",
     "@vitest/coverage-v8": "^3.0.9",
     "eslint": "9.14.0",
+    "tsup": "^8.0.1",
     "vitest": "^3.0.9"
   },
   "publishConfig": {

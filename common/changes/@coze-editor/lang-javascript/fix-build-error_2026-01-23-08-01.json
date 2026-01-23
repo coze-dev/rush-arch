@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/lang-javascript",
+      "comment": "add tsup for build",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/lang-javascript",
+  "email": "hanchayi@163.com"
+}
