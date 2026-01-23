@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/lang-javascript",
+      "comment": "在 rush-project.json 中添加 test:cov 操作配置",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-editor/lang-javascript",
+  "email": "hanchayi@163.com"
+}
