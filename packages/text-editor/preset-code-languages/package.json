@@ -25,7 +25,6 @@
     "@codemirror/lang-cpp": "^6.0.2",
     "@codemirror/lang-css": "^6.3.1",
     "@codemirror/lang-html": "^6.4.9",
-    "@codemirror/lang-javascript": "^6.2.1",
     "@codemirror/lang-json": "^6.0.1",
     "@codemirror/lang-markdown": "^6.3.2",
     "@codemirror/lang-python": "^6.1.7",
@@ -34,7 +33,8 @@
     "@codemirror/lang-vue": "^0.1.3",
     "@codemirror/lang-wast": "^6.0.2",
     "@coze-editor/code-language-shell": "workspace:*",
-    "@coze-editor/core": "workspace:*"
+    "@coze-editor/core": "workspace:*",
+    "@coze-editor/lang-javascript": "workspace:*"
   },
   "devDependencies": {
     "@codemirror/language": "^6.10.1",

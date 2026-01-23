@@ -17,7 +17,7 @@
     "lint": "eslint && tsc --noEmit"
   },
   "dependencies": {
-    "@codemirror/lang-javascript": "^6.2.1",
+    "@coze-editor/lang-javascript": "workspace:*",
     "@lukeed/uuid": "^2.0.1",
     "@typescript/vfs": "^1.6.1",
     "comlink": "^4.4.2",

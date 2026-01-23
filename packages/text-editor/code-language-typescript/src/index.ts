@@ -1,7 +1,7 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-import { typescriptLanguage } from '@codemirror/lang-javascript';
+import { typescriptLanguage } from '@coze-editor/lang-javascript';
 
 import {
   TypeScriptLanguageService,

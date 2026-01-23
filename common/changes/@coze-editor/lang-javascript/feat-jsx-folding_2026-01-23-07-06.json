@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/lang-javascript",
+      "comment": "support jsx folding",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/lang-javascript",
+  "email": "hanchayi@163.com"
+}

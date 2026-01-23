@@ -1,0 +1,41 @@
+{
+  "name": "@coze-editor/lang-javascript",
+  "version": "0.1.0-alpha.3d5d0a",
+  "description": "lang-javascript",
+  "license": "MIT",
+  "author": "zhangyi",
+  "maintainers": [],
+  "main": "./dist/esm/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "lint": "eslint && tsc --noEmit",
+    "test": "vitest --run --passWithNoTests",
+    "test:cov": "npm run test -- --coverage"
+  },
+  "dependencies": {
+    "@codemirror/autocomplete": "^6.18.0",
+    "@codemirror/language": "^6.10.1",
+    "@codemirror/lint": "^6.0.0",
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.26.1",
+    "@lezer/common": "^1.2.2",
+    "@lezer/javascript": "^1.4.19"
+  },
+  "devDependencies": {
+    "@coze-arch/vitest-config": "workspace:*",
+    "@coze-editor/eslint-config": "workspace:*",
+    "@lezer/lr": "^1.4.0",
+    "@vitest/coverage-v8": "^3.0.9",
+    "eslint": "9.14.0",
+    "vitest": "^3.0.9"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}

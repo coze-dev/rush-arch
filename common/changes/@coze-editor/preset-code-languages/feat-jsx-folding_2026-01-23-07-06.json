@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-code-languages",
+      "comment": "support jsx folding",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/preset-code-languages",
+  "email": "hanchayi@163.com"
+}

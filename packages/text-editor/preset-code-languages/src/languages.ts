@@ -13,7 +13,7 @@ export const supportedLanguages = [
     name: 'TS',
     extensions: ['ts'],
     async load() {
-      return import('@codemirror/lang-javascript').then(module =>
+      return import('@coze-editor/lang-javascript').then(module =>
         module.javascript({ typescript: true }),
       );
     },
@@ -22,7 +22,7 @@ export const supportedLanguages = [
     name: 'JS',
     extensions: ['js', 'mjs', 'cjs'],
     async load() {
-      return import('@codemirror/lang-javascript').then(module =>
+      return import('@coze-editor/lang-javascript').then(module =>
         module.javascript(),
       );
     },
@@ -31,7 +31,7 @@ export const supportedLanguages = [
     name: 'TSX',
     extensions: ['tsx'],
     async load() {
-      return import('@codemirror/lang-javascript').then(module =>
+      return import('@coze-editor/lang-javascript').then(module =>
         module.javascript({
           jsx: true,
           typescript: true,
@@ -43,7 +43,7 @@ export const supportedLanguages = [
     name: 'JSX',
     extensions: ['jsx'],
     async load() {
-      return import('@codemirror/lang-javascript').then(module =>
+      return import('@coze-editor/lang-javascript').then(module =>
         module.javascript({ jsx: true }),
       );
     },

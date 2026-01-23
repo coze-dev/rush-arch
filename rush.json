@@ -707,6 +707,12 @@
       "tags": ["level-3"]
     },
     {
+      "packageName": "@coze-editor/lang-javascript",
+      "projectFolder": "packages/text-editor/lang-javascript",
+      "shouldPublish": true,
+      "tags": ["level-3"]
+    },
+    {
       "packageName": "@coze-editor/lezer-parser-template",
       "projectFolder": "packages/text-editor/lezer-parser-template",
       "shouldPublish": true,
