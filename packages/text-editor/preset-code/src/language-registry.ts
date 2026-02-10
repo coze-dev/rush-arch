@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+/* eslint-disable max-lines-per-function */
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
@@ -7,7 +9,6 @@ import {
   MarkupContent,
   type CompletionItem,
 } from 'vscode-languageserver-types';
-import shiki from 'codemirror-shiki';
 import createFuzzySearch from '@nozbe/microfuzz';
 import { type Diagnostic, linter } from '@coze-editor/extension-lint';
 import { type Link, links } from '@coze-editor/extension-links';
@@ -23,13 +24,14 @@ import {
   ViewPlugin,
   type ViewUpdate,
 } from '@codemirror/view';
+import { oneDarkHighlightStyle } from '@codemirror/theme-one-dark';
 import {
   EditorSelection,
   type EditorState,
   type Extension,
   StateField,
 } from '@codemirror/state';
-import { LanguageSupport } from '@codemirror/language';
+import { LanguageSupport, syntaxHighlighting } from '@codemirror/language';
 import {
   autocompletion,
   type Completion,
@@ -39,9 +41,8 @@ import {
 
 import { signatureHelp } from './signature-help';
 import { renderMarkdown } from './markdown';
-import { highlighterPromise } from './highlighter';
 import gotoDefinition from './goto-definition';
-import { DEFAULT_SYNTAX_THEME, LINT_REFRESH_USER_EVENT } from './const';
+import { LINT_REFRESH_USER_EVENT } from './const';
 
 function formatContents(contents: MarkupContent | string | string[]): string {
   if (MarkupContent.is(contents)) {
@@ -89,17 +90,7 @@ class LanguagesRegistry {
 
     langaugeExtensions.push(new LanguageSupport(language));
 
-    // TODO: use shiki for all languages
-    // Only use shiki for TypeScript, Python, SQL temporarily
-    if (id === 'typescript' || id === 'python' || id === 'sql') {
-      langaugeExtensions.push(
-        shiki({
-          highlighter: highlighterPromise,
-          language: id,
-          theme: DEFAULT_SYNTAX_THEME,
-        }),
-      );
-    }
+    langaugeExtensions.push(syntaxHighlighting(oneDarkHighlightStyle));
 
     langaugeExtensions.push(
       StateField.define({

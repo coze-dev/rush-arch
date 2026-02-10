@@ -24,6 +24,7 @@
   "dependencies": {
     "@codemirror/lang-cpp": "^6.0.2",
     "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/lang-go": "^6.0.1",
     "@codemirror/lang-html": "^6.4.9",
     "@codemirror/lang-json": "^6.0.1",
     "@codemirror/lang-markdown": "^6.3.2",

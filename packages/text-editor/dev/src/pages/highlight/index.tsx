@@ -12,8 +12,8 @@ const CodeHighlight = createEditor([
 ], {
   defaultOptions: {
     fontSize: 15,
-    readOnly: true,
-    editable: false,
+    // readOnly: true,
+    // editable: false,
   }
 })
 
