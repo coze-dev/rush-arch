@@ -330,11 +330,11 @@ class LanguagesRegistry {
               }
 
               let { items } = completionResult;
-              const content = state.doc.toString();
-              const charBefore = content.slice(pos - 1, pos);
+              const content = textDocument.getText();
+              const charBefore = content.slice(offset - 1, offset);
               const triggerCharacters = languageService.triggerCharacters ?? [];
               if (!triggerCharacters.includes(charBefore)) {
-                let i = pos - 1;
+                let i = offset - 1;
                 let query = '';
 
                 while (i >= 0) {
@@ -344,43 +344,48 @@ class LanguagesRegistry {
                     break;
                   }
 
-                  if (!identRe.test(char) && i + 1 <= pos) {
+                  if (!identRe.test(char) && i + 1 <= offset) {
                     break;
                   }
                   i--;
                 }
 
-                query = content.slice(i + 1, pos);
+                query = content.slice(i + 1, offset);
 
                 if (query) {
                   const fuzzySearch = createFuzzySearch(items, {
                     key: 'label',
                   });
-                  items = fuzzySearch(query).map(v => ({
-                    ...v.item,
-                    textEdit: {
-                      range: {
-                        start: textDocument.positionAt(i + 1),
-                        end: textDocument.positionAt(pos),
-                      },
-                      newText: v.item.label,
-                    },
-                    data: {
-                      matches: v.matches.reduce<number[]>((memo, current) => {
-                        if (!current) {
-                          return memo;
-                        }
+                  items = fuzzySearch(query).map(v => {
+                    const finalItem = {
+                      ...v.item,
+                      data: {
+                        matches: v.matches.reduce<number[]>((memo, current) => {
+                          if (!current) {
+                            return memo;
+                          }
 
-                        return [
-                          ...memo,
-                          ...current.reduce<number[]>(
-                            (m, c) => [...m, c[0], c[1] + 1],
-                            [],
-                          ),
-                        ];
-                      }, []),
-                    },
-                  }));
+                          return [
+                            ...memo,
+                            ...current.reduce<number[]>(
+                              (m, c) => [...m, c[0], c[1] + 1],
+                              [],
+                            ),
+                          ];
+                        }, []),
+                      },
+                    };
+                    if (!finalItem.textEdit) {
+                      finalItem.textEdit = {
+                        range: {
+                          start: textDocument.positionAt(i + 1),
+                          end: textDocument.positionAt(offset),
+                        },
+                        newText: v.item.label,
+                      };
+                    }
+                    return finalItem;
+                  });
                 } else if (Array.isArray(languageService.triggerCharacters)) {
                   // empty items if query is empty
                   // e.g. type whitespace in JSON editor

@@ -11,8 +11,8 @@ import {
   type JSONDocument,
   DiagnosticSeverity,
 } from 'vscode-json-languageservice';
-import { Text } from 'text-mapping';
 import { v4 as uuid } from '@lukeed/uuid';
+import { Text } from '@coze-editor/utils';
 import { parse } from '@coze-editor/parser-json';
 import {
   type LanguageService as ILanguageService,

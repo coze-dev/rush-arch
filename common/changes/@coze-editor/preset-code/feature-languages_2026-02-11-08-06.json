@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/preset-code",
+      "comment": "implement Text with @volar/source-map",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/preset-code",
+  "email": "stream-pipe@users.noreply.github.com"
+}
