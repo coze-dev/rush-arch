@@ -133,6 +133,13 @@ export const supportedLanguages = [
       return import('@codemirror/lang-sql').then(module => module.sql());
     },
   }),
+  LanguageDescription.of({
+    name: 'Go',
+    extensions: ['go'],
+    async load() {
+      return import('@codemirror/lang-go').then(module => module.go());
+    },
+  }),
 ];
 
 // 添加缓存机制

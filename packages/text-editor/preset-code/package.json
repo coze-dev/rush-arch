@@ -24,6 +24,7 @@
   "dependencies": {
     "@codemirror/autocomplete": "^6.18.0",
     "@codemirror/language": "^6.10.1",
+    "@codemirror/theme-one-dark": "^6.1.3",
     "@coze-editor/core": "workspace:*",
     "@coze-editor/core-plugins": "workspace:*",
     "@coze-editor/extension-completion-icons": "workspace:*",
@@ -38,7 +39,6 @@
     "@nozbe/microfuzz": "^1.0.0",
     "@shikijs/langs": "~3.12.0",
     "@shikijs/themes": "~3.12.0",
-    "codemirror-shiki": "^0.2.2",
     "marked": "^15.0.7",
     "marked-shiki": "^1.2.0",
     "shiki": "^3.2.2",

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-editor/extension-completion-icons",
+      "comment": "support highlighting for all languages & add go language & avoid CSS regeneration during build",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@coze-editor/extension-completion-icons",
+  "email": "stream-pipe@users.noreply.github.com"
+}

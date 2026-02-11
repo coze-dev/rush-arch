@@ -140,4 +140,21 @@ if __name__ == '__main__':
 `,
     path: 'f.py',
   },
+  {
+    code: `package main
+
+import "fmt"
+
+// sayHello 打印一条问候语
+func sayHello() {
+	fmt.Println("Hello, World!")
+}
+
+func main() {
+	// 调用自定义函数
+	sayHello()
+}
+`,
+    path: 'g.go'
+  }
 ];

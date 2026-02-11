@@ -1,7 +1,7 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
-import { Text } from 'text-mapping';
+import { Text } from '@coze-editor/utils';
 import { type Transformer } from '@coze-editor/code-language-shared';
 
 const transformerCreator =

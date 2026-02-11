@@ -30,6 +30,9 @@
     },
     {
       "path": "../parser-json/tsconfig.build.json"
+    },
+    {
+      "path": "../utils/tsconfig.build.json"
     }
   ]
 }

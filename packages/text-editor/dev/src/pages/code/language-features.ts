@@ -1,7 +1,15 @@
 import { languages } from '@coze-editor/editor/preset-code'
 import { typescript } from '@coze-editor/editor/language-typescript'
+import { json } from '@coze-editor/editor/language-json'
+import { mixLanguages } from '@coze-editor/editor'
 
 languages.register('typescript', typescript)
+languages.register('json', {
+  language: mixLanguages({
+    outerLanguage: json.language,
+  }),
+  languageService: json.languageService,
+})
 
 typescript.languageService.addExtraFiles({
   '/global-types.d.ts': `

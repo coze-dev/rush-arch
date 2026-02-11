@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+/* eslint-disable max-lines-per-function */
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
@@ -7,7 +9,6 @@ import {
   MarkupContent,
   type CompletionItem,
 } from 'vscode-languageserver-types';
-import shiki from 'codemirror-shiki';
 import createFuzzySearch from '@nozbe/microfuzz';
 import { type Diagnostic, linter } from '@coze-editor/extension-lint';
 import { type Link, links } from '@coze-editor/extension-links';
@@ -23,13 +24,14 @@ import {
   ViewPlugin,
   type ViewUpdate,
 } from '@codemirror/view';
+import { oneDarkHighlightStyle } from '@codemirror/theme-one-dark';
 import {
   EditorSelection,
   type EditorState,
   type Extension,
   StateField,
 } from '@codemirror/state';
-import { LanguageSupport } from '@codemirror/language';
+import { LanguageSupport, syntaxHighlighting } from '@codemirror/language';
 import {
   autocompletion,
   type Completion,
@@ -39,9 +41,8 @@ import {
 
 import { signatureHelp } from './signature-help';
 import { renderMarkdown } from './markdown';
-import { highlighterPromise } from './highlighter';
 import gotoDefinition from './goto-definition';
-import { DEFAULT_SYNTAX_THEME, LINT_REFRESH_USER_EVENT } from './const';
+import { LINT_REFRESH_USER_EVENT } from './const';
 
 function formatContents(contents: MarkupContent | string | string[]): string {
   if (MarkupContent.is(contents)) {
@@ -89,17 +90,7 @@ class LanguagesRegistry {
 
     langaugeExtensions.push(new LanguageSupport(language));
 
-    // TODO: use shiki for all languages
-    // Only use shiki for TypeScript, Python, SQL temporarily
-    if (id === 'typescript' || id === 'python' || id === 'sql') {
-      langaugeExtensions.push(
-        shiki({
-          highlighter: highlighterPromise,
-          language: id,
-          theme: DEFAULT_SYNTAX_THEME,
-        }),
-      );
-    }
+    langaugeExtensions.push(syntaxHighlighting(oneDarkHighlightStyle));
 
     langaugeExtensions.push(
       StateField.define({
@@ -339,11 +330,11 @@ class LanguagesRegistry {
               }
 
               let { items } = completionResult;
-              const content = state.doc.toString();
-              const charBefore = content.slice(pos - 1, pos);
+              const content = textDocument.getText();
+              const charBefore = content.slice(offset - 1, offset);
               const triggerCharacters = languageService.triggerCharacters ?? [];
               if (!triggerCharacters.includes(charBefore)) {
-                let i = pos - 1;
+                let i = offset - 1;
                 let query = '';
 
                 while (i >= 0) {
@@ -353,43 +344,48 @@ class LanguagesRegistry {
                     break;
                   }
 
-                  if (!identRe.test(char) && i + 1 <= pos) {
+                  if (!identRe.test(char) && i + 1 <= offset) {
                     break;
                   }
                   i--;
                 }
 
-                query = content.slice(i + 1, pos);
+                query = content.slice(i + 1, offset);
 
                 if (query) {
                   const fuzzySearch = createFuzzySearch(items, {
                     key: 'label',
                   });
-                  items = fuzzySearch(query).map(v => ({
-                    ...v.item,
-                    textEdit: {
-                      range: {
-                        start: textDocument.positionAt(i + 1),
-                        end: textDocument.positionAt(pos),
-                      },
-                      newText: v.item.label,
-                    },
-                    data: {
-                      matches: v.matches.reduce<number[]>((memo, current) => {
-                        if (!current) {
-                          return memo;
-                        }
+                  items = fuzzySearch(query).map(v => {
+                    const finalItem = {
+                      ...v.item,
+                      data: {
+                        matches: v.matches.reduce<number[]>((memo, current) => {
+                          if (!current) {
+                            return memo;
+                          }
 
-                        return [
-                          ...memo,
-                          ...current.reduce<number[]>(
-                            (m, c) => [...m, c[0], c[1] + 1],
-                            [],
-                          ),
-                        ];
-                      }, []),
-                    },
-                  }));
+                          return [
+                            ...memo,
+                            ...current.reduce<number[]>(
+                              (m, c) => [...m, c[0], c[1] + 1],
+                              [],
+                            ),
+                          ];
+                        }, []),
+                      },
+                    };
+                    if (!finalItem.textEdit) {
+                      finalItem.textEdit = {
+                        range: {
+                          start: textDocument.positionAt(i + 1),
+                          end: textDocument.positionAt(offset),
+                        },
+                        newText: v.item.label,
+                      };
+                    }
+                    return finalItem;
+                  });
                 } else if (Array.isArray(languageService.triggerCharacters)) {
                   // empty items if query is empty
                   // e.g. type whitespace in JSON editor
