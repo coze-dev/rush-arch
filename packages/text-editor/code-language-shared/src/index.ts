@@ -10,10 +10,14 @@ import {
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { type Severity } from '@coze-editor/extension-lint';
 import { type Extension, type Text as CMText } from '@codemirror/state';
-import { type LRLanguage, type StreamLanguage } from '@codemirror/language';
+import {
+  type Language,
+  type LRLanguage,
+  type StreamLanguage,
+} from '@codemirror/language';
 
 export interface LanguageConfig {
-  language: LRLanguage | StreamLanguage<any>;
+  language: Language | LRLanguage | StreamLanguage<any>;
   extensions?: Extension[];
   languageService?: LanguageService;
 }
