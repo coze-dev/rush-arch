@@ -5,7 +5,7 @@ import { logger } from '@coze-arch/logger';
 
 import { release } from '../release/action';
 import { randomHash } from '../../utils/random';
-import { ensureNotUncommittedChanges, isMainBranch } from '../../utils/git';
+import { ensureNotUncommittedChanges } from '../../utils/git';
 import { getRushConfiguration } from '../../utils/get-rush-config';
 import { generatePublishManifest } from './version';
 import { BumpType, type PublishOptions } from './types';
@@ -54,17 +54,6 @@ export const publish = async (options: PublishOptions) => {
   const isBetaPublish = [BumpType.BETA, BumpType.ALPHA].includes(
     bumpPolicy as BumpType,
   );
-  if (
-    process.env.SKIP_BRANCH_CHECK !== 'true' &&
-    isBetaPublish === false &&
-    (await isMainBranch()) === false
-  ) {
-    // 只允许在主分支发布
-    logger.error(
-      'You are not in main branch, please switch to main branch and try again.',
-    );
-    return;
-  }
 
   const continuePublish = await confirmForPublish(
     publishManifests,

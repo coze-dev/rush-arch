@@ -229,5 +229,281 @@ describe('plan', () => {
         checkReleasePlan(releaseManifests, 'any-branch', []),
       ).toThrow('For LATEST release, should be on one of these branches: .');
     });
+
+    describe('glob pattern matching', () => {
+      const releaseManifests: ReleaseManifest[] = [
+        {
+          project: mockProject1,
+          version: '1.0.0',
+        },
+      ];
+
+      it('should match branches with wildcard pattern', () => {
+        const allowBranches = [
+          'chore/*',
+          'release/*',
+          'integration/*',
+          'master',
+        ];
+
+        // Should match
+        expect(() =>
+          checkReleasePlan(
+            releaseManifests,
+            'chore/upgrade-version',
+            allowBranches,
+          ),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'chore/fix-bug', allowBranches),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'release/v1.0.0', allowBranches),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'integration/test', allowBranches),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'master', allowBranches),
+        ).not.toThrow();
+
+        // Should not match
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'feature/new', allowBranches),
+        ).toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'main', allowBranches),
+        ).toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'chore', allowBranches),
+        ).toThrow();
+      });
+
+      it('should match branches with double-star pattern', () => {
+        const allowBranches = ['release/**'];
+
+        // Should match
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'release/v1.0.0', allowBranches),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(
+            releaseManifests,
+            'release/2024/v1.0.0',
+            allowBranches,
+          ),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(
+            releaseManifests,
+            'release/prod/v1.0.0',
+            allowBranches,
+          ),
+        ).not.toThrow();
+
+        // Should not match
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'chore/fix', allowBranches),
+        ).toThrow();
+      });
+
+      it('should match branches with prefix pattern', () => {
+        const allowBranches = ['feat-*', 'hotfix-*'];
+
+        // Should match
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'feat-123', allowBranches),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'hotfix-urgent', allowBranches),
+        ).not.toThrow();
+
+        // Should not match
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'feat/123', allowBranches),
+        ).toThrow();
+      });
+
+      it('should match branches with suffix pattern', () => {
+        const allowBranches = ['*-prod', '*-staging'];
+
+        // Should match
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'release-prod', allowBranches),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'deploy-staging', allowBranches),
+        ).not.toThrow();
+
+        // Should not match
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'release-dev', allowBranches),
+        ).toThrow();
+      });
+    });
+
+    describe('regex pattern matching', () => {
+      const releaseManifests: ReleaseManifest[] = [
+        {
+          project: mockProject1,
+          version: '1.0.0',
+        },
+      ];
+
+      it('should match branches with regex pattern', () => {
+        const allowBranches = ['/^(main|master|develop)$/'];
+
+        // Should match
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'main', allowBranches),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'master', allowBranches),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'develop', allowBranches),
+        ).not.toThrow();
+
+        // Should not match
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'main-backup', allowBranches),
+        ).toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'feature/test', allowBranches),
+        ).toThrow();
+      });
+
+      it('should match branches with version number regex', () => {
+        const allowBranches = ['/^release\\/v\\d+\\.\\d+\\.\\d+$/'];
+
+        // Should match
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'release/v1.0.0', allowBranches),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'release/v2.10.5', allowBranches),
+        ).not.toThrow();
+
+        // Should not match
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'release/v1', allowBranches),
+        ).toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'release/v1.0', allowBranches),
+        ).toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'chore/v1.0.0', allowBranches),
+        ).toThrow();
+      });
+
+      it('should handle invalid regex gracefully', () => {
+        const allowBranches = ['/^(invalid/'];
+
+        // Should fall back to exact match
+        expect(() =>
+          checkReleasePlan(releaseManifests, '/^(invalid/', allowBranches),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'main', allowBranches),
+        ).toThrow();
+      });
+    });
+
+    describe('mixed pattern matching', () => {
+      const releaseManifests: ReleaseManifest[] = [
+        {
+          project: mockProject1,
+          version: '1.0.0',
+        },
+      ];
+
+      it('should support mix of exact, glob, and regex patterns', () => {
+        const allowBranches = [
+          'main', // exact match
+          'chore/*', // glob pattern
+          '/^release\\/v\\d+\\.\\d+\\.\\d+$/', // regex pattern
+        ];
+
+        // Should match exact
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'main', allowBranches),
+        ).not.toThrow();
+
+        // Should match glob
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'chore/fix-bug', allowBranches),
+        ).not.toThrow();
+
+        // Should match regex
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'release/v1.0.0', allowBranches),
+        ).not.toThrow();
+
+        // Should not match
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'feature/test', allowBranches),
+        ).toThrow();
+      });
+    });
+
+    describe('edge cases', () => {
+      const releaseManifests: ReleaseManifest[] = [
+        {
+          project: mockProject1,
+          version: '1.0.0',
+        },
+      ];
+
+      it('should handle branches with special characters', () => {
+        const allowBranches = ['feat/*'];
+
+        expect(() =>
+          checkReleasePlan(
+            releaseManifests,
+            'feat/user-profile',
+            allowBranches,
+          ),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'feat/issue-#123', allowBranches),
+        ).not.toThrow();
+      });
+
+      it('should handle branches with multiple slashes', () => {
+        const allowBranches = ['team/**'];
+
+        expect(() =>
+          checkReleasePlan(
+            releaseManifests,
+            'team/frontend/feature',
+            allowBranches,
+          ),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(
+            releaseManifests,
+            'team/backend/fix/urgent',
+            allowBranches,
+          ),
+        ).not.toThrow();
+      });
+
+      it('should be case-sensitive by default', () => {
+        const allowBranches = ['Main', 'CHORE/*'];
+
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'Main', allowBranches),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'main', allowBranches),
+        ).toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'CHORE/fix', allowBranches),
+        ).not.toThrow();
+        expect(() =>
+          checkReleasePlan(releaseManifests, 'chore/fix', allowBranches),
+        ).toThrow();
+      });
+    });
   });
 });

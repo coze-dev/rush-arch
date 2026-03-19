@@ -1,6 +1,8 @@
 //  Copyright (c) 2025 coze-dev
 //  SPDX-License-Identifier: MIT
 
+import { minimatch } from 'minimatch';
+
 import { type ReleaseManifest } from './types';
 
 export enum ReleaseType {
@@ -29,6 +31,36 @@ const calReleasePlan = (releaseManifests: ReleaseManifest[]) => {
   return ReleaseType.ALPHA;
 };
 
+/**
+ * Check if a branch name matches any of the allowed patterns.
+ * Supports exact matches, glob patterns (using minimatch), and regex patterns.
+ *
+ * @param branchName - The current branch name
+ * @param allowPatterns - Array of patterns (exact strings, glob patterns, or regex strings starting with '/')
+ * @returns true if the branch matches any pattern, false otherwise
+ */
+const isBranchAllowed = (
+  branchName: string,
+  allowPatterns: string[],
+): boolean =>
+  allowPatterns.some(pattern => {
+    // Check if it's a regex pattern (enclosed in forward slashes)
+    if (pattern.startsWith('/') && pattern.endsWith('/')) {
+      const regexPattern = pattern.slice(1, -1);
+      try {
+        // eslint-disable-next-line security/detect-non-literal-regexp -- User-provided patterns are validated
+        const regex = new RegExp(regexPattern);
+        return regex.test(branchName);
+      } catch {
+        // Invalid regex, fall back to exact match
+        return pattern === branchName;
+      }
+    }
+
+    // Use minimatch for glob patterns and exact matches
+    return minimatch(branchName, pattern);
+  });
+
 export const checkReleasePlan = (
   releaseManifests: ReleaseManifest[],
   branchName: string,
@@ -37,7 +69,7 @@ export const checkReleasePlan = (
   const releasePlan = calReleasePlan(releaseManifests);
   if (
     releasePlan === ReleaseType.LATEST &&
-    !allowBranches.includes(branchName)
+    !isBranchAllowed(branchName, allowBranches)
   ) {
     throw new Error(
       `For LATEST release, should be on one of these branches: ${allowBranches.join(', ')}. Current Branch: ${branchName}`,

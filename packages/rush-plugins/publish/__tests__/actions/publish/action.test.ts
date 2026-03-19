@@ -9,7 +9,7 @@ import {
 import { logger } from '@coze-arch/logger';
 
 import { randomHash } from '@/utils/random';
-import { ensureNotUncommittedChanges, isMainBranch } from '@/utils/git';
+import { ensureNotUncommittedChanges } from '@/utils/git';
 import { getRushConfiguration } from '@/utils/get-rush-config';
 import { release } from '@/action/release/action';
 import { generatePublishManifest } from '@/action/publish/version';
@@ -105,7 +105,6 @@ describe('publish action', () => {
     vi.mocked(confirmForPublish).mockResolvedValue(true);
     vi.mocked(applyPublishManifest).mockResolvedValue(['package.json']);
     vi.mocked(generateChangelog).mockResolvedValue(['CHANGELOG.md']);
-    vi.mocked(isMainBranch).mockResolvedValue(true);
   });
 
   it('should publish packages successfully', async () => {
@@ -175,68 +174,6 @@ describe('publish action', () => {
       }),
     ).rejects.toThrow('No packages to publish');
     expect(generatePublishManifest).not.toHaveBeenCalled();
-  });
-
-  it('should stop if not in main branch for production release', async () => {
-    vi.mocked(isMainBranch).mockResolvedValue(false);
-    delete process.env.SKIP_BRANCH_CHECK;
-    await publish({
-      to: ['package-1'],
-      repoUrl: 'git@github.com:example/repo.git',
-    });
-    expect(logger.error).toHaveBeenCalledWith(
-      'You are not in main branch, please switch to main branch and try again.',
-    );
-    expect(applyPublishManifest).not.toHaveBeenCalled();
-  });
-
-  it('should skip branch check when SKIP_BRANCH_CHECK is true', async () => {
-    vi.mocked(isMainBranch).mockResolvedValue(false);
-    process.env.SKIP_BRANCH_CHECK = 'true';
-
-    await publish({
-      to: ['package-1'],
-      repoUrl: 'git@github.com:example/repo.git',
-    });
-
-    expect(logger.error).not.toHaveBeenCalledWith(
-      'You are not in main branch, please switch to main branch and try again.',
-    );
-    expect(applyPublishManifest).toHaveBeenCalled();
-
-    delete process.env.SKIP_BRANCH_CHECK;
-  });
-
-  it('should allow non-main branch for beta releases', async () => {
-    vi.mocked(isMainBranch).mockResolvedValue(false);
-    vi.mocked(generatePublishManifest).mockResolvedValue({
-      manifests: mockPublishManifests,
-      bumpPolicy: BumpType.BETA,
-    });
-
-    await publish({
-      to: ['package-1'],
-      repoUrl: 'git@github.com:example/repo.git',
-    });
-
-    expect(logger.error).not.toHaveBeenCalled();
-    expect(applyPublishManifest).toHaveBeenCalled();
-  });
-
-  it('should allow non-main branch for alpha releases', async () => {
-    vi.mocked(isMainBranch).mockResolvedValue(false);
-    vi.mocked(generatePublishManifest).mockResolvedValue({
-      manifests: mockPublishManifests,
-      bumpPolicy: BumpType.ALPHA,
-    });
-
-    await publish({
-      to: ['package-1'],
-      repoUrl: 'git@github.com:example/repo.git',
-    });
-
-    expect(logger.error).not.toHaveBeenCalled();
-    expect(applyPublishManifest).toHaveBeenCalled();
   });
 
   it('should stop if user does not confirm', async () => {
