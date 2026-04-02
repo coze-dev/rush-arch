@@ -9,6 +9,7 @@ import React, {
   useState,
   type ReactNode,
   useMemo,
+  useLayoutEffect,
 } from 'react';
 
 import { FacetCombineStrategy } from '@coze-editor/utils';
@@ -85,7 +86,7 @@ function Renderer<T extends EditorPluginSpec<string, any, any>[]>(
 
   propsRef.current = props;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const { render, eventKeys } = create({
       plugins,
       injector,
