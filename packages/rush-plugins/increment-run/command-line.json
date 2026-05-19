@@ -63,6 +63,14 @@
       "argumentName": "SEPARATOR",
       "associatedCommands": ["increment"],
       "required": false
+    },
+    {
+      "parameterKind": "string",
+      "description": "Rush selector 前缀，例如 --from、--impacted-by、--to，默认为 --from",
+      "longName": "--prefix",
+      "argumentName": "PREFIX",
+      "associatedCommands": ["increment"],
+      "required": false
     }
   ]
 }

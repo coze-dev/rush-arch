@@ -5,14 +5,14 @@ import { exec } from 'shelljs';
 import { getRushConfiguration } from '@coze-arch/monorepo-kits';
 import { logger } from '@coze-arch/logger';
 
-export const runCommonCommands = (
-  packages: string[],
-  action: string,
-  verbose: boolean,
-): void => {
+export const runCommonCommands = (options: {
+  packages: string[];
+  action: string;
+  verbose: boolean;
+  prefix?: string;
+}): void => {
+  const { packages, action, verbose, prefix = '--from' } = options;
   const rushConfiguration = getRushConfiguration();
-  // const prefix = '--impacted-by';
-  const prefix = '--from';
   const postfix: string[] = [];
   if (verbose) {
     postfix.push('--verbose');

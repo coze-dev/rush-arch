@@ -109,7 +109,7 @@ export const runLint = async (
       path.relative(projectFolder, path.resolve(root, file)),
     );
 
-    const command = `eslint --quiet ${files
+    const command = `npx eslint --quiet ${files
       .map(f => `${f}`)
       .join(' ')} --no-error-on-unmatched-pattern ${DISABLED_RULES.map(
       r => `--rule '${r}: 0'`,

@@ -41,6 +41,11 @@ export function createIncrementCommand(): Command {
       'Separator for the list of changed files',
       ',',
     )
+    .option(
+      '--prefix <prefix>',
+      'Rush selector prefix, e.g. --from, --impacted-by, --to',
+      '--from',
+    )
     .action(
       async (
         options: Partial<{
@@ -50,6 +55,7 @@ export function createIncrementCommand(): Command {
           action: string;
           verbose: boolean;
           separator: string;
+          prefix: string;
         }>,
       ) => {
         let changedFiles: string[];
@@ -72,6 +78,7 @@ export function createIncrementCommand(): Command {
           changedFiles,
           action: options.action,
           verbose: options.verbose ?? false,
+          prefix: options.prefix,
         });
       },
     );

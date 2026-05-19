@@ -13,8 +13,9 @@ export const incrementAction = async (options: {
   changedFiles: string[];
   action: string;
   verbose: boolean;
+  prefix?: string;
 }): Promise<void> => {
-  const { changedFiles, action, verbose } = options;
+  const { changedFiles, action, verbose, prefix } = options;
   if (!changedFiles.length) {
     return;
   }
@@ -41,7 +42,7 @@ export const incrementAction = async (options: {
       break;
     }
     default: {
-      await runCommonCommands(packages, action, verbose);
+      await runCommonCommands({ packages, action, verbose, prefix });
       break;
     }
   }
