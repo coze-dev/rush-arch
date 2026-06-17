@@ -18,11 +18,6 @@ function textRange(node: Text, from: number, to = from) {
   return range;
 }
 
-function flattenRect(rect: Rect, left: boolean) {
-  const x = left ? rect.left : rect.right;
-  return { left: x, right: x, top: rect.top, bottom: rect.bottom };
-}
-
 function clientRectsFor(dom: Node) {
   if (dom.nodeType == 3) {
     return textRange(dom as Text, 0, dom.nodeValue!.length).getClientRects();
@@ -33,6 +28,6 @@ function clientRectsFor(dom: Node) {
   }
 }
 
-export { flattenRect, clientRectsFor };
+export { clientRectsFor };
 
 export type { Rect };
