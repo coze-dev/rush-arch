@@ -5,7 +5,7 @@ import { useHTMLElement, useLatest } from '@coze-editor/react-hooks';
 import { useInjector } from '@coze-editor/react';
 import { Decoration, EditorView, keymap, WidgetType } from '@codemirror/view';
 
-import { clientRectsFor, flattenRect } from './dom';
+import { clientRectsFor } from './dom';
 
 class PrefixElementWidget extends WidgetType {
   constructor(
@@ -43,7 +43,7 @@ class PrefixElementWidget extends WidgetType {
       return null;
     }
     const style = window.getComputedStyle(dom.parentNode as HTMLElement);
-    const rect = flattenRect(rects[0], style.direction != 'rtl');
+    const rect = rects[0];
     const lineHeight = parseInt(style.lineHeight);
     if (rect.bottom - rect.top > lineHeight * 1.5) {
       return {
