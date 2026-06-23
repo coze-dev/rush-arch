@@ -151,7 +151,7 @@ describe('version management', () => {
       {
         type: BumpType.BETA,
         currentVersion: '1.0.0',
-        expected: '1.0.0-beta.1',
+        expected: '1.0.1-beta.1',
         prerelease: [],
       },
       {
@@ -163,7 +163,7 @@ describe('version management', () => {
       {
         type: BumpType.ALPHA,
         currentVersion: '1.0.0',
-        expected: '1.0.0-alpha.abc123',
+        expected: '1.0.1-alpha.abc123',
         prerelease: [],
       },
       {
