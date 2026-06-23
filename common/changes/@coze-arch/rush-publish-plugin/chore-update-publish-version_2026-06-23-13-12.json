@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@coze-arch/rush-publish-plugin",
+      "comment": "update @coze-arch/rush-publish-plugin to 0.0.5-alpha.d99d0c",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@coze-arch/rush-publish-plugin",
+  "email": "289056872@qq.com"
+}
