@@ -52,9 +52,9 @@ const calculateNewVersion = (
       return `${baseVersion}-beta.1`;
     }
     case BumpType.ALPHA: {
-      // 否则基于当前版本创建新的 alpha 版本
-      const baseVersion = `${major}.${minor}.${patch}`;
-      // 生成随机哈希值
+      // Based on the next patch version to create alpha version
+      const nextPatch = prerelease.length > 0 ? patch : patch + 1;
+      const baseVersion = `${major}.${minor}.${nextPatch}`;
       return `${baseVersion}-alpha.${sessionId || randomHash(6)}`;
     }
     default: {
