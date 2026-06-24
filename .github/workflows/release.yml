@@ -52,6 +52,10 @@ jobs:
           sudo apt-get install -y libasound2-dev
           node common/scripts/install-run-rush.js install
 
+      - name: Build Plugins
+        run: |
+          node common/scripts/install-run-rush.js build --to @coze-arch/rush-publish-plugin
+
       - name: Run Release
         run: |
           npm config set //registry.npmjs.org/:_authToken ${{ secrets.NPM_AUTH_TOKEN }}
