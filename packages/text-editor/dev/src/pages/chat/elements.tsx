@@ -1,7 +1,7 @@
 import { EditorAPI, useCurrentElement } from '@coze-editor/editor/preset-chat';
 import { useEditor } from '@coze-editor/editor/react';
 import { Popover } from '@douyinfe/semi-ui';
-import { SVGProps, useContext } from 'react';
+import { SVGProps, useContext, useEffect } from 'react';
 import { UploadingContext } from './upload';
 
 function GravityUiCode(props: SVGProps<SVGSVGElement>) {
@@ -117,7 +117,15 @@ function LineMdUploadingLoop(props: SVGProps<SVGSVGElement>) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function UploadFile({ filename, array }: { filename: string; array: any[] }) {
   const uploading = useContext(UploadingContext)
+  const editor = useEditor<EditorAPI | null>();
   console.log('array', array)
+
+  useEffect(() => {
+    if (uploading === false) {
+      editor?.refreshDrawSelection();
+    }
+  }, [uploading])
+
   return <span
     className="inline-block items-center border border-solid border-gray-200 rounded-[3px] px-[5px] py-0 mx-[3px] select-none text-xs"
   >

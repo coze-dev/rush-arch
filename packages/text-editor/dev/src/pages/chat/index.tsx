@@ -1,7 +1,7 @@
 import preset, { schemaUtils, type EditorAPI } from '@coze-editor/editor/preset-chat'
 import { type EditorAPI as CodeEditorAPI } from '@coze-editor/editor/preset-code'
 import { EditorProvider, PositionMirror, Renderer, useEditor, useMouseSelectionPopup } from '@coze-editor/editor/react'
-import { EditorView } from '@codemirror/view'
+import { drawSelection, EditorView } from '@codemirror/view'
 import { useRef, useState } from 'react'
 import { Extension } from '@codemirror/state';
 import { astDebugger } from '@coze-editor/editor';
@@ -15,6 +15,7 @@ import { UploadContext, UploadFile } from './upload'
 const extensions: Extension[] = [
   astDebugger,
   EditorView.lineWrapping,
+  drawSelection(),
 ];
 
 const defaultValue = schemaUtils.fromJSON([
