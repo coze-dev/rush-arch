@@ -47,6 +47,16 @@ function insertElement({ view }: { view: EditorView }) {
   };
 }
 
+// 如果用了 drawSelection 且 widget 内的 React 组件宽度发生变化，光标位置会异常
+// 原因：drawSelection 感知不到 react 组件渲染导致的光标位置变化，需手动通知
+function refreshDrawSelection({ view }: { view: EditorView }) {
+  return () => {
+    view.dispatch({
+      selection: view.state.selection,
+    });
+  };
+}
+
 const plugins = [
   extension([
     focusedField,
@@ -60,6 +70,7 @@ const plugins = [
     chatExtension(),
   ]),
   api('insertElement', insertElement),
+  api('refreshDrawSelection', refreshDrawSelection),
   option('elements', (elements: ElementsDefinition) =>
     elementsFacet.of(elements),
   ),

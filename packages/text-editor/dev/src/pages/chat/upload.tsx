@@ -20,7 +20,7 @@ function UploadFile() {
     editor.insertElement({
       tagName: 'upload',
       attributes: {
-        filename: 'my.pdf',
+        filename: 'myloooooooooooooooongpdf.pdf',
         array: [
           { foo: 1 },
           true,
@@ -28,6 +28,8 @@ function UploadFile() {
         ],
       },
     })
+
+    editor.focus()
 
     await delay(2000)
 
